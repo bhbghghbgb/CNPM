@@ -1,0 +1,47 @@
+html{
+    font-family: 'Roboto', sans-serif;
+}
+h1{
+    color: red;
+    text-align: center;
+    padding-top: 25px;
+}
+.logo, .giay {
+    display: flex;
+    justify-content: center;
+}
+.logo img {
+    width: 15%;
+    height: auto;
+}
+.giay img{
+    width: 70%;
+    height: auto;
+}
+.container {
+    text-align: left;
+}
+.container .text1{
+    font-size: 20px;
+    font-weight: bold;
+}
+.BH li {
+    list-style-type: disc;
+}
+.BH {
+    padding-left: 30px;
+}
+.container .text2{
+    font-style: italic;
+    text-decoration: underline;
+    color: red;
+}
+.container .text3{
+    color:red;
+    margin-left: 90px;
+}
+  
+  
+  
+  
+  

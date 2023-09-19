@@ -1,0 +1,108 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: gray;
+ 
+}
+form{    
+    background-color: #f0f5f8;
+    margin: 20px 275px;
+    padding: 5px 30px;
+    border-radius: 20px;
+    position: relative;
+}
+
+form a{
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 9px;
+}
+
+#Back{   
+    display: inline-block;
+    color:black;
+    text-decoration: none;   
+    padding: 5px 15px;
+    top: 8px;
+    right: 0px;
+    font-size: 20px;
+    position: absolute;
+}
+
+#Back:hover{
+    color: rgb(241, 152, 35);
+}
+h2{
+    text-align: center;
+    color: brown;
+    background-color: bisque;
+    margin: 50px 30px 30px 43px;
+    padding: 10px 0px;
+    border-radius: 15px;
+}
+
+label{
+    margin: 0px 70px;
+    font-weight: bold;
+    width: 100%;
+}
+
+input, #MoTa{
+    border: none;
+    border-bottom: 2px solid saddlebrown;
+    border-radius: 15px;
+    background-color: bisque;
+    padding: 10px 10px;
+    margin: 20px 70px;
+    width: 85%;
+    font-weight: 800;
+    color: brown;
+}
+#MoTa{
+    height: 70px;
+}
+
+.button-block{
+    text-align: center;
+    display: block;
+}
+
+#Add, #Edit{
+    text-align: center;
+    color:black;
+    margin: 10px 400px;
+    background-color: #F4A950;
+    width: 30%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#Add:hover, #Edit:hover{
+    background-color: darkturquoise;
+}
+
+@media (min-width:1300px){
+    #Add, #Edit{
+        margin: 10px 400px;
+    }
+}
+
+@media (max-width:1500px){
+    #Add, #Edit{
+        margin: 10px 150px;
+        font-size: 10px;
+    }
+
+    label{
+        margin: 0px 30px;
+    }
+
+    input, #Mota{
+        margin: 20px 40px;
+    }
+}
+
+

@@ -1,0 +1,330 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#main_product{
+    
+    padding: 0px 25px;
+}
+#main_product #top_main{
+    display: flex;
+}
+#main_product #top_main #selection{
+    width: 20%;
+    display: block;
+}
+
+#main_product #top_main #selection .item_selection{
+    
+    margin: 5px 0px;
+}
+
+#main_product #top_main #selection .item_selection label{
+    display: inline-block;
+    cursor: pointer;
+}
+
+.item_selection  label  input{
+    display: none;
+}
+
+.item_selection  label img{
+    display: block;
+    width: 50%;
+    border: 1px solid gray;
+    
+}
+
+.item_selection label input:checked~img{
+    border: 1px solid red;
+}
+
+#image {
+    width: 40%;
+}
+
+#image img {
+    width: 100%;
+    height: 100%;
+}
+
+#info{
+    padding: 5px 30px;
+}
+
+#info h1{
+    font-size: 20px;
+    margin: 10px 0px;
+    font-weight: bold;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+
+#info #price{
+    margin: 30px 0px;
+}
+
+#info #price p{
+    color: orangered;
+    font-size: 40px;
+    font-weight: bold;
+}
+#info #price #niemyet{
+    margin-top: 5px;
+    font-size: 20px;
+    text-decoration: line-through;
+}
+#info p{
+    font-size: 22px;
+    font-weight: bold;
+    color: gray;
+}
+
+#info #size{
+    margin: 10px 0px;
+}
+#info #size #size_list{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+#info #size #size_list .size-item{
+    padding: 9px ;
+    margin: 5px 0px ;
+}
+
+#info #size #size_list .size-item span{
+    border: 1px solid grey;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+#info #size #size_list .size-item span:hover{
+    border: 1px solid orangered;
+}
+#info #size #size_list .size-item input:checked~span{
+    border: 2px solid orangered;
+}
+#info #size #size_list .size-item input:checked~span::before{
+    content: "";
+    position: absolute;
+    bottom: 32px;
+    right: 10px;
+    width: 13px;
+    height: 13px;
+    background-color: orangered;
+    transform: skewY(50deg);
+}
+
+#info #size #size_list .size-item input:checked~span::after{
+    content: "";
+    position: absolute;
+    bottom: 37px;
+    right: -9px;
+    width: 20px;
+    height: 13px;
+    background-color: orangered;
+    transform: skewY(-50deg);
+
+}
+
+#info #size #size_list .size-item input{
+    display: none;
+}
+
+#tonkho p{
+    font-size: 22px;
+}
+
+#info #giohang{
+    background-color: rgb(58, 189, 58);
+    margin: 20px 10px ;
+    border-radius: 6px;
+    display: inline-block;
+    padding: 20px 40px;
+    
+}
+
+#info #giohang input{
+    display: none;
+}
+
+#info #giohang:hover{
+    background-color: green;
+    cursor: pointer;
+}
+#info #giohang span{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: white;
+
+}
+
+#info #giohang a span{
+    margin: 0px 5px ;
+}
+
+#bottom_main{
+    margin: 150px 0px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#MoTa{
+    width: 60%;
+    
+}
+
+#MoTa #title{
+    top: -70px;
+    display: inline-block;
+    background-color: white;
+    padding: 20px 30px;
+    border-top: 4px solid dodgerblue;
+    border-right: 2px solid gray;
+    border-left: 2px solid gray;
+    
+}
+
+#MoTa #title h2{
+    text-transform: uppercase;
+    color: dodgerblue;
+}
+
+#MoTa #content {
+    border: 2px solid gray;
+    padding: 20px;
+    max-width: 700px;
+}
+#danhsach{
+    width: 30%;
+}
+
+
+#danhsach #list_sp{
+    display: block;
+    padding: 20px 30px;
+    background-color: slategrey;
+}
+
+#danhsach #list_sp h3{
+    text-transform: uppercase;
+}
+
+#danhsach ul{
+    padding: 10px 5px;
+    border: 2px solid gray;
+}
+
+#danhsach  ul li{
+    display: inline-block;
+}
+#danhsach  ul li a{
+    text-decoration: none;
+}
+#danhsach  ul li a .item{
+    display: flex;
+}
+
+#danhsach  ul li a .item img{
+    width: 30%;
+}
+
+#danhsach  ul li a .item .content_list{
+    width: 70%;
+    color: black;
+    font-weight: 200;
+    margin-left: 27px;
+}
+
+#danhsach ul li a .item .content_list h2{
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+#danhsach ul li a .item .content_list span{
+    color: orangered;
+    font-size: 18px;
+}
+
+#danhsach #danhmuc {
+    display: inline-block;
+    margin: 20px 0px;
+}
+#danhsach #danhmuc .item{
+    margin: 10px 0px;
+}
+
+#danhsach #danhmuc .item a img{
+    width: 121%;
+}
+
+#danhsach #danhmuc .item a img:hover{
+    box-shadow: 1px 1px 5px 5px gray;
+    transform: translate(0px, 3px);
+}
+
+@media screen and (max-width:700px){
+    #main_product {
+        margin: 30px 0px;
+    }
+
+    #main_product #top_main{
+        display: block;
+    }
+    
+    #main_product #top_main #selection{
+        display: none;
+    }
+
+    #image {
+        width: 100%;
+    }
+
+    #image img {
+        width: 100%;
+        height: 100%;
+    }
+
+    #info{
+        width: 100%;
+    }
+
+    #info #size #size_list .size-item span{
+        padding: 10px 10px;
+    }
+    
+    #info #giohang{
+        margin: 20px 0px ;
+    }
+    
+    #bottom_main{
+        display: block;
+    }
+    
+    #MoTa{
+        width: 100%;
+    }
+
+    #danhsach{
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    #danhsach #danhmuc .item a img{
+        width: 100%;
+        
+    }
+
+
+}
+
+

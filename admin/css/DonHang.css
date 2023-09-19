@@ -1,0 +1,118 @@
+#title_dh{
+    color: brown;
+    margin: 30px 30px;
+    text-align: center;
+    background-color: bisque;
+    border-radius: 20px;
+    padding: 15px;
+}
+#title_loc{
+    margin: 10px;
+    font-size: 18px;
+}
+label{
+    color: black;
+    font-size: 20px;
+    margin: 0px 30px;
+}
+#from, #to{
+    font-size: 20px;
+    margin: 0px 20px;
+    padding: 5px 10px;
+}
+#Loc, #Refresh{
+    color: black;
+    font-weight: bold;
+    background-color: burlywood;
+    border: 1px solid black;
+    padding: 5px 15px;
+    margin: 0 30px;
+    cursor: pointer;
+}
+#Loc:hover, #Refresh:hover{
+    background-color: aqua;
+}
+#ds_donhang{
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+#ds_donhang th{
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+    font-size: 18px;
+    background-color: orange;
+}
+
+#ds_donhang td{
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#ds_donhang a div{
+    display: none;
+    border: none;
+    background-color: orange;
+    color: black;
+    text-decoration: none;
+    padding: 3px 10px;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 15px;
+    
+
+}
+
+#ds_donhang a div:hover{
+    background-color: aqua;
+}
+
+#ds_donhang tr:hover a div, #ds_donhang tr:hover button{
+    display: inline-block;
+}
+
+#ThongBao{
+    margin: 25px 10px;
+}
+
+#ThongBao #ThongBao-title{
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
+
+#ThongBao .ThongBao-content{
+    margin-left: 30px !important;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.XuLyDon{
+    display: none;
+    border: none;
+    background-color: orange;
+    color: black;
+    text-decoration: none;
+    padding: 3px 10px;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 15px;
+}
+
+.XuLyDon:hover{
+    background-color: aqua;
+}
+.buttonadd{
+    width: 126px !important;
+    height: 40px;
+    color: black;
+    font-weight: bold;
+    background-color: burlywood;
+    border: 1px solid black;
+    padding: 5px 15px;
+    margin: 0 30px;
+    cursor: pointer;
+}

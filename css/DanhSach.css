@@ -1,0 +1,177 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+    /* user-select: none; */
+}
+html{
+    font-family: 'Roboto', sans-serif;
+}
+li{
+    list-style: none;
+}
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.block-product{
+    width: 80%;
+}
+
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+
+.Loc{
+    width: 312px;
+    margin-top: 21px;
+    margin-left: 15px;
+    margin-right: 20px;
+}
+
+.Loc #Loc_submit{
+    padding: 10px;
+    display: block;
+    background-color: rgb(58, 189, 58);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.Loc #Loc_submit:hover{
+    background-color: green;
+}
+
+
+.Loc .selection{
+    box-shadow: #000 1px 1px 13px -7px;
+}
+.Loc .selection .title {
+    padding: 20px;
+    border-bottom: 3px solid gray;
+    position: relative;
+}
+.Loc .selection .title .ti-minus, .Loc .selection .title .ti-plus{
+    position: absolute;
+    top: 19px;
+    right: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.Loc .selection .item{
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.Loc .selection .item label{
+    display: block;
+    margin: 10px;
+    padding: 5px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.Loc .selection .item label input{
+    display: none;
+}
+
+.Loc .selection .item label .content{
+    display: inline-block;
+    font-weight: bold;
+    padding: 0px;
+    font-size: 15px;
+    width: 100%;
+}
+
+
+
+.Loc .selection .item label .content::before{
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 16px;
+    border: 1px solid black;
+    margin-right: 15px;
+    top: 4px;
+}
+
+
+.Loc .selection .item label i{
+    position: absolute;
+    top: -20px;
+    left: 3px;
+    transition: all 0.3s linear;
+    font-weight: bold;
+    color: steelblue;
+    font-size: 19px;
+
+}
+
+.Loc .selection .item label input:checked~i{
+    top: 4px;
+    left: 5px;
+}
+
+.block-main{
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#block-xemthem{
+    text-align: center;
+    display: block;
+}
+
+#block-xemthem #xemthem{
+    padding: 20px;
+    border: none;
+    border-radius: 15px;
+    background: darkcyan;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+#NoiDungTim{
+    display: block;
+    margin-top: 20px;
+    padding: 0px 38px 0px 16px;
+}
+
+#NoiDungTim p{
+    padding: 10px;
+    box-shadow: 1px 2px 5px 1px gray;
+    font-size: 18px;
+}
+@media  screen and (max-width: 1000px){
+    .block-main{
+        display: inline-block;
+    }
+
+    .products{
+        display: grid;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .Loc{
+        width: 100%;
+    }
+
+    .block-product{
+        width: 100%;
+    }
+}

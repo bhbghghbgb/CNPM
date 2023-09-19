@@ -1,0 +1,102 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#add_dm{
+    color: black;
+    background-color: cornflowerblue;
+    display: inline-block;
+    font-weight: bold;
+    border: 0px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin: 10px 30px;
+}
+
+#add_dm:hover{
+    background-color: aqua;
+}
+
+#edit_dm, #delete_dm{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 15px;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0px 8px;
+    border: none;
+}
+
+#edit_dm{
+    background-color: greenyellow;
+}
+
+#delete_dm{
+    background-color: brown ;
+}
+
+#edit_dm:hover,#delete_dm:hover{
+    background-color: gold;
+}
+
+#form_dm{
+    border: none;
+    border-radius: 20px;
+    background-color: #ffe4c4;
+    width: 500px;
+    top: 50%;
+    left: 55%;
+    position: fixed;
+    padding: 27px;
+    display: none;
+    transform: translate(-50%, -50%);
+}
+#exit_dm{
+    color: brown;
+    font-weight: bold;
+    font-size: 23px;
+    position: absolute;
+    top: 2px;
+    right: 15px;
+    cursor: pointer;
+}
+#exit_dm:hover{
+    color: #5c3b12;
+}
+label {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#MaDanhMuc, #TenDanhMuc{
+    width: 100%;
+    border: none;
+    border-bottom: 5px solid brown;
+    padding: 10px;
+    background: none;
+    color: brown;
+    font-weight: 600;
+    font-size: 23px;
+}
+
+#tt_dm {
+    display: inline-block;
+    background-color: brown;
+    padding: 10px;
+    margin: 30px auto;
+    color: burlywood;
+    border-radius: 20px;
+    font-weight: bold;
+    border: none;
+}
+
+@media (max-width: 700px) {
+    #form_dm{
+        left: 288px;
+        width: 80%;
+    }
+
+
+}

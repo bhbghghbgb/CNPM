@@ -1,0 +1,46 @@
+html{
+    font-family: 'Roboto', sans-serif;
+}
+h1{
+    color: red;
+    text-align: center;
+    padding-top: 25px;
+}
+.top{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+.container {
+    text-align: left;
+}
+.container .TD{
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.TD1{
+    list-style: none;
+    padding-left: 20px;
+}
+.TD1 li{
+    position: relative;
+    padding-left: 20px;
+}
+.TD1 li::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 10px;
+    height: 1px;
+    background-color: black;
+    transform: translateY(-50%);
+}
+.text1{
+    font-style: italic;
+    text-decoration: underline;
+    font-weight: bold;
+    margin-left: 20px;
+}
