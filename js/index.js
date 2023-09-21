@@ -39,6 +39,22 @@ function getValueImgQuickview() {
             elemClicked[i].classList.remove("clicked");
     }
 }
+function addmess(text, bgcolor, textcolor, time) {
+    var al = document.getElementById('message');
+    var a = document.getElementById('hihi');
+    a.innerHTML = text;
 
+    al.style.backgroundColor = bgcolor;
+    al.style.opacity = 1;
+    al.style.zIndex = 200;
 
-
+    if (textcolor) al.style.color = textcolor;
+    if (time)
+        setTimeout(function () {
+            al.style.opacity = 0;
+            al.style.zIndex = 200;
+        }, time);
+}
+function addmessText(text) {
+    addmess(text, "#ccc", "white", 2000);
+}

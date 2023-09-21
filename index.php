@@ -1,24 +1,32 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- JS dùng để làm AJAX -->
-    <script src="./js/jquery-3.7.0.min.js"></script>
+    <script src="./js/jquery-3.7.0.min.js">
+
+    </script>
 
     <link rel="stylesheet" href="./css/main.css">
 
-<!-- products -->
+    <!-- products -->
     <link rel="stylesheet" href="./css/products.css">
-    <script src="./js/index.js"></script>
-    <script src="./js/login.js"></script>
+    <script src="./js/index.js">
+
+    </script>
+    <script src="./js/login.js">
+
+    </script>
 
     <!-- slider -->
     <link rel="stylesheet" href="./css/slider.css">
-    <script src="./js/slider.js"></script>
+    <script src="./js/slider.js">
+
+    </script>
 
     <!-- header -->
     <link rel="stylesheet" href="./css/top_menu.css">
@@ -37,22 +45,54 @@
 
 
 </head>
+
 <body>
     <div id="wrapper">
-        <?php include('account/login.php');?>
-        <?php include('account/register.php');?>
-        <?php include('template/header.php');?>
-        <?php include('template/top_menu.php');?>
+
+
+        <div id="message">
+            <div id="hihi">
+
+            </div>
+        </div>
+
+
+        <?php include('account/login.php'); ?>
+
+        <?php include('account/register.php'); ?>
+
+        <?php include('template/header.php'); ?>
+
+        <?php include('template/top_menu.php'); ?>
+
+
         <div id="main">
-            <?php include('template/slider.php');?>
-            <?php include('template/products.php');?>
-            <?php include('template/post.php');?>
-            
+
+            <?php include('template/slider.php'); ?>
+            <?php include('template/products.php'); ?>
+            <?php
+            // include('template/post.php');
+            ?>
+
         </div>
         <div id="footer">
-            <?php include('template/footer.php');?>
+            <?php include('template/footer.php'); ?>
         </div>
+
+
+        <?php
+        echo "<script>console.log('hi".$_SESSION['message']."')</script>";
+        if (isset($_SESSION['message'])) {
+            if($cache!=$_SESSION['message']);
+            $cache=$_SESSION['message'];
+            echo '<script language="javascript"> addmess("' . $_SESSION['message'] . '", "#434343", "white", 2000);</script>';
+            unset($_SESSION['message']); // Xóa thông báo sau khi hiển thị
+        } 
+        ?>
     </div>
-    
+
+
+
 </body>
+
 </html>

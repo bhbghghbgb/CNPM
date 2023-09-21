@@ -37,8 +37,7 @@
                                 if (isset($_SESSION['MaTaiKhoan']) ){
                                     ?>
                                         <li><a href="./account/logout.php"><i class="ti-share-alt"></i></a></li>
-                                    
-                                    <?php
+                                    <?php 
                                 }
                                 else{
                                 ?>
@@ -62,6 +61,8 @@
                                     ?>
                                 </span>
                             </li>
+                            <li><?php  if(isset($_SESSION['MaQuyen']) && $_SESSION['MaQuyen']=="Admin") echo "<a style='cusor:poiter;' href='./admin'>Admin</a>"?></li>
+                            
                         </ul>
                     </div>
                 </div>

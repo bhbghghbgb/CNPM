@@ -30,7 +30,7 @@ label{
     cursor: pointer;
 }
 #Loc:hover, #Refresh:hover{
-    background-color: aqua;
+    background-color: #1321c6;
 }
 #ds_donhang{
     width: 100%;
@@ -67,7 +67,7 @@ label{
 }
 
 #ds_donhang a div:hover{
-    background-color: aqua;
+    background-color: #1321c6;
 }
 
 #ds_donhang tr:hover a div, #ds_donhang tr:hover button{
@@ -103,7 +103,7 @@ label{
 }
 
 .XuLyDon:hover{
-    background-color: aqua;
+    background-color: #1321c6;
 }
 .buttonadd{
     width: 126px !important;

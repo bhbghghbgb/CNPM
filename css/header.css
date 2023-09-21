@@ -1,41 +1,46 @@
-#header{
+#header {
   border-bottom: 1px solid rgb(194, 194, 194);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.09);
   padding: 10px;
 }
-.container2{
+
+.container2 {
   margin: 0 auto;
-  display: flex;/*thu div lai bang kich thuoc dung cua div*/
-  width:1200px;
-  justify-content: space-around; /*chinh cho 3 cai div cach nhau ra*/
-  height:65px;
+  display: flex;
+  /*thu div lai bang kich thuoc dung cua div*/
+  width: 1200px;
+  justify-content: space-around;
+  /*chinh cho 3 cai div cach nhau ra*/
+  height: 65px;
 
 }
 
-.content1{
+.content1 {
   display: flex;
 }
 
-.content1 .ti-headphone{
+.content1 .ti-headphone {
   margin-top: 20px;
   font-size: 30px;
 }
 
-.content1 #phone_header{
+.content1 #phone_header {
   margin-top: 25px;
   margin-left: 8px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.content1:hover{
+.content1:hover {
   color: rgb(2, 4, 66);
   cursor: pointer;
 }
 
-.content2 img{
-  margin: 10px 0;;
+.content2 img {
+  margin: 10px 0;
+  ;
 }
-.content2{
+
+.content2 {
   margin: 0 auto;
 }
 
@@ -43,7 +48,7 @@
   margin-top: 20px;
 }
 
-.content3 ul{
+.content3 ul {
   display: flex;
   list-style-type: none;
 }
@@ -53,83 +58,105 @@
   font-size: 25px;
   position: relative;
 }
+
 .content3 ul li a {
-  color:black;
+  color: black;
   cursor: pointer;
 }
 
 
-.content3 ul .gh:hover, .content3 ul .user:hover, .content3 ul .kl:hover,.content3 ul .ti-share-alt:hover, .content3 ul li a:hover {
-  color:aqua;
+.content3 ul .gh:hover,
+.content3 ul .user:hover,
+.content3 ul .kl:hover,
+.content3 ul .ti-share-alt:hover,
+.content3 ul li a:hover {
+  color: #1321c6;
   cursor: pointer;
 }
 
-.content3 ul li span{
-    background-color: orangered;
-    color: white;
-    font-size: 13px;
-    position: absolute;
-    right: -15px;
-    top: -13px;
-    border-radius: 90%;
-    padding: 8px;
+.content3 ul li span {
+  background-color: orangered;
+  color: white;
+  font-size: 13px;
+  position: absolute;
+  right: -15px;
+  top: -13px;
+  border-radius: 90%;
+  padding: 8px;
 }
-#search-box{
-    display: flex;
-    margin-right: -12px;
-    border-radius: 30px;
+
+#search-box {
+  display: flex;
+  margin-right: -12px;
+  border-radius: 30px;
 }
-#search-box #find{
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 15px;
-    margin-right: 10px;
-    border-radius: 30px;
-    color: brown;
-    width: 0px;
-    position:absolute;
-    left:-300px;
+
+#search-box #find {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 15px;
+  margin-right: 10px;
+  border-radius: 30px;
+  color: brown;
+  width: 0px;
+  position: absolute;
+  left: -300px;
 }
+
 /*  #search-box #find:valid  kiểm tra xem trên text có dữ liệu không nếu có thì áp dụng thuộc tính phía dưới */
-#search-box:hover #find, #search-box #find:valid {
-    padding: 6px 10px;
-    width: 300px;
-    border: 2px solid bisque;
+li:hover> #search-box #find,
+#search-box #find:valid {
+  padding: 6px 10px;
+  width: 300px;
+  border: 2px solid bisque;
 }
-#search-box #btn-search{
+
+#search-box #btn-search {
   background: none;
   border: none;
   cursor: pointer;
 }
 
-#search-box #btn-search:hover{
-  color: aqua;
+#search-box #btn-search:hover {
+  color: rgb(0, 66, 109);
 }
-#search-box .ti-search{
+
+#search-box .ti-search {
   padding: 6px 10px;
   font-size: 25px;
 }
 
 
 @media screen and (max-width: 1600px) {
-  .container2{
-    width:1200px;
+  .container2 {
+    width: 1200px;
   }
 }
+
 @media screen and (max-width: 1200px) {
 
-  .container2{
+  .container2 {
     width: auto;
     display: flex;
-  
+
   }
-  .conent2{
-    flex:1;
+
+  .conent2 {
+    flex: 1;
   }
 
 }
-@media screen and (max-width: 876px){}
-@media screen and (max-width: 375px){
 
+@media screen and (max-width: 876px) {}
+
+@media screen and (max-width: 375px) {}
+
+#message {
+  top:50px;
+  padding :20px 50px;
+  right: 10px;
+  position:fixed;
+  border-bottom: 2px solid red;
+  opacity:0;
 }

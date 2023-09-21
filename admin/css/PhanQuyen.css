@@ -64,7 +64,7 @@ label{
     padding: 10px 5px;
     border: 3px solid black;
     text-align: center;
-    background-color: aquamarine;
+    background-color: #1321c6;
 }
 
 #quyen td{
@@ -86,7 +86,7 @@ label{
 }
 
 #quyen td a div:hover {
-    background-color: aqua;
+    background-color: #1321c6;
     color: black;
 }
 
@@ -172,15 +172,11 @@ label{
 #check_item .checkbox_item .checkbox:checked~span::before{
     background-color: bisque;
 }
-
-
-
 #submit{
     display: flex;
     justify-content: center;
 }
 #edit{
-   
     padding: 20px;
     font-weight: bold;
     color: bisque;
@@ -191,6 +187,6 @@ label{
 
 #edit:hover{
     color: black;
-    background-color: aqua;
+    background-color: #1321c6;
 }
 
