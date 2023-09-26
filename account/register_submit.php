@@ -26,7 +26,9 @@ if(isset($_POST['dangky'])){
 
 
     if(!$username || !$password || !$email) {
-        echo '<script language="javascript">alert("Vui lòng nhập đầy đủ thông tin!"); window.location="index.php";</script>';
+        $_SESSION["message"] = "Vui lòng nhập đầy đủ thông tin!";
+        header("Location: index.php");
+        exit;
     }
 
     //Mã hoá mật khẩu:
@@ -42,9 +44,9 @@ if(isset($_POST['dangky'])){
      // Nếu kết quả trả về lớn hơn 1 thì nghĩa là username hoặc email đã tồn tại trong CSDL
     if (mysqli_num_rows($result) > 0)
     {
-        echo '<script language="javascript">alert("Username hoặc Email đã tồn tại!"); window.location="index.php";</script>';
-        // Dừng chương trình
-        die ();
+        $_SESSION["message"] = "Username hoặc Email đã tồn tại!";
+        header("Location: index.php");
+        exit;
     }
     else {
         $sql1 = "INSERT INTO `taikhoan`( `TenDN`, `MatKhau`, `Email`, `NgayTao`, `TinhTrang`, `Quyen`,`TrangThai`) VALUES ('$username','$password','$email','$today','$tinhtrang','$quyen',1)";
@@ -52,9 +54,11 @@ if(isset($_POST['dangky'])){
         $mataikhoan=getMaTaiKhoan($conn);
         $sql2 = "INSERT INTO `khachhang`(`TenKhach`, `DiaChi`, `SDT`, `MaTaiKhoan`) VALUES ('$TenKhach','$DiaChi','$SDT','$mataikhoan[0]')";
         $result2= mysqli_query($conn, $sql2);
-        echo '<script language="javascript">alert("Ban da dang ky thanh cong!"); window.location="index.php";</script>';
+
         $_SESSION['MaTaiKhoan'] = $mataikhoan[0];
-        die(); 
+        $_SESSION["message"] = "Bạn đã đăng kí thành công!";
+        header("Location: index.php");
+        exit;
     }
 }
 ?>

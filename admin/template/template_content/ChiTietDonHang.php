@@ -54,7 +54,6 @@
         <?php
             include("../../../db/DAOChiTietDonHang.php");
             $db = new DAOChiTietDonHang();
-            $db->connect();
             $data = $db->getList($Madon);
             $i=0;
             while ($i < count($data)){
