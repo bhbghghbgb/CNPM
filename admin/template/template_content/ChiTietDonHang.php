@@ -47,22 +47,24 @@
     <table id="ds_donhang">
         <tr>
             <th>Mã sản phẩm</th>
+            <th>Size</th>
             <th>Số lượng</th>
             <th>Giá</th>
             <th>Tổng tiền</th>
         </tr>
         <?php
-            include("../../../db/DAOChiTietDonHang.php");
+            include("../../../db/DAO/DAOChiTietDonHang.php");
             $db = new DAOChiTietDonHang();
             $data = $db->getList($Madon);
             $i=0;
             while ($i < count($data)){
         ?>
                 <tr>
-                    <td><?php echo $data[$i][0]?></td>
-                    <td><?php echo $data[$i][1]?></td>
-                    <td><?php echo number_format($data[$i][2],0,',','.')."đ"?></td>
-                    <td><?php echo number_format($data[$i][3],0,',','.')."đ"?></td>
+                    <td><?php echo $data[$i]->getMaSanPham()?></td>
+                    <td><?php echo $data[$i]->getSize()?></td>
+                    <td><?php echo $data[$i]->getSoLuong()?></td>
+                    <td><?php echo number_format($data[$i]->getGiaBan(),0,',','.')."đ"?></td>
+                    <td><?php echo number_format($data[$i]->getTongTien(),0,',','.')."đ"?></td>
                 </tr>
         <?php
                 $i++;
