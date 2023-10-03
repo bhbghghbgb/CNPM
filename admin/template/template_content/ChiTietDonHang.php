@@ -24,7 +24,7 @@
     }
 ?>
 
-<div id="ctdh" class="container">
+<div id="ctdh" class="container-fluid">
     <h2>Chi Tiết Hóa Đơn</h2>
     <div class="row">
         <div class="col col-6">

@@ -36,11 +36,9 @@
 </head>
 
 <body>
-    <div class="wrapper" style=" background-color: #6c757d;height:100%;min-height:100vh">
+    <div class="wrapper">
         <?php include('template/topbar_ad.php');?>
-        <div class="container">
-            <div class="row " style="min-height:900px;padding-bottom:50px;position: relative;">
-                <div class="col-2 d-none d-lg-block d-md-block"></div>
+        <div class="container-fluid">
                 <?php include('template/menu_ad.php');?>
                 <?php include('template/main_ad.php');?>
                 

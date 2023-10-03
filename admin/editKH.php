@@ -21,13 +21,11 @@
 </head>
 
 <body>
-    <div class="wrapper" style=" background-color: #6c757d;height:100%;min-height:100vh">
+    <div class="wrapper">
         <?php include('template/topbar_ad.php'); ?>
-        <div class="container">
-            <div class="row " style="min-height:1200px;padding-bottom:50px;position: relative;">
-                <div class="col-2 d-none d-lg-block d-md-block"></div>
+        <div class="container-fluid">
                 <?php include('template/menu_ad.php'); ?>
-                <div id="main" class="col col-12 col-lg-10 col-md-10 ">
+                <div id="main">
                     <?php include('template/header_ad.php'); ?>
                     <div id="content" class="row" style="background-color:#f0f5f8;height:calc(100% - 72px)">
                         <div class="main mx-auto ">

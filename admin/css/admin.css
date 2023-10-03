@@ -108,6 +108,7 @@ li .border-size-menu+.border-size-menu {
     left:0;
     overflow-y: auto;
     z-index: 5;
+    width:160px;
 }
 div#topbar {
     position: fixed;
@@ -119,6 +120,8 @@ div#topbar {
 }
 #main{
     margin-top: 56px;
+    margin-left:160px;
+    padding:10px;
 }
 #main > *:nth-child(2) > *{
     margin-top: 10px !important;
@@ -216,6 +219,8 @@ span#cke_1_top {
 span#cke_1_bottom {
     background: #6c757d73 !important;
 }
-#thongke{
-    margin:20px;
+.wrapper{
+    background-color: #6c757d
+    ;height:100%;
+    min-height:100vh;
 }

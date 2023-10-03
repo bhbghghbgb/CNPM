@@ -1,5 +1,5 @@
 <p>Bạn đang chọn Bài đăng</p>
-<div class="container-i">
+<div class="container-fluid-i">
     <div></div>
     <div></div>
     <div></div>

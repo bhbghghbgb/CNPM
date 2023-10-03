@@ -1,6 +1,5 @@
-<div id="thongke"  class="container">
+<div id="thongke"  class="container-fluid">
         <?php include('../db/dbconnect.php');?>
-            <div class="row">
                 <div class="row">
                     <?php
                         $tongSPDaBan=0;
@@ -125,4 +124,3 @@
                 </div>             
             </div>
         <?php $conn->close();?>
-    </div>

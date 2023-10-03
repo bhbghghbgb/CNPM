@@ -18,7 +18,7 @@
     
 ?>
 
-        <div id="menu" class="col col-sm-12 col-lg-2 col-md-2 bg-black text-bg-dark position-fixed width-show-icon">
+        <div id="menu" class="bg-black text-bg-dark position-fixed width-show-icon">
             <div class="row d-block w-auto d-lg-none d-md-none">
                 <div id="show-icon-js" style="width: 150px !important;" class="col-12 p-3 px-5">
                     <i class="fas fa-bars"></i>
