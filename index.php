@@ -81,7 +81,6 @@
 
 
         <?php
-        echo "<script>console.log('hi".$_SESSION['message']."')</script>";
         if (isset($_SESSION['message'])) {
             if($cache!=$_SESSION['message']);
             $cache=$_SESSION['message'];
