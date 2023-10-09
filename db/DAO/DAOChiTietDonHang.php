@@ -21,7 +21,6 @@ class DAOChiTietDonHang
                 $ctdh->setSize($row['Size']);
                 $ctdhs[]=$ctdh;
             }
-            $data->Close();
             return $ctdhs;
         }
         return $result;
@@ -37,7 +36,7 @@ class DAOChiTietDonHang
         $ColumnValues['Size']=$Size;
 
         $result=$data->Insert($this->table,$ColumnValues); 
-        $data->Close();
+        
         if($result)
             return true;
         else
@@ -46,7 +45,6 @@ class DAOChiTietDonHang
     public function Remove($MaSP,$MaDonHang){
         $data=new DataProvider();
         $result=$data->Delete($this->table,"MaSP=$MaSP AND MaDonHang=$MaDonHang"); 
-        $data->Close();
         if($result)
             return true;
         else

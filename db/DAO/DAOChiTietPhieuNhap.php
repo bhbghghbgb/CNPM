@@ -21,7 +21,6 @@ class DAOChiTietPhieuNhap
                 $ctdh->setSize($row['Size']);
                 $ctdhs[]=$ctdh;
             }
-            $data->Close();
             return $ctdhs;
         }
         return $result;
@@ -36,8 +35,7 @@ class DAOChiTietPhieuNhap
         $ColumnValues['ThanhTien']=$ThanhTien;
         $ColumnValues['Size']=$Size;
 
-        $result=$data->Insert($this->table,$ColumnValues); 
-        $data->Close();
+        $result=$data->Insert($this->table,$ColumnValues);
         if($result)
             return true;
         else

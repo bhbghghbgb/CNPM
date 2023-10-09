@@ -101,16 +101,16 @@
                             <form action="xuly/xulyEditSP.php?" method="post" enctype="multipart/form-data">
                                 <div class="row mt-2">
                                     <label class="row">
-                                        <div class="col col-3">Tên sản phẩm: </div>
-                                        <div class="col col-9">
+                                        <div class="col col-1">Tên sản phẩm: </div>
+                                        <div class="col col-11">
                                             <input class="w-100" required type="text" name='ten' value="<?php echo $ten; ?>">
                                         </div>
                                     </label>
                                 </div>
                                 <div class="row mt-2">
                                     <label class="row">
-                                        <div class="col col-3">Mô tả:</div>
-                                        <div class="col col-9">
+                                        <div class="col col-1">Mô tả:</div>
+                                        <div class="col col-11">
                                             <textarea id="textarea"class="w-100" rows="" cols="" name="mota"
                                                 value=""><?php echo htmlspecialchars_decode($moTa); ?></textarea>
                                         </div>
@@ -118,16 +118,16 @@
                                 </div>
                                 <div class="row mt-2">
                                     <label class="row">
-                                        <div class="col col-3">Giá:</div>
-                                        <div class="col col-9">
+                                        <div class="col col-1">Giá:</div>
+                                        <div class="col col-11">
                                             <input class="w-100" type="number"required name='gia' value="<?php echo $gia; ?>">
                                         </div>
                                     </label>
                                 </div>
                                 <div class="row mt-2">
                                     <label class="row">
-                                        <div class="col col-3">Danh mục:</div>
-                                        <div class="col col-9">
+                                        <div class="col col-1">Danh mục:</div>
+                                        <div class="col col-11">
                                             <select class="w-100" name="danhmuc">
                                             <?php
                                                 foreach($listDanhMuc as $maDM=>$tenDM){
@@ -143,8 +143,8 @@
                                 </div>
                                 <div class="row mt-2">
                                     <label class="row">
-                                        <div class="col col-3">Ảnh :</div>
-                                        <div class="col col-9">
+                                        <div class="col col-1">Ảnh :</div>
+                                        <div class="col col-11">
                                             <input class="w-100" type="file" id="anhSP" name="anhchinh"
                                                 onchange="getLinkImg()">
                                                 <input class="w-100" type="hidden" name="anhchinhcu" value="<?php echo $hinhAnh;?> ">
@@ -152,8 +152,8 @@
                                         </label>
                                     </div>                     
                                     <div class="row">
-                                        <div class="col col-3"></div>
-                                        <div class="col col-9">
+                                        <div class="col col-1"></div>
+                                        <div class="col col-11">
                                             <div class="row">
                                                 <img style="width: 300px;min-height: 150px;"
                                                 src="<?php
@@ -174,15 +174,15 @@
                                 </div>
                                 <div class="row mt-2">
                                     <label class="row"> 
-                                        <div class="col col-3">Thư viện ảnh :</div>
-                                        <div class="col col-9">
+                                        <div class="col col-1">Thư viện ảnh :</div>
+                                        <div class="col col-11">
                                             <input class="w-100" type="file" id="anhSPs" name="anhphu" multiple enctype="multipart/form-data" onchange="getLinkImgs()">
                                         </div>
                                     </label>
                                 </div>
                                 <div class="row">
-                                    <div class="col col-3"></div>
-                                    <div class="col col-9">
+                                    <div class="col col-1"></div>
+                                    <div class="col col-11">
                                         <div class="row">
                                             <div id="ListAnhPhu"></div>
                                         </div>
@@ -190,8 +190,8 @@
                                 </div>
                                 <div class="row mt-2">
                                     <label class="row">
-                                        <div class="col col-3">Hãng:</div>
-                                        <div class="col col-9">
+                                        <div class="col col-1">Hãng:</div>
+                                        <div class="col col-11">
                                             <select class="w-100" name="hang">
                                                 <?php
                                                 foreach($listHang as $maH=>$tenH){
@@ -207,8 +207,8 @@
                                 </div>
                                 <div class="row mt-2">
                                     <label class="row">
-                                        <div class="col col-3">Khuyến mãi:</div>
-                                        <div class="col col-9">
+                                        <div class="col col-1">Khuyến mãi:</div>
+                                        <div class="col col-11">
                                             <select class="w-100" name="khuyenmai">
                                             <?php
                                                 foreach($listKhuyenMai as $maKM=>$tenKM){
@@ -224,8 +224,8 @@
                                     </label>
                                 </div>
                                 <div class="row mt-2">
-                                    <div class="col col-3"></div>
-                                    <div class="col col-9">
+                                    <div class="col col-1"></div>
+                                    <div class="col col-11">
                                         <?php
                                         if (isset($_GET['id'])) {
                                             echo "<input type='hidden' name='id' value=" . $id . ">";

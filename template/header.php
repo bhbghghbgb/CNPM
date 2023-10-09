@@ -22,7 +22,7 @@
                     </div>
 
                     <div class = "content2">
-                        <img style ="height :60px"src=".\img\img-logo\sneaker.jpg">
+                        <a href="./"><img style ="height :70px"src=".\img\img-logo\sneaker.jpg"></a>
                     </div>
                     <div class = "content3">
                         <ul>

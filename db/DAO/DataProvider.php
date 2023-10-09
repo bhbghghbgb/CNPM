@@ -5,6 +5,7 @@ class DataProvider
 	public static function executeQuery($sql){
 		include ('ketnoi.php');
 		$connection = mysqli_connect($host,$user,$pass,$db);
+		$result = mysqli_query($connection,$sql);
 		//2. Thiet lap font Unicode
 		if (!(mysqli_query($connection,"set names 'utf8'")))
 			echo "Khong the set utf8";
@@ -13,10 +14,16 @@ class DataProvider
 		if ($stmt === false) {
 			die('Prepare failed: ' . $connection->error);
 		}
-	
-		$stmt->execute();
-		$result = $stmt->get_result();
-		$stmt->close();
+		try {
+			$stmt->execute();
+			$result = $stmt->get_result();
+		}
+		catch(Exception $e){
+			echo $e->getMessage();
+		}
+		finally{
+			$stmt->close();
+		}
 	
 		return $result;
 		
@@ -68,7 +75,7 @@ class DataProvider
         $query.=";";
         echo "<script>console.log('".$query."')</script>";
         // Thực thi câu query và trả kết quả ra ngoài
-        return $this->connection->executeUpdate($query);
+        return $this->executeQuery($query);
     }
 	public function Update($TableName, $ColumnValues, $Condition) {
 		// Khai báo biến $query để tạo chuỗi SQL
@@ -95,7 +102,7 @@ class DataProvider
 		 // In ra câu truy vấn (tùy mục đích)
 	
 		// Thực hiện truy vấn và trả về kết quả
-		return $this->connection->executeQuery($query);
+		return $this->executeQuery($query);
 	}
 	public function Delete($TableName, $Condition) {
         $query = "Delete From " + $TableName;
@@ -108,7 +115,7 @@ class DataProvider
 
         echo "<script>console.log('".$query."')</script>";
         //thực thi và trả về giá trị
-        return $this->connection->executeUpdate($query);
+        return $this->executeQuery($query);
     }
 	public function getCountCol($TableName){
 		$query="SELECT COUNT(*) FROM $TableName";
