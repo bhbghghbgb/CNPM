@@ -119,7 +119,7 @@
                 <h2>Mô tả sản phẩm</h2>
             </div>
             <div id = "content">
-                <?php echo $data[0][6]?>
+                <?php echo htmlspecialchars_decode($data[0][6]);?>
             </div>
         </div>
         <div id = "danhsach">

@@ -112,7 +112,7 @@
                                         <div class="col col-3">Mô tả:</div>
                                         <div class="col col-9">
                                             <textarea id="textarea"class="w-100" rows="" cols="" name="mota"
-                                                value="<?php echo $moTa; ?>"><?php echo $moTa; ?></textarea>
+                                                value=""><?php echo htmlspecialchars_decode($moTa); ?></textarea>
                                         </div>
                                     </label>
                                 </div>

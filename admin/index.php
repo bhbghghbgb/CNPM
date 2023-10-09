@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="../js/jquery-3.7.0.min.js"></script>
-    
+    <script src="../js/index.js"></script>
     <script src="./js/admin.js"></script>
     <script src="./js/DanhMuc.js"></script>
 
@@ -26,7 +26,7 @@
 
     <!-- Css cua phan quyen -->
     <link rel="stylesheet" href="./css/PhanQuyen.css">
-
+    <link rel="stylesheet" href="./css/admin.css">
 
     <link rel="stylesheet" href="./css/DanhMuc.css">
     <!-- Icon -->
@@ -36,6 +36,10 @@
 </head>
 
 <body>
+    <div id="message">
+            <div id="hihi">
+            </div>
+        </div>
     <div class="wrapper">
         <?php include('template/topbar_ad.php');?>
         <div class="container-fluid">
@@ -46,6 +50,14 @@
         </div>
     </div>
 
+    <?php 
+    if (isset($_SESSION['message'])) {
+        if($cache!=$_SESSION['message']);
+        $cache=$_SESSION['message'];
+        echo '<script language="javascript"> addmess("' . $_SESSION['message'] . '", "#434343", "white", 2000);</script>';
+        unset($_SESSION['message']); // Xóa thông báo sau khi hiển thị
+    } 
+?>
     </div>
     <script>
         showmenu();

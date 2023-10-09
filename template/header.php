@@ -22,7 +22,7 @@
                     </div>
 
                     <div class = "content2">
-                        <img src=".\img\img-header\logo_header.png">
+                        <img style ="height :60px"src=".\img\img-logo\sneaker.jpg">
                     </div>
                     <div class = "content3">
                         <ul>
@@ -61,7 +61,7 @@
                                     ?>
                                 </span>
                             </li>
-                            <li><?php  if(isset($_SESSION['MaQuyen']) && $_SESSION['MaQuyen']=="Admin") echo "<a style='cusor:poiter;' href='./admin'>Admin</a>"?></li>
+                            <li><?php  if(isset($_SESSION['MaQuyen']) && $_SESSION['MaQuyen']!="User") echo "<a style='cusor:poiter;' href='./admin'>Admin</a>"?></li>
                             
                         </ul>
                     </div>

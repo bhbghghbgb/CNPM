@@ -26,7 +26,7 @@
         if($row['Quyen'] != "User") {
             $_SESSION['MaTaiKhoan'] = $row['MaTaiKhoan'];
             $_SESSION['MaQuyen'] = $row['Quyen'];
-            $_SESSION["message"] = "Chào Admin";
+            $_SESSION["message"] = "Chào ".$row['Quyen'];
             header("Location: index.php");
             exit;
         }

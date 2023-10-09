@@ -224,3 +224,11 @@ span#cke_1_bottom {
     ;height:100%;
     min-height:100vh;
 }
+#message {
+    top:50px;
+    padding :20px 50px;
+    right: 10px;
+    position:fixed;
+    border-bottom: 2px solid red;
+    opacity:0;
+  }

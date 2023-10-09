@@ -1,4 +1,5 @@
 <?php
+            session_start();
 //một số hàm cần thiết cho xử lý mảng ảnh
 function uploadFiles($uploadedFiles)
 {
@@ -125,9 +126,10 @@ if (isset($_POST['hd'])) {
 
     switch ($hd) {
         case "Lưu":
+            $Value1 = htmlspecialchars($_POST['mota']);
             // Truy vấn danh sách sản phẩm
             $sql = "UPDATE sanpham   SET Ten='" . $_POST['ten'] . "',
-                                        MoTa=" . $_POST['mota'] . ",
+                                        MoTa='". $Value1 ."',
                                         Gia=" . $_POST['gia'] . ",
                                         MaKhuyenMai='" . $_POST['khuyenmai'] . "' ,
                                         MaDM='" . $_POST['danhmuc'] . "' ,
@@ -135,22 +137,15 @@ if (isset($_POST['hd'])) {
                                         MaHang='" . $_POST['hang'] . "'
                                         WHERE MaSP='" . $_POST['id'] . "'";
             $result = mysqli_query($conn, $sql);
-            echo $sql;
             if($result){
-                echo "<script>
-                alert('Sửa Thành Công');
-                // window.location = '../index.php?id=sp'
-                </script>";
-                $conn->close();
-                return;
+                $_SESSION["message"] = "Sửa thành công";
+                header("Location: ../index.php?id=sp");
+                exit;
             }
             else{
-                echo "<script>
-                alert('Sửa Thành Công');
-                // window.location = '../index.php?id=sp'
-                </script>";
-                $conn->close();
-                return;
+                $_SESSION["message"] = "Sửa không thành công";
+                header("Location: ../index.php?id=sp");
+                exit;
             }
         case "Thêm":
             // Tao listid da co san
@@ -195,7 +190,6 @@ if (isset($_POST['hd'])) {
             '" . $_POST['hang'] . "',
             CURDATE(),1)";
             $result = mysqli_query($conn, $sql);
-            echo "$sql";
             if (!$result){
                 echo "<script>
                 alert('Thêm không Thành Công');
