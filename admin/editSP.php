@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,9 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/font-awesome_5.15.4_css_all.min.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="./js/admin.js"></script>
     <script src="../resources/ckeditor/ckeditor.js"></script>
 
@@ -26,229 +25,284 @@
     <div class="wrapper">
         <?php include('template/topbar_ad.php'); ?>
         <div class="container-fluid">
-                <?php include('template/menu_ad.php'); ?>
-                <div id="main">
-                    <?php include('template/header_ad.php'); ?>
-    
-                    <div id="content" class="row" style="background-color:#f0f5f8;height:calc(100% - 72px)">
-                        <div class="main mx-auto ">
-                            <?php
-                            include('../db/dbconnect.php');
-                            // Sửa sản phẩm
-                            if (isset($_GET['id'])) {
-                                
-                                $id = $_GET['id'];
-                                echo '<div class="row justify-content-center display-4">Sửa sản phẩm</div>';
-                                $sql = 'SELECT * FROM sanpham WHERE MaSP="' . $id . '"';
-                                $result = $conn->query($sql);
-                                if (mysqli_num_rows($result) > 0) {
-                                    // Lấy thông tin sản phẩm
-                                    $row = mysqli_fetch_assoc($result);
-                                    $ten = $row["Ten"];
-                                    $moTa = $row["MoTa"];
-                                    $gia = $row["Gia"];
-                                    $hinhAnh = $row["AnhChinh"];
-                                    $maKhuyenMai = $row["MaKhuyenMai"];
-                                    $soLuong = $row["SLTonKho"];
-                                    $maHang = $row["MaHang"];                                    
-                                    $maDanhMuc = $row["MaDM"];                                    
-                                }
-                                else {echo"lỗi";}
+            <?php include('template/menu_ad.php'); ?>
+            <div id="main">
+                <?php include('template/header_ad.php'); ?>
+
+                <div id="content" class="row" style="background-color:#f0f5f8;height:calc(100% - 72px)">
+                    <div class="main mx-auto ">
+                        <?php
+                        include('../db/dbconnect.php');
+                        // Sửa sản phẩm
+                        if (isset($_GET['id'])) {
+
+                            $id = $_GET['id'];
+                            echo '<div class="row justify-content-center display-4">Sửa sản phẩm</div>';
+                            $sql = 'SELECT * FROM sanpham WHERE MaSP="' . $id . '"';
+                            $result = $conn->query($sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                // Lấy thông tin sản phẩm
+                                $row = mysqli_fetch_assoc($result);
+                                $ten = $row["Ten"];
+                                $moTa = $row["MoTa"];
+                                $hinhAnh = $row["AnhChinh"];
+                                $maKhuyenMai = $row["MaKhuyenMai"];
+                                $maHang = $row["MaHang"];
+                                $maDanhMuc = $row["MaDM"];
+                            } else {
+                                echo "lỗi";
                             }
-                            // Thêm sản phẩm
-                             else {
-                                echo '<div class="row justify-content-center display-4">Thêm sản phẩm</div>';
-                                $ten = '';
-                                $moTa = '';
-                                $gia = '';
-                                $hinhAnh = '';
-                                $maKhuyenMai = '';
-                                $soLuong = 0;
-                                $maHang='';
-                                $maDanhMuc='';
+                        }
+                        // Thêm sản phẩm
+                        else {
+                            echo '<div class="row justify-content-center display-4">Thêm sản phẩm</div>';
+                            $ten = '';
+                            $moTa = '';
+                            $hinhAnh = '';
+                            $maKhuyenMai = '';
+                            $maHang = '';
+                            $maDanhMuc = '';
+                        }
+                        //Luu bảng khuyen mãi, hang va danh muc
+                        // Xuat danh sách hãng db ra mảng
+                        $listHang = [];
+                        $sql = "SELECT * FROM hang WHERE TrangThai = 1";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $listHang[$row['MaHang']] = $row['Ten'];
                             }
-                            //Luu bảng khuyen mãi, hang va danh muc
-                                // Xuat danh sách hãng db ra mảng
-                                $listHang = [];
-                                $sql = "SELECT * FROM hang WHERE TrangThai = 1";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        $listHang[$row['MaHang']]=$row['Ten'];
-                                    }
-                                }
-                                // Xuat danh sách danhmuc db ra mảng
-                                $listDanhMuc = [];
-                                $sql = "SELECT * FROM danhmuc WHERE TrangThai = 1";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        $listDanhMuc[$row['MaDM']]=$row['TenDM'];
-                                    }
-                                }
-                                // Xuat danh sách khuyenmai db ra mảng
-                                $listKhuyenMai = [];
-                                $sql = "SELECT * FROM khuyenmai";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        $listKhuyenMai[$row['MaKhuyenMai']]=$row['TenKhuyenMai'];
-                                    }
-                                }
-                           
-                            ?>
-                            <!-- Tạo form thêm / sửa -->
-                            <form action="xuly/xulyEditSP.php?" method="post" enctype="multipart/form-data">
-                                <div class="row mt-2">
-                                    <label class="row">
-                                        <div class="col col-1">Tên sản phẩm: </div>
-                                        <div class="col col-11">
-                                            <input class="w-100" required type="text" name='ten' value="<?php echo $ten; ?>">
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="row mt-2">
-                                    <label class="row">
-                                        <div class="col col-1">Mô tả:</div>
-                                        <div class="col col-11">
-                                            <textarea id="textarea"class="w-100" rows="" cols="" name="mota"
-                                                value=""><?php echo htmlspecialchars_decode($moTa); ?></textarea>
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="row mt-2">
+                        }
+                        // Xuat danh sách danhmuc db ra mảng
+                        $listDanhMuc = [];
+                        $sql = "SELECT * FROM danhmuc WHERE TrangThai = 1";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $listDanhMuc[$row['MaDM']] = $row['TenDM'];
+                            }
+                        }
+                        // Xuat danh sách khuyenmai db ra mảng
+                        $listKhuyenMai = [];
+                        $sql = "SELECT * FROM khuyenmai";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $listKhuyenMai[$row['MaKhuyenMai']] = $row['TenKhuyenMai'];
+                            }
+                        }
+
+                        ?>
+                        <!-- Tạo form thêm / sửa -->
+                        <form action="xuly/xulyEditSP.php?" method="post" enctype="multipart/form-data">
+                            <div class="row mt-2">
+                                <label class="row">
+                                    <div class="col col-1">Tên sản phẩm: </div>
+                                    <div class="col col-11">
+                                        <input class="w-100" required type="text" name='ten'
+                                            value="<?php echo $ten; ?>">
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="row mt-2">
+                                <label class="row">
+                                    <div class="col col-1">Mô tả:</div>
+                                    <div class="col col-11">
+                                        <textarea id="textarea" class="w-100" rows="" cols="" name="mota"
+                                            value=""><?php echo htmlspecialchars_decode($moTa); ?></textarea>
+                                    </div>
+                                </label>
+                            </div>
+                            <!-- <div class="row mt-2">
                                     <label class="row">
                                         <div class="col col-1">Giá:</div>
                                         <div class="col col-11">
-                                            <input class="w-100" type="number"required name='gia' value="<?php echo $gia; ?>">
+                                            <input class="w-100" type="number"required name='gia' value="<?php
+                                            // echo $gia;
+                                            ?>">
                                         </div>
                                     </label>
-                                </div>
-                                <div class="row mt-2">
-                                    <label class="row">
-                                        <div class="col col-1">Danh mục:</div>
-                                        <div class="col col-11">
-                                            <select class="w-100" name="danhmuc">
-                                            <?php
-                                                foreach($listDanhMuc as $maDM=>$tenDM){
-                                                    if($maDM==$maDanhMuc)
-                                                    echo'<option value='.$maDM.' selected>'.$tenDM.'</option>';    
-                                                    else
-                                                    echo"<option value='$maDM'>$tenDM</option>";                                                
-                                                }
-                                                ?>
-                                            </select>
+                                </div> -->
+                            <div class="row mt-2">
+                                <div class="col col-1">Size:</div>
+                                <div class="col col-11">
+                                    <div class="row mt-2">
+                                        <div class="col-4">
+                                            <input class="w-100" type="number" placeholder="size">
                                         </div>
-                                    </label>
-                                </div>
-                                <div class="row mt-2">
-                                    <label class="row">
-                                        <div class="col col-1">Ảnh :</div>
-                                        <div class="col col-11">
-                                            <input class="w-100" type="file" id="anhSP" name="anhchinh"
-                                                onchange="getLinkImg()">
-                                                <input class="w-100" type="hidden" name="anhchinhcu" value="<?php echo $hinhAnh;?> ">
-                                            </div>
-                                        </label>
-                                    </div>                     
-                                    <div class="row">
-                                        <div class="col col-1"></div>
-                                        <div class="col col-11">
-                                            <div class="row">
-                                                <img style="width: 300px;min-height: 150px;"
-                                                src="<?php
-                                                echo"../img/products/".$hinhAnh;
-                                                ?>"
-                                                alt="" id="imagePreview">
-                                                <div id="myButton">Xóa ảnh</div>
-                                                <div id="inner"></div>
-                                                <script>
-                                                    var changeButton = document.getElementById('myButton');
-                                                    changeButton.addEventListener('click', function(){
-                                                        document.getElementById('inner').innerHTML=`<input class="w-100" type="hidden" name="xoa" value="">`;
-                                                        document.getElementById('imagePreview').style.display='none';
-                                                    });
-                                                </script>
+                                        <div class="col-4">
+                                            <input class="w-100" type="number" placeholder="Giá bán">
+                                        </div>
+                                        <div class="col-4">
+                                            <input class="w-50" type="button" value="Thêm">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <label class="row"> 
-                                        <div class="col col-1">Thư viện ảnh :</div>
-                                        <div class="col col-11">
-                                            <input class="w-100" type="file" id="anhSPs" name="anhphu" multiple enctype="multipart/form-data" onchange="getLinkImgs()">
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="row">
-                                    <div class="col col-1"></div>
-                                    <div class="col col-11">
-                                        <div class="row">
-                                            <div id="ListAnhPhu"></div>
-                                        </div>
+                                    <div class="row mt-2">
+                                       <table style="background-color:#fff; border:1px solid #000"> 
+                                        <thead style="background-color:#ccc">
+                                            <th>Size</th>
+                                            <th>Giá</th>
+                                            <th>Số lượng</th>
+                                        </thead>
+                                                    <style>
+                                                        .xoa{display: none;
+                                                            border-radius: 10px;
+                                                            background-color: red;
+                                                            color: #fff;
+                                                            padding:2px 5px
+                                                        
+                                                        }
+                                                        .sizerow:hover .xoa{display: block !important;}
+                                                        </style>
+                                        <tbody>
+                                            <tr class="sizerow">
+                                                <td>hi</td>
+                                                <td>hi</td>
+                                                <td style="display:flex; justify-content:space-between">hi
+                                                    <div class="xoa" style="">Xóa</div>
+                                                </td>
+                                            </tr>
+                                            <tr class="sizerow">
+                                                <td>hi</td>
+                                                <td>hi</td>
+                                                <td style="display:flex; justify-content:space-between">hi
+                                                    <div class="xoa" style="">Xóa</div>
+                                                </td>
+                                            </tr>
+    
+                                            
+                                        </tbody>
+                                       </table>
                                     </div>
                                 </div>
-                                <div class="row mt-2">
-                                    <label class="row">
-                                        <div class="col col-1">Hãng:</div>
-                                        <div class="col col-11">
-                                            <select class="w-100" name="hang">
-                                                <?php
-                                                foreach($listHang as $maH=>$tenH){
-                                                    if($maH==$maHang)
-                                                    echo'<option value='.$maH.' selected>'.$tenH.'</option>';    
-                                                    else
-                                                    echo"<option value='$maH'>$tenH</option>";                                                
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="row mt-2">
-                                    <label class="row">
-                                        <div class="col col-1">Khuyến mãi:</div>
-                                        <div class="col col-11">
-                                            <select class="w-100" name="khuyenmai">
-                                            <?php
-                                                foreach($listKhuyenMai as $maKM=>$tenKM){
-                                                    if($maKM==$maKhuyenMai)
-                                                    echo'<option value='.$maKM.' selected>'.$tenKM.'</option>';    
-                                                    else
-                                                    echo'<option value='.$maKM.'>'.$tenKM.'</option>';                                                
-                                                }
-                                                ?>
-                                            </select>
 
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col col-1"></div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <label class="row">
+                                    <div class="col col-1">Danh mục:</div>
                                     <div class="col col-11">
-                                        <?php
-                                        if (isset($_GET['id'])) {
-                                            echo "<input type='hidden' name='id' value=" . $id . ">";
-                                            echo '<a><input type="submit" class="btn bg-success" name="hd" value="Lưu"></a>';
-                                            echo "<a class='text-black' href='editsp.php?'> 
+                                        <select class="w-100" name="danhmuc">
+                                            <?php
+                                            foreach ($listDanhMuc as $maDM => $tenDM) {
+                                                if ($maDM == $maDanhMuc)
+                                                    echo '<option value=' . $maDM . ' selected>' . $tenDM . '</option>';
+                                                else
+                                                    echo "<option value='$maDM'>$tenDM</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="row mt-2">
+                                <label class="row">
+                                    <div class="col col-1">Ảnh :</div>
+                                    <div class="col col-11">
+                                        <input class="w-100" type="file" id="anhSP" name="anhchinh"
+                                            onchange="getLinkImg()">
+                                        <input class="w-100" type="hidden" name="anhchinhcu"
+                                            value="<?php echo $hinhAnh; ?> ">
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="row">
+                                <div class="col col-1"></div>
+                                <div class="col col-11">
+                                    <div class="row">
+                                        <img style="width: 300px;min-height: 150px;" src="<?php
+                                        echo "../img/products/" . $hinhAnh;
+                                        ?>" alt="" id="imagePreview">
+                                        <div id="myButton">Xóa ảnh</div>
+                                        <div id="inner"></div>
+                                        <script>
+                                            var changeButton = document.getElementById('myButton');
+                                            changeButton.addEventListener('click', function () {
+                                                document.getElementById('inner').innerHTML = `<input class="w-100" type="hidden" name="xoa" value="">`;
+                                                document.getElementById('imagePreview').style.display = 'none';
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <label class="row">
+                                    <div class="col col-1">Thư viện ảnh :</div>
+                                    <div class="col col-11">
+                                        <input class="w-100" type="file" id="anhSPs" name="anhphu" multiple
+                                            enctype="multipart/form-data" onchange="getLinkImgs()">
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="row">
+                                <div class="col col-1"></div>
+                                <div class="col col-11">
+                                    <div class="row">
+                                        <div id="ListAnhPhu"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <label class="row">
+                                    <div class="col col-1">Hãng:</div>
+                                    <div class="col col-11">
+                                        <select class="w-100" name="hang">
+                                            <?php
+                                            foreach ($listHang as $maH => $tenH) {
+                                                if ($maH == $maHang)
+                                                    echo '<option value=' . $maH . ' selected>' . $tenH . '</option>';
+                                                else
+                                                    echo "<option value='$maH'>$tenH</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="row mt-2">
+                                <label class="row">
+                                    <div class="col col-1">Khuyến mãi:</div>
+                                    <div class="col col-11">
+                                        <select class="w-100" name="khuyenmai">
+                                            <?php
+                                            foreach ($listKhuyenMai as $maKM => $tenKM) {
+                                                if ($maKM == $maKhuyenMai)
+                                                    echo '<option value=' . $maKM . ' selected>' . $tenKM . '</option>';
+                                                else
+                                                    echo '<option value=' . $maKM . '>' . $tenKM . '</option>';
+                                            }
+                                            ?>
+                                        </select>
+
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col col-1"></div>
+                                <div class="col col-11">
+                                    <?php
+                                    if (isset($_GET['id'])) {
+                                        echo "<input type='hidden' name='id' value=" . $id . ">";
+                                        echo '<a><input type="submit" class="btn bg-success" name="hd" value="Lưu"></a>';
+                                        echo "<a class='text-black' href='editsp.php?'> 
                                                 <div class='btn bg-secondary'>Thêm mới</div>
                                             </a>";
-                                        } else
-                                            echo '<input type="submit" class="btn bg-success"name="hd" value="Thêm">';
-                                        ?>
-                                        <a href="index.php?id=sp">
-                                            <div class='btn text-black bg-danger'>Hủy</div>
-                                        </a>
-                                    </div>
+                                    } else
+                                        echo '<input type="submit" class="btn bg-success"name="hd" value="Thêm">';
+                                    ?>
+                                    <a href="index.php?id=sp">
+                                        <div class='btn text-black bg-danger'>Hủy</div>
+                                    </a>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-
             </div>
+
         </div>
-        </div>
+    </div>
+    </div>
 
     </div>
     <?php

@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="./css/font-awesome_5.15.4_css_all.min.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script src="./js/admin.js"></script>
     <script src="../resources/ckeditor/ckeditor.js"></script>
 
@@ -60,26 +61,10 @@
                             ?>
                             <!-- Tạo form thêm / sửa -->
                             <form action="xuly/xulyEditpn.php" method="post">
-                    
-                                <div class="row mt-2">
-                                    <label class="row">
-                                        <div class="col col-3">Tên Nhân Viên:</div>
-                                        <div class="col col-9">
-                                            <select class="w-100" name="nhanvien">
-                                            <?php
-                                                foreach($listNhanVien as $ma=>$ten){
-                                                    echo"<option value='$ma'>$ten</option>";                                                
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </label>
-                                </div>
-                                
                                 <div class="row mt-2">
                                     <label class="row">
                                         <div class="col col-3">Hãng</div>
-                                        <div class="col col-9">
+                                        <div class="col col-7">
                                             <select class="w-100" name="hang">
                                             <?php
                                                 foreach($listHang as $ma=>$ten){
@@ -88,21 +73,86 @@
                                                 ?>
                                             </select>
                                         </div>
+                                        <div class="col col-2">
+                                            Xác Nhận
+                                        </div>
                                     </label>
                                 </div>
 
+                            </form>
+                            <form action="xuly/xulyEditCTPN.php" method="post">
+                    
+                                <div class="row mt-2">
+                                    <label class="row">
+                                        <div class="col col-3">Tên sản phẩm:</div>
+                                        <div class="col col-9">
+                                            <select class="w-100" name="sanpham">
+                                           
+                                            </select>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="row mt-2">
+                                    <label class="row">
+                                        <div class="col col-3">Số lượng: </div>
+                                        <div class="col col-9">
+                                            <input class="w-100" required type="text" name='soluong' >
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="row mt-2">
+                                    <label class="row">
+                                        <div class="col col-3">Đơn Giá: </div>
+                                        <div class="col col-9">
+                                            <input class="w-100"  type="text" name='dongia' value="">
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="row mt-2">
+                                    <label class="row">
+                                        <div class="col col-3">Size: </div>
+                                        <div class="col col-9">
+                                            <input class="w-100"  type="text" name='size' value="">
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                                
+                                <input type="hidden" name="id" value="<?php echo $Madon?>">
                                 <div class="row mt-2">
                                     <div class="col col-3"></div>
                                     <div class="col col-9">
                                         <?php
                                             echo '<input type="submit" class="btn bg-success"name="hd" value="Thêm">';
                                         ?>
-                                        <a href="index.php?id=pn">
-                                            <div class='btn text-black bg-danger'>Hủy</div>
-                                        </a>
                                     </div>
                                 </div>
                             </form>
+                            
+                            <div id="ctdh" >
+                                <table class="w-100"id="ds_donhang">
+                                    <tr>
+                                        <th>Mã sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th>Giá</th>
+                                        <th>Tổng tiền</th>
+                                        <th style="width:15%">Xóa</th>
+                                    </tr>
+                                        <tr>
+                                            <td>1
+                                            </td>
+                                            <td>
+1                                            </td>
+                                            <td>
+1                                            </td>
+                                            <td>
+1                                            </td>
+                                            <td> <a href="xuly/xulyXoaCTPN.php?idsp=<?php echo $data[$i][0] ?>&idpn=<?php echo $Madon?>">
+                                                    <div>Xóa</div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ class DAOPhanQuyen{
     private $host = 'localhost';
     private $username = 'root';
     private $password = '';
-    private $database = 'ql_cuahanggiay';
+    private $database = 'ql_cuahanggiay1';
 
     private $conn;
 

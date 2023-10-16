@@ -1,5 +1,5 @@
 <div id="post" class="container">
-    <div class="main">
+    <!-- <div class="main">
         <div class="content">
             <div class="row">
                 <div class="wap-content">
@@ -292,5 +292,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

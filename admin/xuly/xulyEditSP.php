@@ -130,13 +130,13 @@ if (isset($_POST['hd'])) {
             // Truy vấn danh sách sản phẩm
             $sql = "UPDATE sanpham   SET Ten='" . $_POST['ten'] . "',
                                         MoTa='". $Value1 ."',
-                                        Gia=" . $_POST['gia'] . ",
                                         MaKhuyenMai='" . $_POST['khuyenmai'] . "' ,
                                         MaDM='" . $_POST['danhmuc'] . "' ,
                                         AnhChinh='" . $anhchinh . "',
                                         MaHang='" . $_POST['hang'] . "'
                                         WHERE MaSP='" . $_POST['id'] . "'";
             $result = mysqli_query($conn, $sql);
+            echo $sql;
             if($result){
                 $_SESSION["message"] = "Sửa thành công";
                 header("Location: ../index.php?id=sp");
@@ -183,7 +183,6 @@ if (isset($_POST['hd'])) {
             VALUES ('" . $id . "',
             '" . $_POST['ten'] . "',
             '" . $_POST['mota'] . "',
-            " . $_POST['gia'] . ",
             '" . $_POST['khuyenmai'] . "',
             '" . $_POST['danhmuc'] . "',
             '" . $anhchinh . "',
@@ -207,9 +206,6 @@ if (isset($_POST['hd'])) {
                     return;
             }
     }
-    // Đóng kết nối
-    // $conn->close();
-    // header("Location:../editsp.php?id=" . $id);
 }
 
 ?>
