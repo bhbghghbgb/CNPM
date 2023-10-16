@@ -20,7 +20,7 @@
 
 
         function TinhTienGiam($Tilegiam, $data){
-            return $data[0][2] - $data[0][2]*$Tilegiam/100;
+            return $data[0]['GiaMin'] - $data[0]['GiaMin']*$Tilegiam/100;
         }
     }
 
@@ -55,7 +55,7 @@
             <h1><?php echo $data[0][1]?></h2>
             <div id = "price">
                 <p><?php echo number_format(TinhTienGiam($Tilegiam,$data),0,',','.')."đ"?></p>
-                <p id="niemyet"><?php echo number_format($data[0][2],0,',','.')."đ"?></p>
+                <p id="niemyet"><?php echo number_format($data[0]['GiaMin'],0,',','.')."đ"?></p>
             </div>
             <p>Kích thước</p>
             <div id = "size">
