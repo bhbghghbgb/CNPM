@@ -66,7 +66,7 @@
                         <div class="describe">Giày đá bóng đinh TF cập nhật thường xuyên</div>
                     </div>
                 </div>
-               <!--
+               
                 <div class="products">
                     <?php
                         function TinhTienGiam($TiLegiam, $data){
@@ -101,8 +101,8 @@
                                 </div>
                                 <div class="product-vendor"><?php echo $data[$i]['TenHang']?></div>
                                 <div class="product-price">
-                                    <span class="price-new price"><?php echo number_format(TinhTienGiam($TiLeGiam,$data[$i]['Gia']),0,',','.') ."đ"?></span>
-                                    <span class="price-old price"><?php echo number_format($data[$i]['Gia'],0,',','.') ."đ"?></span>
+                                    <span class="price-new price"><?php echo number_format(TinhTienGiam($TiLeGiam,$data[$i]['GiaMin']),0,',','.') ."đ"?></span>
+                                    <span class="price-old price"><?php echo number_format($data[$i]['GiaMin'],0,',','.') ."đ"?></span>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +110,6 @@
                         }
                     ?>
                 </div>
-                    -->
                     <div id="get_data_NT"></div>
                 <div class="viewall">
                     <a href="./DanhSach.php?MaDM=DM-1"><div class="viewall-content">Xem tất cả</div></a>
@@ -128,7 +127,6 @@
                         <div class="describe">Giày đá banh đinh SG/MG/FG cập nhật thường xuyên</div>
                     </div>
                 </div>
-                <!--
                 <div class="products">
                     <?php
                         $MaDM1 = "DM-2";
@@ -153,8 +151,8 @@
                             </div>
                             <div class="product-vendor"><?php echo $data[$i]['TenHang']?></div>
                             <div class="product-price">
-                                    <span class="price-new price"><?php echo number_format(TinhTienGiam($TiLeGiam,$data[$i]['Gia']),0,',','.') ."đ"?></span>
-                                    <span class="price-old price"><?php echo number_format($data[$i]['Gia'],0,',','.') ."đ"?></span>
+                                    <span class="price-new price"><?php echo number_format(TinhTienGiam($TiLeGiam,$data[$i]['GiaMin']),0,',','.') ."đ"?></span>
+                                    <span class="price-old price"><?php echo number_format($data[$i]['GiaMin'],0,',','.') ."đ"?></span>
                             </div>
                         </div>
                     </div>
@@ -162,7 +160,6 @@
                         }
                     ?>
                 </div>
-                    -->
                     <div id="get_data_TN"></div>
                 <div class="viewall">
                 <a href="./DanhSach.php?MaDM=DM-2"><div class="viewall-content">Xem tất cả</div></a>
@@ -178,7 +175,6 @@
                         <div class="describe">Giày đá banh đế bằng IC cập nhật thường xuyên</div>
                     </div>
                 </div>
-                <!--
                 <div class="products">
                     <?php
                         $MaDM1 = "DM-4";
@@ -205,8 +201,8 @@
                             </div>
                             <div class="product-vendor"><?php echo $data[$i]['TenHang']?></div>
                             <div class="product-price">
-                                    <span class="price-new price"><?php echo number_format(TinhTienGiam($TiLeGiam,$data[$i]['Gia']),0,',','.') ."đ"?></span>
-                                    <span class="price-old price"><?php echo number_format($data[$i]['Gia'],0,',','.') ."đ"?></span>
+                                    <span class="price-new price"><?php echo number_format(TinhTienGiam($TiLeGiam,$data[$i]['GiaMin']),0,',','.') ."đ"?></span>
+                                    <span class="price-old price"><?php echo number_format($data[$i]['GiaMin'],0,',','.') ."đ"?></span>
                             </div>
                         </div>
                     </div>
@@ -214,7 +210,6 @@
                         }
                     ?>
                 </div>  
-                    -->
                     <div id="get_data_FS"></div>
             
                     
@@ -226,74 +221,9 @@
 
     </div>
     
-    <!-- <form action="./GioHang.php" method="post">
+    <form action="./GioHang.php" method="post">
     <input type="hidden" name="MaSP" value="<?php echo $data[0][0]?>">
-    </form>
-    
-                    -->
-                    <script src="./js/jquery-3.7.0.min.js"></script>
-<script type="text/javascript">
-    function fetch_data(page){
-        $.ajax({
-            url: "./template/paginationNhanTao.php",
-            method: "POST",
-            data: {
-                page: page
-            },
-            success: function(data){
-                $("#get_data_NT").html(data);
-            }
-        });
-    }
-    fetch_data();
-
-    $(document).on("click", ".page-item", function(){
-        var page = $(this).attr("id");
-        fetch_data(page);
-    })  
-</script>
-
-<script type="text/javascript">
-    function fetch_dataTN(pageTN){
-        $.ajax({
-            url: "./template/paginationTuNhien.php",
-            method: "POST",
-            data: {
-                page: pageTN
-            },
-            success: function(data){
-                $("#get_data_TN").html(data);
-            }
-        });
-    }
-    fetch_dataTN();
-
-    $(document).on("click", ".page-item-TN", function(){
-        var pageTN = $(this).attr("id");
-        fetch_dataTN(pageTN);
-    })
-    
-</script>
-
-<script type="text/javascript">
-    function fetch_dataFS(pageTN){
-        $.ajax({
-            url: "./template/paginationFuslan.php",
-            method: "POST",
-            data: {
-                page: pageTN
-            },
-            success: function(data){
-                $("#get_data_FS").html(data);
-            }
-        });
-    }
-    fetch_dataFS();
-
-    $(document).on("click", ".page-item-FS", function(){
-        var pageTN = $(this).attr("id");
-        fetch_dataFS(pageTN);
-    })
+    </form>              
     
 </script>
 
