@@ -9,7 +9,7 @@
         $db->connect();
 
         $data = $db->getList($MaSP);
-        $dataLq = $db->getListLienQuan($data[0][8], $MaSP);
+        $dataLq = $db->getListLienQuan($data[0]["MaHang"], $MaSP);
         if($dataLq != null){
             shuffle($dataLq);
         }

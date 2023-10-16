@@ -1,0 +1,23 @@
+array(1) { [0]=>
+array(21) { [0]=>
+string(3) "006" ["MaSP"]=>
+string(3) "006" [1]=>
+string(48) "ADIDAS X SPEEDPORTAL .1 FG GW8426 GAME DATA PACK" ["Ten"]=>
+string(48) "ADIDAS X SPEEDPORTAL .1 FG GW8426 GAME DATA PACK" [2]=>
+string(6) "KM_001" ["MaKhuyenMai"]=>
+string(6) "KM_001" [3]=>
+string(7) "006.jpg" ["AnhChinh"]=>
+string(7) "006.jpg" [4]=>
+string(4) "DM-2" ["MaDM"]=>
+string(4) "DM-2" [5]=>
+string(1) "#" ["MoTa"]=>
+string(1) "#" [6]=>
+string(10) "2023-03-11" ["NgayTao"]=>
+string(10) "2023-03-11" [7]=>
+string(6) "MH-001" ["MaHang"]=>
+string(6) "MH-001" [8]=>
+string(2) "80" ["SLTonKho"]=>
+string(2) "80" [9]=>
+string(1) "1" ["TrangThai"]=>
+string(1) "1" ["GiaMin"]=>
+string(6) "130000" } } 
