@@ -3,7 +3,7 @@ class DAOHang{
     private $host = 'localhost';
     private $username = 'root';
     private $password = '';
-    private $database = 'ql_cuahanggiay1';
+    private $database = 'ql_cuahanggiay';
 
     private $conn;
 

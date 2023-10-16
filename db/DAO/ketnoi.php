@@ -2,5 +2,5 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "ql_cuahanggiay1";
+$db = "ql_cuahanggiay";
 ?>

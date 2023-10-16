@@ -4,7 +4,7 @@ class DAOPhieuNhap
     private $host = 'localhost';
     private $username = 'root';
     private $password = '';
-    private $databaseName = 'ql_cuahanggiay1';
+    private $databaseName = 'ql_cuahanggiay';
 
     private $conn;
 
