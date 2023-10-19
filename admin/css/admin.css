@@ -7,12 +7,12 @@
     margin: 0;
     box-sizing: border-box;
 }
-p,a{
+/* p,a{
     text-decoration:none;
     margin: 0 !important;
     padding: 0 !important;
     
-}
+} */
 
 li .border-size-menu+.border-size-menu {
     border: 2px solid red;
@@ -212,12 +212,6 @@ li.row.LiMenu.mx-0.text-center.p-2.align-items-center.border-secondary.border-si
 li.row.LiMenu.mx-0.text-center.p-2.align-items-center.border-secondary.border-size-menu:hover{
 box-shadow: -8px 0 0 #6c757d;
 background-color: #735fe61b;
-}
-span#cke_1_top {
-    background: #6c757d73 !important;
-}
-span#cke_1_bottom {
-    background: #6c757d73 !important;
 }
 .wrapper{
     background-color: #6c757d

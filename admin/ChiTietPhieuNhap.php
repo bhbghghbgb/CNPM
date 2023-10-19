@@ -10,9 +10,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/admin.js"></script>
-    <script src="../resources/ckeditor/ckeditor.js"></script>
 
 
     <link rel="stylesheet" href="./css/admin.css">

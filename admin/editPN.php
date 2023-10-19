@@ -13,7 +13,7 @@
 
     
     <script src="./js/admin.js"></script>
-    <script src="../resources/ckeditor/ckeditor.js"></script>
+    
 
 
     <link rel="stylesheet" href="./css/admin.css">

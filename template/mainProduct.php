@@ -32,8 +32,8 @@
         <div id = "selection">
             <div class = "item_selection">
                 <label>
-                        <input type = "radio" name = "img_selected" onclick="ChuyenAnh('./img/products/<?php echo $data[0][4]?>')" checked/>
-                        <img src = "./img/products/<?php echo $data[0][4]?>">
+                        <input type = "radio" name = "img_selected" onclick="ChuyenAnh('./img/products/<?php echo $data[0][3]?>')" checked/>
+                        <img src = "./img/products/<?php echo $data[0][3]?>">
                 </label>
             </div>
             <?php
@@ -42,14 +42,14 @@
             ?>
             <div class = "item_selection">
                 <label>
-                        <input type = "radio" name = "img_selected" onclick="ChuyenAnh('./img/products/<?php echo $data[0][0]?>_<?php echo $i?>.jpg')"/>
+                        <input type = "radio" name = "img_selected" onclick="ChuyenAnh('./img/products/<?php echo$data[0][0]?>_<?php echo $i?>.jpg')"/>
                         <img src = "./img/products/<?php echo $data[0][0]?>_<?php echo $i?>.jpg">
                 </label>
             </div>
             <?php } ?>
         </div>
         <div id = "image">
-            <img src = "./img/products/<?php echo $data[0][4]?>" id="AnhChinh">
+            <img src = "./img/products/<?php echo $data[0][3]?>" id="AnhChinh">
         </div>
         <div id = "info">
             <h1><?php echo $data[0][1]?></h2>
@@ -101,7 +101,7 @@
             <div id = "tonkho">
                 <p>
                     Tồn kho:
-                    <span><?php echo $data[0][9]?></span>  
+                    <span><?php echo $data[0][8]?></span>  
                 </p>
             </div>
             <label id="giohang">
@@ -119,7 +119,7 @@
                 <h2>Mô tả sản phẩm</h2>
             </div>
             <div id = "content">
-                <?php echo htmlspecialchars_decode($data[0][6]);?>
+                <?php echo htmlspecialchars_decode($data[0][5]);?>
             </div>
         </div>
         <div id = "danhsach">
@@ -144,10 +144,10 @@
                         <li>
                             <a href="ChiTietSP.php?MaSP=<?php echo $dataLq[$i][0]?>">
                                 <div class="item">
-                                    <img src="./img/products/<?php echo $dataLq[$i][4]?>">
+                                    <img src="./img/products/<?php echo $dataLq[$i][3]?>">
                                     <div class = "content_list">
                                         <h2><?php echo $dataLq[$i][1]?></h2>
-                                        <span><?php echo number_format($dataLq[$i][2],0,',','.')."đ"?></span>
+                                        <span><?php echo number_format($dataLq[$i]["GiaMin"],0,',','.')."đ"?></span>
                                     </div>
                                 </div>
                             </a>

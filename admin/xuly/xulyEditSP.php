@@ -136,7 +136,7 @@ if (isset($_POST['hd'])) {
                                         MaHang='" . $_POST['hang'] . "'
                                         WHERE MaSP='" . $_POST['id'] . "'";
             $result = mysqli_query($conn, $sql);
-            echo $sql;
+            // echo $sql;
             if($result){
                 $_SESSION["message"] = "Sửa thành công";
                 header("Location: ../index.php?id=sp");

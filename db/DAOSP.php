@@ -46,7 +46,11 @@ class DAOSP{
         $data=null;
         if($result = mysqli_query($this->conn,$sql)){
             while($row=mysqli_fetch_array($result)){
-                    $data[] = $row;
+                $selectGia = 'SELECT MIN(GiaBan) FROM sosize  WHERE MaSP = "' . $row['MaSP'] . '"';
+                $resultGia = mysqli_query($this->conn, $selectGia);
+                $rowGia = mysqli_fetch_assoc($resultGia);
+                $row['GiaMin']=$rowGia['MIN(GiaBan)'];
+                $data[] = $row;
             }
             mysqli_free_result($result);
         }
