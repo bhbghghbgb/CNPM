@@ -113,70 +113,88 @@
                                     </div>
                                 </label>
                             </div>
-                            <!-- <div class="row mt-2">
-                                    <label class="row">
-                                        <div class="col col-1">Giá:</div>
-                                        <div class="col col-11">
-                                            <input class="w-100" type="number"required name='gia' value="<?php
-                                            // echo $gia;
-                                            ?>">
-                                        </div>
-                                    </label>
-                                </div> -->
                             <div class="row mt-2">
                                 <div class="col col-1">Size:</div>
                                 <div class="col col-11">
                                     <div class="row mt-2">
                                         <div class="col-4">
-                                            <input class="w-100" type="number" placeholder="size">
+                                            <input id="size" class="w-100" type="number" placeholder="size">
                                         </div>
                                         <div class="col-4">
-                                            <input class="w-100" type="number" placeholder="Giá bán">
+                                            <input id="giasize" class="w-100" type="number" placeholder="Giá bán">
                                         </div>
                                         <div class="col-4">
-                                            <input class="w-50" type="button" value="Thêm">
+                                            <input id="addsize" class="w-50" type="button" value="Thêm">
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                       <table style="background-color:#fff; border:1px solid #000"> 
-                                        <thead style="background-color:#ccc">
-                                            <th>Size</th>
-                                            <th>Giá</th>
-                                            <th>Số lượng</th>
-                                        </thead>
-                                                    <style>
-                                                        .xoa{display: none;
-                                                            border-radius: 10px;
-                                                            background-color: red;
-                                                            color: #fff;
-                                                            padding:2px 5px
-                                                        
-                                                        }
-                                                        .sizerow:hover .xoa{display: block !important;}
-                                                        </style>
-                                        <tbody>
-                                            <tr class="sizerow">
-                                                <td>hi</td>
-                                                <td>hi</td>
-                                                <td style="display:flex; justify-content:space-between">hi
-                                                    <div class="xoa" style="">Xóa</div>
-                                                </td>
-                                            </tr>
-                                            <tr class="sizerow">
-                                                <td>hi</td>
-                                                <td>hi</td>
-                                                <td style="display:flex; justify-content:space-between">hi
-                                                    <div class="xoa" style="">Xóa</div>
-                                                </td>
-                                            </tr>
-    
-                                            
-                                        </tbody>
-                                       </table>
+                                        <table id="mytable">
+                                            <thead style="background-color:#ccc">
+                                                <th>Size</th>
+                                                <th>Giá</th>
+                                                <th>Số lượng</th>
+                                            </thead>
+                                            <style>
+                                                #mytable {
+                                                    background-color: #fff;
+                                                    border: 1px solid #000;
+                                                }
+
+                                                .xoa {
+                                                    border-radius: 10px;
+                                                    background-color: red;
+                                                    color: #fff;
+                                                    padding: 2px 5px;
+                                                    cursor: pointer;
+                                                }
+
+
+
+                                                .sizerow td {
+                                                    height: 30px;
+                                                }
+                                            </style>
+                                            <tbody id="tbody">
+
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
 
                             </div>
+                            <script>
+                                var arraysize = []
+                                var addsize = document.getElementById("addsize")
+                                var size = document.getElementById("size")
+                                var giasize = document.getElementById("giasize")
+                                var tbody = document.getElementById("tbody")
+                                 
+                                function loadsize(){
+                                    var stringtbody = ""
+                                    for (var i = 0; i < arraysize.length; i++) {
+                                        
+                                        stringtbody += "<tr class='sizerow'><td>" + arraysize[i].size + "</td><td>" + arraysize[i].gia + "</td><td style='display:flex; justify-content:space-between'>" + arraysize[i].soluong + " <div class='xoa' onclick='xoasize("+i+")'>Xóa</div></td></tr>"
+                                        
+                                    }
+                                    tbody.innerHTML = stringtbody
+                                    giasize.value = ''
+                                    size.value = ''
+                                }
+                                function addClick() {
+                                    var valuegia = giasize.value;
+                                    var valuesize = size.value;
+                                    if (valuegia == '' || valuesize == '') return
+                                    arraysize.push({ gia: valuegia, size: valuesize, soluong: 0 });
+                                    loadsize()
+                                }
+                               
+                                function xoasize(index) {
+                                    arraysize.splice(0, index+1)
+                                    loadsize()
+                                }
+                                addsize.onclick = addClick;
+                                
+                            </script>
 
                             <div class="row mt-2">
                                 <label class="row">
@@ -313,8 +331,6 @@
         choosemenu();
     </script>
     <script>
-        // Replace the <textarea id="editor1"> with a CKEditor
-        // instance, using default configuration.
         CKEDITOR.replace('textarea');
     </script>
 </body>

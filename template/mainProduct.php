@@ -84,18 +84,6 @@
                             <span>42</span>
                         </label>
                     </li>
-                    <li class = "size-item">
-                        <label>
-                            <input type = "radio" name = "Size" value = "43">
-                            <span>43</span>
-                        </label>
-                    </li>
-                    <li class = "size-item">
-                        <label>
-                            <input type = "radio" name = "Size" value = "44">
-                            <span>44</span>
-                        </label>
-                    </li>
                 </ul>
             </div>
             <div id = "tonkho">

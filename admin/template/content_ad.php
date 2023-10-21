@@ -1,10 +1,5 @@
 <div id="content"class="row" style="background-color:#f0f5f8;height:calc(100% - 72px)">
 <?php
-// if(isset($_GET['id'])&&isset($_GET['hd'])&&isset($_GET['idsp'])){
-//     if($_GET['id'])
-//         include('template_content/detail_'.$id.'.php');
-// }
-// else
 if (isset($_SESSION['MaQuyen']) && isset($_SESSION['MaTaiKhoan'])){
 
     $MaQuyen = $_SESSION['MaQuyen'];
@@ -70,6 +65,9 @@ if (isset($_SESSION['MaQuyen']) && isset($_SESSION['MaTaiKhoan'])){
             }
 
         }
+    }
+    else{
+        include('template_content/trangchu.php');
     }
 }
                     
