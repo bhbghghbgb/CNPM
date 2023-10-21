@@ -1,5 +1,5 @@
 <?php
-            session_start();
+session_start();
 //một số hàm cần thiết cho xử lý mảng ảnh
 function uploadFiles($uploadedFiles)
 {
@@ -135,8 +135,32 @@ if (isset($_POST['hd'])) {
                                         AnhChinh='" . $anhchinh . "',
                                         MaHang='" . $_POST['hang'] . "'
                                         WHERE MaSP='" . $_POST['id'] . "'";
-            $result = mysqli_query($conn, $sql);
-            // echo $sql;
+            $resultsp = mysqli_query($conn, $sql);
+            if($resultsp){
+                $ArraySize = $_POST["ArraySize"];
+                $ArrayCount = $_POST["ArrayCount"];
+                $ArrayPrice = $_POST["ArrayPrice"];
+    
+                for ($i = 0; $i < count($ArraySize); $i++) {
+                    $count=0;
+                    $sqlCheck= "SELECT COUNT(*) FROM sosize WHERE sosize.MaSP = '". $_POST['id'] ."' AND sosize.Size = ".$ArraySize[$i]."";
+                    $resultCheck = mysqli_query($conn, $sqlCheck);
+                    if ($resultCheck) {
+                        $row = mysqli_fetch_row($resultCheck);
+                        $count = $row[0];
+                    }
+                    if ($count != 0) {
+                        $sqlsize = "UPDATE sosize SET `SoLuong` = ".$ArrayCount[$i].",
+                        `GiaBan` = ".$ArrayPrice[$i]."
+                        WHERE `sosize`.`MaSP` =  '". $_POST['id'] ."'
+                        AND `sosize`.`Size` =".$ArraySize[$i]."";
+                    }else{
+                        $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayCount[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
+                    }
+                    $result = mysqli_query($conn, $sqlsize);
+                }
+            }
+            //INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ('005', '2', '2', '2');
             if($result){
                 $_SESSION["message"] = "Sửa thành công";
                 header("Location: ../index.php?id=sp");

@@ -50,7 +50,6 @@
                         $n = 0;
                         if($PQ != null){
                             $n = count($PQ);
-                            echo $n;
                         }
                         for($i = $n-1; $i >= 0;$i--){
                     ?>

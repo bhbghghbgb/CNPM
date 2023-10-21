@@ -91,6 +91,21 @@
                                 $listKhuyenMai[$row['MaKhuyenMai']] = $row['TenKhuyenMai'];
                             }
                         }
+                        $listSize = [];
+                        $sql = "SELECT * FROM sosize WHERE MaSP='" . $id . "'";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $item = [
+                                    "price" => $row["GiaBan"],
+                                    "count" => $row["SoLuong"],
+                                    "size" => $row["Size"]
+                                ];
+                            
+                                // Thêm mảng liên quan này vào listSize
+                                $listSize[] = $item;
+                            }
+                        }
 
                         ?>
                         <!-- Tạo form thêm / sửa -->
@@ -121,75 +136,91 @@
                                             <input id="size" class="w-100" type="number" placeholder="size">
                                         </div>
                                         <div class="col-4">
-                                            <input id="giasize" class="w-100" type="number" placeholder="Giá bán">
+                                            <input id="price" class="w-100" type="number" placeholder="Giá bán">
                                         </div>
                                         <div class="col-4">
-                                            <input id="addsize" class="w-50" type="button" value="Thêm">
+                                            <input id="add" class="w-50" type="button" value="Thêm">
                                         </div>
                                     </div>
                                     <div class="row mt-2">
-                                        <table id="mytable">
-                                            <thead style="background-color:#ccc">
-                                                <th>Size</th>
-                                                <th>Giá</th>
-                                                <th>Số lượng</th>
-                                            </thead>
-                                            <style>
-                                                #mytable {
-                                                    background-color: #fff;
-                                                    border: 1px solid #000;
-                                                }
-
-                                                .xoa {
-                                                    border-radius: 10px;
-                                                    background-color: red;
-                                                    color: #fff;
-                                                    padding: 2px 5px;
-                                                    cursor: pointer;
-                                                }
-
-
-
-                                                .sizerow td {
-                                                    height: 30px;
-                                                }
-                                            </style>
-                                            <tbody id="tbody">
-
-                                            </tbody>
-                                        </table>
+                                        <div class="col-12">
+                                            <table class="w-100" id="mytable">
+                                                <thead style="background-color:#ccc">
+                                                    <th class="w-25">Kích cỡ</th>
+                                                    <th class="w-25">Giá tiền</th>
+                                                    <th class="w-25">Số lượng </th>
+                                                </thead>
+                                                <style>
+                                                    #mytable {
+                                                        background-color: #fff;
+                                                        border: 1px solid #000;
+                                                    }
+    
+                                                    .xoa {
+                                                        border-radius: 10px;
+                                                        background-color: red;
+                                                        color: #fff;
+                                                        padding: 2px 5px;
+                                                        cursor: pointer;
+                                                    }
+    
+    
+    
+                                                    .sizerow td {
+                                                        height: 30px;
+                                                    }
+                                                </style>
+                                                <tbody id="tbody">
+                                                    <tr>
+                                                       
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
 
                             </div>
                             <script>
-                                var arraysize = []
-                                var addsize = document.getElementById("addsize")
+                                
+                                var arraysize = <?php echo json_encode($listSize); ?>
+
+                                var addsize = document.getElementById("add")
                                 var size = document.getElementById("size")
-                                var giasize = document.getElementById("giasize")
+                                var price = document.getElementById("price")
                                 var tbody = document.getElementById("tbody")
                                  
                                 function loadsize(){
                                     var stringtbody = ""
                                     for (var i = 0; i < arraysize.length; i++) {
                                         
-                                        stringtbody += "<tr class='sizerow'><td>" + arraysize[i].size + "</td><td>" + arraysize[i].gia + "</td><td style='display:flex; justify-content:space-between'>" + arraysize[i].soluong + " <div class='xoa' onclick='xoasize("+i+")'>Xóa</div></td></tr>"
+                                        stringtbody += "<tr class='sizerow'>"
+                                        stringtbody +="<td>" + arraysize[i].size +
+                                            "<input type='hidden' name='ArraySize[]' value='"+ arraysize[i].size +"'> </td>"
+                                        stringtbody +="<td>" + arraysize[i].price + 
+                                            "<input type='hidden' name='ArrayPrice[]' value='"+ arraysize[i].price +"'> </td>"
+                                        stringtbody +="<td style='display:flex; justify-content:space-between'>"+arraysize[i].count  +
+                                            "<input type='hidden' name='ArrayCount[]' value='"+ arraysize[i].count +"'>"
+                                        if(arraysize[i].count == 0)
+                                        stringtbody +=  " <div class='xoa' onclick='xoasize("+i+")'>Xóa</div>"
+                                        stringtbody +="</td></tr>"
                                         
                                     }
                                     tbody.innerHTML = stringtbody
-                                    giasize.value = ''
+                                    price.value = ''
                                     size.value = ''
                                 }
+                                loadsize()
                                 function addClick() {
-                                    var valuegia = giasize.value;
-                                    var valuesize = size.value;
-                                    if (valuegia == '' || valuesize == '') return
-                                    arraysize.push({ gia: valuegia, size: valuesize, soluong: 0 });
+                                    var valuePrice = price.value;
+                                    var valueSize = size.value;
+                                    if (valuePrice == '' || valueSize == '') return
+                                    arraysize.push({ price: valuePrice, size: valueSize, count: 0 });
                                     loadsize()
                                 }
                                
                                 function xoasize(index) {
-                                    arraysize.splice(0, index+1)
+                                    arraysize.splice(index, 1)
                                     loadsize()
                                 }
                                 addsize.onclick = addClick;
