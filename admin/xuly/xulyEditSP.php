@@ -138,7 +138,7 @@ if (isset($_POST['hd'])) {
             $resultsp = mysqli_query($conn, $sql);
             if($resultsp){
                 $ArraySize = $_POST["ArraySize"];
-                $ArrayCount = $_POST["ArrayCount"];
+                $ArrayQuantity = $_POST["ArrayQuantity"];
                 $ArrayPrice = $_POST["ArrayPrice"];
     
                 for ($i = 0; $i < count($ArraySize); $i++) {
@@ -150,17 +150,16 @@ if (isset($_POST['hd'])) {
                         $count = $row[0];
                     }
                     if ($count != 0) {
-                        $sqlsize = "UPDATE sosize SET `SoLuong` = ".$ArrayCount[$i].",
+                        $sqlsize = "UPDATE sosize SET `SoLuong` = ".$ArrayQuantity[$i].",
                         `GiaBan` = ".$ArrayPrice[$i]."
                         WHERE `sosize`.`MaSP` =  '". $_POST['id'] ."'
                         AND `sosize`.`Size` =".$ArraySize[$i]."";
                     }else{
-                        $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayCount[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
+                        $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayQuantity[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
                     }
                     $result = mysqli_query($conn, $sqlsize);
                 }
             }
-            //INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ('005', '2', '2', '2');
             if($result){
                 $_SESSION["message"] = "Sửa thành công";
                 header("Location: ../index.php?id=sp");

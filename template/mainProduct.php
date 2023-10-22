@@ -31,11 +31,11 @@
 
     var sosize=<?php echo json_encode($dataSize)?>
 
-    function changeSize(size,count){
+    function changeSize(price,count){
         var firstChild = document.querySelector('#price :first-child');
         var secondChild = document.querySelector('#price :nth-child(2)');
-        firstChild.innerHTML=size
-        secondChild.innerHTML=size*tilegiam
+        firstChild.innerHTML=price-price*tilegiam/100
+        secondChild.innerHTML=price
 
         var tonkho =document.querySelector('#tonkho p span')
         tonkho.innerHTML=count

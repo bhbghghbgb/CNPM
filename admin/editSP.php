@@ -98,7 +98,7 @@
                             while ($row = $result->fetch_assoc()) {
                                 $item = [
                                     "price" => $row["GiaBan"],
-                                    "count" => $row["SoLuong"],
+                                    "quantity" => $row["SoLuong"],
                                     "size" => $row["Size"]
                                 ];
                             
@@ -199,9 +199,9 @@
                                             "<input type='hidden' name='ArraySize[]' value='"+ arraysize[i].size +"'> </td>"
                                         stringtbody +="<td>" + arraysize[i].price + 
                                             "<input type='hidden' name='ArrayPrice[]' value='"+ arraysize[i].price +"'> </td>"
-                                        stringtbody +="<td style='display:flex; justify-content:space-between'>"+arraysize[i].count  +
-                                            "<input type='hidden' name='ArrayCount[]' value='"+ arraysize[i].count +"'>"
-                                        if(arraysize[i].count == 0)
+                                        stringtbody +="<td style='display:flex; justify-content:space-between'>"+arraysize[i].quantity  +
+                                            "<input type='hidden' name='ArrayQuantity[]' value='"+ arraysize[i].quantity +"'>"
+                                        if(arraysize[i].quantity == 0)
                                         stringtbody +=  " <div class='xoa' onclick='xoasize("+i+")'>Xóa</div>"
                                         stringtbody +="</td></tr>"
                                         
@@ -215,7 +215,7 @@
                                     var valuePrice = price.value;
                                     var valueSize = size.value;
                                     if (valuePrice == '' || valueSize == '') return
-                                    arraysize.push({ price: valuePrice, size: valueSize, count: 0 });
+                                    arraysize.push({ price: valuePrice, size: valueSize, quantity: 0 });
                                     loadsize()
                                 }
                                
