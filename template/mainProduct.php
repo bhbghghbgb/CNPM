@@ -10,6 +10,7 @@
 
         $data = $db->getList($MaSP);
         $dataLq = $db->getListLienQuan($data[0]["MaHang"], $MaSP);
+        $dataSize = $db->getListSize($MaSP);
         if($dataLq != null){
             shuffle($dataLq);
         }
@@ -25,6 +26,21 @@
     }
 
 ?>
+<script>
+    var tilegiam =<?php echo json_decode($Tilegiam)?>
+
+    var sosize=<?php echo json_encode($dataSize)?>
+
+    function changeSize(size,count){
+        var firstChild = document.querySelector('#price :first-child');
+        var secondChild = document.querySelector('#price :nth-child(2)');
+        firstChild.innerHTML=size
+        secondChild.innerHTML=size*tilegiam
+
+        var tonkho =document.querySelector('#tonkho p span')
+        tonkho.innerHTML=count
+    }
+</script>
 <form method="POST" action="GioHang.php">
 <input type="hidden" name="MaSP" value="<?php echo $data[0][0]?>">
 <div id="main_product" class="container">
@@ -38,7 +54,6 @@
             </div>
             <?php
                 for($i = 1; $i < 4;$i++){
-
             ?>
             <div class = "item_selection">
                 <label>
@@ -60,35 +75,20 @@
             <p>Kích thước</p>
             <div id = "size">
                 <ul id = "size_list">
-                    <li class = "size-item">
-                        <label>
-                            <input type = "radio" name = "Size" value = "39">
-                            <span>39</span>
-                        </label>
-                    </li>
-                    <li class = "size-item">
-                        <label>
-                            <input type = "radio" name = "Size" value = "40" checked>
-                            <span>40</span>
-                        </label>
-                    </li>
-                    <li class = "size-item">
-                        <label>
-                            <input type = "radio" name = "Size" value = "41">
-                            <span>41</span>
-                        </label>
-                    </li>
-                    <li class = "size-item">
-                        <label>
-                            <input type = "radio" name = "Size" value = "42">
-                            <span>42</span>
-                        </label>
-                    </li>
+                    <?php
+                    foreach($dataSize as $size)
+                    echo"<li class = 'size-item' onclick='changeSize(".$size['GiaBan'].",".$size['SoLuong'].")'>
+                    <label>
+                        <input type = 'radio' name ='Size' value = '".$size['Size']."' checked>
+                        <span>".$size['Size']."</span>
+                    </label>
+                </li>";
+                    ?>
                 </ul>
             </div>
             <div id = "tonkho">
                 <p>
-                    Tồn kho:
+                    Còn lại:
                     <span><?php echo $data[0][8]?></span>  
                 </p>
             </div>

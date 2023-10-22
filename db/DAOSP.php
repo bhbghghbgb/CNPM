@@ -39,6 +39,17 @@ class DAOSP{
         }
         return $data;
     }
+    public function getListSize($MaSP) {
+        $sql = "SELECT * FROM sosize WHERE MaSP = ".$MaSP;
+        $data=array();
+        if($result = mysqli_query($this->conn,$sql)){
+            while($row=mysqli_fetch_array($result)){
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+        }
+        return $data;
+    }
 
 
     public function getListLienQuan($MaH,$MaSP) {
