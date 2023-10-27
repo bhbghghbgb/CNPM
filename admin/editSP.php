@@ -91,6 +91,7 @@
                                 $listKhuyenMai[$row['MaKhuyenMai']] = $row['TenKhuyenMai'];
                             }
                         }
+                        if(isset($_GET['id'])){
                         $listSize = [];
                         $sql = "SELECT * FROM sosize WHERE MaSP='" . $id . "'";
                         $result = $conn->query($sql);
@@ -105,6 +106,7 @@
                                 // Thêm mảng liên quan này vào listSize
                                 $listSize[] = $item;
                             }
+                        }
                         }
 
                         ?>

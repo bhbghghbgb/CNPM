@@ -101,12 +101,12 @@ function validateUploadFile($file, $uploadPath)
     return $file;
 }
 
+include '../../db/dbconnect.php';
 
 if (isset($_POST['hd'])) {
     $hd = $_POST['hd'];
     if(isset($_POST['id']))
     $id=$_POST['id'];
-    include '../../db/dbconnect.php';
 
     //Xử lý ảnh đại diện
     $anhchinh = '';
@@ -123,10 +123,10 @@ if (isset($_POST['hd'])) {
             $anhchinh = $result['path'];
         }
     }
+    $Value1 = htmlspecialchars($_POST['mota']);
 
     switch ($hd) {
         case "Lưu":
-            $Value1 = htmlspecialchars($_POST['mota']);
             // Truy vấn danh sách sản phẩm
             $sql = "UPDATE sanpham   SET Ten='" . $_POST['ten'] . "',
                                         MoTa='". $Value1 ."',
@@ -135,39 +135,41 @@ if (isset($_POST['hd'])) {
                                         AnhChinh='" . $anhchinh . "',
                                         MaHang='" . $_POST['hang'] . "'
                                         WHERE MaSP='" . $_POST['id'] . "'";
-            $resultsp = mysqli_query($conn, $sql);
-            if($resultsp){
-                $ArraySize = $_POST["ArraySize"];
-                $ArrayQuantity = $_POST["ArrayQuantity"];
-                $ArrayPrice = $_POST["ArrayPrice"];
-    
-                for ($i = 0; $i < count($ArraySize); $i++) {
-                    $count=0;
-                    $sqlCheck= "SELECT COUNT(*) FROM sosize WHERE sosize.MaSP = '". $_POST['id'] ."' AND sosize.Size = ".$ArraySize[$i]."";
-                    $resultCheck = mysqli_query($conn, $sqlCheck);
-                    if ($resultCheck) {
-                        $row = mysqli_fetch_row($resultCheck);
-                        $count = $row[0];
+            $result = mysqli_query($conn, $sql);
+            if($result){
+                if(isset($_POST["ArraySize"])&&isset($_POST["ArrayQuantity"])&&isset($_POST["ArrayPrice"])){
+                    $ArraySize = $_POST["ArraySize"];
+                    $ArrayQuantity = $_POST["ArrayQuantity"];
+                    $ArrayPrice = $_POST["ArrayPrice"];
+        
+                    for ($i = 0; $i < count($ArraySize); $i++) {
+                        $count=0;
+                        $sqlCheck= "SELECT COUNT(*) FROM sosize WHERE sosize.MaSP = '". $_POST['id'] ."' AND sosize.Size = ".$ArraySize[$i]."";
+                        $resultCheck = mysqli_query($conn, $sqlCheck);
+                        if ($resultCheck) {
+                            $row = mysqli_fetch_row($resultCheck);
+                            $count = $row[0];
+                        }
+                        if ($count != 0) {
+                            $sqlsize = "UPDATE sosize SET `SoLuong` = ".$ArrayQuantity[$i].",
+                            `GiaBan` = ".$ArrayPrice[$i]."
+                            WHERE `sosize`.`MaSP` =  '". $_POST['id'] ."'
+                            AND `sosize`.`Size` =".$ArraySize[$i]."";
+                        }else{
+                            $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayQuantity[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
+                        }
+                        $result = mysqli_query($conn, $sqlsize);
                     }
-                    if ($count != 0) {
-                        $sqlsize = "UPDATE sosize SET `SoLuong` = ".$ArrayQuantity[$i].",
-                        `GiaBan` = ".$ArrayPrice[$i]."
-                        WHERE `sosize`.`MaSP` =  '". $_POST['id'] ."'
-                        AND `sosize`.`Size` =".$ArraySize[$i]."";
-                    }else{
-                        $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayQuantity[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
-                    }
-                    $result = mysqli_query($conn, $sqlsize);
                 }
             }
             if($result){
                 $_SESSION["message"] = "Sửa thành công";
-                header("Location: ../index.php?id=sp");
+                header("Location: ../editsp.php?hd=s&id=".$_POST['id']."");
                 exit;
             }
             else{
                 $_SESSION["message"] = "Sửa không thành công";
-                header("Location: ../index.php?id=sp");
+                header("Location: ../editsp.php?hd=s&id=".$_POST['id']."");
                 exit;
             }
         case "Thêm":
@@ -202,7 +204,7 @@ if (isset($_POST['hd'])) {
             }
 
             // Thêm vào db
-            $sql = "INSERT INTO `sanpham` (`MaSP`, `Ten`, `MoTa`, `Gia`, `MaKhuyenMai`, `MaDM`, `AnhChinh`,`MaHang`,`NgayTao`,`TrangThai`)
+            $sql = "INSERT INTO `sanpham` (`MaSP`, `Ten`, `MoTa`, `MaKhuyenMai`, `MaDM`, `AnhChinh`,`MaHang`,`NgayTao`,`TrangThai`)
             VALUES ('" . $id . "',
             '" . $_POST['ten'] . "',
             '" . $_POST['mota'] . "',
@@ -211,11 +213,39 @@ if (isset($_POST['hd'])) {
             '" . $anhchinh . "',
             '" . $_POST['hang'] . "',
             CURDATE(),1)";
+            // INSERT INTO `sanpham` (`MaSP`, `Ten`, `MaKhuyenMai`, `AnhChinh`, `MaDM`, `MoTa`, `NgayTao`, `MaHang`, `TrangThai`)
+            //  VALUES ('121212', '3', 'KM_001', '23', 'DM-1', '234', '2023-10-05', 'MH-002', '1');
             $result = mysqli_query($conn, $sql);
+            echo $sql;
+            if($result){
+                if(isset($_POST["ArraySize"])&&isset($_POST["ArrayQuantity"])&&isset($_POST["ArrayPrice"])){
+                    $ArraySize = $_POST["ArraySize"];
+                    $ArrayQuantity = $_POST["ArrayQuantity"];
+                    $ArrayPrice = $_POST["ArrayPrice"];
+        
+                    for ($i = 0; $i < count($ArraySize); $i++) {
+                        $count=0;
+                        $sqlCheck= "SELECT COUNT(*) FROM sosize WHERE sosize.MaSP = '". $_POST['id'] ."' AND sosize.Size = ".$ArraySize[$i]."";
+                        $resultCheck = mysqli_query($conn, $sqlCheck);
+                        if ($resultCheck) {
+                            $row = mysqli_fetch_row($resultCheck);
+                            $count = $row[0];
+                        }
+                        if ($count != 0) {
+                            $sqlsize = "UPDATE sosize SET `SoLuong` = ".$ArrayQuantity[$i].",
+                            `GiaBan` = ".$ArrayPrice[$i]."
+                            WHERE `sosize`.`MaSP` =  '". $_POST['id'] ."'
+                            AND `sosize`.`Size` =".$ArraySize[$i]."";
+                        }else{
+                            $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayQuantity[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
+                        }
+                        $result = mysqli_query($conn, $sqlsize);
+                    }
+                }
+            }
             if (!$result){
                 echo "<script>
                 alert('Thêm không Thành Công');
-                // window.location = '../index.php?id=sp'
                 </script>";
                 $conn->close();
                 return;
@@ -223,7 +253,6 @@ if (isset($_POST['hd'])) {
             else{
                 echo "<script>
                 alert('Thêm Thành Công');
-                // window.location = '../index.php?id=sp'
                 </script>";
                 $conn->close();
                     return;
