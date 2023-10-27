@@ -29,10 +29,14 @@ class DAOSP{
         $data=array();
         if($result = mysqli_query($this->conn,$sql)){
             while($row=mysqli_fetch_array($result)){
-                $selectGia = 'SELECT MIN(GiaBan) FROM sosize  WHERE MaSP = "' . $row['MaSP'] . '"';
+                $selectGia = 'SELECT MIN(GiaBan)FROM sosize  WHERE MaSP = "' . $row['MaSP'] . '"';
                 $resultGia = mysqli_query($this->conn, $selectGia);
                 $rowGia = mysqli_fetch_assoc($resultGia);
+                $selectSoLuong = 'SELECT SoLuong FROM sosize WHERE MaSP = "' . $row['MaSP'] . '" AND GiaBan='.$rowGia['MIN(GiaBan)'];
+                $resultSoLuong = mysqli_query($this->conn,$selectSoLuong);
+                $rowSoLuong = mysqli_fetch_array($resultSoLuong);
                 $row['GiaMin']=$rowGia['MIN(GiaBan)'];
+                $row['SoLuong'] =$rowSoLuong['SoLuong'];
                 $data[] = $row;
             }
             mysqli_free_result($result);

@@ -31,11 +31,16 @@
 
     var sosize=<?php echo json_encode($dataSize)?>
 
+    function formatCash(str) {
+    str = str+"";
+ 	return str.replace(/\B(?=(\d{3})+(?!\d))/g, '.')+"đ";
+}
     function changeSize(price,count){
         var firstChild = document.querySelector('#price :first-child');
         var secondChild = document.querySelector('#price :nth-child(2)');
-        firstChild.innerHTML=price-price*tilegiam/100
-        secondChild.innerHTML=price
+        var priceGiam = price-price*tilegiam/100
+        firstChild.innerHTML=formatCash(priceGiam);
+        secondChild.innerHTML=formatCash(price);
 
         var tonkho =document.querySelector('#tonkho p span')
         tonkho.innerHTML=count
@@ -89,7 +94,7 @@
             <div id = "tonkho">
                 <p>
                     Còn lại:
-                    <span><?php echo $data[0][8]?></span>  
+                    <span><?php echo $data[0]["SoLuong"]?></span>  
                 </p>
             </div>
             <label id="giohang">
