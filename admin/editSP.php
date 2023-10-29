@@ -1,3 +1,45 @@
+<?php
+include('../db/DAOSP.php');
+include('../db/DAOHang.php');
+include('../db/DAODanhMuc.php');
+include('../db/DAOKHuyenMai.php');
+include('../db/DAOSosize.php');
+$listconvert="";
+$daoSP = new DAOSP();
+$daoHang = new DAOHang();
+$daoDM = new DAODanhMuc();
+$daoKM = new DAOKhuyenMai();
+$daoSoSize = new DAOSoSize();
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sp = $daoSP->getList1($id);
+    if ($daoSoSize->hasSize($id)) {
+        $listconvert = array();
+        $listSize = $daoSoSize->getList($id);
+        foreach ($listSize as $list) {
+            $item = [
+                "price" => $list['GiaBan'],
+                "quantity" => $list['SoLuong'],
+                "size" => $list['Size']
+            ];
+            $listconvert[] = $item;
+        }
+    }
+} else {
+    $sp["Ten"] = '';
+    $sp["MoTa"] = '';
+    $sp["MaDM"] = '';
+    $sp["AnhChinh"] = '';
+    $sp["AnhChinh"] = '';
+    $sp["MaHang"] = '';
+    $sp["MaKhuyenMai"] = '';
+    $listconvert="";
+}
+$listHang = $daoHang->getList();
+$listDM = $daoDM->getList();
+$listKM = $daoKM->getList();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,83 +74,14 @@
                 <div id="content" class="row" style="background-color:#f0f5f8;height:calc(100% - 72px)">
                     <div class="main mx-auto ">
                         <?php
-                        include('../db/dbconnect.php');
                         // Sửa sản phẩm
                         if (isset($_GET['id'])) {
-
-                            $id = $_GET['id'];
                             echo '<div class="row justify-content-center display-4">Sửa sản phẩm</div>';
-                            $sql = 'SELECT * FROM sanpham WHERE MaSP="' . $id . '"';
-                            $result = $conn->query($sql);
-                            if (mysqli_num_rows($result) > 0) {
-                                // Lấy thông tin sản phẩm
-                                $row = mysqli_fetch_assoc($result);
-                                $ten = $row["Ten"];
-                                $moTa = $row["MoTa"];
-                                $hinhAnh = $row["AnhChinh"];
-                                $maKhuyenMai = $row["MaKhuyenMai"];
-                                $maHang = $row["MaHang"];
-                                $maDanhMuc = $row["MaDM"];
-                            } else {
-                                echo "lỗi";
-                            }
                         }
                         // Thêm sản phẩm
                         else {
                             echo '<div class="row justify-content-center display-4">Thêm sản phẩm</div>';
-                            $ten = '';
-                            $moTa = '';
-                            $hinhAnh = '';
-                            $maKhuyenMai = '';
-                            $maHang = '';
-                            $maDanhMuc = '';
                         }
-                        //Luu bảng khuyen mãi, hang va danh muc
-                        // Xuat danh sách hãng db ra mảng
-                        $listHang = [];
-                        $sql = "SELECT * FROM hang WHERE TrangThai = 1";
-                        $result = $conn->query($sql);
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                $listHang[$row['MaHang']] = $row['Ten'];
-                            }
-                        }
-                        // Xuat danh sách danhmuc db ra mảng
-                        $listDanhMuc = [];
-                        $sql = "SELECT * FROM danhmuc WHERE TrangThai = 1";
-                        $result = $conn->query($sql);
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                $listDanhMuc[$row['MaDM']] = $row['TenDM'];
-                            }
-                        }
-                        // Xuat danh sách khuyenmai db ra mảng
-                        $listKhuyenMai = [];
-                        $sql = "SELECT * FROM khuyenmai";
-                        $result = $conn->query($sql);
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                $listKhuyenMai[$row['MaKhuyenMai']] = $row['TenKhuyenMai'];
-                            }
-                        }
-                        if(isset($_GET['id'])){
-                        $listSize = [];
-                        $sql = "SELECT * FROM sosize WHERE MaSP='" . $id . "'";
-                        $result = $conn->query($sql);
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                $item = [
-                                    "price" => $row["GiaBan"],
-                                    "quantity" => $row["SoLuong"],
-                                    "size" => $row["Size"]
-                                ];
-                            
-                                // Thêm mảng liên quan này vào listSize
-                                $listSize[] = $item;
-                            }
-                        }
-                        }
-
                         ?>
                         <!-- Tạo form thêm / sửa -->
                         <form action="xuly/xulyEditSP.php?" method="post" enctype="multipart/form-data">
@@ -117,7 +90,7 @@
                                     <div class="col col-1">Tên sản phẩm: </div>
                                     <div class="col col-11">
                                         <input class="w-100" required type="text" name='ten'
-                                            value="<?php echo $ten; ?>">
+                                            value="<?php echo $sp["Ten"]; ?>">
                                     </div>
                                 </label>
                             </div>
@@ -126,7 +99,7 @@
                                     <div class="col col-1">Mô tả:</div>
                                     <div class="col col-11">
                                         <textarea id="textarea" class="w-100" rows="" cols="" name="mota"
-                                            value=""><?php echo htmlspecialchars_decode($moTa); ?></textarea>
+                                            value=""><?php echo htmlspecialchars_decode($sp["MoTa"]); ?></textarea>
                                     </div>
                                 </label>
                             </div>
@@ -157,7 +130,7 @@
                                                         background-color: #fff;
                                                         border: 1px solid #000;
                                                     }
-    
+
                                                     .xoa {
                                                         border-radius: 10px;
                                                         background-color: red;
@@ -165,17 +138,12 @@
                                                         padding: 2px 5px;
                                                         cursor: pointer;
                                                     }
-    
-    
-    
+
                                                     .sizerow td {
                                                         height: 30px;
                                                     }
                                                 </style>
                                                 <tbody id="tbody">
-                                                    <tr>
-                                                       
-                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -184,29 +152,28 @@
 
                             </div>
                             <script>
-                                
-                                var arraysize = <?php echo json_encode($listSize); ?>
+                                var arraysize = <?php if($listconvert!='') echo json_encode($listconvert);else echo"[]" ?>
 
                                 var addsize = document.getElementById("add")
                                 var size = document.getElementById("size")
                                 var price = document.getElementById("price")
                                 var tbody = document.getElementById("tbody")
-                                 
-                                function loadsize(){
+
+                                function loadsize() {
                                     var stringtbody = ""
                                     for (var i = 0; i < arraysize.length; i++) {
-                                        
+
                                         stringtbody += "<tr class='sizerow'>"
-                                        stringtbody +="<td>" + arraysize[i].size +
-                                            "<input type='hidden' name='ArraySize[]' value='"+ arraysize[i].size +"'> </td>"
-                                        stringtbody +="<td>" + arraysize[i].price + 
-                                            "<input type='hidden' name='ArrayPrice[]' value='"+ arraysize[i].price +"'> </td>"
-                                        stringtbody +="<td style='display:flex; justify-content:space-between'>"+arraysize[i].quantity  +
-                                            "<input type='hidden' name='ArrayQuantity[]' value='"+ arraysize[i].quantity +"'>"
-                                        if(arraysize[i].quantity == 0)
-                                        stringtbody +=  " <div class='xoa' onclick='xoasize("+i+")'>Xóa</div>"
-                                        stringtbody +="</td></tr>"
-                                        
+                                        stringtbody += "<td>" + arraysize[i].size +
+                                            "<input type='hidden' name='ArraySize[]' value='" + arraysize[i].size + "'> </td>"
+                                        stringtbody += "<td>" + arraysize[i].price +
+                                            "<input type='hidden' name='ArrayPrice[]' value='" + arraysize[i].price + "'> </td>"
+                                        stringtbody += "<td style='display:flex; justify-content:space-between'>" + arraysize[i].quantity +
+                                            "<input type='hidden' name='ArrayQuantity[]' value='" + arraysize[i].quantity + "'>"
+                                        if (arraysize[i].quantity == 0)
+                                            stringtbody += " <div class='xoa' onclick='xoasize(" + i + ")'>Xóa</div>"
+                                        stringtbody += "</td></tr>"
+
                                     }
                                     tbody.innerHTML = stringtbody
                                     price.value = ''
@@ -220,13 +187,13 @@
                                     arraysize.push({ price: valuePrice, size: valueSize, quantity: 0 });
                                     loadsize()
                                 }
-                               
+
                                 function xoasize(index) {
                                     arraysize.splice(index, 1)
                                     loadsize()
                                 }
                                 addsize.onclick = addClick;
-                                
+
                             </script>
 
                             <div class="row mt-2">
@@ -235,11 +202,11 @@
                                     <div class="col col-11">
                                         <select class="w-100" name="danhmuc">
                                             <?php
-                                            foreach ($listDanhMuc as $maDM => $tenDM) {
-                                                if ($maDM == $maDanhMuc)
-                                                    echo '<option value=' . $maDM . ' selected>' . $tenDM . '</option>';
+                                            foreach ($listDM as $list) {
+                                                if ($sp["MaDM"] == $list["MaDM"])
+                                                    echo '<option value="' . $list["MaDM"] . '" selected>' . $list["TenDM"] . '</option>';
                                                 else
-                                                    echo "<option value='$maDM'>$tenDM</option>";
+                                                    echo '<option value="' . $list["MaDM"] . '">' . $list["TenDM"] . '</option>';
                                             }
                                             ?>
                                         </select>
@@ -253,7 +220,7 @@
                                         <input class="w-100" type="file" id="anhSP" name="anhchinh"
                                             onchange="getLinkImg()">
                                         <input class="w-100" type="hidden" name="anhchinhcu"
-                                            value="<?php echo $hinhAnh; ?> ">
+                                            value="<?php echo $sp["AnhChinh"]; ?> ">
                                     </div>
                                 </label>
                             </div>
@@ -262,7 +229,7 @@
                                 <div class="col col-11">
                                     <div class="row">
                                         <img style="width: 300px;min-height: 150px;" src="<?php
-                                        echo "../img/products/" . $hinhAnh;
+                                        echo "../img/products/" . $sp["AnhChinh"];
                                         ?>" alt="" id="imagePreview">
                                         <div id="myButton">Xóa ảnh</div>
                                         <div id="inner"></div>
@@ -299,11 +266,11 @@
                                     <div class="col col-11">
                                         <select class="w-100" name="hang">
                                             <?php
-                                            foreach ($listHang as $maH => $tenH) {
-                                                if ($maH == $maHang)
-                                                    echo '<option value=' . $maH . ' selected>' . $tenH . '</option>';
+                                            foreach ($listHang as $list) {
+                                                if ($sp["MaHang"] == $list["MaHang"])
+                                                    echo '<option value="' . $list["MaHang"] . '" selected>' . $list["Ten"] . '</option>';
                                                 else
-                                                    echo "<option value='$maH'>$tenH</option>";
+                                                    echo '<option value="' . $list["MaHang"] . '">' . $list["Ten"] . '</option>';
                                             }
                                             ?>
                                         </select>
@@ -316,11 +283,11 @@
                                     <div class="col col-11">
                                         <select class="w-100" name="khuyenmai">
                                             <?php
-                                            foreach ($listKhuyenMai as $maKM => $tenKM) {
-                                                if ($maKM == $maKhuyenMai)
-                                                    echo '<option value=' . $maKM . ' selected>' . $tenKM . '</option>';
+                                            foreach ($listKM as $list) {
+                                                if ($sp["MaKhuyenMai"] == $list["MaKhuyenMai"])
+                                                    echo '<option value=' . $list["MaKhuyenMai"] . ' selected>' . $list["TenKhuyenMai"] . '</option>';
                                                 else
-                                                    echo '<option value=' . $maKM . '>' . $tenKM . '</option>';
+                                                    echo '<option value=' . $list["MaKhuyenMai"] . '>' . $list["TenKhuyenMai"] . '</option>';
                                             }
                                             ?>
                                         </select>
@@ -357,7 +324,6 @@
 
     </div>
     <?php
-    $conn->close();
     ?>
     <script>
         showmenu();

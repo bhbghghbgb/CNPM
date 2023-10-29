@@ -11,43 +11,49 @@ class DAOSP{
         $this->connect();
     }
 
-    public function connect(){
-        if(!$this->conn){
-            $this->conn=mysqli_connect($this->host,$this->username,$this->password,$this->database);
+    public function connect()
+    {
+        if (!$this->conn) {
+            $this->conn = mysqli_connect($this->host, $this->username, $this->password, $this->database);
         }
     }
 
-    public function disConnect() {
-        if($this->conn){
+    public function disConnect()
+    {
+        if ($this->conn) {
             mysqli_close($this->conn);
         }
     }
 
 
-    public function getList($MaSP) {
-        $sql = "SELECT * FROM sanpham WHERE TrangThai=1 AND MaSP = ".$MaSP;
-        $data=array();
-        if($result = mysqli_query($this->conn,$sql)){
-            while($row=mysqli_fetch_array($result)){
+    public function getList($MaSP)
+    {
+        $sql = "SELECT * FROM sanpham WHERE TrangThai=1 AND MaSP = " . $MaSP;
+        $data = array();
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
                 $selectGia = 'SELECT MIN(GiaBan)FROM sosize  WHERE MaSP = "' . $row['MaSP'] . '"';
                 $resultGia = mysqli_query($this->conn, $selectGia);
                 $rowGia = mysqli_fetch_assoc($resultGia);
-                $selectSoLuong = 'SELECT SoLuong FROM sosize WHERE MaSP = "' . $row['MaSP'] . '" AND GiaBan='.$rowGia['MIN(GiaBan)'];
-                $resultSoLuong = mysqli_query($this->conn,$selectSoLuong);
-                $rowSoLuong = mysqli_fetch_array($resultSoLuong);
-                $row['GiaMin']=$rowGia['MIN(GiaBan)'];
-                $row['SoLuong'] =$rowSoLuong['SoLuong'];
-                $data[] = $row;
+                $selectSoLuong = 'SELECT SoLuong FROM sosize WHERE MaSP = "' . $row['MaSP'] . '" AND GiaBan=' . $rowGia['MIN(GiaBan)'];
+                $resultSoLuong = mysqli_query($this->conn, $selectSoLuong);
+                if ($resultSoLuong) {
+                    $rowSoLuong = mysqli_fetch_array($resultSoLuong);
+                    $row['GiaMin'] = $rowGia['MIN(GiaBan)'];
+                    $row['SoLuong'] = $rowSoLuong['SoLuong'];
+                    $data[] = $row;
+                }
             }
             mysqli_free_result($result);
         }
         return $data;
     }
-    public function getListSize($MaSP) {
-        $sql = "SELECT * FROM sosize WHERE MaSP = ".$MaSP;
-        $data=array();
-        if($result = mysqli_query($this->conn,$sql)){
-            while($row=mysqli_fetch_array($result)){
+    public function getListSize($MaSP)
+    {
+        $sql = "SELECT * FROM sosize WHERE MaSP = " . $MaSP;
+        $data = array();
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
                 $data[] = $row;
             }
             mysqli_free_result($result);
@@ -56,15 +62,16 @@ class DAOSP{
     }
 
 
-    public function getListLienQuan($MaH,$MaSP) {
-        $sql = "SELECT * FROM sanpham WHERE TrangThai=1 AND MaHang = '".$MaH."' AND MaSP != ".$MaSP ;
-        $data=null;
-        if($result = mysqli_query($this->conn,$sql)){
-            while($row=mysqli_fetch_array($result)){
+    public function getListLienQuan($MaH, $MaSP)
+    {
+        $sql = "SELECT * FROM sanpham WHERE TrangThai=1 AND MaHang = '" . $MaH . "' AND MaSP != " . $MaSP;
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
                 $selectGia = 'SELECT MIN(GiaBan) FROM sosize  WHERE MaSP = "' . $row['MaSP'] . '"';
                 $resultGia = mysqli_query($this->conn, $selectGia);
                 $rowGia = mysqli_fetch_assoc($resultGia);
-                $row['GiaMin']=$rowGia['MIN(GiaBan)'];
+                $row['GiaMin'] = $rowGia['MIN(GiaBan)'];
                 $data[] = $row;
             }
             mysqli_free_result($result);
@@ -72,27 +79,29 @@ class DAOSP{
         return $data;
     }
 
-    public function getTiLeGiam($MaSP) {
-        $sql = "SELECT TiLeGiam FROM sanpham,khuyenmai WHERE MaSP = ".$MaSP." AND sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai";
-        $data=null;
-        if($result = mysqli_query($this->conn,$sql)){
-            while($row=mysqli_fetch_array($result)){
-                    $data[] = $row;
+    public function getTiLeGiam($MaSP)
+    {
+        $sql = "SELECT TiLeGiam FROM sanpham,khuyenmai WHERE MaSP = " . $MaSP . " AND sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai";
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+                $data[] = $row;
             }
             mysqli_free_result($result);
         }
         return $data[0][0];
     }
 
-    public function getListDanhMuc($MaDM) {
-        $sql = "SELECT *, hang.Ten as TenHang FROM sanpham,hang WHERE sanpham.TrangThai=1 AND MaDM = '".$MaDM."' AND sanpham.MaHang = hang.MaHang" ;
-        $data=null;
-        if($result = mysqli_query($this->conn,$sql)){
-            while($row=mysqli_fetch_array($result)){
+    public function getListDanhMuc($MaDM)
+    {
+        $sql = "SELECT *, hang.Ten as TenHang FROM sanpham,hang WHERE sanpham.TrangThai=1 AND MaDM = '" . $MaDM . "' AND sanpham.MaHang = hang.MaHang";
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
                 $selectGia = 'SELECT MIN(GiaBan) FROM sosize  WHERE MaSP = "' . $row['MaSP'] . '"';
                 $resultGia = mysqli_query($this->conn, $selectGia);
                 $rowGia = mysqli_fetch_assoc($resultGia);
-                $row['GiaMin']=$rowGia['MIN(GiaBan)'];
+                $row['GiaMin'] = $rowGia['MIN(GiaBan)'];
                 $data[] = $row;
             }
             mysqli_free_result($result);
@@ -100,52 +109,94 @@ class DAOSP{
         return $data;
     }
 
-    public function getListDanhSach($sql) {
-        $data=null;
-        if($result = mysqli_query($this->conn,$sql)){
-            while($row=mysqli_fetch_array($result)){
+    public function getListDanhSach($sql)
+    {
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
                 $selectGia = 'SELECT MIN(GiaBan) FROM sosize  WHERE MaSP = "' . $row['MaSP'] . '"';
                 $resultGia = mysqli_query($this->conn, $selectGia);
                 $rowGia = mysqli_fetch_assoc($resultGia);
-                $row['GiaMin']=$rowGia['MIN(GiaBan)'];
+                $row['GiaMin'] = $rowGia['MIN(GiaBan)'];
                 $data[] = $row;
             }
             mysqli_free_result($result);
         }
         return $data;
-    } 
+    }
 
-    public function getALL() {
+    public function getALL()
+    {
         $sql = "SELECT * FROM sanpham ";
-        $data=null;
-        if($result = mysqli_query($this->conn,$sql)){
-            while($row=mysqli_fetch_array($result)){
-                    $data[] = $row;
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+                $data[] = $row;
             }
             mysqli_free_result($result);
         }
         return $data;
     }
 
-    public function TruSLBanHang($MaSP, $SoLuongMoi){
-        $sql = 'UPDATE sanpham SET SLTonKho = '.$SoLuongMoi.' WHERE MaSP = '.$MaSP;
-        if($result = mysqli_query($this->conn,$sql)){
+    public function TruSLBanHang($MaSP, $SoLuongMoi)
+    {
+        $sql = 'UPDATE sanpham SET SLTonKho = ' . $SoLuongMoi . ' WHERE MaSP = ' . $MaSP;
+        if ($result = mysqli_query($this->conn, $sql)) {
             return true;
-        }
-        else
+        } else
             return false;
     }
 
-    public function checkSoLuongTonKho($MaSP) {
-        $sql = "SELECT * FROM sanpham WHERE SLTonKho = 0 AND TrangThai=1 AND MaSP = ".$MaSP;
-        $data=null;
-        if($result = mysqli_query($this->conn,$sql)){
-            while($row=mysqli_fetch_array($result)){
-                    $data[] = $row;
+    public function checkSoLuongTonKho($MaSP)
+    {
+        $sql = "SELECT * FROM sanpham WHERE SLTonKho = 0 AND TrangThai=1 AND MaSP = " . $MaSP;
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+                $data[] = $row;
             }
             mysqli_free_result($result);
         }
         return $data;
+    }
+    public function insertSP($MaSP, $Ten, $MaKhuyenMai, $AnhChinh, $MaDM, $MoTa, $NgayTao, $MaHang, $TrangThai)
+    {
+        $sql = "INSERT INTO `sanpham` (`MaSP`, `Ten`, `MaKhuyenMai`, `AnhChinh`, `MaDM`, `MoTa`, `NgayTao`, `MaHang`, `TrangThai`) 
+        VALUES ('" . $MaSP . "', '" . $Ten . "', '" . $MaKhuyenMai . "', '" . $AnhChinh . "', '" . $MaDM . "', '" . $MoTa . "', '" . $NgayTao . "', '" . $MaHang . "', '" . $TrangThai . "');";
+        if (mysqli_query($this->conn, $sql)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function deleteSP($MaSP)
+    {
+        $sql = "UPDATE sanpham SET TrangThai=0 where  MaSP = '" . $MaSP . "'";
+        if (mysqli_query($this->conn, $sql)) {
+            return true;
+        }
+        return false;
+    }
+    public function editSP($MaSP, $Ten, $MaKhuyenMai, $AnhChinh, $MaDM, $MoTa, $NgayTao, $MaHang, $TrangThai)
+    {
+        $sql = "UPDATE `sanpham` SET `MaSP` = '" . $MaSP . "', `AnhChinh` = '" . $AnhChinh . "', `MaDM` = '" . $MaDM . "', `MoTa` = '" . $MoTa . "', `NgayTao` = '" . $NgayTao . "', `MaHang` = '" . $MaHang . "' WHERE `MaSP` = '" . $MaSP . "'";
+        if (mysqli_query($this->conn, $sql)) {
+            return true;
+        }
+        return false;
+    }
+    public function getList1($MaSP)
+    {
+        $sql = "SELECT * FROM sanpham WHERE TrangThai=1 AND MaSP = " . $MaSP;
+        $data = array();
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+                $data[] = $row;
+            }
+
+            mysqli_free_result($result);
+        }
+        return $data[0];
     }
 }
 ?>

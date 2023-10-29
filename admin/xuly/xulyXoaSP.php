@@ -2,11 +2,9 @@
 include '../../db/dbconnect.php';
 include("../../db/DAOSP.php");
 $db = new DAOSP();
-$db->connect();
 if (isset($_GET['idsp'])) {
     $idsp = $_GET['idsp'];
-    $sql = 'UPDATE sanpham SET TrangThai=0 where  MaSP = "' . $idsp . '"';
-    $result = $conn->query($sql);
+    $result = $db->deleteSP($idsp);
     if ($result)
         echo "<script>
         alert('Xóa Thành Công');
