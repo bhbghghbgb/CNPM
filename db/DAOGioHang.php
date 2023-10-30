@@ -44,7 +44,7 @@ if($result = mysqli_query($this->conn,$sql)) {
             }
             mysqli_free_result($result);
         }
-        echo $data[0][0];
+        return $data[0][0];
     }
 
     public function addSP($MaTK, $MaSP, $SoLuong, $Size){

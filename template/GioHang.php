@@ -60,7 +60,11 @@ if (isset($_POST['add_to_cart'])) {
         $data["SoLuong"] = 1;
         $TiLegiam = $db->getTiLeGiam($MaSP);
         $data["GiaBan"] = TinhTienGiam($TiLegiam,$data["GiaBan"]);
-        array_push($list,$data);
+        if($list!=null){
+            array_push($list,$data);
+        }else{
+            $list = array($data); 
+        }
     }
 }
 ?>

@@ -54,12 +54,11 @@
                                         include __DIR__."/../db/DAOGioHang.php";
                                         $dgh = new DAOGioHang();
                                         $dgh->connect();
+                                        $Cart = 0;
                                         if(isset($_SESSION['MaTaiKhoan'])){
-                                            $dgh->getSL($_SESSION['MaTaiKhoan']);
-                                        }else{
-                                            echo 0;
+                                            $Cart += $dgh->getSL($_SESSION['MaTaiKhoan']);
                                         }
-                                        $dgh->disConnect();
+                                        echo $Cart;
                                     ?>
                                 </span>
                             </li>
