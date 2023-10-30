@@ -53,7 +53,9 @@
             <th>Tổng tiền</th>
         </tr>
         <?php
-            include("../../../db/DAO/DAOChiTietDonHang.php");
+            include("../../../db/DAOChiTietDonHang.php");
+            include('../../../db/DTO/DTOChiTietDonHang.php');
+            include('../../../db/DAO/DataProvider.php');
             $db = new DAOChiTietDonHang();
             $data = $db->getList($Madon);
             $i=0;
