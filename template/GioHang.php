@@ -18,9 +18,11 @@ if (isset($_SESSION['MaTaiKhoan'])) {
     $MaTaiKhoan = $_SESSION['MaTaiKhoan'];
     $list = $dgh->getListGioHang($MaTaiKhoan); // lấy các thông tin cần thiết để hiển thị lên bảng giỏ hàng
     //update giá bán theo khuyến mãi
-    foreach ($list as $key => $value) {
-        $TiLegiam = $db->getTiLeGiam($value["MaSP"]);
-        $list[$key]["GiaBan"] = TinhTienGiam($TiLegiam, $value["GiaBan"]);
+    if($list != null){
+        foreach ($list as $key => $value) {
+            $TiLegiam = $db->getTiLeGiam($value["MaSP"]);
+            $list[$key]["GiaBan"] = TinhTienGiam($TiLegiam, $value["GiaBan"]);
+        }
     }
 }
 
@@ -40,9 +42,10 @@ if (isset($_POST['update-click'])) {
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
     if ($action == 'remove') {
-        foreach ($_SESSION['cart'] as $key => $value) {
-            if ($value['ID'] == $_GET['id']) {
-                unset($_SESSION['cart'][$key]);
+        foreach ($list as $key => $value) {
+            if ($value['MaSP'] == $_GET['MaSP']) {
+                $dgh->deleteSP($MaTaiKhoan,$value['MaSP']);
+                unset($list[$key]);
                 echo ' <script>window.location="GioHang.php";</script>';
             }
         }
@@ -100,7 +103,7 @@ if (isset($_POST['add_to_cart'])) {
                                             <?php echo number_format($value['GiaBan'] * $value['SoLuong'], 0, ",", ".") . "đ" ?>
                                         </td>
                                         <td>
-                                            <a href="GioHang.php?action=remove&id=<?php echo $value['MaSP'] ?>">
+                                            <a href="GioHang.php?action=remove&MaSP=<?php echo $value['MaSP'] ?>">
                                                 <button type="button" class="delete"><i class="ti-trash trash"></i></button>
                                         </td>
                                     </tr>
