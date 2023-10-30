@@ -51,11 +51,12 @@
                                 <a href="GioHang.php"><i class="ti-shopping-cart gh"></i></a>
                                 <span>
                                     <?php
+                                        include __DIR__."/../db/DAOGioHang.php";
+                                        $dgh = new DAOGioHang();
+                                        $dgh->connect();
                                         $Cart = 0;
-                                        if(isset($_SESSION['cart'])){
-                                            foreach($_SESSION['cart'] as $key => $value){
-                                                $Cart += $value['SL'];
-                                            }
+                                        if(isset($_SESSION['MaTaiKhoan'])){
+                                            $Cart += $dgh->getSL($_SESSION['MaTaiKhoan']);
                                         }
                                         echo $Cart;
                                     ?>

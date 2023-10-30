@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="./css/footer.css">
 
     <script src="./js/ChiTietSP.js"></script>
+    <script src="./js/index.js"></script>
 
     <!-- login -->
     <link rel="stylesheet" href="./css/formDN.css">
@@ -33,6 +34,12 @@
 </head>
 <body>
     <div id="wrapper">
+        
+    <div id="message">
+            <div id="hihi">
+
+            </div>
+        </div>
         <?php include('account/login.php');?>
         <?php include('account/register.php');?>
         <?php include('template/header.php');?>

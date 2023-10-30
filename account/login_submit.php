@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $_SESSION['location'] = "index.php";
     // header('Content-Type: text/html; charset=utf-8');
     $conn = mysqli_connect('localhost', 'root', '', 'ql_cuahanggiay') or die ('Lỗi kết nối'); mysqli_set_charset($conn, "utf8");
     if (isset($_POST['dangnhap'])) {
