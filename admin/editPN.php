@@ -32,127 +32,131 @@
                         <div class="main mx-auto ">
                             <?php
                             include('../db/dbconnect.php');
-                        
                             // Phiếu nhập
-                              
                                 echo '<div class="row justify-content-center display-4">Thêm Phiếu Nhập</div>';
-                               
-                            
-                            //Luu bảng khuyen mãi, hang va danh muc
-                                // Xuat danh sách hãng db ra mảng
-                                $listHang = [];
-                                $sql = "SELECT * FROM hang";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        $listHang[$row['MaHang']]=$row['Ten'];
-                                    }
-                                }
-                                
-                                $listNhanVien = [];
-                                $sql = "SELECT nhanvien.MaTaiKhoan, nhanvien.TenNhanVien , taikhoan.Quyen  from nhanvien 
-                                join taikhoan on taikhoan.MaTaiKhoan= nhanvien.MaNhanVien WHERE nhanvien.TrangThai=1 AND taikhoan.TrangThai=1 AND taikhoan.quyen <> 'User'";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        $listNhanVien[$row['MaTaiKhoan']]=$row['TenNhanVien'];
-                                    }
-                                }
                             ?>
-                            <!-- Tạo form thêm / sửa -->
-                            <form action="xuly/xulyEditpn.php" method="post">
+                            
+                            <a href="" type="button"  style="width: 80px; height:30px; background-color:burlywood; text-align:center; margin-bottom:10px; border:2px solid black; color:black;" >Thoát</a>
+
+                            <!-- List hãng-->
+                            <form action="" method="" style="border:2px solid black; background-color:bisque; padding:10px;"   >
+                                <button type="button" style="width: 200px; height:30px;background-color:burlywood;" >Gửi yêu cầu nhập hàng</button>
                                 <div class="row mt-2">
                                     <label class="row">
                                         <div class="col col-3">Hãng</div>
                                         <div class="col col-7">
-                                            <select class="w-100" name="hang">
+                                            <select class="w-100" name="hang"  id="selectHang" >
                                             <?php
-                                                foreach($listHang as $ma=>$ten){
-                                                    echo'<option value='.$ma.'>'.$ten.'</option>';                                                
-                                                }
+
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="col col-2">
-                                            Xác Nhận
-                                        </div>
+                                        <button type="button" id="buttonXacNhan" style="width: 100px; height:30px ; text-align:center;background-color:burlywood;" >  Xác nhận </button>
                                     </label>
                                 </div>
-
-                            </form>
-                            <form action="xuly/xulyEditCTPN.php" method="post">
-                    
+                                <!-- List sản phẩm -->
                                 <div class="row mt-2">
                                     <label class="row">
                                         <div class="col col-3">Tên sản phẩm:</div>
                                         <div class="col col-9">
-                                            <select class="w-100" name="sanpham">
+                                            <select class="w-100" name="sanpham" id="selectSanPham" >
                                            
                                             </select>
                                         </div>
                                     </label>
                                 </div>
+                                <!-- Nhập số lượng -->
                                 <div class="row mt-2">
                                     <label class="row">
                                         <div class="col col-3">Số lượng: </div>
                                         <div class="col col-9">
-                                            <input class="w-100" required type="text" name='soluong' >
+                                            <input class="w-100" required type="number" name='soluong' id="inputSoLuong" value="" >
                                         </div>
                                     </label>
                                 </div>
+                                <!-- Nhập giá nhập -->
                                 <div class="row mt-2">
                                     <label class="row">
-                                        <div class="col col-3">Đơn Giá: </div>
+                                        <div class="col col-3">Giá Nhập: </div>
                                         <div class="col col-9">
-                                            <input class="w-100"  type="text" name='dongia' value="">
+                                            <input class="w-100"  type="number" name='dongia' value="" id="inputGiaNhap" >
                                         </div>
                                     </label>
                                 </div>
+                                <!-- List size -->
                                 <div class="row mt-2">
                                     <label class="row">
                                         <div class="col col-3">Size: </div>
                                         <div class="col col-9">
-                                            <input class="w-100"  type="text" name='size' value="">
+                                            <select name="soSize" class="w-100" id="selectSize">
+
+                                            </select>
                                         </div>
                                     </label>
                                 </div>
+
+                                <button type="button" id="buttonThem"  style="margin-left: 323px; margin-top:10px; width:80px; height:30px;background-color:burlywood; margin-bottom:10px;" >Thêm</button>
                                 
-                                
-                                <input type="hidden" name="id" value="<?php echo $Madon?>">
-                                <div class="row mt-2">
-                                    <div class="col col-3"></div>
-                                    <div class="col col-9">
-                                        <?php
-                                            echo '<input type="submit" class="btn bg-success"name="hd" value="Thêm">';
-                                        ?>
-                                    </div>
-                                </div>
-                            </form>
-                            
+                                                     
                             <div id="ctdh" >
-                                <table class="w-100"id="ds_donhang">
-                                    <tr>
+                                <style>
+                                    .btn {
+                                        display: none;
+                                    }
+
+                                    tr:hover .btn {
+                                        display: inline-block;
+                                    }
+                                    
+                                    #tableCTPN th {
+                                        text-align: center;
+                                        border: 1px solid black;
+                                        padding: 5px;
+                                        font-size: 18px;
+                                        background-color: orange;
+                                    }
+
+                                    #tableCTPN td {
+                                        text-align: center;
+                                        font-size: 16px;
+                                        border: 1px solid black;
+                                        padding: 5px;
+                                    }
+                                
+                                </style>
+                                <table class="w-100"id="tableCTPN" style="background-color: #f0f5f8;" >
+                                    <thead>
                                         <th>Mã sản phẩm</th>
+                                        <th>Tên sản phẩm</th>
                                         <th>Số lượng</th>
+                                        <th>Size</th>
                                         <th>Giá</th>
                                         <th>Tổng tiền</th>
-                                        <th style="width:15%">Xóa</th>
-                                    </tr>
+                                        <th>Hành động</th>
+                                    </thead>
+                                    <tbody>
                                         <tr>
-                                            <td>1
-                                            </td>
-                                            <td>
-1                                            </td>
-                                            <td>
-1                                            </td>
-                                            <td>
-1                                            </td>
-                                            <td> <a href="xuly/xulyXoaCTPN.php?idsp=<?php echo $data[$i][0] ?>&idpn=<?php echo $Madon?>">
-                                                    <div>Xóa</div>
-                                                </a>
-                                            </td>
+                                            <td>001</td>
+                                            <td>ADIDAS PRO</td>
+                                            <td>5</td>
+                                            <td>41</td>
+                                            <td>20000</td>
+                                            <td>1000000</td>
+                                            <td> <button class = "btn" type= "button" style="background-color:red; height:auto;"  >Xóa</button> </ </td>
                                         </tr>
-                            </div>
+                                        <tr>
+                                            <td>001</td>
+                                            <td>ADIDAS PRO</td>
+                                            <td>5</td>
+                                            <td>41</td>
+                                            <td>20000</td>
+                                            <td>1000000</td>
+                                            <td> <button class = "btn" type= "button" style="background-color:red; height:auto;"  >Xóa</button> </td>
+                                        </tr>
+                                    </tbody>   
+                                </table>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
