@@ -102,6 +102,11 @@ function validateUploadFile($file, $uploadPath)
 }
 
 include '../../db/dbconnect.php';
+include '../../db/DAOSP.php';
+include '../../db/DAOSoSize.php';
+
+$daoSP=new DAOSP();
+$daoSoSize=new DAOSoSize();
 
 if (isset($_POST['hd'])) {
     $hd = $_POST['hd'];
@@ -123,45 +128,27 @@ if (isset($_POST['hd'])) {
             $anhchinh = $result['path'];
         }
     }
-    $Value1 = htmlspecialchars($_POST['mota']);
+    $mota = htmlspecialchars($_POST['mota']);
 
     switch ($hd) {
         case "Lưu":
-            // Truy vấn danh sách sản phẩm
-            $sql = "UPDATE sanpham   SET Ten='" . $_POST['ten'] . "',
-                                        MoTa='". $Value1 ."',
-                                        MaKhuyenMai='" . $_POST['khuyenmai'] . "' ,
-                                        MaDM='" . $_POST['danhmuc'] . "' ,
-                                        AnhChinh='" . $anhchinh . "',
-                                        MaHang='" . $_POST['hang'] . "'
-                                        WHERE MaSP='" . $_POST['id'] . "'";
-            $result = mysqli_query($conn, $sql);
-            if($result){
-                if(isset($_POST["ArraySize"])&&isset($_POST["ArrayQuantity"])&&isset($_POST["ArrayPrice"])){
+            $result = $daoSP->editSP($_POST['id'],$_POST['ten'],$_POST['khuyenmai'],$anhchinh,$_POST['danhmuc'],$mota,$_POST['hang'],);
+            if ($result) {
+                if(isset($_POST["ArraySize"]) && isset($_POST["ArrayQuantity"]) && isset($_POST["ArrayPrice"])){
                     $ArraySize = $_POST["ArraySize"];
                     $ArrayQuantity = $_POST["ArrayQuantity"];
                     $ArrayPrice = $_POST["ArrayPrice"];
-        
+
+                    if($daoSoSize->deleteAllSozsize($_POST['id']))
+                    //check số lượng
                     for ($i = 0; $i < count($ArraySize); $i++) {
-                        $count=0;
-                        $sqlCheck= "SELECT COUNT(*) FROM sosize WHERE sosize.MaSP = '". $_POST['id'] ."' AND sosize.Size = ".$ArraySize[$i]."";
-                        $resultCheck = mysqli_query($conn, $sqlCheck);
-                        if ($resultCheck) {
-                            $row = mysqli_fetch_row($resultCheck);
-                            $count = $row[0];
-                        }
-                        if ($count != 0) {
-                            $sqlsize = "UPDATE sosize SET `SoLuong` = ".$ArrayQuantity[$i].",
-                            `GiaBan` = ".$ArrayPrice[$i]."
-                            WHERE `sosize`.`MaSP` =  '". $_POST['id'] ."'
-                            AND `sosize`.`Size` =".$ArraySize[$i]."";
-                        }else{
-                            $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayQuantity[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
-                        }
+                        $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayQuantity[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
+                        $daoSoSize->insertSozise($_POST['id'],$ArraySize[$i],$ArrayQuantity[$i],$ArrayPrice[$i]);
                         $result = mysqli_query($conn, $sqlsize);
                     }
-                }
+
             }
+        }
             if($result){
                 $_SESSION["message"] = "Sửa thành công";
                 header("Location: ../editsp.php?hd=s&id=".$_POST['id']."");
@@ -204,41 +191,18 @@ if (isset($_POST['hd'])) {
             }
 
             // Thêm vào db
-            $sql = "INSERT INTO `sanpham` (`MaSP`, `Ten`, `MoTa`, `MaKhuyenMai`, `MaDM`, `AnhChinh`,`MaHang`,`NgayTao`,`TrangThai`)
-            VALUES ('" . $id . "',
-            '" . $_POST['ten'] . "',
-            '" . $_POST['mota'] . "',
-            '" . $_POST['khuyenmai'] . "',
-            '" . $_POST['danhmuc'] . "',
-            '" . $anhchinh . "',
-            '" . $_POST['hang'] . "',
-            CURDATE(),1)";
-            // INSERT INTO `sanpham` (`MaSP`, `Ten`, `MaKhuyenMai`, `AnhChinh`, `MaDM`, `MoTa`, `NgayTao`, `MaHang`, `TrangThai`)
-            //  VALUES ('121212', '3', 'KM_001', '23', 'DM-1', '234', '2023-10-05', 'MH-002', '1');
-            $result = mysqli_query($conn, $sql);
-            echo $sql;
-            if($result){
-                if(isset($_POST["ArraySize"])&&isset($_POST["ArrayQuantity"])&&isset($_POST["ArrayPrice"])){
+            $result = $daoSP->insertSP($id,$_POST['ten'],$_POST['khuyenmai'],$anhchinh,$_POST['danhmuc'],$mota,$_POST['hang']);
+            if ($result) {
+                if(isset($_POST["ArraySize"]) && isset($_POST["ArrayQuantity"]) && isset($_POST["ArrayPrice"])){
                     $ArraySize = $_POST["ArraySize"];
                     $ArrayQuantity = $_POST["ArrayQuantity"];
                     $ArrayPrice = $_POST["ArrayPrice"];
-        
+
+                    if($daoSoSize->deleteAllSozsize($_POST['id']))
+                    //check số lượng
                     for ($i = 0; $i < count($ArraySize); $i++) {
-                        $count=0;
-                        $sqlCheck= "SELECT COUNT(*) FROM sosize WHERE sosize.MaSP = '". $_POST['id'] ."' AND sosize.Size = ".$ArraySize[$i]."";
-                        $resultCheck = mysqli_query($conn, $sqlCheck);
-                        if ($resultCheck) {
-                            $row = mysqli_fetch_row($resultCheck);
-                            $count = $row[0];
-                        }
-                        if ($count != 0) {
-                            $sqlsize = "UPDATE sosize SET `SoLuong` = ".$ArrayQuantity[$i].",
-                            `GiaBan` = ".$ArrayPrice[$i]."
-                            WHERE `sosize`.`MaSP` =  '". $_POST['id'] ."'
-                            AND `sosize`.`Size` =".$ArraySize[$i]."";
-                        }else{
-                            $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayQuantity[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
-                        }
+                        $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayQuantity[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
+                        $daoSoSize->insertSozise($_POST['id'],$ArraySize[$i],$ArrayQuantity[$i],$ArrayPrice[$i]);
                         $result = mysqli_query($conn, $sqlsize);
                     }
                 }

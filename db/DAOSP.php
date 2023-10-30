@@ -159,10 +159,10 @@ class DAOSP{
         }
         return $data;
     }
-    public function insertSP($MaSP, $Ten, $MaKhuyenMai, $AnhChinh, $MaDM, $MoTa, $NgayTao, $MaHang, $TrangThai)
+    public function insertSP($MaSP, $Ten, $MaKhuyenMai, $AnhChinh, $MaDM, $MoTa, $MaHang)
     {
-        $sql = "INSERT INTO `sanpham` (`MaSP`, `Ten`, `MaKhuyenMai`, `AnhChinh`, `MaDM`, `MoTa`, `NgayTao`, `MaHang`, `TrangThai`) 
-        VALUES ('" . $MaSP . "', '" . $Ten . "', '" . $MaKhuyenMai . "', '" . $AnhChinh . "', '" . $MaDM . "', '" . $MoTa . "', '" . $NgayTao . "', '" . $MaHang . "', '" . $TrangThai . "');";
+        $sql = "INSERT INTO `sanpham` (`MaSP`, `Ten`, `MaKhuyenMai`, `AnhChinh`, `MaDM`, `MoTa`, `MaHang`) 
+        VALUES ('" . $MaSP . "', '" . $Ten . "', '" . $MaKhuyenMai . "', '" . $AnhChinh . "', '" . $MaDM . "', '" . $MoTa . "', '" . $MaHang . "');";
         if (mysqli_query($this->conn, $sql)) {
             return true;
         }
@@ -177,15 +177,27 @@ class DAOSP{
         }
         return false;
     }
-    public function editSP($MaSP, $Ten, $MaKhuyenMai, $AnhChinh, $MaDM, $MoTa, $NgayTao, $MaHang, $TrangThai)
+    public function editSP($MaSP, $Ten, $MaKhuyenMai, $AnhChinh, $MaDM, $MoTa, $MaHang)
     {
-        $sql = "UPDATE `sanpham` SET `MaSP` = '" . $MaSP . "', `AnhChinh` = '" . $AnhChinh . "', `MaDM` = '" . $MaDM . "', `MoTa` = '" . $MoTa . "', `NgayTao` = '" . $NgayTao . "', `MaHang` = '" . $MaHang . "' WHERE `MaSP` = '" . $MaSP . "'";
+        $sql = "UPDATE `sanpham` SET `AnhChinh` = '" . $AnhChinh . "', `MaDM` = '" . $MaDM . "', `MoTa` = '" . $MoTa . "',  `MaHang` = '" . $MaHang . "' WHERE `MaSP` = '" . $MaSP . "'";
         if (mysqli_query($this->conn, $sql)) {
             return true;
         }
         return false;
     }
-    public function getList1($MaSP)
+    public function findSP($properties, $value)
+    {
+        $sql = "SELECT * FROM sanpham WHERE $properties LIKE '%$value%' AND TrangThai = 1";
+        $data = array();
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+        }
+        return $data;
+    }
+    public function getListSP($MaSP)
     {
         $sql = "SELECT * FROM sanpham WHERE TrangThai=1 AND MaSP = " . $MaSP;
         $data = array();
@@ -197,6 +209,18 @@ class DAOSP{
             mysqli_free_result($result);
         }
         return $data[0];
+    }
+    public function getList1()
+    {
+        $data = array();
+        $sql="SELECT * FROM sanpham WHERE TrangThai=1";
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+        }
+        return $data;
     }
 }
 ?>

@@ -12,10 +12,10 @@ $daoKM = new DAOKhuyenMai();
 $daoSoSize = new DAOSoSize();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sp = $daoSP->getList1($id);
+    $sp = $daoSP->getListSP($id);
     if ($daoSoSize->hasSize($id)) {
         $listconvert = array();
-        $listSize = $daoSoSize->getList($id);
+        $listSize = $daoSoSize->getSoSize($id);
         foreach ($listSize as $list) {
             $item = [
                 "price" => $list['GiaBan'],

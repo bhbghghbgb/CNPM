@@ -46,6 +46,13 @@ class DAOKhuyenMai{
         }
         return true;
     }
+    public function getTenTheoMa($maKM){
+        $sql = "SELECT TenKhuyenMai FROM khuyenmai where MaKhuyenMai = '$maKM'";
+        if($result = mysqli_query($this->conn,$sql)){
+            $row=mysqli_fetch_array($result);
+            return $row["TenKhuyenMai"];
+        }
+    }
 
     public function insertKM($MaKM,$TenKM,$MoTa,$TiLeGiam){
         $sql = "INSERT INTO khuyenmai (MaKhuyenMai,TenKhuyenMai,MoTa,TiLeGiam) VALUES ('$MaKM', '$TenKM', '$MoTa', '$TiLeGiam')";

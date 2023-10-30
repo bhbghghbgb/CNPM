@@ -36,6 +36,13 @@ class DAOHang{
         }
         return $data;
     }
+    public function getTenTheoMa($maHang){
+        $sql = "SELECT Ten FROM hang where MaHang = '$maHang'";
+        if($result = mysqli_query($this->conn,$sql)){
+            $row=mysqli_fetch_array($result);
+            return $row["Ten"];
+        }
+    }
 
     public function hasHang($MaHang){
         $sql = "SELECT * FROM hang WHERE MaHang='".$MaHang."'";

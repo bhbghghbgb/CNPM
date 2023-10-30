@@ -24,7 +24,7 @@ class DAOSoSize{
     }
 
 
-    public function getList($MaSP) {
+    public function getSoSize($MaSP) {
         $sql = "SELECT * FROM sosize Where MaSP='".$MaSP."'";
         $data=null;
         if($result = mysqli_query($this->conn,$sql)){
@@ -34,6 +34,18 @@ class DAOSoSize{
             mysqli_free_result($result);
         }
         return $data;
+    }
+    
+    public function getSLSoSize($MaSP) {
+        $sql = "SELECT SoLuong FROM sosize WHERE MaSP='" . $MaSP . "'";
+        $result = mysqli_query($this->conn, $sql);
+        $count=0;
+        if ($result) {
+            while($row=mysqli_fetch_array($result)){
+               $count+= $row["SoLuong"];
+        }
+        }
+        return $count;
     }
     public function hasSize($MaSP) {
         $sql = "SELECT COUNT(*) FROM sosize WHERE MaSP='" . $MaSP . "'";
@@ -55,8 +67,15 @@ class DAOSoSize{
         return false;
     }
 
-    public function deleteSozise($MaSP,$Size){
+    public function deleteSosize($MaSP,$Size){
         $sql = "DELETE FROM sosize WHERE MaSP = '".$MaSP."'AND Size ='".$Size."'";
+        if(mysqli_query($this->conn,$sql)){
+            return true;
+        }
+        return false;
+    }
+    public function deleteAllSozsize($MaSP){
+        $sql = "DELETE FROM sosize WHERE MaSP = '".$MaSP."'";
         if(mysqli_query($this->conn,$sql)){
             return true;
         }
