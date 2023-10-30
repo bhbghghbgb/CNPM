@@ -26,7 +26,7 @@
     }
 
 ?>
-<script>
+<script >
     var tilegiam =<?php echo json_decode($Tilegiam)?>
 
     var sosize=<?php echo json_encode($dataSize)?>
@@ -45,8 +45,18 @@
         var tonkho =document.querySelector('#tonkho p span')
         tonkho.innerHTML=count
     }
+
+    function validate(){
+        if(<?php echo isset($_SESSION["MaTaiKhoan"]) ? 'true' : 'false';?>){
+            return true;
+        }else{
+            addmess("Vui lòng đăng nhập!","#434343","white",1500);
+            return false;
+        }
+    }
 </script>
-<form method="POST" action="GioHang.php">
+
+<form method="POST" action="GioHang.php" onsubmit="return validate()">
 <input type="hidden" name="MaSP" value="<?php echo $data[0][0]?>">
 <div id="main_product" class="container">
     <div id = "top_main">

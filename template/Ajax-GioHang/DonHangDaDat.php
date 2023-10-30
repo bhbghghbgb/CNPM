@@ -52,7 +52,7 @@
                 To:to,
                 <?php 
                     if(isset($_SESSION['MaTaiKhoan'])){
-                        echo "MaTK:" . $_SESSION['MaTaiKhoan'];
+                        echo "MaTK:" . json_encode($_SESSION['MaTaiKhoan']);
                     }
                 ?>
             },
