@@ -138,7 +138,7 @@
                                         <th>Size</th>
                                         <th>Số lượng</th>
                                         <th>Giá</th>
-                                        <th>Tổng tiền</th>
+                                        <th>Tổng tiền</th> 
                                         <th>Hành động</th>
                                     </thead>
                                     <tbody>
