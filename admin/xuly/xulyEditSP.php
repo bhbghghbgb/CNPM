@@ -211,15 +211,14 @@ if (isset($_POST['hd'])) {
                 echo "<script>
                 alert('Thêm không Thành Công');
                 </script>";
-                $conn->close();
-                return;
+                header("Location: ../editsp");
             }
             else{
                 echo "<script>
                 alert('Thêm Thành Công');
                 </script>";
-                $conn->close();
-                    return;
+                header("Location: ../editsp.php?hd=s&id=".$id."");
+                
             }
     }
 }

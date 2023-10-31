@@ -67,7 +67,9 @@ if (isset($_GET['search'])) {
                 $soLuong =$daoSoSize->getSLSoSize($row["MaSP"]);
 
             echo "<tr class='productRow'>
-            <td>" . $row["MaSP"] . "</td>
+            <td>" . $row["MaSP"] . "</td>";
+            if($row["AnhChinh"]==" ")$row["AnhChinh"]="giay404.jpg";
+            echo"
             <td> <img style='max-height:60px; max-width:60px' src='../img/products/" . $row["AnhChinh"] . "' alt=''> </td>
             <td>
                 <div class='row'>"
