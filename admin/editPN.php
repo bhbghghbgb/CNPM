@@ -60,7 +60,7 @@
                                         </div>
                                         <button type="button" id="buttonXacNhan" style="width: 100px; height:30px ; text-align:center;background-color:burlywood;"  >  Xác nhận </button>
                                     </label>
-                                </div>
+                                </div> 
                                 <!-- List sản phẩm -->
                                 <div class="row mt-2">
                                     <label class="row">
