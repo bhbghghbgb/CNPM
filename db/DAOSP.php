@@ -1,6 +1,6 @@
 <?php
 class DAOSP{
-    private $host = 'localhost';
+    private $host = 'localhost'; 
     private $username = 'root';
     private $password = '';
     private $database = 'ql_cuahanggiay';
@@ -233,6 +233,18 @@ class DAOSP{
             mysqli_free_result($result);
         }
         return $data;
+    }
+    public function getListSPFollow ($maHang) {
+        $sql = "SELECT * FROM sanpham WHERE TrangThai=1 AND MaHang = '" . $maHang ."'";
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+        }
+        return $data;
+
     }
 }
 ?>
