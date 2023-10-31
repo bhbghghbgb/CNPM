@@ -35,12 +35,13 @@ class DAOSP{
                 $selectGia = 'SELECT MIN(GiaBan)FROM sosize  WHERE MaSP = "' . $row['MaSP'] . '"';
                 $resultGia = mysqli_query($this->conn, $selectGia);
                 $rowGia = mysqli_fetch_assoc($resultGia);
-                $selectSoLuong = 'SELECT SoLuong FROM sosize WHERE MaSP = "' . $row['MaSP'] . '" AND GiaBan=' . $rowGia['MIN(GiaBan)'];
+                $selectSoLuong = 'SELECT SoLuong,Size FROM sosize WHERE MaSP = "' . $row['MaSP'] . '" AND GiaBan=' . $rowGia['MIN(GiaBan)'];
                 $resultSoLuong = mysqli_query($this->conn, $selectSoLuong);
                 if ($resultSoLuong) {
                     $rowSoLuong = mysqli_fetch_array($resultSoLuong);
                     $row['GiaMin'] = $rowGia['MIN(GiaBan)'];
                     $row['SoLuong'] = $rowSoLuong['SoLuong'];
+                    $row["Size"] = $rowSoLuong['Size'];
                     $data[] = $row;
                 }
             }
