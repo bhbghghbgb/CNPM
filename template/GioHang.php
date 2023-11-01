@@ -28,14 +28,17 @@ if (isset($_SESSION['MaTaiKhoan'])) {
 
 
 if (isset($_POST['update-click'])) {
-    foreach ($_POST['quantity'] as $id => $quantity) {
-        foreach ($_SESSION['cart'] as $key => $value) {
-            if ($value['ID'] == $id) {
-                $_SESSION['cart'][$key]['SL'] = $quantity;
+    $total = 0;
+        foreach($_POST['quantity'] as $id => $quantity) {
+            $dgh->updateGiohang($MaTaiKhoan,$id,$quantity);
+            foreach($list as $key => $value) {
+                if ($value['MaSP']==$id) {
+                    $list[$key]["SoLuong"] = $quantity;
+                }
             }
+            $total += $quantity;
         }
-    }
-    echo ' <script>window.location="GioHang.php";</script>';
+        echo "<script>document.getElementById('quantity').textContent=".$total."</script>";
 }
 
 
@@ -65,6 +68,8 @@ if (isset($_POST['add_to_cart'])) {
         }else{
             $list = array($data); 
         }
+        $quantity = $dgh->getSL($MaTaiKhoan);
+        echo "<script>document.getElementById('quantity').textContent=".$quantity."</script>";
     }
 }
 ?>
@@ -89,7 +94,9 @@ if (isset($_POST['add_to_cart'])) {
                             </tr>
                             <?php
                             if ($list != null) {
+                                // echo print_r($list);
                                 foreach ($list as $key => $value) {
+                                    
                             ?>
                                     <tr>
                                         <td><a href="#"><img src="./img/products/<?php echo $value['AnhChinh'] ?>"></a></td>
@@ -107,7 +114,7 @@ if (isset($_POST['add_to_cart'])) {
                                             <?php echo number_format($value['GiaBan'] * $value['SoLuong'], 0, ",", ".") . "đ" ?>
                                         </td>
                                         <td>
-                                            <a href="GioHang.php?action=remove&MaSP=<?php echo $value['MaSP'] ?>">
+                                            <a onclick="return confirm('Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?');" href="GioHang.php?action=remove&MaSP=<?php echo $value['MaSP'] ?>">
                                                 <button type="button" class="delete"><i class="ti-trash trash"></i></button>
                                         </td>
                                     </tr>
