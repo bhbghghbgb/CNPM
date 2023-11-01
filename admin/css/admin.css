@@ -24,6 +24,9 @@ li .border-size-menu+.border-size-menu {
     background-color: #5ba0ee;
     color: #000;
 }
+#main{
+    margin-top:55px;
+}
 
 /* sm */
 
@@ -47,8 +50,9 @@ li .border-size-menu+.border-size-menu {
     .col.col-12.bg-dark.col-lg-10.col-md-10 {
         margin-top: 56px;
     }
-    
-    
+    #menu {
+        width: 100% !important;
+    }
 }
 
 @media (min-width: 768px) {
@@ -58,11 +62,15 @@ li .border-size-menu+.border-size-menu {
     #menu{
         height:100vh;
         top:30px !important;
+        width:100%;
     }
     #main{
         margin-top: 30px;
         margin-left:160px;
         padding:10px;
+    }
+    .container-fluid{
+        margin-top:0;
     }
 
 }
@@ -101,6 +109,7 @@ li .border-size-menu+.border-size-menu {
 }
 #menu{
     left:0;
+    top:0;
     z-index: 5;
     width:160px;
 }
