@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./css/main.css">
 
     <link rel="stylesheet" href="./css/mainProduct.css">
-    <link rel="stylesheet" href="./fonts/fontawesome-free-5.12.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./admin/css/font-awesome_5.15.4_css_all.min.css">
     
     <!-- header -->
     <link rel="stylesheet" href="./css/top_menu.css">

@@ -5,7 +5,6 @@
     if(isset($_GET['MaDon'])){
         $MaDon = $_GET['MaDon'];
         $dbCTDH = new DAOChiTietDonHang();
-        $dbCTDH->connect();
 
         $dbSP = new DAOSP();
         $dbSP->connect();
