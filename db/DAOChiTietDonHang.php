@@ -1,5 +1,6 @@
 <?php
-
+include("DTO/DTOChiTietDonHang.php");
+include("DAO/DataProvider.php");
 class DAOChiTietDonHang
 {
     private $table="chitietdonhang";
@@ -23,20 +24,20 @@ class DAOChiTietDonHang
         }
         return $result;
     }
-    public function Insert($MaSanPham,$MaDonHang,$SoLuong,$GiaBan,$ThanhTien,$Size){
+    public function Insert($MaSanPham,$MaDonHang,$SoLuong,$GiaBan,$TongTien,$Size){
         $data=new DataProvider();
 
         $ColumnValues['MaSP']=$MaSanPham;
         $ColumnValues['MaDonHang']=$MaDonHang;
         $ColumnValues['SoLuong']=$SoLuong;
         $ColumnValues['GiaBan']=$GiaBan;
-        $ColumnValues['ThanhTien']=$ThanhTien;
+        $ColumnValues['TongTien']=$TongTien;
         $ColumnValues['Size']=$Size;
 
         $result=$data->Insert($this->table,$ColumnValues); 
-        
-        if($result)
+        if($result){
             return true;
+        }
         else
             return false;
     }

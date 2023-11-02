@@ -22,6 +22,9 @@ if (isset($_SESSION['MaTaiKhoan'])) {
         foreach ($list as $key => $value) {
             $TiLegiam = $db->getTiLeGiam($value["MaSP"]);
             $list[$key]["GiaBan"] = TinhTienGiam($TiLegiam, $value["GiaBan"]);
+            if($value["SoLuong"] > $value["SLTonKho"]){
+                $list[$key]["SoLuong"] = $value["SLTonKho"];
+            }
         }
     }
 }
@@ -30,12 +33,15 @@ if (isset($_SESSION['MaTaiKhoan'])) {
 if (isset($_POST['update-click'])) {
     $total = 0;
         foreach($_POST['quantity'] as $id => $quantity) {
-            $dgh->updateGiohang($MaTaiKhoan,$id,$quantity);
             foreach($list as $key => $value) {
                 if ($value['MaSP']==$id) {
+                    if($quantity > $value["SLTonKho"]) {
+                        $quantity=$value["SLTonKho"];
+                    }
                     $list[$key]["SoLuong"] = $quantity;
                 }
             }
+            $dgh->updateGiohang($MaTaiKhoan,$id,$quantity);
             $total += $quantity;
         }
         echo "<script>document.getElementById('quantity').textContent=".$total."</script>";
@@ -152,7 +158,7 @@ if (isset($_POST['add_to_cart'])) {
             <?php
             if ($list != null) {
             ?>
-                <a href="./template/XuLyThanhToan.php">THANH TOÁN</a>
+                <a onclick="return confirm('Bạn có muốn thanh toán đơn hàng này?')" href="./template/XuLyThanhToan.php">THANH TOÁN</a>
             <?php
             } else {
 
