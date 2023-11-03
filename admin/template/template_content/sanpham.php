@@ -120,7 +120,7 @@ if (isset($_GET['search'])) {
 
             $.ajax({
                 type: "POST",
-                url: "./template/template_content/ajaxSanPham.php",
+                url: "./template/template_content/ajaxsanpham.php",
                 data: { sort: sortType, order: sortOrder },
                 success: function (response) {
                     $("#result tbody").html(response);
@@ -140,7 +140,7 @@ if (isset($_GET['search'])) {
                 $.ajax({
                     // Thực hiện AJAX request để lấy gợi ý tìm kiếm
                     type: "GET",
-                    url: "./template/template_content/ajaxSanPham.php", // Thay đổi thành địa chỉ URL xử lý gợi ý tìm kiếm trên máy chủ
+                    url: "./template/template_content/ajaxsanpham.php", // Thay đổi thành địa chỉ URL xử lý gợi ý tìm kiếm trên máy chủ
                     data: { search: searchQuery },
                     success: function (response) {
                         // Hiển thị kết quả gợi ý trong khu vực search-suggestions
@@ -150,6 +150,4 @@ if (isset($_GET['search'])) {
             }
         });
     });
-
-
 </script>

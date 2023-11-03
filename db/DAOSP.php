@@ -140,7 +140,7 @@ class DAOSP{
 
     public function getALL()
     {
-        $sql = "SELECT * FROM sanpham ";
+        $sql = "SELECT * FROM sanpham where TrangThai = 1 ";
         $data = null;
         if ($result = mysqli_query($this->conn, $sql)) {
             while ($row = mysqli_fetch_array($result)) {

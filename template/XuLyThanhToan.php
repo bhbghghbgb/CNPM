@@ -3,6 +3,7 @@
 
     include("../db/DAODonHang.php");
     include("../db/DAOChiTietDonHang.php");
+    include("../db/DAO/DataProvider.php");
     include("../db/DAOGioHang.php");
     include("../db/DAOSP.php");
     $db = new DAODonHang();
