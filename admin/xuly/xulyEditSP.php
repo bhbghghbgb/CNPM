@@ -145,6 +145,7 @@ if (isset($_POST['hd'])) {
                         $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayQuantity[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
                         $daoSoSize->insertSozise($_POST['id'],$ArraySize[$i],$ArrayQuantity[$i],$ArrayPrice[$i]);
                         $result = mysqli_query($conn, $sqlsize);
+                        
                     }
 
             }
