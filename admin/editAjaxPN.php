@@ -12,8 +12,8 @@ if (isset ($_POST["maHang"])) {
         $tenSP =   $ListSP[$i]['Ten']; // tên hãng
         echo"<option value='$maSP~$tenSP'>$tenSP</option>";   
     }
-}
-
+} 
+ 
 if (isset ($_POST["maSP"])) {
     $maSP = $_POST["maSP"];
     $daoSoSize = new DAOSoSize();

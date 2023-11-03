@@ -73,14 +73,24 @@
 
     if(isset($_GET['delete'])){
         $MaQuyen = $_GET['MaQuyen'];
-        if($dbPQ->delete($MaQuyen)){
-            if($db->deleteQuyen($MaQuyen)){
-                echo "<script>alert('Xóa quyền thành công');window.location='index.php?id=pq';</script>"; 
+        $daoQuyen = new DAOQuyen();
+        $flag = $daoQuyen->hasQuyenTK($MaQuyen);
+   
+        if ($flag == true) {
+            if($dbPQ->delete($MaQuyen)){
+                if($db->deleteQuyen($MaQuyen)){
+                    echo "<script>alert('Xóa quyền thành công');window.location='index.php?id=pq';</script>"; 
+                }
+
             }
-            else{
-                echo "<script>alert('Có tài khoản đang dùng quyền này');window.location='index.php?id=pq';</script>";
-            }
+        } else {
+            echo "<script>alert('Có tài khoản đang dùng quyền này, không thể xóa');window.location='index.php?id=pq';</script>";
         }
+        
+
+
+
+       
     }
 
 ?>

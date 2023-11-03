@@ -52,7 +52,7 @@ class DAOQuyen{
             return true;
         }
         return false;
-    }
+    } 
 
     public function deleteQuyen($MaQuyen){
         $sql = "DELETE FROM quyen WHERE MaQuyen = '".$MaQuyen."'";
@@ -60,6 +60,22 @@ class DAOQuyen{
             return true;
         }
         return false;
+    }
+
+    public function hasQuyenTK ($MaQuyen) {
+        $sql = "SELECT * FROM taikhoan WHERE Quyen = '".$MaQuyen."'";
+        $data=null;
+        if($result = mysqli_query($this->conn,$sql)){
+            while($row=mysqli_fetch_array($result)){
+                    $data[] = $row;
+            }
+            mysqli_free_result($result);
+        }
+        if ($data ==null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 ?>

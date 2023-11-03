@@ -88,5 +88,14 @@ class DAOSoSize{
         }
         return false;
     }
+
+    public function updateSoLuong ($maSP, $size,$soLuongAdd) {
+        $sql = "UPDATE `sosize` SET `SoLuong` = SoLuong + '".$soLuongAdd."' WHERE `MaSP` = '".$maSP."' AND `Size` = '".$size."'";
+        
+        if(mysqli_query($this->conn,$sql)){
+            return true;
+        }
+        return false;
+    } 
 }
 ?>

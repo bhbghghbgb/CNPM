@@ -45,13 +45,31 @@
      
     
     </table>
-
+    <?php 
+        // include ("../db/DAOPhanQuyen.php");
+        $maTaiKhoan = $_SESSION['MaQuyen'];
+        $daoPhanQuyen = new DaoPhanQuyen();
+        $flag = $daoPhanQuyen->hasDuyetPN($maTaiKhoan);
+        
+        if ($flag ) {
+            $d = 1;
+        } else {
+            $d = 0;
+        }
+        ?>
 </form>
 
 <script>
      $(document).ready(function () { 
+        
+         var flagjs = <?php echo json_decode($d); ?>;
+         if (flagjs == 1) {
+            var getList = 'getList';
+         } else {
+            var getList = 'getListNoHanhDong';
+         }
+
         // hien thi phieu nhap len man hinh
-        var getList = 'getList';
         $.ajax({
             url: '/CNPM/admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
             method: 'POST',
@@ -61,6 +79,12 @@
             }
             });
      });
+
+        
+
+
+
+       
 
      function xemChiTiet(btn) {
         var row = btn.parentNode.parentNode;
