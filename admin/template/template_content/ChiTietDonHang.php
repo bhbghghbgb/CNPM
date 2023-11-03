@@ -11,7 +11,6 @@
     $db_kh = new DAOKhachHang();
     $db_kh->connect();
     $data = $db_kh->LayThongTinKhach($MaTK);
-    
     if(isset($_GET['PQ'])){
         if($data == null){
             header("location:../../../GioHang.php");
@@ -53,9 +52,9 @@
             <th>Tổng tiền</th>
         </tr>
         <?php
+            // include __DIR__.'/../../../db/DTO/DTOChiTietDonHang.php';
             include("../../../db/DAOChiTietDonHang.php");
-            include('../../../db/DTO/DTOChiTietDonHang.php');
-            include('../../../db/DAO/DataProvider.php');
+            // include('../../../db/DAO/DataProvider.php');
             $db = new DAOChiTietDonHang();
             $data = $db->getList($Madon);
             $i=0;

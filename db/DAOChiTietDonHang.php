@@ -6,19 +6,19 @@ class DAOChiTietDonHang
     private $table="chitietdonhang";
     public function getList($madon)    {
         $ctdhs=array();
-        $ctdh=new DTOChiTietDonHang();
         $data=new DataProvider();
 
         $result=$data->Select($this->table,"MaDonHang = $madon"); 
         if($result){
             while($row = mysqli_fetch_array($result)){
+                $ctdh=new DTOChiTietDonHang();
                 $ctdh->setGiaBan($row['GiaBan']);
                 $ctdh->setMaSanPham($row['MaSP']);
                 $ctdh->setMaDonHang($row['MaDonHang']);
                 $ctdh->setTongTien($row['TongTien']);
                 $ctdh->setSoLuong($row['SoLuong']);
                 $ctdh->setSize($row['Size']);
-                $ctdhs[]=$ctdh;
+                $ctdhs[] = $ctdh;
             }
             return $ctdhs;
         }

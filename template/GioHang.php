@@ -32,6 +32,7 @@ if (isset($_SESSION['MaTaiKhoan'])) {
 
 if (isset($_POST['update-click'])) {
     $total = 0;
+    if(isset($_POST['quantity'])){
         foreach($_POST['quantity'] as $id => $quantity) {
             foreach($list as $key => $value) {
                 if ($value['MaSP']==$id) {
@@ -44,6 +45,7 @@ if (isset($_POST['update-click'])) {
             $dgh->updateGiohang($MaTaiKhoan,$id,$quantity);
             $total += $quantity;
         }
+    }
         echo "<script>document.getElementById('quantity').textContent=".$total."</script>";
 }
 
