@@ -49,7 +49,7 @@
                         ?>
                             <li>
                                 <a href="GioHang.php"><i class="ti-shopping-cart gh"></i></a>
-                                <span>
+                                <span id="quantity">
                                     <?php
                                         include __DIR__."/../db/DAOGioHang.php";
                                         $dgh = new DAOGioHang();

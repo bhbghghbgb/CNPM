@@ -22,20 +22,31 @@ if (isset($_SESSION['MaTaiKhoan'])) {
         foreach ($list as $key => $value) {
             $TiLegiam = $db->getTiLeGiam($value["MaSP"]);
             $list[$key]["GiaBan"] = TinhTienGiam($TiLegiam, $value["GiaBan"]);
+            if($value["SoLuong"] > $value["SLTonKho"]){
+                $list[$key]["SoLuong"] = $value["SLTonKho"];
+            }
         }
     }
 }
 
 
 if (isset($_POST['update-click'])) {
-    foreach ($_POST['quantity'] as $id => $quantity) {
-        foreach ($_SESSION['cart'] as $key => $value) {
-            if ($value['ID'] == $id) {
-                $_SESSION['cart'][$key]['SL'] = $quantity;
+    $total = 0;
+    if(isset($_POST['quantity'])){
+        foreach($_POST['quantity'] as $id => $quantity) {
+            foreach($list as $key => $value) {
+                if ($value['MaSP']==$id) {
+                    if($quantity > $value["SLTonKho"]) {
+                        $quantity=$value["SLTonKho"];
+                    }
+                    $list[$key]["SoLuong"] = $quantity;
+                }
             }
+            $dgh->updateGiohang($MaTaiKhoan,$id,$quantity);
+            $total += $quantity;
         }
     }
-    echo ' <script>window.location="GioHang.php";</script>';
+        echo "<script>document.getElementById('quantity').textContent=".$total."</script>";
 }
 
 
@@ -65,6 +76,8 @@ if (isset($_POST['add_to_cart'])) {
         }else{
             $list = array($data); 
         }
+        $quantity = $dgh->getSL($MaTaiKhoan);
+        echo "<script>document.getElementById('quantity').textContent=".$quantity."</script>";
     }
 }
 ?>
@@ -89,7 +102,9 @@ if (isset($_POST['add_to_cart'])) {
                             </tr>
                             <?php
                             if ($list != null) {
+                                // echo print_r($list);
                                 foreach ($list as $key => $value) {
+                                    
                             ?>
                                     <tr>
                                         <td><a href="#"><img src="./img/products/<?php echo $value['AnhChinh'] ?>"></a></td>
@@ -107,7 +122,7 @@ if (isset($_POST['add_to_cart'])) {
                                             <?php echo number_format($value['GiaBan'] * $value['SoLuong'], 0, ",", ".") . "đ" ?>
                                         </td>
                                         <td>
-                                            <a href="GioHang.php?action=remove&MaSP=<?php echo $value['MaSP'] ?>">
+                                            <a onclick="return confirm('Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?');" href="GioHang.php?action=remove&MaSP=<?php echo $value['MaSP'] ?>">
                                                 <button type="button" class="delete"><i class="ti-trash trash"></i></button>
                                         </td>
                                     </tr>
@@ -145,7 +160,7 @@ if (isset($_POST['add_to_cart'])) {
             <?php
             if ($list != null) {
             ?>
-                <a href="./template/XuLyThanhToan.php">THANH TOÁN</a>
+                <a onclick="return confirm('Bạn có muốn thanh toán đơn hàng này?')" href="./template/XuLyThanhToan.php">THANH TOÁN</a>
             <?php
             } else {
 

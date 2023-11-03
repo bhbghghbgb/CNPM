@@ -63,6 +63,13 @@ if($result = mysqli_query($this->conn,$sql)) {
         return false;
     }
 
+    public function deleteAll($MaTK) {
+        $sql = "DELETE FROM giohang WHERE MaTaiKhoan = '$MaTK'";
+        if($result=mysqli_query($this->conn,$sql)) {
+            return true;
+        }
+        return false;
+    }
     public function updateGiohang($MaTK, $MaSP, $SoLuong) {
         $sql = "UPDATE giohang SET SoLuong = '$SoLuong' WHERE MaTaiKhoan = '$MaTK' AND MaSP = '$MaSP'";
         if($result=mysqli_query($this->conn,$sql)){

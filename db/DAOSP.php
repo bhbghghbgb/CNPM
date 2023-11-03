@@ -35,12 +35,13 @@ class DAOSP{
                 $selectGia = 'SELECT MIN(GiaBan)FROM sosize  WHERE MaSP = "' . $row['MaSP'] . '"';
                 $resultGia = mysqli_query($this->conn, $selectGia);
                 $rowGia = mysqli_fetch_assoc($resultGia);
-                $selectSoLuong = 'SELECT SoLuong FROM sosize WHERE MaSP = "' . $row['MaSP'] . '" AND GiaBan=' . $rowGia['MIN(GiaBan)'];
+                $selectSoLuong = 'SELECT SoLuong,Size FROM sosize WHERE MaSP = "' . $row['MaSP'] . '" AND GiaBan=' . $rowGia['MIN(GiaBan)'];
                 $resultSoLuong = mysqli_query($this->conn, $selectSoLuong);
                 if ($resultSoLuong) {
                     $rowSoLuong = mysqli_fetch_array($resultSoLuong);
                     $row['GiaMin'] = $rowGia['MIN(GiaBan)'];
                     $row['SoLuong'] = $rowSoLuong['SoLuong'];
+                    $row["Size"] = $rowSoLuong['Size'];
                     $data[] = $row;
                 }
             }
@@ -222,10 +223,17 @@ class DAOSP{
         }
         return $data[0];
     }
-    public function getList1()
+    // if sort = 1 asc else desc
+    public function getList1($OderBy=null,$sort=null)
     {
         $data = array();
-        $sql="SELECT * FROM sanpham WHERE TrangThai=1";
+        if ($OderBy)
+            if($sort==1)
+                $sql="SELECT * FROM sanpham WHERE TrangThai=1 ORDER BY `sanpham`.`".$OderBy."` ASC";
+            else
+                $sql="SELECT * FROM sanpham WHERE TrangThai=1 ORDER BY `sanpham`.`".$OderBy."` DESC";
+        else
+            $sql="SELECT * FROM sanpham WHERE TrangThai=1";
         if ($result = mysqli_query($this->conn, $sql)) {
             while ($row = mysqli_fetch_array($result)) {
                 $data[] = $row;

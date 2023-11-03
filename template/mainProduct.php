@@ -38,7 +38,7 @@
     function changeSize(price,count){
         var firstChild = document.querySelector('#price :first-child');
         var secondChild = document.querySelector('#price :nth-child(2)');
-        var priceGiam = price-price*tilegiam/100
+        var priceGiam = Math.round(price-price*tilegiam/100);
         firstChild.innerHTML=formatCash(priceGiam);
         secondChild.innerHTML=formatCash(price);
 
@@ -54,6 +54,7 @@
             return false;
         }
     }
+
 </script>
 
 <form method="POST" action="GioHang.php" onsubmit="return validate()">
@@ -91,13 +92,15 @@
             <div id = "size">
                 <ul id = "size_list">
                     <?php
-                    foreach($dataSize as $size)
+                    foreach($dataSize as $size){
+                    $checked = ($size["Size"]==$data[0]["Size"]) ? " checked" : "";
                     echo"<li class = 'size-item' onclick='changeSize(".$size['GiaBan'].",".$size['SoLuong'].")'>
                     <label>
-                        <input type = 'radio' name ='Size' value = '".$size['Size']."' checked>
+                        <input type = 'radio' name ='Size' value = '".$size['Size']."'".$checked.">
                         <span>".$size['Size']."</span>
                     </label>
                 </li>";
+                    }
                     ?>
                 </ul>
             </div>

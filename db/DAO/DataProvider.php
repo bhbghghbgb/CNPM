@@ -6,6 +6,9 @@ class DataProvider
 		include ('ketnoi.php');
 		$connection = mysqli_connect($host,$user,$pass,$db);
 		$result = mysqli_query($connection,$sql);
+		if(str_contains($sql,"Insert")||str_contains($sql,"Delete")) {
+			return $result;
+		}
 		//2. Thiet lap font Unicode
 		if (!(mysqli_query($connection,"set names 'utf8'")))
 			echo "Khong the set utf8";
@@ -26,7 +29,6 @@ class DataProvider
 		}
 	
 		return $result;
-		
 	}
 	public function Close(){
 		if ($this->connection !== null && !$this->connection->isClosed()) {
@@ -56,24 +58,23 @@ class DataProvider
     }
 	public function Insert($TableName, $ColumnValues)  {
         // Khai báo biến StringBuilder để tạo chuỗi Select
-        $query = "Insert Into " + $TableName;
+        $query = "Insert Into " . $TableName;
         // khai báo biến StringBuilder để tạo chuỗi Column Values
+		$valueInsert="";
         $query.=" ( ";
         // Duyệt và đưa thông tin tên cột và giá tri values vào
         foreach ($ColumnValues as $key=>$value) {
-            $query.=$key + ",";
-            $valueInsert.="'" + $value + "',";
+            $query.=$key . ",";
+            $valueInsert.="'" . $value . "',";
         }
         // cắt bỏ dấu , dư thừa
         $query= substr($query, 0, -1);
 
         $valueInsert=substr($valueInsert, 0, -1);
-        
         // đưa giá trị của cột vào câu query
-        $query.=") Values(" + $valueInsert() + ")";
+        $query.=") Values(" . $valueInsert . ")";
         // chèn ký tự ; vào cuối dòng lệnh để cách câu
         $query.=";";
-        echo "<script>console.log('".$query."')</script>";
         // Thực thi câu query và trả kết quả ra ngoài
         return $this->executeQuery($query);
     }
@@ -105,7 +106,7 @@ class DataProvider
 		return $this->executeQuery($query);
 	}
 	public function Delete($TableName, $Condition) {
-        $query = "Delete From " + $TableName;
+        $query = "Delete From " . $TableName;
         // Đưa câu lệnh điều kiện vào query
         if (!empty($Condition) && !$Condition=="") {
 			$query .= " WHERE $Condition ";

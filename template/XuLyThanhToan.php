@@ -3,14 +3,17 @@
 
     include("../db/DAODonHang.php");
     include("../db/DAOChiTietDonHang.php");
-
+    include("../db/DAOGioHang.php");
+    include("../db/DAOSP.php");
     $db = new DAODonHang();
     $db->connect();
 
     $dbCTHD = new DAOChiTietDonHang();
-    $dbCTHD->connect();
-
-
+    // $dbCTHD->connect();
+    $dbGH = new DAOGioHang();
+    $dbGH->connect();
+    $dbSP = new DAOSP();
+    $dbSP->connect();
     if(!isset($_SESSION['MaTaiKhoan'])){
 
         echo '<script>alert("Bạn chưa đăng nhập vào hệ thống nên không thanh toán được"); window.location="../GioHang.php";</script>';
@@ -20,33 +23,35 @@
 
     $NgayDat= date("Y-m-d");
 
+    function TinhTienGiam($TiLegiam, $GiaBan)
+    {
+        return $GiaBan - $GiaBan * $TiLegiam / 100;
+    }
+    
 
     $TongTien = 0 ;
-
-    if(isset($_SESSION['cart'])){
-                            
-        foreach ($_SESSION['cart'] as $key => $value){
-            $TongTien += $value['SL'] * $value['Price'];
-        }
+    $listGH = $dbGH->getListGioHang($MaTK);
+    if($listGH!=null) {
+        foreach ($listGH as $key => $value) {
+            $TiLegiam = $dbSP->getTiLeGiam($value["MaSP"]);
+            $listGH[$key]["GiaBan"] = TinhTienGiam($TiLegiam, $value["GiaBan"]);
+            $TongTien += $value['SoLuong'] * $listGH[$key]["GiaBan"];
+        }  
     }
-
     if($db->Insert($MaTK,$NgayDat,$TongTien)){
         $MaDon = $db->getMaDon();
-        foreach ($_SESSION['cart'] as $key => $value){
-            $ThanhTien = $value['SL'] * $value['Price'];
-            if($dbCTHD->Insert($value['ID'],$MaDon[0],$value['SL'],$value['Price'],$ThanhTien)){
-
+        foreach ($listGH as $key => $value){
+            $ThanhTien = $value['SoLuong'] * $value['GiaBan'];
+            if($dbCTHD->Insert($value['MaSP'],$MaDon[0],$value['SoLuong'],$value['GiaBan'],$ThanhTien,$value['Size'])){
             }
             else{
-                echo "Error" . $value['ID'];
+                echo "Error" . $value['MaSP'];
             }
         }
-        unset($_SESSION['cart']);
-        echo "<script>window.location='../admin/template/template_content/ChiTietDonHang.php?PQ=User&CT=$MaDon[0]&MaTK=$MaTK&Date=$NgayDat&TT=$TongTien';</script>";
-        
+        $dbGH->deleteAll($MaTK);
+        // echo "<script>window.location='../admin/template/template_content/ChiTietDonHang.php?PQ=User&CT=$MaDon[0]&MaTK=$MaTK&Date=$NgayDat&TT=$TongTien';</script>";
     }
     else{
         echo '<script>alert("Tạo đơn thất bại"); window.location="../GioHang.php";</script>';
     }
-    
 ?>
