@@ -102,7 +102,7 @@
                                     </label>
                                 </div>
 
-                                <button type="button" id="buttonThem"  style="margin-left: 323px; margin-top:10px; width:80px; height:30px;background-color:burlywood; margin-bottom:10px;" >Thêm</button>
+                                <button type="button" id="buttonThem"  style="margin-left: 290px; margin-top:10px; width:80px; height:30px;background-color:burlywood; margin-bottom:10px;" >Thêm</button>
                                 
                                                      
                             <div id="ctdh" >
@@ -148,9 +148,11 @@
                                 </table>
                                 </div>
                             </form>
-                        <div id="showData" ></div>
-                        
-                        </div>
+                 
+                            <div style="display: inline-block; margin-left:800px; font-size: 25px; margin-top:20px;" >Tổng : </div>    
+                            <div id = "tong"  style = "display: inline-block;font-size: 25px;background-color: burlywood; margin-top:20px;">0</div>             
+                            <div id="showData" ></div>
+                       </div>
                     </div>
                 </div>
 
@@ -215,19 +217,34 @@
                 alert("Vui lòng điền đầy đủ thông tin !");
             }else {
                 addTableCTPN(maSP, tenSP, soLuong, size, giaNhap)
+                tinhTongTien();
             }
         });
 
         $('#buttonGuiYeuCau').click(function () {
-            var ListCTPNValue = getTableCTPN();
-            $.ajax({
-            url: 'editAjaxPN.php', // Đường dẫn đến file PHP
-            method: 'POST',
-            data: { listCTPN: ListCTPNValue, }, // Dữ liệu muốn gửi đi
-            success: function (response) {
-                $('#showData').html(response);
+            var table = document.getElementById('tableCTPN'); // Thay 'myTable' bằng ID của bảng
+            if (table.rows.length > 1) {
+                var ListCTPNValue = getTableCTPN();
+                var TongTien =   document.getElementById("tong").innerText;
+                var selectHangValue = document.getElementById('selectHang').value;
+                $.ajax({
+                url: 'editAjaxPN.php', // Đường dẫn đến file PHP
+                method: 'POST',
+                data: { listCTPN: ListCTPNValue,
+                        tongTien : TongTien,
+                        maHangValue:  selectHangValue }, // Dữ liệu muốn gửi đi
+                success: function (response) {
+                    // $('#showData').html(response);
+                    alert("Gửi yêu cầu thành công mã phiếu nhập là : " + response);
+                    window.location.href = './index.php?id=pn';
+                }
+                });
+            } else {
+                alert('Vui lòng nhập sản phẩm cần nhập !');
             }
-            });
+           
+           
+            
         });
 
         function getTableCTPN () {
@@ -249,6 +266,16 @@
            return data;
         }
        
+        function tinhTongTien () {
+            var tongTien = 0;
+            var table = document.getElementById("tableCTPN");
+            for (var i = 1; i < table.rows.length; i++) {
+                var row = table.rows[i];
+                tongTien +=  parseInt( row.cells[5].innerHTML)
+               
+            }
+            document.getElementById("tong").innerHTML  = tongTien;
+        }
 
         function addTableCTPN(maSP, tenSP, soLuong, size, giaNhap) {
             var flag =true;

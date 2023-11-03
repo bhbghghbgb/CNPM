@@ -28,7 +28,7 @@ class DAOChiTietPhieuNhap
 
     public function getList($maphieu)
     {
-        $sql = 'SELECT MaSP,SoLuong,Gia,TongGia FROM chitietphieunhap WHERE Trangthai=1 AND MaPhieu ='.$maphieu;
+        $sql = 'SELECT * FROM chitietphieunhap WHERE  MaPhieu ='.$maphieu;
         $data = null;
         if($result = mysqli_query($this->conn,$sql)){
             while($row = mysqli_fetch_array($result)){
@@ -40,6 +40,22 @@ class DAOChiTietPhieuNhap
         else
             return false;
     }
+
+    public function getListCTPN($maphieu)
+    {
+        $sql = 'SELECT * FROM chitietphieunhap, sanpham WHERE  chitietphieunhap.MaSP = sanpham.MaSP AND MaPhieu ='.$maphieu;
+        $data = null;
+        if($result = mysqli_query($this->conn,$sql)){
+            while($row = mysqli_fetch_array($result)){
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+            return $data;
+        }
+        else
+            return false;
+    }
+
 
     public function getTenHang($MaH){
         $sql = "SELECT Ten FROM hang WHERE MaHang = '".$MaH."'";
@@ -71,5 +87,22 @@ class DAOChiTietPhieuNhap
 
     }
 
+    public function addCTPN ($MaSP, $MaPhieu, $SoLuong, $GiaNhap, $TongGia, $TrangThai, $Size){
+
+        $sql = "INSERT INTO `chitietphieunhap` ( `MaSP`, `MaPhieu`, `SoLuong`, `GiaNhap`, `TongGia`, `TrangThai`, `Size`) 
+        VALUES ('" . $MaSP . "', '" . $MaPhieu . "', '" . $SoLuong . "', '" . $GiaNhap . "', '" . $TongGia . "', '". $TrangThai . "', '" . $Size ."');";
+        if (mysqli_query($this->conn, $sql)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function deleteCTPN ($maPN) {
+        $sql = "DELETE FROM chitietphieuNhap WHERE MaPhieu = '".$maPN."'";
+        if (mysqli_query($this->conn, $sql)) {
+            return true;
+        }
+        return false;
+    }
 }
 ?>

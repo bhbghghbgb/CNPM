@@ -28,108 +28,82 @@
                     <div id="content" class="row" style="background-color:#f0f5f8;height:calc(100% - 72px)">
                         <div class="main mx-auto ">
                             <link rel="stylesheet" href="./css/ChiTietDonHang.css">
-
                             <div class="row justify-content-center display-4">Chi tiết phiếu nhập</div>
-
-                            <?php
-                            include("../db/DAOChiTietPhieuNhap.php");
-                            $db = new DAOChiTietPhieuNhap();
-                            $db->connect();
-                            include('../db/dbconnect.php');
                             
-                            
-                            $Madon = $_GET['CT'];
-                            $sql = "SELECT * FROM phieunhaphang where TrangThai=1 AND MaPhieu=$Madon" ;
-                            $result = $conn->query($sql);
-                            if ($result->num_rows > 0) {
-                                if ($row = $result->fetch_assoc()) {
-                                    $NgayTao = $row['NgayTao'];
-                                    $MaH = $row['MaHang'];
-                                    $MaTK = $row['MaTaiKhoan'];
-                                } 
-                            }
-                            $TenH = $db->getTenHang($MaH);
-                            $TenNV = $db->getTenNhanVien($MaTK);
+                            <?php 
+                                $maPN = $_GET['MaPN'];
+                                include('../db/DAOPhieuNhap.php');
+                                $daoPhieuNhap = new DAOPhieuNhap();
+                                $phieuNhap = $daoPhieuNhap->getPN($maPN);
+                                ?>
 
-                            ?>
-
-                            <div id="ctdh" >
+                                <div id="ctdh" >
+                                <a href="./index.php?id=pn" type="button"  style="width: 80px; height:30px; background-color:burlywood; text-align:center; margin-bottom:0px; border:2px solid black; color:black;" >Thoát</a>
                                 <h2>Chi Tiết Phiếu Nhập</h2>
                                 <div class="row mx-5">
                                     <div class="col col-6">
                                         <p>Mã phiếu:
-                                            <?php echo $Madon ?>
+                                           <?php echo  $phieuNhap[0]['MaPhieu'];  ?>
                                         </p>
                                         <p>Ngày tạo:
-                                            <?php echo $NgayTao ?>
+                                            <?php echo  $phieuNhap[0]['NgayTaoPN'];  ?>
                                         </p>
                                         <p>Mã hãng:
-                                            <?php echo $MaH ?>
+                                             <?php echo  $phieuNhap[0]['MaHang'];  ?>
                                         </p>
                                         <p>Tên hãng:
-                                            <?php echo $TenH[0] ?>
+                                            <?php echo  $phieuNhap[0]['Ten'];  ?>
                                         </p>
                                     </div>
                                     <div class="col col-6">
                                         <p>Mã tài khoản:
-                                            <?php echo $MaTK ?>
+                                            <?php echo  $phieuNhap[0]['MaTaiKhoan'];  ?>
                                         </p>
                                         <p>Tên nhân viên:
-                                            <?php echo $TenNV[0] ?>
+                                            <?php echo  $phieuNhap[0]['TenNhanVien'];  ?>
                                         </p>
                                         <!-- Hien thi theo tien viet nam -->
+                                        <p>Tổng đơn:
+                                            <?php echo  $phieuNhap[0]['TongDon'];  ?>
+                                        </p>
 
-                                    </div>
-                                    <div class="buttonadd">
-                                        <a href="editCTPN.php?CT=<?php echo$Madon?>&Hang=<?php echo $MaH?>">
-                                            <div class="col text-black">
-                                                Thêm Chi tiết
-                                            </div>
-                                        </a>
                                     </div>
                                 </div>
 
 
 
                                 <table id="ds_donhang">
-                                    <tr>
+                                    <thead>
                                         <th>Mã sản phẩm</th>
-                                        <th>Số lượng</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Size</th>
+                                        <th>Số Lượng</th>
                                         <th>Giá</th>
                                         <th>Tổng tiền</th>
-                                        <th style="width:15%">Xóa</th>
-                                    </tr>
-                                    <?php
-
-                                    $data = $db->getList($Madon);
-                                    if ($data == null) {
-                                        return;
-                                    }
-                                    $i = 0;
-                                    while ($i < count($data)) {
-                                        ?>
-                                        <tr>
-                                            <td>
-                                                <?php echo $data[$i][0] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $data[$i][1] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo number_format($data[$i][2], 0, ',', '.') . "đ" ?>
-                                            </td>
-                                            <td>
-                                                <?php echo number_format($data[$i][3], 0, ',', '.') . "đ" ?>
-                                            </td>
-                                            <td> <a href="xuly/xulyXoaCTPN.php?idsp=<?php echo $data[$i][0] ?>&idpn=<?php echo $Madon?>">
-                                                    <div>Xóa</div>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         <?php
-                                        $i++;
-                                    }
-                                    ?>
+                                             $maPN = $_GET['MaPN'];
+                                             include('../db/DAOChiTietPhieuNhap.php');
+                                             $daoCTPN = new DAOChiTietPhieuNhap();
+                                             $ListCTPN = $daoCTPN->getListCTPN($maPN);
+                                             if ($ListCTPN!= null){
+                                                foreach ($ListCTPN as $row) {
+                                                    $MaSP =  $row['MaSP'];
+                                                    $TenSP = $row['Ten'];
+                                                    $Size = $row['Size'];
+                                                    $SoLuong = $row['SoLuong'];
+                                                    $Gia = $row['GiaNhap'];
+                                                    $TongTien = $row['TongGia'];
+                                                    
+                                                    echo "<tr><td>$MaSP</td><td>$TenSP</td><td>$Size</td><td>$SoLuong</td><td>$Gia</td><td>$TongTien</td>";
+                                                }
+                                            }
+                                        
+                                        
+                                        ?>
+                                    </tbody>
+                                </table>   
                             </div>
                         </div>
                     </div>

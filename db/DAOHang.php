@@ -15,7 +15,7 @@ class DAOHang{
         if(!$this->conn){
             $this->conn=mysqli_connect($this->host,$this->username,$this->password,$this->database);
         }
-    }
+    } 
 
     public function disConnect() {
         if($this->conn){
