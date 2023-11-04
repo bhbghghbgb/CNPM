@@ -101,7 +101,6 @@ function validateUploadFile($file, $uploadPath)
     return $file;
 }
 
-include '../../db/dbconnect.php';
 include '../../db/DAOSP.php';
 include '../../db/DAOSoSize.php';
 
@@ -118,6 +117,7 @@ if (isset($_POST['hd'])) {
     if(!isset($_POST['xoa'])){
         $anhchinh = $_POST['anhchinhcu'];
     }
+    // Nếu ảnh chính có nhưng khác ảnh cũ thì thực hiện hành động lưu ảnh đó vào src
     if (isset($_FILES['anhchinh']) && !empty($_FILES['anhchinh']['name'][0])) {
         $uploadedFiles = $_FILES['anhchinh'];
         $result = uploadFiles($uploadedFiles);
@@ -142,17 +142,15 @@ if (isset($_POST['hd'])) {
                     if($daoSoSize->deleteAllSozsize($_POST['id']))
                     //check số lượng
                     for ($i = 0; $i < count($ArraySize); $i++) {
-                        $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayQuantity[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
                         $daoSoSize->insertSozise($_POST['id'],$ArraySize[$i],$ArrayQuantity[$i],$ArrayPrice[$i]);
-                        $result = mysqli_query($conn, $sqlsize);
-                        
+
                     }
 
             }
         }
             if($result){
                 $_SESSION["message"] = "Sửa thành công";
-                header("Location: ../editsp.php?hd=s&id=".$_POST['id']."");
+                header("Location: ../index.php?id=sp");
                 exit;
             }
             else{
@@ -162,17 +160,7 @@ if (isset($_POST['hd'])) {
             }
         case "Thêm":
             // Tao listid da co san
-            $listId = [];
-            $sql = "SELECT MaSP FROM sanpham";
-            $result = $conn->query($sql);
-            // Kiểm tra kết quả trả về
-            if ($result->num_rows > 0) {
-                $i = 0;
-                while ($row = $result->fetch_assoc()) {
-                    $listId[$i] = $row['MaSP'];
-                    $i++;
-                }
-            }
+            $listId = $daoSP->getAllID();
             // tìm id thích hợp
             for ($i = 1; $i < 1000; $i++) {
                 $found = false;
@@ -212,7 +200,7 @@ if (isset($_POST['hd'])) {
                 echo "<script>
                 alert('Thêm không Thành Công');
                 </script>";
-                header("Location: ../editsp");
+                header("Location: ../index.php?id=sp");
             }
             else{
                 echo "<script>

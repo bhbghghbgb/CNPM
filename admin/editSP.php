@@ -326,8 +326,6 @@ $listKM = $daoKM->getList();
     <script>
         showmenu();
         choosemenu();
-    </script>
-    <script>
         CKEDITOR.replace('textarea');
     </script>
 </body>

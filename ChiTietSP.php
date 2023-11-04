@@ -32,27 +32,27 @@
 
 
 </head>
+
 <body>
     <div id="wrapper">
-        
-    <div id="message">
-            <div id="hihi">
 
-            </div>
+        <div id="message">
+            <div id="hihi"></div>
         </div>
-        <?php include('account/login.php');?>
-        <?php include('account/register.php');?>
-        <?php include('template/header.php');?>
-        <?php include('template/top_menu.php');?>
+        <?php include('account/login.php'); ?>
+        <?php include('account/register.php'); ?>
+        <?php include('template/header.php'); ?>
+        <?php include('template/top_menu.php'); ?>
 
         <div id="main">
-            <?php include('template/mainProduct.php');?>
+            <?php include('template/mainProduct.php'); ?>
         </div>
 
         <div id="footer">
-            <?php include('template/footer.php');?>
+            <?php include('template/footer.php'); ?>
         </div>
     </div>
-    
+
 </body>
+
 </html>
