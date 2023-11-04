@@ -58,7 +58,7 @@ class DAOPhieuNhap
 
     public function getListFollow()
     {
-        $sql = 'SELECT *, phieunhaphang.TrangThai AS "TrangThaiPN",  phieunhaphang.NgayTao AS "NgayTaoPN" FROM phieunhaphang, hang, nhanvien WHERE phieunhaphang.MaHang = hang.MaHang AND phieunhaphang.MaTaiKhoan = nhanvien.MaTaiKhoan ORDER BY phieunhaphang.MaPhieu; ;';
+        $sql = 'SELECT *, phieunhaphang.TrangThai AS "TrangThaiPN",  phieunhaphang.NgayTao AS "NgayTaoPN" FROM phieunhaphang, hang, nhanvien WHERE phieunhaphang.MaHang = hang.MaHang AND phieunhaphang.MaTaiKhoan = nhanvien.MaTaiKhoan ORDER BY phieunhaphang.MaPhieu; ';
         $data = null;
         if($result = mysqli_query($this->conn,$sql)){
             while($row = mysqli_fetch_array($result)){
@@ -111,6 +111,23 @@ class DAOPhieuNhap
         return false;
     }
 
+
+    public function LocTheoKhoangTG ($DateStart, $DateEnd){
+        $sql = 'SELECT *, phieunhaphang.TrangThai AS "TrangThaiPN",  phieunhaphang.NgayTao AS "NgayTaoPN" FROM phieunhaphang, hang, nhanvien WHERE phieunhaphang.MaHang = hang.MaHang AND phieunhaphang.MaTaiKhoan = nhanvien.MaTaiKhoan AND phieunhaphang.NgayTao >= "'.$DateStart.'" AND phieunhaphang.NgayTao <= "'.$DateEnd.'" ORDER BY phieunhaphang.MaPhieu; ';
+        $data = null;
+        if($result = mysqli_query($this->conn,$sql)){
+            while($row = mysqli_fetch_array($result)){
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+            return $data;
+        }
+        else
+            return false;
+    }
+
+    // SELECT * FROM phieunhaphang WHERE NgayTao >= '2023-11-08' AND NgayTao <= '2023-11-10';
+    // SELECT *, phieunhaphang.TrangThai AS "TrangThaiPN",  phieunhaphang.NgayTao AS "NgayTaoPN" FROM phieunhaphang, hang, nhanvien WHERE phieunhaphang.MaHang = hang.MaHang AND phieunhaphang.MaTaiKhoan = nhanvien.MaTaiKhoan AND phieunhaphang.NgayTao >= "'.$DateStart.'" AND phieunhaphang.NgayTao <= "'.$DateEnd.'" ORDER BY phieunhaphang.MaPhieu; 
 }
 
 ?>
