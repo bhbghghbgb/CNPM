@@ -11,6 +11,7 @@ class DTOChiTietDonHang
     public function getMaSanPham(){
         return $this->maSanPham;
     }
+    
     public function getMaDonHang(){
         return $this->maDonHang;
     }

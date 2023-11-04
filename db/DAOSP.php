@@ -173,9 +173,10 @@ class DAOSP
         return $data;
     }
 
-    public function TruSLBanHang($MaSP, $SoLuongMoi)
+    public function TruSLBanHang($MaSP,$Size, $SoLuongMoi)
     {
-        $sql = 'UPDATE sanpham SET SLTonKho = ' . $SoLuongMoi . ' WHERE MaSP = ' . $MaSP;
+        $sql = "UPDATE sosize SET SoLuong = $SoLuongMoi WHERE MaSP = $MaSP AND Size = $Size";
+        echo $sql;
         if ($result = mysqli_query($this->conn, $sql)) {
             return true;
         } else
