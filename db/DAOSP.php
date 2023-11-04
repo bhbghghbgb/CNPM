@@ -1,13 +1,15 @@
 <?php
-class DAOSP{
-    private $host = 'localhost'; 
+class DAOSP
+{
+    private $host = 'localhost';
     private $username = 'root';
     private $password = '';
     private $database = 'ql_cuahanggiay';
 
     private $conn;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->connect();
     }
 
@@ -150,6 +152,17 @@ class DAOSP{
         }
         return $data;
     }
+    public function getAllID()
+    {
+        $sql = "SELECT MaSP FROM sanpham ";
+        $data = array();
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
 
     public function TruSLBanHang($MaSP, $SoLuongMoi)
     {
@@ -174,8 +187,8 @@ class DAOSP{
     }
     public function insertSP($MaSP, $Ten, $MaKhuyenMai, $AnhChinh, $MaDM, $MoTa, $MaHang)
     {
-        $sql = "INSERT INTO `sanpham` (`MaSP`, `Ten`, `MaKhuyenMai`, `AnhChinh`, `MaDM`, `MoTa`, `MaHang`) 
-        VALUES ('" . $MaSP . "', '" . $Ten . "', '" . $MaKhuyenMai . "', '" . $AnhChinh . "', '" . $MaDM . "', '" . $MoTa . "', '" . $MaHang . "');";
+        $sql = "INSERT INTO `sanpham` (`MaSP`, `Ten`, `MaKhuyenMai`, `AnhChinh`, `MaDM`, `MoTa`, `MaHang`,`TrangThai`) 
+        VALUES ('" . $MaSP . "', '" . $Ten . "', '" . $MaKhuyenMai . "', '". $AnhChinh . "', '" . $MaDM . "', '" . $MoTa . "', '" . $MaHang . "','1');";
         if (mysqli_query($this->conn, $sql)) {
             return true;
         }
@@ -224,16 +237,16 @@ class DAOSP{
         return $data[0];
     }
     // if sort = 1 asc else desc
-    public function getList1($OderBy=null,$sort=null)
+    public function getList1($OderBy = null, $sort = null)
     {
         $data = array();
         if ($OderBy)
-            if($sort==1)
-                $sql="SELECT * FROM sanpham WHERE TrangThai=1 ORDER BY `sanpham`.`".$OderBy."` ASC";
+            if ($sort == 1)
+                $sql = "SELECT * FROM sanpham WHERE TrangThai=1 ORDER BY `sanpham`.`" . $OderBy . "` ASC";
             else
-                $sql="SELECT * FROM sanpham WHERE TrangThai=1 ORDER BY `sanpham`.`".$OderBy."` DESC";
+                $sql = "SELECT * FROM sanpham WHERE TrangThai=1 ORDER BY `sanpham`.`" . $OderBy . "` DESC";
         else
-            $sql="SELECT * FROM sanpham WHERE TrangThai=1";
+            $sql = "SELECT * FROM sanpham WHERE TrangThai=1";
         if ($result = mysqli_query($this->conn, $sql)) {
             while ($row = mysqli_fetch_array($result)) {
                 $data[] = $row;
@@ -242,8 +255,9 @@ class DAOSP{
         }
         return $data;
     }
-    public function getListSPFollow ($maHang) {
-        $sql = "SELECT * FROM sanpham WHERE TrangThai=1 AND MaHang = '" . $maHang ."'";
+    public function getListSPFollow($maHang)
+    {
+        $sql = "SELECT * FROM sanpham WHERE TrangThai=1 AND MaHang = '" . $maHang . "'";
         $data = null;
         if ($result = mysqli_query($this->conn, $sql)) {
             while ($row = mysqli_fetch_array($result)) {
