@@ -58,7 +58,7 @@ class DAOPhieuNhap
 
     public function getListFollow()
     {
-        $sql = 'SELECT *, phieunhaphang.TrangThai AS "TrangThaiPN",  phieunhaphang.NgayTao AS "NgayTaoPN" FROM phieunhaphang, hang, nhanvien WHERE phieunhaphang.MaHang = hang.MaHang AND phieunhaphang.MaTaiKhoan = nhanvien.MaTaiKhoan;';
+        $sql = 'SELECT *, phieunhaphang.TrangThai AS "TrangThaiPN",  phieunhaphang.NgayTao AS "NgayTaoPN" FROM phieunhaphang, hang, nhanvien WHERE phieunhaphang.MaHang = hang.MaHang AND phieunhaphang.MaTaiKhoan = nhanvien.MaTaiKhoan ORDER BY phieunhaphang.MaPhieu; ;';
         $data = null;
         if($result = mysqli_query($this->conn,$sql)){
             while($row = mysqli_fetch_array($result)){

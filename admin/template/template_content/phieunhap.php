@@ -1,17 +1,37 @@
 <form action="" method="" style="padding: 10px;">
     <h2 id="title_dh"  >Danh sách phiếu nhập</h2>
 
-    <h5 style="font-weight: bold;" >Lọc đơn hàng theo ngày</h5>
-    <label >Từ :</label>
-    <input type="date" id="from" >
-    <label >Đến :</label>
-    <input type="date" id="to">
+    <div >
+        <h5 style="font-weight: bold; display:inline-block"  >Lọc đơn hàng theo : </h5> 
+        <input type="radio" name="options" value="date" id="radioDate"  style="margin-left: 15px;"checked > <label style="font-weight: bold; font-size:18px;" for="radioDate">Ngày</label>
+        <input type="radio" name="options" value="fromto" id="radioFromTo" > <label style="font-weight: bold; font-size:18px;" for="radioFromTo">Khoảng thời gian</label>
+    </div>
 
-    <button type = "button" style="width: 100px; height:42px;background-color:burlywood;" >Lọc</button>
-    <button type = "button"  style="width: 100px; height:42px;background-color:burlywood; margin-left:20px;">Refresh</button>
+    
+    
+        <div id="dateDiv" style=" display:inline-block; " >
+            <label>Ngày:</label>
+            <input type="date" id="date" >
+            <button type = "button" id="buttonLocNgay" style="width: 100px; height:42px;background-color:burlywood; display:inline-block;" >Lọc</button>
+            <button type = "button" class="buttonReset" style="width: 100px; height:42px;background-color:burlywood; margin-left:20px;display:inline-block;">Refresh</button>
+
+        </div>
+
+        <div id="fromToDiv" style=" display:inline-block;" >
+            <label>Từ:</label>
+            <input type="date" id="from">
+            <label>Đến:</label>
+            <input type="date" id="to">
+            <button type = "button" id="buttonLocKhoangTG" style="width: 100px; height:42px;background-color:burlywood; display:inline-block;" >Lọc</button>
+            <button type = "button" class="buttonReset" style="width: 100px; height:42px;background-color:burlywood; margin-left:20px;display:inline-block;">Refresh</button>
+
+        </div>
+    
+        
+    
     
     <div>
-        <a href="editpn.php?"  type="button"  style="width: 150px; height:42px; background-color:burlywood; text-align:center; margin-bottom:20px; border:2px solid black; color:black; margin-top:20px;  display: flex; justify-content: center; align-items: center; line-height: 42px;"  >Thêm Phiếu</a>
+        <a href="editpn.php?"  type="button"  style="width: 150px; height:42px; background-color:burlywood; text-align:center;display:inline-block; margin-bottom:20px; border:2px solid black; color:black; margin-top:20px;  display: flex; justify-content: center; align-items: center; line-height: 42px;"  >Thêm Phiếu</a>    
     </div>
 
 
@@ -76,17 +96,83 @@
             data: { flag: getList, }, // Dữ liệu muốn gửi đi
             success: function (response) {
                 $('#ds_donhang').html(response);
+              
             }
             });
-     });
 
+            
+            
+     
+            
+            $('#buttonLocKhoangTG').click(function () {
+                var fromDateValue = document.getElementById("from").value;
+                var toDateValue =document.getElementById("to").value;
+                console.log(fromDateValue);
+                console.log(toDateValue);
+
+                // var fromDate = new Date(fromDateValue);
+                // var toDate = new Date(toDateValue);
+                // if (fromDate < toDate) {
+                //     console.log("Đúng");
+                // }else {
+                //     console.log("sai");
+                // }
+                
         
+            // $.ajax({
+            // url: 'editAjaxPN.php', // Đường dẫn đến file PHP
+            // method: 'POST',
+            // data: { listCTPN: ListCTPNValue,
+            //         tongTien : TongTien,
+            //         maHangValue:  selectHangValue }, // Dữ liệu muốn gửi đi
+            // success: function (response) {
+            //     $('#showData').html(response);
+            
+            //     }
+            // });
+        });
+        
+        $('#buttonLocNgay').click(function () {
+
+               var dateValue = document.getElementById("date").value;
+               console.log(dateValue);
+        });
+
+        $('.buttonReset').click(function () {
+               console.log("Đã bấm reset")
+        });
 
 
+     
+ });
 
-       
 
-     function xemChiTiet(btn) {
+    // khai báo nhấn chọn
+    var radioDate = document.getElementById("radioDate");
+    var radioFromTo = document.getElementById("radioFromTo");
+    // khai báo thẻ div
+    var dateDiv = document.getElementById("dateDiv");
+    var fromToDiv = document.getElementById("fromToDiv");
+    // khóa chọn khoảng thời gian
+    dateDiv.style.display = "block";
+    fromToDiv.style.display = "none";
+    // khi nhấn chọn ngày
+    radioDate.addEventListener("change", function() {
+    if (radioDate.checked) {
+        dateDiv.style.display = "block";
+        fromToDiv.style.display = "none";
+    }
+    });
+
+    // khi nhấn chọn khoảng thời gian
+    radioFromTo.addEventListener("change", function() {
+    if (radioFromTo.checked) {
+        dateDiv.style.display = "none";
+        fromToDiv.style.display = "block";
+    }
+    });
+
+ function xemChiTiet(btn) {
         var row = btn.parentNode.parentNode;
         var maPN = row.children[0].textContent;
         // console.log( maPN);
@@ -138,6 +224,7 @@
             }
             });
     }
+     
 
 
 
