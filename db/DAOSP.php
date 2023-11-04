@@ -28,7 +28,7 @@ class DAOSP
     }
 
 
-    public function getList($MaSP)
+    public function getSP($MaSP)
     {
         $sql = "SELECT * FROM sanpham WHERE TrangThai=1 AND MaSP = " . $MaSP;
         $data = array();
@@ -158,7 +158,7 @@ class DAOSP
         $data = array();
         if ($result = mysqli_query($this->conn, $sql)) {
             while ($row = mysqli_fetch_array($result)) {
-                $data[] = $row;
+                $data[] = $row['MaSP'];
             }
         }
         return $data;
@@ -187,6 +187,7 @@ class DAOSP
     }
     public function insertSP($MaSP, $Ten, $MaKhuyenMai, $AnhChinh, $MaDM, $MoTa, $MaHang)
     {
+        if($AnhChinh == "") $AnhChinh="giay404.jpg";
         $sql = "INSERT INTO `sanpham` (`MaSP`, `Ten`, `MaKhuyenMai`, `AnhChinh`, `MaDM`, `MoTa`, `MaHang`,`TrangThai`) 
         VALUES ('" . $MaSP . "', '" . $Ten . "', '" . $MaKhuyenMai . "', '". $AnhChinh . "', '" . $MaDM . "', '" . $MoTa . "', '" . $MaHang . "','1');";
         if (mysqli_query($this->conn, $sql)) {

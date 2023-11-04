@@ -159,11 +159,11 @@ if (isset($_POST['hd'])) {
                 exit;
             }
         case "Thêm":
+            include("../../db/dbconnect.php");
             // Tao listid da co san
             $listId = $daoSP->getAllID();
             // tìm id thích hợp
             for ($i = 1; $i < 1000; $i++) {
-                $found = false;
                 if (!in_array($i, $listId)) {
                     $id = $i;
                     break;
@@ -190,9 +190,7 @@ if (isset($_POST['hd'])) {
                     if($daoSoSize->deleteAllSozsize($_POST['id']))
                     //check số lượng
                     for ($i = 0; $i < count($ArraySize); $i++) {
-                        $sqlsize = "INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES ( '". $_POST['id'] ."', '".$ArrayQuantity[$i]."', '".$ArraySize[$i]."', '".$ArrayPrice[$i]."')";
                         $daoSoSize->insertSozise($_POST['id'],$ArraySize[$i],$ArrayQuantity[$i],$ArrayPrice[$i]);
-                        $result = mysqli_query($conn, $sqlsize);
                     }
                 }
             }
