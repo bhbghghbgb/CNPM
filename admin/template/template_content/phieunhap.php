@@ -100,47 +100,86 @@
             }
             });
 
-            
-            
-     
-            
+            // button lọc theo khoảng thời gian
             $('#buttonLocKhoangTG').click(function () {
+                var flagLoc = 0;
                 var fromDateValue = document.getElementById("from").value;
                 var toDateValue =document.getElementById("to").value;
-                console.log(fromDateValue);
-                console.log(toDateValue);
-
-                // var fromDate = new Date(fromDateValue);
-                // var toDate = new Date(toDateValue);
-                // if (fromDate < toDate) {
-                //     console.log("Đúng");
-                // }else {
-                //     console.log("sai");
-                // }
                 
-        
-            // $.ajax({
-            // url: 'editAjaxPN.php', // Đường dẫn đến file PHP
-            // method: 'POST',
-            // data: { listCTPN: ListCTPNValue,
-            //         tongTien : TongTien,
-            //         maHangValue:  selectHangValue }, // Dữ liệu muốn gửi đi
-            // success: function (response) {
-            //     $('#showData').html(response);
-            
-            //     }
-            // });
-        });
-        
-        $('#buttonLocNgay').click(function () {
+                
+                var fromDate = new Date(fromDateValue);
+                var toDate = new Date(toDateValue);
+              
+                if (fromDateValue != "" && toDateValue != ""){
+                    if (fromDate < toDate) { // ngay dung
+                        console.log("Đúng");
+                        flagLoc = 1;
+                    }else if ( fromDate > toDate){ // ngay sai
+                        console.log("sai");
+                        alert ("Ngày bắt đầu không được lớn hơn ngày kết thúc !");
+                        flagLoc =2;
+                    } else {
+                        console.log("bằng nhau"); // ngay bang nhau
+                        flagLoc = 3;
+                    }
+                } else {
+                    alert ("Vui lòng chọn đầy đủ thời gian để lọc !");
+                }
 
-               var dateValue = document.getElementById("date").value;
-               console.log(dateValue);
-        });
+                if (flagLoc == 1 || flagLoc == 3){
+                    console.log (getList);
+                    console.log(fromDateValue);
+                    console.log(toDateValue);
+                    $.ajax({
+                    url: '/CNPM/admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
+                    method: 'POST',
+                    data: { dateStart: fromDateValue,
+                            dateEnd : toDateValue,
+                            flagValueLoc : getList, 
+                            }, // Dữ liệu muốn gửi đi
+                    success: function (response) {
+                        $('#ds_donhang').html(response);
+                        console.log(response);
+                    
+                        }
+                    });
+                }
+            });
+        
+            $('#buttonLocNgay').click(function () {
+                var dateValue = document.getElementById("date").value;
+                console.log(dateValue);
+                if (dateValue != "") {
+                    $.ajax({
+                    url: '/CNPM/admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
+                    method: 'POST',
+                    data: { dateValueLoc: dateValue,
+                            flagValueLocNgay : getList, 
+                            }, // Dữ liệu muốn gửi đi
+                    success: function (response) {
+                        $('#ds_donhang').html(response);
+                        console.log(response);
+                    
+                        }
+                    });
 
-        $('.buttonReset').click(function () {
-               console.log("Đã bấm reset")
-        });
+                } else {
+                    alert ("Vui lòng chọn thời gian để lọc");
+                }
+            });
+
+            $('.buttonReset').click(function () {
+                console.log("Đã bấm reset")
+                $.ajax({
+                    url: '/CNPM/admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
+                    method: 'POST',
+                    data: { flag: getList, }, // Dữ liệu muốn gửi đi
+                    success: function (response) {
+                        $('#ds_donhang').html(response);
+                    
+                    }
+                });
+            });
 
 
      
