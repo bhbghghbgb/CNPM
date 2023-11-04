@@ -188,7 +188,7 @@ $listKM = $daoKM->getList();
                                         var elementExists = false;
 
                                         for (var i = 0; i < arraysize.length; i++) {
-                                            if (arraysize[i].price === valuePrice && arraysize[i].size === valueSize) {
+                                            if (arraysize[i].size === valueSize) {
                                                 elementExists=true;
                                                 alert("Size đã được thêm");
                                                 break;
