@@ -41,16 +41,18 @@
     }
     if($db->Insert($MaTK,$NgayDat,$TongTien)){
         $MaDon = $db->getMaDon();
-        foreach ($listGH as $key => $value){
-            $ThanhTien = $value['SoLuong'] * $value['GiaBan'];
-            if($dbCTHD->Insert($value['MaSP'],$MaDon[0],$value['SoLuong'],$value['GiaBan'],$ThanhTien,$value['Size'])){
+        if($listGH!=null){
+            foreach ($listGH as $key => $value){
+                $ThanhTien = $value['SoLuong'] * $value['GiaBan'];
+                if($dbCTHD->Insert($value['MaSP'],$MaDon[0],$value['SoLuong'],$value['GiaBan'],$ThanhTien,$value['Size'])){
+                }
+                else{
+                    echo "Error" . $value['MaSP'];
+                }
             }
-            else{
-                echo "Error" . $value['MaSP'];
-            }
+            $dbGH->deleteAll($MaTK);
         }
-        $dbGH->deleteAll($MaTK);
-        // echo "<script>window.location='../admin/template/template_content/ChiTietDonHang.php?PQ=User&CT=$MaDon[0]&MaTK=$MaTK&Date=$NgayDat&TT=$TongTien';</script>";
+        echo "<script>window.location='../admin/template/template_content/ChiTietDonHang.php?PQ=User&CT=$MaDon[0]&MaTK=$MaTK&Date=$NgayDat&TT=$TongTien';</script>";
     }
     else{
         echo '<script>alert("Tạo đơn thất bại"); window.location="../GioHang.php";</script>';
