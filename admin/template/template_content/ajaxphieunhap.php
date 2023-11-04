@@ -73,8 +73,8 @@ function loadListPN ($listPhieuNhap, $flag) {
     echo '<th>Nhân viên</th>';
     echo '<th>Ngày tạo</th>';
     echo '<th>Trạng thái</th>';
-    echo '<th>Xem Chi tiết</th>';
-   if ($flag == 'getList'){echo '<th>Hành động</th>';}
+    echo '<th style="    width: 12%;">Xem Chi tiết</th>';
+   if ($flag == 'getList'){echo '<th style="    width: 20%;">Hành động</th>';}
     echo '</thead>';
     
     foreach ($listPhieuNhap as $row) {
