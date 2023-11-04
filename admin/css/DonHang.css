@@ -36,6 +36,8 @@ label{
     width: 100%;
     border: 1px solid black;
     border-collapse: collapse;
+}#ds_donhang tr , #tableCTPN tr{
+    height: 50px;
 }
 #ds_donhang th{
     text-align: center;
