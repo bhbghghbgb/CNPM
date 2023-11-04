@@ -7,9 +7,9 @@
         $.get('./template/Ajax-GioHang/Ajax-GioHang.php',
         {   
             Trang:SoTrang,
-            <?php 
+            MaTK:<?php 
                 if(isset($_SESSION['MaTaiKhoan'])){
-                    echo "MaTK:" . $_SESSION['MaTaiKhoan'];
+                    echo $_SESSION['MaTaiKhoan'];
                 }
             ?>
         },
@@ -26,9 +26,9 @@
                 Trang:SoTrang,
                 From:from,
                 To:to,
-                <?php 
+                MaTK:<?php 
                     if(isset($_SESSION['MaTaiKhoan'])){
-                        echo "MaTK:" . $_SESSION['MaTaiKhoan'];
+                        echo $_SESSION['MaTaiKhoan'];
                     }
                 ?>
             },
@@ -50,9 +50,9 @@
                 Trang:SoTrang,
                 From:from,
                 To:to,
-                <?php 
+                MaTK:<?php 
                     if(isset($_SESSION['MaTaiKhoan'])){
-                        echo "MaTK:" . json_encode($_SESSION['MaTaiKhoan']);
+                        echo $_SESSION['MaTaiKhoan'];
                     }
                 ?>
             },
@@ -74,9 +74,9 @@
                 Trang:SoTrang,
                 From:from,
                 To:to,
-                <?php 
+                MaTK:<?php 
                     if(isset($_SESSION['MaTaiKhoan'])){
-                        echo "MaTK:" . $_SESSION['MaTaiKhoan'];
+                        echo $_SESSION['MaTaiKhoan'];
                     }
                 ?>
             },
