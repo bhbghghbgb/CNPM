@@ -216,7 +216,7 @@ $listKM = $daoKM->getList();
                                 <label class="row">
                                     <div class="col col-1">Ảnh :</div>
                                     <div class="col col-11">
-                                        <input required class="w-100" type="file" id="anhSP" name="anhchinh"
+                                        <input <?php if (!isset($_GET['id'])) echo'required';?> class="w-100" type="file" id="anhSP" name="anhchinh"
                                             onchange="getLinkImg()">
                                         <input class="w-100" type="hidden" name="anhchinhcu"
                                             value="<?php echo $sp["AnhChinh"]; ?> ">

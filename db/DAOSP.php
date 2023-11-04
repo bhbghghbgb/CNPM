@@ -34,22 +34,31 @@ class DAOSP
         $data = array();
         if ($result = mysqli_query($this->conn, $sql)) {
             while ($row = mysqli_fetch_array($result)) {
-                $selectGia = 'SELECT MIN(GiaBan)FROM sosize  WHERE MaSP = "' . $row['MaSP'] . '"';
-                $resultGia = mysqli_query($this->conn, $selectGia);
+                //Lấy giá thấp nhất để hiển thị và gán váo biến rowGia
+                $sqltGia = 'SELECT MIN(GiaBan)FROM sosize  WHERE MaSP = "' . $row['MaSP'] . '"';
+                $resultGia = mysqli_query($this->conn, $sqltGia);
                 $rowGia = mysqli_fetch_assoc($resultGia);
-                $selectSoLuong = 'SELECT SoLuong,Size FROM sosize WHERE MaSP = "' . $row['MaSP'] . '" AND GiaBan=' . $rowGia['MIN(GiaBan)'];
-                $resultSoLuong = mysqli_query($this->conn, $selectSoLuong);
-                if ($resultSoLuong) {
-                    $rowSoLuong = mysqli_fetch_array($resultSoLuong);
-                    $row['GiaMin'] = $rowGia['MIN(GiaBan)'];
-                    $row['SoLuong'] = $rowSoLuong['SoLuong'];
-                    $row["Size"] = $rowSoLuong['Size'];
+                if($rowGia['MIN(GiaBan)']){
+                    
+                    //lấy list bao gồm số lượng và số size của sản phẩm có giá nhỏ nhất
+                    $sqlSoLuong = 'SELECT SoLuong,Size FROM sosize WHERE MaSP = "' . $row['MaSP'] . '" AND GiaBan=' . $rowGia['MIN(GiaBan)'];
+                    
+                    $resultSoLuong = mysqli_query($this->conn, $sqlSoLuong);
+                    if ($resultSoLuong) {
+                        $rowSoLuong = mysqli_fetch_array($resultSoLuong);
+                        $row['GiaMin'] = $rowGia['MIN(GiaBan)'];
+                        $row['SoLuong'] = $rowSoLuong['SoLuong'];
+                        $row["Size"] = $rowSoLuong['Size'];
+                        $data[] = $row;
+                    }
+                }else{
+                    $row["GiaMin"] = null;
                     $data[] = $row;
+
                 }
             }
-            mysqli_free_result($result);
         }
-        return $data;
+        return $data[0];
     }
     public function getListSize($MaSP)
     {
@@ -187,7 +196,6 @@ class DAOSP
     }
     public function insertSP($MaSP, $Ten, $MaKhuyenMai, $AnhChinh, $MaDM, $MoTa, $MaHang)
     {
-        if($AnhChinh == "") $AnhChinh="giay404.jpg";
         $sql = "INSERT INTO `sanpham` (`MaSP`, `Ten`, `MaKhuyenMai`, `AnhChinh`, `MaDM`, `MoTa`, `MaHang`,`TrangThai`) 
         VALUES ('" . $MaSP . "', '" . $Ten . "', '" . $MaKhuyenMai . "', '". $AnhChinh . "', '" . $MaDM . "', '" . $MoTa . "', '" . $MaHang . "','1');";
         if (mysqli_query($this->conn, $sql)) {
@@ -204,9 +212,9 @@ class DAOSP
         }
         return false;
     }
-    public function editSP($MaSP, $Ten, $MaKhuyenMai, $AnhChinh, $MaDM, $MoTa, $MaHang)
+    public function updateSP($MaSP, $Ten, $MaKhuyenMai, $AnhChinh, $MaDM, $MoTa, $MaHang)
     {
-        $sql = "UPDATE `sanpham` SET `AnhChinh` = '" . $AnhChinh . "', `MaDM` = '" . $MaDM . "', `MoTa` = '" . $MoTa . "',  `MaHang` = '" . $MaHang . "' WHERE `MaSP` = '" . $MaSP . "'";
+        $sql = "UPDATE `sanpham` SET `Ten` = '" . $Ten . "',`MaKhuyenMai` = '" . $MaKhuyenMai . "',`AnhChinh` = '" . $AnhChinh . "', `MaDM` = '" . $MaDM . "', `MoTa` = '" . $MoTa . "',  `MaHang` = '" . $MaHang . "' WHERE `MaSP` = '" . $MaSP . "'";
         if (mysqli_query($this->conn, $sql)) {
             return true;
         }

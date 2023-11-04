@@ -104,17 +104,17 @@ function validateUploadFile($file, $uploadPath)
 include '../../db/DAOSP.php';
 include '../../db/DAOSoSize.php';
 
-$daoSP=new DAOSP();
-$daoSoSize=new DAOSoSize();
+$daoSP = new DAOSP();
+$daoSoSize = new DAOSoSize();
 
 if (isset($_POST['hd'])) {
     $hd = $_POST['hd'];
-    if(isset($_POST['id']))
-    $id=$_POST['id'];
+    if (isset($_POST['id']))
+        $id = $_POST['id'];
 
     //Xử lý ảnh đại diện
     $anhchinh = '';
-    if(!isset($_POST['xoa'])){
+    if (!isset($_POST['xoa'])) {
         $anhchinh = $_POST['anhchinhcu'];
     }
     // Nếu ảnh chính có nhưng khác ảnh cũ thì thực hiện hành động lưu ảnh đó vào src
@@ -132,28 +132,27 @@ if (isset($_POST['hd'])) {
 
     switch ($hd) {
         case "Lưu":
-            $result = $daoSP->editSP($_POST['id'],$_POST['ten'],$_POST['khuyenmai'],$anhchinh,$_POST['danhmuc'],$mota,$_POST['hang'],);
+            $result = $daoSP->updateSP($_POST['id'], $_POST['ten'], $_POST['khuyenmai'], $anhchinh, $_POST['danhmuc'], $mota, $_POST['hang'], );
             if ($result) {
-                if(isset($_POST["ArraySize"]) && isset($_POST["ArrayQuantity"]) && isset($_POST["ArrayPrice"])){
+                if (isset($_POST["ArraySize"]) && isset($_POST["ArrayQuantity"]) && isset($_POST["ArrayPrice"])) {
                     $ArraySize = $_POST["ArraySize"];
                     $ArrayQuantity = $_POST["ArrayQuantity"];
                     $ArrayPrice = $_POST["ArrayPrice"];
 
-                    if($daoSoSize->deleteAllSozsize($_POST['id']))
-                    //check số lượng
-                    for ($i = 0; $i < count($ArraySize); $i++) {
-                        $daoSoSize->insertSozise($_POST['id'],$ArraySize[$i],$ArrayQuantity[$i],$ArrayPrice[$i]);
+                    if ($daoSoSize->deleteAllSozsize($_POST['id']))
+                        //check số lượng
+                        for ($i = 0; $i < count($ArraySize); $i++) {
+                            $daoSoSize->insertSozise($_POST['id'], $ArraySize[$i], $ArrayQuantity[$i], $ArrayPrice[$i]);
 
-                    }
+                        }
 
+                }
             }
-        }
-            if($result){
+            if ($result) {
                 $_SESSION["message"] = "Sửa thành công";
                 header("Location: ../index.php?id=sp");
                 exit;
-            }
-            else{
+            } else {
                 $_SESSION["message"] = "Sửa không thành công";
                 header("Location: ../editsp.php?hd=s&id=".$_POST['id']."");
                 exit;
@@ -180,32 +179,31 @@ if (isset($_POST['hd'])) {
             }
 
             // Thêm vào db
-            $result = $daoSP->insertSP($id,$_POST['ten'],$_POST['khuyenmai'],$anhchinh,$_POST['danhmuc'],$mota,$_POST['hang']);
+            $result = $daoSP->insertSP($id, $_POST['ten'], $_POST['khuyenmai'], $anhchinh, $_POST['danhmuc'], $mota, $_POST['hang']);
             if ($result) {
-                if(isset($_POST["ArraySize"]) && isset($_POST["ArrayQuantity"]) && isset($_POST["ArrayPrice"])){
+                if (isset($_POST["ArraySize"]) && isset($_POST["ArrayQuantity"]) && isset($_POST["ArrayPrice"])) {
                     $ArraySize = $_POST["ArraySize"];
                     $ArrayQuantity = $_POST["ArrayQuantity"];
                     $ArrayPrice = $_POST["ArrayPrice"];
 
-                    if($daoSoSize->deleteAllSozsize($_POST['id']))
-                    //check số lượng
-                    for ($i = 0; $i < count($ArraySize); $i++) {
-                        $daoSoSize->insertSozise($_POST['id'],$ArraySize[$i],$ArrayQuantity[$i],$ArrayPrice[$i]);
-                    }
+                    if ($daoSoSize->deleteAllSozsize($_POST['id']))
+                        //check số lượng
+                        for ($i = 0; $i < count($ArraySize); $i++) {
+                            $daoSoSize->insertSozise($_POST['id'], $ArraySize[$i], $ArrayQuantity[$i], $ArrayPrice[$i]);
+                        }
                 }
             }
-            if (!$result){
+            if (!$result) {
                 echo "<script>
                 alert('Thêm không Thành Công');
                 </script>";
                 header("Location: ../index.php?id=sp");
-            }
-            else{
+            } else {
                 echo "<script>
                 alert('Thêm Thành Công');
                 </script>";
-                header("Location: ../editsp.php?hd=s&id=".$id."");
-                
+                header("Location: ../editsp.php?hd=s&id=" . $id . "");
+
             }
     }
 }
