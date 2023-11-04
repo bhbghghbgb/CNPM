@@ -96,7 +96,7 @@ $listKM = $daoKM->getList();
                                 <label class="row">
                                     <div class="col col-1">Mô tả:</div>
                                     <div class="col col-11">
-                                        <textarea id="textarea" class="w-100" rows="" cols="" name="mota"
+                                        <textarea id="textarea" required class="w-100" rows="" cols="" name="mota"
                                             value=""><?php echo htmlspecialchars_decode($sp["MoTa"]); ?></textarea>
                                     </div>
                                 </label>
@@ -198,7 +198,8 @@ $listKM = $daoKM->getList();
                                 <label class="row">
                                     <div class="col col-1">Danh mục:</div>
                                     <div class="col col-11">
-                                        <select class="w-100" name="danhmuc">
+                                        <select required class="w-100" name="danhmuc">
+                                            <option value="">--Chọn--</option>
                                             <?php
                                             foreach ($listDM as $list) {
                                                 if ($sp["MaDM"] == $list["MaDM"])
@@ -215,7 +216,7 @@ $listKM = $daoKM->getList();
                                 <label class="row">
                                     <div class="col col-1">Ảnh :</div>
                                     <div class="col col-11">
-                                        <input class="w-100" type="file" id="anhSP" name="anhchinh"
+                                        <input required class="w-100" type="file" id="anhSP" name="anhchinh"
                                             onchange="getLinkImg()">
                                         <input class="w-100" type="hidden" name="anhchinhcu"
                                             value="<?php echo $sp["AnhChinh"]; ?> ">
@@ -262,7 +263,8 @@ $listKM = $daoKM->getList();
                                 <label class="row">
                                     <div class="col col-1">Hãng:</div>
                                     <div class="col col-11">
-                                        <select class="w-100" name="hang">
+                                        <select required class="w-100" name="hang">
+                                            <option value="">--Chọn--</option>
                                             <?php
                                             foreach ($listHang as $list) {
                                                 if ($sp["MaHang"] == $list["MaHang"])
@@ -280,6 +282,7 @@ $listKM = $daoKM->getList();
                                     <div class="col col-1">Khuyến mãi:</div>
                                     <div class="col col-11">
                                         <select class="w-100" name="khuyenmai">
+                                        <option value="#">--Chọn--</option>
                                             <?php
                                             foreach ($listKM as $list) {
                                                 if ($sp["MaKhuyenMai"] == $list["MaKhuyenMai"])

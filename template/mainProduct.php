@@ -8,7 +8,7 @@
         $db = new DAOSP();
         $db->connect();
 
-        $data = $db->getList($MaSP);
+        $data = $db->getSP($MaSP);
         $dataLq = $db->getListLienQuan($data[0]["MaHang"], $MaSP);
         $dataSize = $db->getListSize($MaSP);
         if($dataLq != null){
@@ -64,7 +64,7 @@
         <div id = "selection">
             <div class = "item_selection">
                 <label>
-                        <input type = "radio" name = "img_selected" onclick="ChuyenAnh('./img/products/<?php echo $data[0][3]?>')" checked/>
+                        <input type = "radio" name = "img_selected" onclick="ChuyenAnh('./img/products/<?php if($data[0][3])echo $data[0][3]; else echo'giay404.jpg';?>')" checked/>
                         <img src = "./img/products/<?php echo $data[0][3]?>">
                 </label>
             </div>
@@ -73,8 +73,8 @@
             ?>
             <div class = "item_selection">
                 <label>
-                        <input type = "radio" name = "img_selected" onclick="ChuyenAnh('./img/products/<?php echo$data[0][0]?>_<?php echo $i?>.jpg')"/>
-                        <img src = "./img/products/<?php echo $data[0][0]?>_<?php echo $i?>.jpg">
+                        <input type = "radio" name = "img_selected" onclick="ChuyenAnh('./img/products/giay404.jpg')"/>
+                        <img src = "./img/products/giay404.jpg">
                 </label>
             </div>
             <?php } ?>
