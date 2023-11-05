@@ -153,7 +153,6 @@ $dataPhanTramHang = $daoCTDH->ListPhanTramTungHang();
 
         var stringData = dataPhanTram.replace(/,]/g, ']');
         var dataArray = JSON.parse(stringData);
-        console.log(dataArray)
 
         var data = google.visualization.arrayToDataTable(dataArray)
         if (valueHang)

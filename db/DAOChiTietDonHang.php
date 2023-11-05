@@ -75,6 +75,11 @@ class DAOChiTietDonHang
                 ["Quy" => 4, "TongDoanhThu" => 0]
                
             ];
+            if ($result) {
+                while ($row = mysqli_fetch_array($result)) {
+                    $data[$row["Quy"]-1]["TongDoanhThu"] = $row["TongDoanhThu"];
+                }
+            }
         } else {
             $sql = "SELECT 
             MONTH(NgayDat) AS Thang,
@@ -93,15 +98,10 @@ class DAOChiTietDonHang
                 ["Thang" => $quarter * 3, "TongDoanhThu" => 0]
             ];
 
-        }
-
-        if ($result) {
-            $counter = 0; // Initialize a counter
-            while ($row = mysqli_fetch_array($result)) {
-                // Update the "TongDoanhThu" value in the $data array at the corresponding index
-                $data[$counter]["TongDoanhThu"] = $row["TongDoanhThu"];
-                // Increment the counter for the next element in $data
-                $counter++;
+            if ($result) {
+                while ($row = mysqli_fetch_array($result)) {
+                    $data[$row['Thang']-($quarter-1)*3-1]["TongDoanhThu"] = $row["TongDoanhThu"];
+                }
             }
         }
 
