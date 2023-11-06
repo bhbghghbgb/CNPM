@@ -52,7 +52,8 @@
                             $n = count($PQ);
                         }
                         for($i = $n-1; $i >= 0;$i--){
-                    ?>
+                            if ($PQ[$i]["MaChiTiet"] != 'd') {
+                     ?>
                         <a href="index.php?id=<?php echo $PQ[$i]["MaChiTiet"]?>">
                             <li class="row LiMenu mx-0 text-center p-2 align-items-center border-secondary border-size-menu " style = "<?php if($id ==  $PQ[$i]["MaChiTiet"]){echo "background:  #6c757d";}?>">
                                 <div class="col-3 px-0 d-none d-lg-flex justify-content-center">
@@ -64,7 +65,7 @@
                             </li>
                         </a>
                     <?php
-                        }
+                        }}
                     ?>
                 </ul>
             </div>
