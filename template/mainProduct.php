@@ -49,6 +49,11 @@ if (isset($_GET['MaSP'])) {
 
     function validate() {
         if (<?php echo isset($_SESSION["MaTaiKhoan"]) ? 'true' : 'false'; ?>) {
+            var sl = document.querySelector("#tonkho p span").textContent;
+            if(sl == 0) {
+                addmess("Sản phẩm đã hết hàng!", "#434343", "white", 1500);
+                return false;
+            }
             return true;
         } else {
             addmess("Vui lòng đăng nhập!", "#434343", "white", 1500);
@@ -103,10 +108,10 @@ if (isset($_GET['MaSP'])) {
                     echo '<ul id="size_list">';
                     foreach ($dataSize as $size) {
                         $checked = ($size["Size"] == $data["Size"]) ? " checked" : "";
-                        echo '<li class="size-item" onclick="changeSize(' . $size['GiaBan'] . ',' . $size['SoLuong'] . ')">';
+                        echo '<li class="size-item">';
                         echo '<label>';
                         echo '<input type="radio" name="Size" value="' . $size['Size'] . '"' . $checked . '>';
-                        echo '<span>' . $size['Size'] . '</span>';
+                        echo '<span onclick="changeSize(' . $size['GiaBan'] . ',' . $size['SoLuong'] . ')"'.'>' . $size['Size'] . '</span>';
                         echo '</label>';
                         echo '</li>';
                     }
