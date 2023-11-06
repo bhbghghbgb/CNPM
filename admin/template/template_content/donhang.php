@@ -55,6 +55,7 @@
                 $db->connect();
                 $data = $db->getList('donhang');
                 $i=0;
+                if($data == null) return;
                 while ($i < count($data)){
 
             
@@ -103,6 +104,9 @@
                         return;
                     }
                     $i=0;
+                    if($data == null){
+                        
+                    }
                     while ($i < count($data)){
         ?>
                         <tr>
