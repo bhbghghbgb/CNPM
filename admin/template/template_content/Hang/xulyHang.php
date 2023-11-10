@@ -47,7 +47,7 @@
                     return;
                 }
                 else{
-                    echo "<script>alert('Không xóa hãng này được');window.location='../../../index.php?id=h';</script>";
+                    echo "<script>alert('Tồn tại sản phẩm đang dùng hãng này !');window.location='../../../index.php?id=h';</script>";
                     return;
                 }
             }

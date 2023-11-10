@@ -92,13 +92,36 @@ class DAOHang{
         }
         return false;
     }
+    public function hasHangSP ($MaHang) {
+        $sql = "SELECT * FROM sanpham WHERE MaHang = '".$MaHang."'";
+        $data=null;
+        if($result = mysqli_query($this->conn,$sql)){
+            while($row=mysqli_fetch_array($result)){
+                    $data[] = $row;
+            }
+            mysqli_free_result($result);
+        }
+        if ($data ==null) {
+            return true;
+        } else {
+            return false;
+        } 
+        
+    }
     
     public function deleteHang($MaHang){
+        if ($this->hasHangSP($MaHang) == true) { 
+
         $sql = "UPDATE hang SET TrangThai = 0 WHERE MaHang = '".$MaHang."'";
         if($result = mysqli_query($this->conn,$sql)){
             return true;
+        } } else {
+            return false;
         }
-        return false;
+       
     }
+
+   
+
 }
 ?>
