@@ -24,12 +24,11 @@
         $ThongTin = array();
         $k = 0;
 
-        echo print_r($dataCTDH);
         foreach($dataCTDH as $data ) {
             $MaSP = $data->getMaSanPham();
             $Size = $data->getSize();
             $dataSP = $dbSP->getThongTinSanPham($MaSP,$Size);
-            print_r($dataSP);
+
             $SoLuongMoi = $dataSP["SLTonKho"] - $data->getSoLuong();
             array_push($ThongTin,array($MaSP,$Size,$SoLuongMoi)); // thông tin chứa mảng 2 chiều, mỗi phần tử con chứa mảng theo chỉ mục
                                                             // 0 là mã sp , 1 là size, 2 là So lượng sau khi bán 
@@ -57,12 +56,12 @@
             ?>
                 <p id="ThongBao-title">Đơn hàng: <?php echo $MaDon?></p>
             <?php
-            foreach($ThongTin as $MaSP => $value)
+            foreach($ThongTin as $value)
             {       
-                if($value <= 0)  {
-                    $HangThieu = $HangThieu . '\nMã hàng ' . $MaSP . ' thiếu '. -1 * $value . 'đôi' ;
+                if($value[2] <= 0)  {
+                    $HangThieu = $HangThieu . '\nMã hàng ' . $MaSP . ' thiếu '. -1 * $value[2] . ' đôi' ;
 ?>
-                    <p class="ThongBao-content">Mã hàng <?php echo $MaSP?> thiếu <?php echo -1 * $value?> đôi</p>
+                    <p class="ThongBao-content">Mã hàng <?php echo $value[0]?> thiếu <?php echo -1 * $value[2]?> đôi</p>
 <?php
                 }
             }
@@ -72,7 +71,6 @@
         else{
             foreach($ThongTin as $value)
             {
-                echo print_r($value);
                 if($dbSP->TruSLBanHang($value[0],$value[1],$value[2])){
 
                 }
