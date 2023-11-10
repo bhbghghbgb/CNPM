@@ -71,7 +71,7 @@ class DAOKhuyenMai{
     }
 
     public function hasSP($MaKM){
-        $sql = "SELECT * FROM sanpham WHERE TrangThai=1 AND KhuyenMai='".$MaKM."'";
+        $sql = "SELECT * FROM sanpham WHERE MaKhuyenMai='".$MaKM."'";
         if($result = mysqli_query($this->conn,$sql)){
             if($result->num_rows != 0){
                 return false;
