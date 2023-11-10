@@ -9,7 +9,6 @@ $daoHang = new DAOHang();
 $daoSoSize = new DAOSoSize();
 $daoKM = new DAOKhuyenMai();
 if (isset($_POST['sort'])&&isset($_POST['order'])) {
-    // echo "<script>console.log('".$_POST['sort']."')</script>";}
     $order= $_POST['order']=='asc'?1:2;
     if ($_POST['sort'] == "sort-name")
         $data = $daoSP->getList1("Ten",$order);

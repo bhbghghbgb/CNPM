@@ -86,7 +86,6 @@ if (isset($_GET['MaDM']) || isset($_GET['Sale']) || isset($_GET['MaHang']) || is
     $From = 6 * ($SoTrang - 1);
 
     $sql = $sql . " LIMIT " . $From . ",6";
-    echo $sql;
     $data = $db->getListDanhSach($sql);
 
     $n = 0;
