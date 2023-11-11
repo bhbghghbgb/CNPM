@@ -21,7 +21,7 @@ $listHang = $daoHang->getList();
 <div id="thongke" class="container-fluid">
     <h2>Thống kê hóa đơn</h2>
     <div class="row">
-        Tổng số lượng đơn hàng đã bán:
+        Tổng số lượng sản phẩm đã bán:
         <?php echo $tongSPDaBan; ?> sản phẩm
     </div>
     <div class="row">
@@ -59,9 +59,9 @@ $listHang = $daoHang->getList();
 </div>
 
 <div id="thongke" class="container-fluid">
-    <h2>Thống kê hóa đơn</h2>
+    <h2>Thống kê Phiếu Nhập</h2>
     <div class="row">
-        Tổng số lượng đơn hàng đã nhập:
+        Tổng số lượng sản phẩm đã nhập:
         <?php echo $tongSPNhap; ?> sản phẩm
     </div>
     <div class="row">

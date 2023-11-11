@@ -200,11 +200,11 @@
         });
 
         $('#buttonThem').click(function () {
-            var selectSPValue = document.getElementById('selectSanPham').value;
-            var parts = selectSPValue.split("~");
+           
             
-            var maSP = parts[0];
-            var tenSP = parts[1];
+            var maSP = document.getElementById('selectSanPham').value;
+            var selectedOption = document.getElementById('selectSanPham').options[document.getElementById('selectSanPham').selectedIndex];
+            var tenSP = selectedOption.getAttribute("data-name");
             var maHang =  document.getElementById('selectHang').value;
             var soLuong =  document.getElementById('inputSoLuong').value;
             var giaNhap =  document.getElementById('inputGiaNhap').value;
