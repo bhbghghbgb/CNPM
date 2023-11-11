@@ -35,7 +35,7 @@ if (isset ($_POST["listCTPN"]) && isset ($_POST["tongTien"]) && isset ($_POST["m
     // Lấy giá trị của $_SESSION['MaTaiKhoan']
     $maTaiKhoan = $_SESSION['MaTaiKhoan'];
     
-    $daoPhieuNhap->addPhieuNhap($ngayTao, $tongDon, $maHang, $maTaiKhoan, 0, NULL);
+    $daoPhieuNhap->addPhieuNhap($ngayTao, $tongDon, $maHang, $maTaiKhoan, 0);
 
     $ListPN = $daoPhieuNhap->getListFollow();
     $indexSPEnd = count($ListPN) - 1 ;

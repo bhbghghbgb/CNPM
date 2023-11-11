@@ -85,9 +85,9 @@ class DAOPhieuNhap
             return false;
     }
 
-    public function addPhieuNhap ( $NgayTao, $TongDon, $MaHang, $MaTaiKhoan, $TrangThai, $GhiChu){
-        $sql = "INSERT INTO `phieunhaphang` ( `NgayTao`, `TongDon`, `MaHang`, `MaTaiKhoan`, `TrangThai`, `GhiChu`) 
-        VALUES ('" . $NgayTao . "', '" . $TongDon . "', '" . $MaHang . "', '" . $MaTaiKhoan . "', '" . $TrangThai . "', '" . $GhiChu ."');";
+    public function addPhieuNhap ( $NgayTao, $TongDon, $MaHang, $MaTaiKhoan, $TrangThai){
+        $sql = "INSERT INTO `phieunhaphang` ( `NgayTao`, `TongDon`, `MaHang`, `MaTaiKhoan`, `TrangThai`) 
+        VALUES ('" . $NgayTao . "', '" . $TongDon . "', '" . $MaHang . "', '" . $MaTaiKhoan . "', '" . $TrangThai . "');";
         if (mysqli_query($this->conn, $sql)) {
             return true;
         }
