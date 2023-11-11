@@ -37,6 +37,7 @@
                     <?php
                     $listIcon=[
                     'sticky-note',
+                    'sticky-note',
                     'book',
                     'list',
                     'place-of-worship',
