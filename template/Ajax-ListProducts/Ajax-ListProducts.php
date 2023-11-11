@@ -42,8 +42,13 @@ if (isset($_GET['MaDM']) || isset($_GET['Sale']) || isset($_GET['MaHang']) || is
             $sql = $sql . "AND sp.MaHang = '" . $Hang . "' ";
         }
     }
-    
-    $sql .="GROUP BY sp.MaSP";
+    //Thuoc hien tim kiem theo chu nguoi dung nhap
+    if (isset($_GET['Find'])) {
+        $Find = $_GET['Find'];
+        $sql = $sql . " AND sp.Ten LIKE '%" . $Find . "%' ";
+    }
+
+    $sql .= "GROUP BY sp.Ten";
     if (isset($_GET['Gia'])) {
         // Dua dieu kien loc theo gia vao cau truy van
         $Gia = $_GET['Gia'];
@@ -74,11 +79,6 @@ if (isset($_GET['MaDM']) || isset($_GET['Sale']) || isset($_GET['MaHang']) || is
             }
         }
 
-    }
-    //Thuoc hien tim kiem theo chu nguoi dung nhap
-    if (isset($_GET['Find'])) {
-        $Find = $_GET['Find'];
-        $sql = $sql . " AND sanpham.Ten LIKE '%" . $Find . "%' ";
     }
 
     //Bien de xac dinh so trang khi nguoi dung nhan
