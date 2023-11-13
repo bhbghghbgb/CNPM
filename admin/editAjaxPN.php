@@ -10,7 +10,7 @@ if (isset ($_POST["maHang"])) {
     for ($i = 0; $i<count($ListSP); $i++) {
         $maSP =   $ListSP[$i]['MaSP']; // mã hãng
         $tenSP =   $ListSP[$i]['Ten']; // tên hãng
-        echo"<option value='$maSP' data-name='$tenSP'>$tenSP</option>";   
+        echo"<option value='$maSP' data-name='$tenSP'>$maSP - $tenSP</option>";   
     }
 } 
  
