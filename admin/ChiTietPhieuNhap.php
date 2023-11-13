@@ -113,20 +113,15 @@
                                             $pdf->AddPage();
                                             // Bắt đầu nội dung của tài liệu
                                             $pdf->SetFont('dejavusans', '', 12);
-                                            $maPhieu = "3";
-                                            $ngayTao = "2023-11-10";
-                                            $maHang = 'MH-001';
-                                            $tenHang = 'Adidas';
-                                            $maTaiKhoan = "1";
-                                            $tenNhanVien = "Nguyễn Văn A";
-                                            $tongDon = "60000";
+                                            
                                             $pdf->Cell(0, 10, 'PHIẾU NHẬP HÀNG', 0, 1, 'C');
-                                            $pdf->Cell(0, 10, 'Mã phiếu: ' . $maPhieu , 0, 1,'L');
-                                            $pdf->Cell(0, 10, 'Ngày tạo: ' . $ngayTao , 0, 1,'L');
-                                            $pdf->Cell(0, 10, 'Mã hãng: ' . $maHang , 0, 1,'L');
-                                            $pdf->Cell(0, 10, 'Tên hãng: ' . $tenHang , 0, 1,'L');
-                                            $pdf->Cell(0, 10, 'Mã tài khoản: ' . $maTaiKhoan , 0, 1,'L');
-                                            $pdf->Cell(0, 10, 'Tên nhân viên: ' . $tenNhanVien , 0, 1,'L');
+                                            $pdf->Cell(0, 10, 'Mã phiếu: ' . $phieuNhap[0]['MaPhieu'] , 0, 1,'L');
+                                            $pdf->Cell(0, 10, 'Ngày tạo: ' . $phieuNhap[0]['NgayTaoPN'] , 0, 1,'L');
+                                            $pdf->Cell(0, 10, 'Mã hãng: ' . $phieuNhap[0]['MaHang'] , 0, 1,'L');
+                                            $pdf->Cell(0, 10, 'Tên hãng: ' . $phieuNhap[0]['Ten'] , 0, 1,'L');
+                                            $pdf->Cell(0, 10, 'Mã tài khoản: ' . $phieuNhap[0]['MaTaiKhoan'] , 0, 1,'L');
+                                            $pdf->Cell(0, 10, 'Tên nhân viên: ' . $phieuNhap[0]['TenNhanVien'] , 0, 1,'L');
+                                            $pdf->Cell(0, 10, 'Tổng đơn: ' .  $phieuNhap[0]['TongDon'] . ' VND', 0, 1,'L');
                                             $pdf->SetFillColor(255, 255, 255); // Màu nền cho bảng
                                             // Định nghĩa số cột và chiều rộng của từng cột
                                             $columnCount = 6;
@@ -144,16 +139,24 @@
                                             $pdf->Cell($columnWidths[5], 10, 'Tổng tiền', 1, 0, 'C', 1);
                                             $pdf->Ln(); // Xuống dòng
                                             // Dữ liệu cho bảng
+                                            
+                                            
+                                            
                                             $data = array(
                                                 array('005', 'ADIDAS X SPEEDPORTAL.1 TF GW8973 GAME DATA PACK -', '35','15','1200000','12000000'),
                                                 array('006', 'ADIDAS X SPEEDPORTAL .1 FG GW8426 GAME DATA PACK', '39', '10', '1300000', '13000000'),
                                             );
                                             // In dữ liệu vào bảng
                                             $pdf->SetFont('dejavusans', '', 10);
-                                            foreach ($data as $row) {
-                                                for ($i = 0; $i < $columnCount; $i++) {
-                                                    $pdf->MultiCell($columnWidths[$i], 10, $row[$i], 1, 'L', 0, 0, '', '', true, 0, false, true, 0, 'T');
-                                                }
+                                            foreach ($ListCTPN as $row) {
+                                                // for ($i = 0; $i < $columnCount; $i++) {
+                                                    $pdf->MultiCell($columnWidths[0], 10, $row['MaSP'], 1, 'L', 0, 0, '', '', true, 0, false, true, 0, 'T');
+                                                    $pdf->MultiCell($columnWidths[1], 10, $row['Ten'], 1, 'L', 0, 0, '', '', true, 0, false, true, 0, 'T');
+                                                    $pdf->MultiCell($columnWidths[2], 10, $row['Size'], 1, 'L', 0, 0, '', '', true, 0, false, true, 0, 'T');
+                                                    $pdf->MultiCell($columnWidths[3], 10, $row['SoLuong'], 1, 'L', 0, 0, '', '', true, 0, false, true, 0, 'T');
+                                                    $pdf->MultiCell($columnWidths[4], 10, $row['GiaNhap'], 1, 'L', 0, 0, '', '', true, 0, false, true, 0, 'T');
+                                                    $pdf->MultiCell($columnWidths[5], 10, $row['TongGia'], 1, 'L', 0, 0, '', '', true, 0, false, true, 0, 'T');
+                                                // }
                                                 $pdf->Ln(); // Xuống dòng
                                             }
                                             $pdf->SetFont('dejavusans', '', 12);
