@@ -1,10 +1,3 @@
-<?php if (isset($_SESSION['message'])) {
-            $cache='';
-            if($cache!=$_SESSION['message']);
-            $cache=$_SESSION['message'];
-            echo '<script language="javascript"> addmess("' . $_SESSION['message'] . '", "#434343", "white", 2000);</script>';
-            unset($_SESSION['message']); // Xóa thông báo sau khi hiển thị
-        } ?>
 
 <script src="./js/login.js"></script>
 
