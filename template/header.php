@@ -37,6 +37,7 @@
                                 if (isset($_SESSION['MaTaiKhoan']) ){
                                     ?>
                                         <li><a href="./account/logout.php"><i class="ti-share-alt"></i></a></li>
+                                        <li><a href="./account.php"><i class="ti-settings"></i></a></li>
                                     <?php 
                                 }
                                 else{

@@ -20,10 +20,10 @@
                 <div class="links">
                     <h4>LIÊN KẾT</h4>
                     <p>Hãy kết nối với chúng tôi</p>
-                    <i class="fa-brands fa-facebook fa-2x"></i>
-                    <i class="fa-brands fa-twitter fa-2x"></i>
-                    <i class="fa-brands fa-google-plus fa-2x"></i>
-                    <i class="fa-brands fa-youtube fa-2x"></i>
+                    <i style="font-size:30px" class="ti-facebook"></i>
+                    <i style="font-size:30px" class="ti-twitter-alt"></i>
+                    <i style="font-size:30px" class="ti-google"></i>
+                    <i style="font-size:30px" class="ti-youtube"></i>
                 </div>
                 <div class="fangape">
                     <h4>FANPAGE GIÀY ĐÁ BANH CHÍNH HÃNG</h4>
