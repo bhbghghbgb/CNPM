@@ -104,6 +104,17 @@ class DAOSP
         return $data[0][0];
     }
 
+    public function getTenSanPham($MaSP) {
+        $sql = "SELECT Ten FROM sanpham WHERE MaSP = '$MaSP'";
+        $data = null;
+        if($result = mysqli_query($this->conn,$sql)) {
+            while($row = mysqli_fetch_array($result)){
+                $data[] = $row;
+            }
+            mysqli_free_result($result);
+        }
+        return $data[0];
+    }
     public function getThongTinSanPham($MaSP,$Size) {
         $sql = "SELECT sanpham.MaSP,Ten,GiaBan,AnhChinh,SoLuong as SLTonKho,Size FROM sanpham,sosize where sanpham.MaSP = sosize.MaSP and sanpham.MaSP = '$MaSP' and sosize.Size = '$Size'";
         $data = null;
