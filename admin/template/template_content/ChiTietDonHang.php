@@ -8,9 +8,14 @@
     $Date = $_GET['Date'];
     $TT = $_GET['TT'];
     include('../../../db/DAOKhachHang.php');
+    include('../../../db/DAOSP.php');
     $db_kh = new DAOKhachHang();
     $db_kh->connect();
     $data = $db_kh->LayThongTinKhach($MaTK);
+
+    $db_sp = new DAOSP();
+    $db_sp->connect();
+
     if(isset($_GET['PQ'])){
         if($data == null){
             header("location:../../../GioHang.php");
@@ -46,6 +51,7 @@
     <table id="ds_donhang">
         <tr>
             <th>Mã sản phẩm</th>
+            <th>Tên sản phẩm</th>
             <th>Size</th>
             <th>Số lượng</th>
             <th>Giá</th>
@@ -58,9 +64,11 @@
             $data = $db->getList($Madon);
             $i=0;
             while ($i < count($data)){
+                $sp = $db_sp->getTenSanPham($data[$i]->getMaSanPham());
         ?>
                 <tr>
                     <td><?php echo $data[$i]->getMaSanPham()?></td>
+                    <td><?php echo $sp[0]?></td>
                     <td><?php echo $data[$i]->getSize()?></td>
                     <td><?php echo $data[$i]->getSoLuong()?></td>
                     <td><?php echo number_format($data[$i]->getGiaBan(),0,',','.')."đ"?></td>

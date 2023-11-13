@@ -78,8 +78,6 @@ if (isset($_POST['add_to_cart'])) {
         }
         $quantity = $dgh->getSL($MaTaiKhoan);
         echo "<script>document.getElementById('quantity').textContent=".$quantity."</script>";
-    }else{
-        echo "<script>alert(Sản phẩm đã hết hàng)</script>";
     }
 }
 ?>
