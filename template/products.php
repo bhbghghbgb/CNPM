@@ -102,7 +102,7 @@
                                 <div class="product-vendor"><?php echo $data[$i]['TenHang']?></div>
                                 <div class="product-price">
                                     <span class="price-new price"><?php echo number_format(TinhTienGiam($TiLeGiam,$data[$i]['GiaMin']),0,',','.') ."đ"?></span>
-                                    <span class="price-old price"><?php echo number_format($data[$i]['GiaMin'],0,',','.') ."đ"?></span>
+                                    <span class="price-old price"><?php echo $TiLeGiam==0? "": number_format($data[$i]['GiaMin'],0,',','.') ."đ"?></span>
                                 </div>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                             <div class="product-vendor"><?php echo $data[$i]['TenHang']?></div>
                             <div class="product-price">
                                     <span class="price-new price"><?php echo number_format(TinhTienGiam($TiLeGiam,$data[$i]['GiaMin']),0,',','.') ."đ"?></span>
-                                    <span class="price-old price"><?php echo number_format($data[$i]['GiaMin'],0,',','.') ."đ"?></span>
+                                    <span class="price-old price"><?php echo $TiLeGiam==0? "": number_format($data[$i]['GiaMin'],0,',','.') ."đ"?></span>
                             </div>
                         </div>
                     </div>
@@ -202,7 +202,7 @@
                             <div class="product-vendor"><?php echo $data[$i]['TenHang']?></div>
                             <div class="product-price">
                                     <span class="price-new price"><?php echo number_format(TinhTienGiam($TiLeGiam,$data[$i]['GiaMin']),0,',','.') ."đ"?></span>
-                                    <span class="price-old price"><?php echo number_format($data[$i]['GiaMin'],0,',','.') ."đ"?></span>
+                                    <span class="price-old price"><?php echo $TiLeGiam==0? "": number_format($data[$i]['GiaMin'],0,',','.') ."đ"?></span>
                             </div>
                         </div>
                     </div>
