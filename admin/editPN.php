@@ -100,7 +100,7 @@
                                     </label>
                                 </div>
 
-                                <button type="button" id="buttonThem"  style="margin-left: 290px; margin-top:10px; width:80px; height:30px;background-color:burlywood; margin-bottom:10px;" >Thêm</button>
+                                <button type="button" id="buttonThem"  style="margin-left: 325px; margin-top:10px; width:80px; height:30px;background-color:burlywood; margin-bottom:10px;" >Thêm</button>
                                 
                                                      
                             <div id="ctdh" >
