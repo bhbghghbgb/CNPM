@@ -76,7 +76,7 @@
 
     if(isset($_GET['cn'])){
         $Ma = $_GET['MaDanhMuc'];
-
+      if ($db->hasDanhMucSP($Ma) == true) {     
         if($db->deleteDanhMuc($Ma)){
             echo "<script>alert('Xóa danh mục thành công');window.location = '../../../index.php?id=dm';</script>";
             return;
@@ -84,6 +84,8 @@
         else{
             echo "<script>alert('Xóa danh mục thất bại');window.location = '../../../index.php?id=dm';</script>";
             return;
+        }} else {
+            echo "<script>alert('Không thể xóa vì có sản phẩm đang dùng danh mục này !');window.location = '../../../index.php?id=dm';</script>";
         }
     }
 ?>

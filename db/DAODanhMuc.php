@@ -93,5 +93,23 @@ class DAODanhMuc{
         }
         return false;
     }
+
+
+    public function hasDanhMucSP ($MaDanhMuc) {
+        $sql = "SELECT * FROM sanpham WHERE MaDM = '".$MaDanhMuc."'";
+        $data=null;
+        if($result = mysqli_query($this->conn,$sql)){
+            while($row=mysqli_fetch_array($result)){
+                    $data[] = $row;
+            }
+            mysqli_free_result($result);
+        }
+        if ($data ==null) {
+            return true;
+        } else {
+            return false;
+        } 
+        
+    }
 }
 ?>
