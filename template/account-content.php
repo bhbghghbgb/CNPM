@@ -12,19 +12,15 @@ if (isset($_SESSION['MaTaiKhoan']))
 /////////////////////////////////////
 // xử lý chỉnh thông tin người dùng 
 if (isset($_POST['ten'])) {
-    if ($daoTTTK->hasKhach($MaTK))
+    if ($daoTTTK->hasKhach($MaTK)) {
         if ($daoTTTK->updateKhachHang($MaTK, $_POST['ten'], $_POST['diachi'], $_POST['sodienthoai'])) {
             $_SESSION["message"] = "Thay đổi thông tin thành công";
-            header("Location: index.php");
-            exit;
         }
-else
-    if ($daoTTTK->updateNhanVien($MaTK, $_POST['ten'], $_POST['diachi'], $_POST['sodienthoai'])) {
-        $_SESSION["message"] = "Thay đổi thông tin thành công";
-        header("Location: index.php");
-        exit;
+    } else
+        if ($daoTTTK->updateNhanVien($MaTK, $_POST['ten'], $_POST['diachi'], $_POST['sodienthoai'])) {
+            $_SESSION["message"] = "Thay đổi thông tin thành công";
 
-    }
+        }
 }
 
 // xử lý chỉnh thông tin người dùng 
