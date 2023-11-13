@@ -49,6 +49,17 @@ class DAOChiTietDonHang
         else
             return false;
     }
+
+    public function RemoveAll($MaDonHang){
+        $data = new DataProvider();
+        $result = $data->Delete($this->table, "MaDonHang=$MaDonHang");
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function TongSanPhamBan()
     {
         $data = 0;

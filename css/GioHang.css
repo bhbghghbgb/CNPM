@@ -228,11 +228,36 @@ body{
     text-align: center;
 }
 
-#donhang_container #donhang table td #TinhTrang{
+#donhang_container #donhang table td .TinhTrang{
     background-color: rgb(17, 82, 17);
     padding: 5px 10px;
     border-radius: 15px;
     color: white;
+}
+
+.initial {
+    display: inline-block;
+}
+
+.hovered {
+    display: none;
+}
+
+.chuaXuLy {
+    background-color: red !important;
+    cursor: pointer;
+}
+
+#donhang_container #donhang table td .TinhTrang.chuaXuLy:hover {
+    background-color: #e32124 !important;
+}
+
+#donhang_container #donhang table td .TinhTrang.chuaXuLy:hover .hovered {
+    display: inline-block;
+}
+
+#donhang_container #donhang table td .TinhTrang.chuaXuLy:hover .initial {
+    display: none;
 }
 
 #donhang_container #donhang table td a{

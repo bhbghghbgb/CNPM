@@ -31,6 +31,7 @@ label{
 }
 #Loc:hover, #Refresh:hover{
     background-color: #1321c6;
+    color: #fff;
 }
 #ds_donhang{
     width: 100%;
@@ -70,6 +71,7 @@ label{
 
 #ds_donhang a div:hover{
     background-color: #1321c6;
+    color: #fff;    
 }
 
 #ds_donhang tr:hover a div, #ds_donhang tr:hover button{
@@ -92,10 +94,9 @@ label{
     font-weight: bold;
 }
 
-.XuLyDon{
+.XuLyDon, .HuyDon{
     display: none;
     border: none;
-    background-color: orange;
     color: black;
     text-decoration: none;
     padding: 3px 10px;
@@ -104,9 +105,20 @@ label{
     border-radius: 15px;
 }
 
-.XuLyDon:hover{
-    background-color: #1321c6;
+.XuLyDon {
+    background-color: chartreuse;
 }
+
+.HuyDon {
+    background-color: red;
+}
+
+.XuLyDon:hover, .HuyDon:hover{
+    background-color: #1321c6;
+    color:#fff;
+}
+
+
 .buttonadd{
     width: 126px !important;
     height: 40px;

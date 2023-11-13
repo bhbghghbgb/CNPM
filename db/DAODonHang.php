@@ -104,6 +104,14 @@ class DAODonHang
 
     }
 
+    public function Remove($madon) {
+        $sql = "DELETE FROM donhang WHERE MaDonHang = $madon";
+        if ($result = mysqli_query($this->conn, $sql)) {
+            return true;
+        } else
+            return false;
+    }
+
     public function getMaDon()
     {
         $sql = 'SELECT MAX(MaDonHang) FROM donhang';

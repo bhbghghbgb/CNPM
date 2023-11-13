@@ -15,8 +15,22 @@
         },
         function(data){
             $('#donhanglist').html(data);
-        });
+        }).done(function(){
 
+            // thực hiện hủy đơn hàng
+            $(".TinhTrang.chuaXuLy").click(function() {
+            MaDonHang = $(this).attr("value");
+            if (confirm(`Hủy đơn hàng ${MaDonHang}?`)) {
+                $.get("admin/template/template_content/huyDonHang.php", {
+                        MaDon: MaDonHang
+                    },
+                    function(data) {
+                        $("#wrapper").html(data);
+                    });
+            }
+        }); 
+        });
+        
 
         //In them cac don hang
         $('#xemthem').click(function(){
@@ -66,7 +80,6 @@
             //Reset lại 2 biến from và to
             from = "";
             to = "";
-
             SoTrang = 1;
 
             $.get('./template/Ajax-GioHang/Ajax-GioHang.php',
@@ -84,7 +97,7 @@
                 $('#donhanglist').html(data);
             });
         });
-
+     
     });
 
     
@@ -109,6 +122,7 @@
             <button id = "btn-Loc">Lọc</button>
             <button id = "btn-Refresh">Refresh</button>
         </div>
+        <form action="" method="POA"></form>
         <div id = "donhang"> 
             <table id="donhanglist">
                 
