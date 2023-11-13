@@ -28,10 +28,9 @@ if (isset($_GET['MaSP'])) {
 
 ?>
 <script>
-    var tilegiam = <?php echo json_decode($Tilegiam) ?>
+    var tilegiam = <?php echo json_decode($Tilegiam) ?>;
 
-    var sosize = <?php echo json_encode($dataSize) ?>
-
+    var sosize = <?php echo json_encode($dataSize) ?>;
     function formatCash(str) {
         str = str + "";
         return str.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + "đ";
@@ -40,11 +39,15 @@ if (isset($_GET['MaSP'])) {
         var firstChild = document.querySelector('#price :first-child');
         var secondChild = document.querySelector('#price :nth-child(2)');
         var priceGiam = Math.round(price - price * tilegiam / 100);
-        firstChild.innerHTML = formatCash(priceGiam);
-        secondChild.innerHTML = formatCash(price);
+        if(tilegiam!=0){
+            firstChild.innerHTML = formatCash(priceGiam);
+            secondChild.innerHTML = formatCash(price);
+        }else{
+            firstChild.innerHTML = formatCash(price);
+        }
 
         var tonkho = document.querySelector('#tonkho p span')
-        tonkho.innerHTML = count
+        tonkho.innerHTML = count;
     }
 
     function validate() {
@@ -74,7 +77,7 @@ if (isset($_GET['MaSP'])) {
                             onclick="ChuyenAnh('./img/products/<?php if ($data['AnhChinh'])
                                 echo $data['AnhChinh'];
                             else
-                                echo 'giay404.jpg'; ?>')"
+                                echo 'giay404.jpg'; ?>)"
                             checked />
                         <img src="./img/products/<?php echo $data['AnhChinh'] ?>">
                     </label>
@@ -100,8 +103,12 @@ if (isset($_GET['MaSP'])) {
                 <?php
                 if ($data['GiaMin']) {
                     echo '<div id="price">';
-                    echo '<p>' . number_format(TinhTienGiam($Tilegiam, $data['GiaMin']), 0, ',', '.') . 'đ</p>';
-                    echo '<p id="niemyet">' . number_format($data['GiaMin'], 0, ',', '.') . 'đ</p>';
+                    if($Tilegiam!=0){
+                        echo '<p>' . number_format(TinhTienGiam($Tilegiam, $data['GiaMin']), 0, ',', '.') . 'đ</p>';
+                        echo '<p id="niemyet">' . number_format($data['GiaMin'], 0, ',', '.') . 'đ</p>';
+                    }else{
+                        echo '<p>' . number_format($data['GiaMin'], 0, ',', '.') . 'đ</p>';
+                    }
                     echo '</div>';
                     echo '<p>Kích thước</p>';
                     echo '<div id="size">';
