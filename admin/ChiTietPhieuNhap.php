@@ -140,12 +140,6 @@
                                             $pdf->Ln(); // Xuống dòng
                                             // Dữ liệu cho bảng
                                             
-                                            
-                                            
-                                            $data = array(
-                                                array('005', 'ADIDAS X SPEEDPORTAL.1 TF GW8973 GAME DATA PACK -', '35','15','1200000','12000000'),
-                                                array('006', 'ADIDAS X SPEEDPORTAL .1 FG GW8426 GAME DATA PACK', '39', '10', '1300000', '13000000'),
-                                            );
                                             // In dữ liệu vào bảng
                                             $pdf->SetFont('dejavusans', '', 10);
                                             foreach ($ListCTPN as $row) {
