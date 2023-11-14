@@ -49,7 +49,6 @@
                                     $resultTaiKhoan = mysqli_query($conn, $selectTaiKhoan);
                                     $rowTaiKhoan = mysqli_fetch_assoc($resultTaiKhoan); 
                                     $tenDN=$rowTaiKhoan['TenDN'];
-                                    $matKhau=$rowTaiKhoan['MatKhau'];
                                     $tinhTrang=$rowTaiKhoan['TinhTrang'];
                                     $quyen=$rowTaiKhoan['Quyen'];
                                     $email=$rowTaiKhoan['Email'];
@@ -64,7 +63,6 @@
                                 $diaChi = '';
                                 $sdt = '';
                                 $tenDN='';
-                                $matKhau='';
                                 $tinhTrang='';
                                 $quyen='';
                                 $email='';
@@ -122,7 +120,7 @@
                                     <label class="row">
                                         <div class="col col-3">Mật khẩu: </div>
                                         <div class="col col-9">
-                                            <input class="w-100" required type="text" name='matkhau' value="<?php echo $matKhau; ?>">
+                                            <input class="w-100" required type="text" name='matkhau' value="">
                                         </div>
                                     </label>
                                 </div>

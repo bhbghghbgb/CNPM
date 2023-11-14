@@ -12,15 +12,23 @@ if (isset($_SESSION['MaTaiKhoan']))
 /////////////////////////////////////
 // xử lý chỉnh thông tin người dùng 
 if (isset($_POST['ten'])) {
-    if ($daoTTTK->hasKhach($MaTK)) {
-        if ($daoTTTK->updateKhachHang($MaTK, $_POST['ten'], $_POST['diachi'], $_POST['sodienthoai'])) {
-            $_SESSION["message"] = "Thay đổi thông tin thành công";
+    $pattern = '/^\+(?:[0-9] ?){6,14}[0-9]$/';
+    if (preg_match($pattern, $_POST['sodienthoai'])) {
+        
+        if ($daoTTTK->hasKhach($MaTK)) {
+            if ($daoTTTK->updateKhachHang($MaTK, $_POST['ten'], $_POST['diachi'], $_POST['sodienthoai'])) {
+                $_SESSION["message"] = "Thay đổi thông tin thành công";
+            }
+        } else
+            if ($daoTTTK->updateNhanVien($MaTK, $_POST['ten'], $_POST['diachi'], $_POST['sodienthoai'])) {
+                $_SESSION["message"] = "Thay đổi thông tin thành công";
         }
-    } else
-        if ($daoTTTK->updateNhanVien($MaTK, $_POST['ten'], $_POST['diachi'], $_POST['sodienthoai'])) {
-            $_SESSION["message"] = "Thay đổi thông tin thành công";
 
-        }
+    }
+    else  echo "<script>addmessText('Số điện thoại bắt buộc 10 chữ số')</script>";
+        
+    
+
 }
 
 // xử lý chỉnh thông tin người dùng 

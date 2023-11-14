@@ -56,5 +56,5 @@ function addmess(text, bgcolor, textcolor, time) {
         }, time);
 }
 function addmessText(text) {
-    addmess(text, "#ccc", "white", 2000);
+    addmess(text, "#434343", "white", 2000);
 }
