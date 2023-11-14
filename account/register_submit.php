@@ -1,7 +1,7 @@
 <?php
 // session_start();
 // Kết nối cơ sở dữ liệu
-$conn = mysqli_connect('localhost', 'root', '', 'ql_cuahanggiay') or die ('Lỗi kết nối'); mysqli_set_charset($conn, "utf8");
+include("./db/dbconnect.php");
 
 function getMaTaiKhoan($conn){
     $sql5 = 'SELECT MAX(MaTaiKhoan) FROM taikhoan';

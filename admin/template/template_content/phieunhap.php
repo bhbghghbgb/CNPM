@@ -91,7 +91,7 @@
 
         // hien thi phieu nhap len man hinh
         $.ajax({
-            url: '/CNPM/admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
+            url: './admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
             method: 'POST',
             data: { flag: getList, }, // Dữ liệu muốn gửi đi
             success: function (response) {
@@ -131,7 +131,7 @@
                     console.log(fromDateValue);
                     console.log(toDateValue);
                     $.ajax({
-                    url: '/CNPM/admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
+                    url: './admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
                     method: 'POST',
                     data: { dateStart: fromDateValue,
                             dateEnd : toDateValue,
@@ -151,7 +151,7 @@
                 console.log(dateValue);
                 if (dateValue != "") {
                     $.ajax({
-                    url: '/CNPM/admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
+                    url: './admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
                     method: 'POST',
                     data: { dateValueLoc: dateValue,
                             flagValueLocNgay : getList, 
@@ -171,7 +171,7 @@
             $('.buttonReset').click(function () {
                 console.log("Đã bấm reset")
                 $.ajax({
-                    url: '/CNPM/admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
+                    url: './admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
                     method: 'POST',
                     data: { flag: getList, }, // Dữ liệu muốn gửi đi
                     success: function (response) {
@@ -223,7 +223,7 @@
         var row = btn.parentNode.parentNode;
         var maPN = row.children[0].textContent;
         $.ajax({
-            url: '/CNPM/admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
+            url: './admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
             method: 'POST',
             data: { maPNDuyet: maPN, }, // Dữ liệu muốn gửi đi
             success: function (response) {
@@ -238,7 +238,7 @@
         var row = btn.parentNode.parentNode;
         var maPN = row.children[0].textContent;
         $.ajax({
-            url: '/CNPM/admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
+            url: './admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
             method: 'POST',
             data: { maPNTuChoi: maPN, }, // Dữ liệu muốn gửi đi
             success: function (response) {
@@ -253,7 +253,7 @@
         var row = btn.parentNode.parentNode;
         var maPN = row.children[0].textContent;
         $.ajax({
-            url: '/CNPM/admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
+            url: './admin/template/template_content/ajaxphieunhap.php', // Đường dẫn đến file PHP
             method: 'POST',
             data: { maPNXoa: maPN, }, // Dữ liệu muốn gửi đi
             success: function (response) {

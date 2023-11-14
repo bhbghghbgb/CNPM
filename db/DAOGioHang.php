@@ -1,9 +1,6 @@
 <?php
-class DAOGioHang{
-    private $host = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $database = 'ql_cuahanggiay';
+include_once("DataBaseConfig.php");
+class DAOGioHang extends DatabaseConfig{
 
     private $conn;
 

@@ -1,10 +1,7 @@
 <?php
-class DAOPhieuNhap
+include_once("DataBaseConfig.php");
+class DAOPhieuNhap extends DatabaseConfig
 {
-    private $host = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $databaseName = 'ql_cuahanggiay';
 
     private $conn;
 
@@ -16,7 +13,7 @@ class DAOPhieuNhap
     public function connect()
     {
         if(!$this->conn){
-            $this->conn = mysqli_connect($this->host,$this->username,$this->password,$this->databaseName);
+            $this->conn = mysqli_connect($this->host,$this->username,$this->password,$this->database);
         }
     }
     

@@ -1,10 +1,7 @@
 <?php
-class DAOKhuyenMai{
-    private $host = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $database = 'ql_cuahanggiay';
-
+include_once("DataBaseConfig.php");
+class DAOKhuyenMai extends DatabaseConfig
+{
     private $conn;
 
     public function __construct(){

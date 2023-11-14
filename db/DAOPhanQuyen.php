@@ -1,9 +1,8 @@
 <?php
-class DAOPhanQuyen{
-    private $host = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $database = 'ql_cuahanggiay';
+include_once("DataBaseConfig.php");
+class DAOPhanQuyen extends DatabaseConfig
+{
+
 
     private $conn;
 

@@ -1,9 +1,7 @@
 <?php
-class DAOSoSize{
-    private $host = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $database = 'ql_cuahanggiay';
+include_once("DataBaseConfig.php");
+class DAOSoSize extends DatabaseConfig
+{
 
     private $conn;
 

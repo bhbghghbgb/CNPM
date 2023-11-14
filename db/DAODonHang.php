@@ -1,11 +1,7 @@
 <?php
-class DAODonHang
+include_once("DataBaseConfig.php");
+class DAODonHang extends DatabaseConfig
 {
-    private $host = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $databaseName = 'ql_cuahanggiay';
-
     private $conn;
 
     public function __construct()
@@ -16,7 +12,7 @@ class DAODonHang
     public function connect()
     {
         if (!$this->conn) {
-            $this->conn = mysqli_connect($this->host, $this->username, $this->password, $this->databaseName);
+            $this->conn = mysqli_connect($this->host, $this->username, $this->password, $this->database);
         }
     }
 

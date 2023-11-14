@@ -1,9 +1,6 @@
 <?php
-class DAODanhMuc{
-    private $host = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $database = 'ql_cuahanggiay';
+include_once("DataBaseConfig.php");
+class DAODanhMuc extends DatabaseConfig{
 
     private $conn;
 

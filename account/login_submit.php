@@ -1,7 +1,7 @@
 <?php
     session_start();
     $_SESSION['location'] = "index.php";
-    $conn = mysqli_connect('localhost', 'root', '', 'ql_cuahanggiay') or die ('Lỗi kết nối'); mysqli_set_charset($conn, "utf8");
+    include('./db/dbconnect.php');
     if (isset($_POST['dangnhap'])) {
         $username = trim($_POST['username']); //trim để loại bỏ khoảng trắng ở đầu và cuối của username
         $password = trim($_POST['password']);

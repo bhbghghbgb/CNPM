@@ -1,10 +1,7 @@
 <?php
-class DAOKhachHang{
+include_once("DataBaseConfig.php");
+class DAOKhachHang extends DatabaseConfig{
 
-    private $host = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $database = 'ql_cuahanggiay';
 
     private $conn;
 
