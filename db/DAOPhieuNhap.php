@@ -43,7 +43,7 @@ class DAOPhieuNhap
 
     public function getPN($maPN)
     {
-        $sql = 'SELECT *, phieunhaphang.NgayTao AS "NgayTaoPN" FROM phieunhaphang, hang, nhanvien  WHERE phieunhaphang.MaHang = hang.MaHang AND phieunhaphang.MaTaiKhoan = nhanvien.MaTaiKhoan AND MaPhieu = '.$maPN;
+        $sql = 'SELECT *, phieunhaphang.NgayTao AS "NgayTaoPN", phieunhaphang.TrangThai AS "TrangThaiPN" FROM phieunhaphang, hang, nhanvien  WHERE phieunhaphang.MaHang = hang.MaHang AND phieunhaphang.MaTaiKhoan = nhanvien.MaTaiKhoan AND MaPhieu = '.$maPN;
         $data = null;
         if($result = mysqli_query($this->conn,$sql)){
             while($row = mysqli_fetch_array($result)){

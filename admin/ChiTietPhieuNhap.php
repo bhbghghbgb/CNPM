@@ -107,14 +107,20 @@
                                             $pdf->SetCreator('Your Name');
                                             $pdf->SetAuthor('Your Name');
                                             $pdf->SetTitle('PHIẾU NHẬP HÀNG');
+                                            
                                             $pdf->SetSubject('Test PDF');
                                             $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
                                             // Thêm một trang mới
                                             $pdf->AddPage();
                                             // Bắt đầu nội dung của tài liệu
                                             $pdf->SetFont('dejavusans', '', 12);
+                                            if ($phieuNhap[0]['TrangThaiPN'] == 2 ) {
+                                                $pdf->Cell(0, 10, 'PHIẾU NHẬP HÀNG (Đã bị từ chối)', 0, 1, 'C');
+                                            } else {
+                                                $pdf->Cell(0, 10, 'PHIẾU NHẬP HÀNG', 0, 1, 'C');
+
+                                            }
                                             
-                                            $pdf->Cell(0, 10, 'PHIẾU NHẬP HÀNG', 0, 1, 'C');
                                             $pdf->Cell(0, 10, 'Mã phiếu: ' . $phieuNhap[0]['MaPhieu'] , 0, 1,'L');
                                             $pdf->Cell(0, 10, 'Ngày tạo: ' . $phieuNhap[0]['NgayTaoPN'] , 0, 1,'L');
                                             $pdf->Cell(0, 10, 'Mã hãng: ' . $phieuNhap[0]['MaHang'] , 0, 1,'L');
