@@ -29,12 +29,20 @@ if (isset($_POST['hd'])) {
 
             // Truy vấn danh sách tai khoan
             $mataikhoan = $_POST['idtk'];
+            if ($_POST['matkhau'] == "")
+            {
+            $sql = "UPDATE taikhoan  SET TenDN='" . $_POST['tendn'] . "',
+                Email ='" . $_POST['email'] . "',
+                Quyen ='" . $_POST['quyen'] . "',
+                TinhTrang ='" . $_POST['tinhtrang'] . "'
+                WHERE MaTaiKhoan='" . $_POST['idtk'] . "'";    
+            } else {
             $sql = "UPDATE taikhoan  SET TenDN='" . $_POST['tendn'] . "',
                                         MatKhau='" . md5($_POST['matkhau']) . "',
                                         Email ='" . $_POST['email'] . "',
                                         Quyen ='" . $_POST['quyen'] . "',
                                         TinhTrang ='" . $_POST['tinhtrang'] . "'
-                                        WHERE MaTaiKhoan='" . $_POST['idtk'] . "'";
+                                        WHERE MaTaiKhoan='" . $_POST['idtk'] . "'";}
 
             $result = mysqli_query($conn, $sql);
             echo $sql;

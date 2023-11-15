@@ -117,14 +117,22 @@
                                         </div>
                                     </label>
                                 </div>
+                                <!-- ------------------------------------------------------------------------------------------------ -->
                                 <div class="row mt-2">
                                     <label class="row">
                                         <div class="col col-3">Mật khẩu: </div>
                                         <div class="col col-9">
-                                            <input class="w-100" required type="text" name='matkhau' value="<?php echo $matKhau; ?>">
+                                            <?php
+                                                if(isset($_GET['hd'])) {
+                                                    echo '<input class="w-100" type="text" name="matkhau" value="">';
+                                                } else  {
+                                                    echo '<input class="w-100" required type="text" name="matkhau" value="">';
+                                                }
+                                            ?>
                                         </div>
                                     </label>
                                 </div>
+                                <!-- ------------------------------------------------------------------------------------------------- -->
                                 <div class="row mt-2">
                                     <label class="row">
                                         <div class="col col-3">Tình Trạng: </div>
