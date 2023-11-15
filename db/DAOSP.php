@@ -2,29 +2,6 @@
 include_once("DataBaseConfig.php");
 class DAOSP extends DatabaseConfig
 {
-
-    private $conn;
-
-    public function __construct()
-    {
-        $this->connect();
-    }
-
-    public function connect()
-    {
-        if (!$this->conn) {
-            $this->conn = mysqli_connect($this->host, $this->username, $this->password, $this->database);
-        }
-    }
-
-    public function disConnect()
-    {
-        if ($this->conn) {
-            mysqli_close($this->conn);
-        }
-    }
-
-
     public function getSP($MaSP)
     {
         $sql = "SELECT * FROM sanpham WHERE TrangThai=1 AND MaSP = " . $MaSP;

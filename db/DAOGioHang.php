@@ -1,25 +1,6 @@
 <?php
 include_once("DataBaseConfig.php");
 class DAOGioHang extends DatabaseConfig{
-
-    private $conn;
-
-    public function __construct(){
-        $this->connect();
-    }
-
-    public function connect(){
-        if(!$this->conn){
-            $this->conn=mysqli_connect($this->host,$this->username,$this->password,$this->database);
-        }
-    }
-
-    public function disConnect() {
-        if($this->conn){
-            mysqli_close($this->conn);
-        }
-    }
-
     public function getListGioHang($MaTK) { 
         $sql = "SELECT giohang.MaSP,sanpham.Ten,sosize.GiaBan,sanpham.AnhChinh,giohang.Size,giohang.SoLuong,sosize.SoLuong as SLTonKho FROM giohang,sanpham,sosize WHERE MaTaiKhoan = ". $MaTK." and giohang.MaSP = sanpham.MaSP and sosize.MaSP = sanpham.MaSP and giohang.Size = sosize.Size";
         $data = null;
