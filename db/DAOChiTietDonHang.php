@@ -118,7 +118,7 @@ class DAOChiTietDonHang
 
         return $data;
     }
-    public function ListPhanTram($hang = null,)
+    public function ListPhanTram($hang = null)
     {
         $dataPRO = new DataProvider();
         if($hang)
