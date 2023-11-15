@@ -2,8 +2,8 @@
 if (isset($_POST['hd'])) {
     $hd = $_POST['hd'];
     include '../../db/dbconnect.php';
-    
-
+    include("../../db/DAOThongTinTaiKhoan.php");
+    $daoThongTinTaiKhoan = new DAOThongTinTaiKhoan();
 
 
     switch ($hd) {
@@ -21,6 +21,10 @@ if (isset($_POST['hd'])) {
 
             if (!preg_match('/^[a-zA-Z0-9]{5,}$/', $_POST['tendn'])) {
                 echo "<script>alert('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số.'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
+                return;
+            }
+            if ($daoThongTinTaiKhoan->hasTaiKhoan( $_POST['tendn'])== false) {
+                echo "<script>alert('Tên đăng nhập đã tồn tại.'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
                 return;
             }
             if (substr($_POST['email'], -10) !== "@gmail.com") {
@@ -86,6 +90,12 @@ if (isset($_POST['hd'])) {
                 echo "<script>alert('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số.'); window.location = '../editnv.php';</script>";
                 return;
             }
+            
+            if ($daoThongTinTaiKhoan->hasTaiKhoan( $_POST['tendn'])== false) {
+                echo "<script>alert('Tên đăng nhập đã tồn tại.'); window.location = '../editnv.php';</script>";
+                return;
+            }
+
             if (substr($_POST['email'], -10) !== "@gmail.com") {
                 echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editnv.php';</script>";
                 return;
