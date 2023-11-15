@@ -105,6 +105,8 @@
                                         <div class="col col-3">Số Điện Thoại: </div>
                                         <div class="col col-9">
                                             <input class="w-100" required type="text" name='sdt' value="<?php echo $sdt; ?>">
+                                           
+
                                         </div>
                                     </label>
                                 </div>
@@ -113,6 +115,7 @@
                                         <div class="col col-3">Tên Đăng Nhập: </div>
                                         <div class="col col-9">
                                             <input class="w-100" required type="text" name='tendn' value="<?php echo $tenDN; ?>">
+                                            <input type="hidden" name="MaTKNV" value="<?php if (isset($_GET['id']))  {echo $_GET['id']; }?>">
                                         </div>
                                     </label>
                                 </div>
@@ -126,7 +129,6 @@
                                                 } else  {
                                                     echo '<input class="w-100" required type="text" name="matkhau" value="">';
                                                 }
-                                            
                                             ?>
                                             
                                         </div>
@@ -200,6 +202,7 @@
                                         </a>
                                     </div>
                                 </div>
+                                
                             </form>
                         </div>
                     </div>

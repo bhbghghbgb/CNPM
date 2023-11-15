@@ -87,14 +87,23 @@ class DAOThongTinTaiKhoan extends DatabaseConfig
     }
     public function updateTaiKhoan($MaTaiKhoan, $TenDN, $MatKhau, $Email)
     {
-        $MatKhau = md5($MatKhau);
-        $sql = "UPDATE taikhoan SET TenDN = '$TenDN', MatKhau = '$MatKhau', Email = '$Email'
-         WHERE MaTaiKhoan = '$MaTaiKhoan'";
+        if ($MatKhau == '') {
+            $sql = "UPDATE taikhoan SET TenDN = '$TenDN', Email = '$Email'
+             WHERE MaTaiKhoan = '$MaTaiKhoan'";
+        } else {
+            $MatKhau = md5($MatKhau);
+             $sql = "UPDATE taikhoan SET TenDN = '$TenDN', MatKhau = '$MatKhau', Email = '$Email'
+             WHERE MaTaiKhoan = '$MaTaiKhoan'";
+        }
+
+        
         if ($result = mysqli_query($this->conn, $sql)) {
             return true;
         }
         return false;
     }
+
+
     public function insertNhanVien($MaNhanVien, $Quyen, $DiaChi, $TenNhanVien, $SDT, $MaTaiKhoan)
     {
         $sql = "INSERT INTO nhanvien (MaNhanVien, Quyen, DiaChi, TenNhanVien, SDT, MaTaiKhoan, TrangThai) 
@@ -162,7 +171,7 @@ class DAOThongTinTaiKhoan extends DatabaseConfig
     }
 
     public function hasTaiKhoan ($taiKhoan) {
-        $sql = "SELECT * FROM taikhoan WHERE TenDN = '".$taiKhoan."'";
+        $sql = "SELECT * FROM taikhoan WHERE TrangThai = 1 AND TenDN = '".$taiKhoan."'";
         $data=null;
         if($result = mysqli_query($this->conn,$sql)){
             while($row=mysqli_fetch_array($result)){
@@ -177,8 +186,24 @@ class DAOThongTinTaiKhoan extends DatabaseConfig
         } 
     }
 
+    public function LayThongTinNhanVien($maNhanVien){
+        $sql = "SELECT * FROM nhanvien WHERE TrangThai = 1 AND MaNhanVien = '$maNhanVien'";
+        $data = null;
+        if($result = mysqli_query($this->conn, $sql)){
+           $data = mysqli_fetch_array($result);
+           return $data;
+        }
+        return null;
+    }
 
-
-
+    public function LayMaTKKhachHang($maKhachHang){
+        $sql = "SELECT * FROM khachhang WHERE TrangThai = 1 AND MaKhach = '$maKhachHang'";
+        $data = null;
+        if($result = mysqli_query($this->conn, $sql)){
+           $data = mysqli_fetch_array($result);
+           return $data;
+        }
+        return null;
+    }
 }
 ?>

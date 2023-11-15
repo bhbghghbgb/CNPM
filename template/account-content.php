@@ -32,15 +32,40 @@ if (isset($_POST['ten'])) {
 }
 
 // xử lý chỉnh thông tin người dùng 
+// if (isset($_POST['tenDN'])) {
+//     if ($_POST['matkhau'] === $_POST['matkhau1'])
+//         if ($daoTTTK->updateTaiKhoan($MaTK, $_POST['tenDN'], $_POST['matkhau'], $_POST['email'])) {
+//             $_SESSION["message"] = "Thay đổi thông tin đăng nhập thành công";
+//         } else
+//             echo "<script>alert('Xác nhận mật khẩu lại')</script>";
+// }
+
+if (isset($_SESSION['MaTaiKhoan'])) {
+    $data = $daoTTTK->getTaiKhoan($MaTK); }
+    
+// xử lý chỉnh thông tin người dùng 
 if (isset($_POST['tenDN'])) {
-    if ($_POST['matkhau'] === $_POST['matkhau1'])
-        if ($daoTTTK->updateTaiKhoan($MaTK, $_POST['tenDN'], $_POST['matkhau'], $_POST['email'])) {
-            $_SESSION["message"] = "Thay đổi thông tin đăng nhập thành công";
-        } else
-            echo "<script>alert('Xác nhận mật khẩu lại')</script>";
+    if ($_POST['tenDN'] == $data['TenDN'] ){
+        if ($_POST['matkhau'] === $_POST['matkhau1']){
+            if ($daoTTTK->updateTaiKhoan($MaTK, $_POST['tenDN'], $_POST['matkhau'], $_POST['email'])) {
+                $_SESSION["message"] = "Thay đổi thông tin đăng nhập thành công";
+            } } else {
+                echo "<script>alert('Xác nhận mật khẩu lại')</script>";
+            }
+    } else if ( $daoTTTK->hasTaiKhoan($_POST['tenDN']))
+    {
+        if ($_POST['matkhau'] === $_POST['matkhau1']){
+            if ($daoTTTK->updateTaiKhoan($MaTK, $_POST['tenDN'], $_POST['matkhau'], $_POST['email'])) {
+                $_SESSION["message"] = "Thay đổi thông tin đăng nhập thành công";
+            } } else {
+                echo "<script>alert('Xác nhận mật khẩu lại')</script>";
+            }
+    } else if ( $daoTTTK->hasTaiKhoan($_POST['tenDN']) == false)
+     {
+        echo "<script>alert('Tài khoản đã tồn tại !')</script>";
+    }
+    // $daoTTTK->hasTaiKhoan($_POST['tenDN'])
 }
-
-
 
 
 $data = [
@@ -59,7 +84,6 @@ if (isset($_SESSION['MaTaiKhoan'])) {
     $SoDonHang = $daoDonHang->getCountDHForTK($MaTK);
     $SoSP = $daoDonHang->getCountSPForTK($MaTK);
 }
-
 
 
 

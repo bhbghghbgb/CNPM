@@ -23,10 +23,17 @@ if (isset($_POST['hd'])) {
                 echo "<script>alert('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số.'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
                 return;
             }
-            if ($daoThongTinTaiKhoan->hasTaiKhoan( $_POST['tendn'])== false) {
-                echo "<script>alert('Tên đăng nhập đã tồn tại.'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
-                return;
+            
+            if (isset($_POST['MaTKNV'])) {
+                $dataNV = $daoThongTinTaiKhoan->LayThongTinNhanVien($_POST['MaTKNV']);
+                $data = $daoThongTinTaiKhoan->getTaiKhoan($dataNV['MaTaiKhoan']); 
+ 
             }
+            if ($_POST['tendn'] != $data['TenDN']) {   
+                if ($daoThongTinTaiKhoan->hasTaiKhoan( $_POST['tendn'])== false) {
+                    echo "<script>alert('Tên đăng nhập đã tồn tại.'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
+                    return;
+                }}
             if (substr($_POST['email'], -10) !== "@gmail.com") {
                 echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
                 return;

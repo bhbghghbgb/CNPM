@@ -114,6 +114,7 @@
                                         <div class="col col-3">Tên Đăng Nhập: </div>
                                         <div class="col col-9">
                                             <input class="w-100" required type="text" name='tendn' value="<?php echo $tenDN; ?>">
+                                            <input type="hidden" name="MaTKKH" value="<?php if (isset($_GET['id']))  {echo $_GET['id']; }?>">
                                         </div>
                                     </label>
                                 </div>
