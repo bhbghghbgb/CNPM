@@ -31,7 +31,7 @@
     
     
     <div>
-        <a href="editPN.php?"  type="button"  style="width: 150px; height:42px; background-color:burlywood; text-align:center;display:inline-block; margin-bottom:20px; border:2px solid black; color:black; margin-top:20px;  display: flex; justify-content: center; align-items: center; line-height: 42px;"  >Thêm Phiếu</a>    
+        <a href="editpn.php?"  type="button"  style="width: 150px; height:42px; background-color:burlywood; text-align:center;display:inline-block; margin-bottom:20px; border:2px solid black; color:black; margin-top:20px;  display: flex; justify-content: center; align-items: center; line-height: 42px;"  >Thêm Phiếu</a>    
     </div>
 
 

@@ -10,42 +10,42 @@
                 <div id ="row">
                     <div class = "box-banner-index">
                         <div class = "index">
-                            <a href = "./DanhSach.php?MaDM=DM-2">
+                            <a href = "./danhsach.php?MaDM=DM-2">
                                 <img src = ".\img\img-listFav\banner_index_1.webp">
                             </a>
                         </div>
                     </div>
                     <div class = "box-banner-index">
                         <div class = "index">
-                            <a href = "./DanhSach.php?MaDM=DM-1">
+                            <a href = "./danhsach.php?MaDM=DM-1">
                                 <img src = ".\img\img-listFav\banner_index_2.webp">
                             </a>
                         </div>
                     </div>
                     <div class = "box-banner-index">
                         <div class = "index">
-                            <a href = "./DanhSach.php?MaDM=DM-4">
+                            <a href = "./danhsach.php?MaDM=DM-4">
                                 <img src = ".\img\img-listFav\banner_index_3.webp">
                             </a>
                         </div>
                     </div>
                     <div class = "box-banner-index">
                         <div class = "index">
-                            <a href = "./DanhSach.php?MaDM=DM-5">
+                            <a href = "./danhsach.php?MaDM=DM-5">
                                 <img src = ".\img\img-listFav\banner_index_4.webp">
                             </a>
                         </div>
                     </div>
                     <div class = "box-banner-index">
                         <div class = "index">
-                            <a href = "./DanhSach.php?Sale=1">
+                            <a href = "./danhsach.php?Sale=1">
                                 <img src = ".\img\img-listFav\banner_index_5.webp">
                             </a>
                         </div>
                     </div>
                     <div class = "box-banner-index">
                         <div class = "index">
-                            <a href = "./DanhSach.php?MaDM=DM-3">
+                            <a href = "./danhsach.php?MaDM=DM-3">
                                 <img src = ".\img\img-listFav\banner_index_6.webp" style="width: 360px; max-height: 200px;">
                             </a>
                         </div>
@@ -112,7 +112,7 @@
                 </div>
                     <div id="get_data_NT"></div>
                 <div class="viewall">
-                    <a href="./DanhSach.php?MaDM=DM-1"><div class="viewall-content">Xem tất cả</div></a>
+                    <a href="./danhsach.php?MaDM=DM-1"><div class="viewall-content">Xem tất cả</div></a>
                 </div>
                 
             </div>
@@ -162,7 +162,7 @@
                 </div>
                     <div id="get_data_TN"></div>
                 <div class="viewall">
-                <a href="./DanhSach.php?MaDM=DM-2"><div class="viewall-content">Xem tất cả</div></a>
+                <a href="./danhsach.php?MaDM=DM-2"><div class="viewall-content">Xem tất cả</div></a>
                 </div>
             </div>
 
@@ -214,14 +214,14 @@
             
                     
                 <div class="viewall">
-                <a href="./DanhSach.php?MaDM=DM-4"><div class="viewall-content">Xem tất cả</div></a>
+                <a href="./danhsach.php?MaDM=DM-4"><div class="viewall-content">Xem tất cả</div></a>
                 </div>
             </div>
             </div>
 
     </div>
     
-    <form action="./GioHang.php" method="post">
+    <form action="./giohang.php" method="post">
     <input type="hidden" name="MaSP" value="<?php echo $data[0][0]?>">
     </form>              
     

@@ -157,7 +157,7 @@ if (isset($_SESSION['MaTaiKhoan'])) {
                     <?php echo $SoSP ?> sản phẩm
                 </p>
                 <p>
-                    <a class="text-light" href="./GioHang.php">Xem chi tiết</a>
+                    <a class="text-light" href="./giohang.php">Xem chi tiết</a>
                 </p>
             </div>
         </div>

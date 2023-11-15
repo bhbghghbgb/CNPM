@@ -7,7 +7,7 @@
             let keycode = event.which;
             if(keycode == 13){
                 let text = $(this).val();
-                window.location = "./DanhSach.php?Find=" +text;
+                window.location = "./danhsach.php?Find=" +text;
             }
         });
 
@@ -51,7 +51,7 @@
                                 }
                         ?>
                             <li>
-                                <a href="GioHang.php"><i class="ti-shopping-cart gh"></i></a>
+                                <a href="giohang.php"><i class="ti-shopping-cart gh"></i></a>
                                 <span id="quantity">
                                     <?php
                                         include __DIR__."/../db/DAOGioHang.php";

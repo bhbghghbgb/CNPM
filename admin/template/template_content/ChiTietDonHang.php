@@ -19,7 +19,7 @@
 
     if(isset($_GET['PQ'])){
         if($data == null){
-            header("location:../../../GioHang.php");
+            header("location:../../../giohang.php");
         }
     }
     else{
@@ -92,7 +92,7 @@
     <?php
         if(isset($_GET['PQ'])){
     ?>
-        <a href="../../../GioHang.php"><div id="back">Xác nhận</div></a>
+        <a href="../../../giohang.php"><div id="back">Xác nhận</div></a>
     <?php        
          }
          else{

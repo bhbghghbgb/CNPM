@@ -17,7 +17,7 @@
     $dbSP->connect();
     if(!isset($_SESSION['MaTaiKhoan'])){
 
-        echo '<script>alert("Bạn chưa đăng nhập vào hệ thống nên không thanh toán được"); window.location="../GioHang.php";</script>';
+        echo '<script>alert("Bạn chưa đăng nhập vào hệ thống nên không thanh toán được"); window.location="../giohang.php";</script>';
     }
 
     $MaTK =  $_SESSION['MaTaiKhoan'];
@@ -55,6 +55,6 @@
         echo "<script>window.location='../admin/template/template_content/ChiTietDonHang.php?PQ=User&CT=$MaDon[0]&MaTK=$MaTK&Date=$NgayDat&TT=$TongTien';</script>";
     }
     else{
-        echo '<script>alert("Tạo đơn thất bại"); window.location="../GioHang.php";</script>';
+        echo '<script>alert("Tạo đơn thất bại"); window.location="../giohang.php";</script>';
     }
 ?>

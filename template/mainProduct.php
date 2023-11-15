@@ -66,7 +66,7 @@ if (isset($_GET['MaSP'])) {
 
 </script>
 
-<form method="POST" action="GioHang.php" onsubmit="return validate()">
+<form method="POST" action="giohang.php" onsubmit="return validate()">
     <input type="hidden" name="MaSP" value="<?php echo $data["MaSP"] ?>">
     <div id="main_product" class="container">
         <div id="top_main">
@@ -190,17 +190,17 @@ if (isset($_GET['MaSP'])) {
         </ul>
         <div id="danhmuc">
             <div class="item">
-                <a href="./DanhSach.php?MaHang=MH-001">
+                <a href="./danhsach.php?MaHang=MH-001">
                     <img src="./img/img-danhmuc/adidas.jpg">
                 </a>
             </div>
             <div class="item">
-                <a href="./DanhSach.php?MaHang=MH-002">
+                <a href="./danhsach.php?MaHang=MH-002">
                     <img src="./img/img-danhmuc/nike.jpg">
                 </a>
             </div>
             <div class="item">
-                <a href="./DanhSach.php?MaHang=MH-021">
+                <a href="./danhsach.php?MaHang=MH-021">
                     <img src="./img/img-danhmuc/pan.jpg">
                 </a>
             </div>

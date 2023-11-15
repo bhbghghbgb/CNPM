@@ -46,7 +46,7 @@ if (isset($_POST['sort'])&&isset($_POST['order'])) {
                     </div>
                 </a>";
 
-            echo "<a href='editSP.php?hd=s&id=" . $row["MaSP"] . "' class='sua'>
+            echo "<a href='editsp.php?hd=s&id=" . $row["MaSP"] . "' class='sua'>
                     <div class='col'>
                         Sửa
                     </div>
@@ -96,7 +96,7 @@ if (isset($_GET['search'])) {
     $u=0;
     foreach ($suggestions as $suggestion) {
         if($u==5)break;
-        echo "<div class='suggestion border border-ligth p-1'><a class='text-black' href='./editSP.php?hd=s&id=".$suggestion['MaSP']."'>" . $suggestion['Ten'] . "</a></div>";
+        echo "<div class='suggestion border border-ligth p-1'><a class='text-black' href='./editsp.php?hd=s&id=".$suggestion['MaSP']."'>" . $suggestion['Ten'] . "</a></div>";
         $u++;
     }
 }

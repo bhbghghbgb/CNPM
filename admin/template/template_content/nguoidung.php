@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
     <p class='text-center'>Bảng khách hàng</p></div>
     <div class='row m-2'>
         <div class='col mx-2 adminthem'>
-            <a href='editKH.php?' class='row'>
+            <a href='editkh.php?' class='row'>
                 <div class='col text-black'>Thêm Khách Hàng</div>
             </a>
         </div>
@@ -55,7 +55,7 @@ if ($result->num_rows > 0) {
                         </div>
                     </a>";
                 
-                echo"<a href='editKH.php?hd=s&id=".$row['MaKhach']."' class='sua'>
+                echo"<a href='editkh.php?hd=s&id=".$row['MaKhach']."' class='sua'>
                         <div class='col'>
                             Sửa
                         </div>
@@ -100,7 +100,7 @@ if ($result->num_rows > 0) {
     <p class='text-center'>Bảng nhân viên</p></div>
     <div class='row m-2'>
         <div class='col mx-2 adminthem'>
-            <a href='editNV.php?' class='row'>
+            <a href='editnv.php?' class='row'>
                 <div class='col text-black'>Thêm Nhân Viên</div>
             </a>
         </div>
@@ -132,7 +132,7 @@ if ($result->num_rows > 0) {
                         </div>
                     </a>";
                 
-                echo"<a href='editNV.php?hd=s&id=".$row['MaNhanVien']."' class='sua'>
+                echo"<a href='editnv.php?hd=s&id=".$row['MaNhanVien']."' class='sua'>
                         <div class='col'>
                             Sửa
                         </div>

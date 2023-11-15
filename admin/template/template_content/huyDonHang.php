@@ -13,7 +13,7 @@ if (isset($_GET['MaDon'])) {
         if (isset($_GET['pq'])) {
             echo "<script>window.location='index.php?id=dh'</script>";
         } else {
-            echo "<script>window.location='GioHang.php'</script>";
+            echo "<script>window.location='giohang.php'</script>";
         }    
     }else{
         echo "<script>alert('Hủy thất bại!')</script>";

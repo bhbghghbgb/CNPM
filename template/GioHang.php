@@ -57,7 +57,7 @@ if (isset($_GET['action'])) {
             if ($value['MaSP'] == $_GET['MaSP']) {
                 $dgh->deleteSP($MaTaiKhoan,$value['MaSP']);
                 unset($list[$key]);
-                echo ' <script>window.location="GioHang.php";</script>';
+                echo ' <script>window.location="giohang.php";</script>';
             }
         }
     }
@@ -122,7 +122,7 @@ if (isset($_POST['add_to_cart'])) {
                                             <?php echo number_format($value['GiaBan'] * $value['SoLuong'], 0, ",", ".") . "đ" ?>
                                         </td>
                                         <td>
-                                            <a onclick="return confirm('Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?');" href="GioHang.php?action=remove&MaSP=<?php echo $value['MaSP'] ?>">
+                                            <a onclick="return confirm('Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?');" href="giohang.php?action=remove&MaSP=<?php echo $value['MaSP'] ?>">
                                                 <button type="button" class="delete"><i class="ti-trash trash"></i></button>
                                         </td>
                                     </tr>
