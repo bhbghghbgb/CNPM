@@ -181,7 +181,7 @@
                                             echo "<input type='hidden' name='idtk' value=" . $matk . ">";
                                             echo "<input type='hidden' name='id' value=" . $id . ">";
                                             echo '<a><input type="submit" class="btn bg-success" name="hd" value="Lưu"></a>';
-                                            echo "<a class='text-black' href='editnv.php'> 
+                                            echo "<a class='text-black' href='editNV.php'> 
                                                 <div class='btn bg-secondary'>Thêm mới</div>
                                             </a>";
                                         } else

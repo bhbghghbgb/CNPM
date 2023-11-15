@@ -154,7 +154,7 @@ if (isset($_POST['hd'])) {
                 exit;
             } else {
                 $_SESSION["message"] = "Sửa không thành công";
-                header("Location: ../editsp.php?hd=s&id=".$_POST['id']."");
+                header("Location: ../editSP.php?hd=s&id=".$_POST['id']."");
                 exit;
             }
         case "Thêm":
@@ -202,7 +202,7 @@ if (isset($_POST['hd'])) {
                 echo "<script>
                 alert('Thêm Thành Công');
                 </script>";
-                header("Location: ../editsp.php?hd=s&id=" . $id . "");
+                header("Location: ../editSP.php?hd=s&id=" . $id . "");
 
             }
     }

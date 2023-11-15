@@ -46,7 +46,7 @@ if (isset($_GET['search'])) {
 
     <div class="row">
         <div class="col mx-2 adminthem">
-            <a href="editsp.php" class="row">
+            <a href="editSP.php" class="row">
                 <div class="col text-black">Thêm Sản Phẩm</div>
             </a>
         </div>
@@ -84,7 +84,7 @@ if (isset($_GET['search'])) {
                         <div class='col'>Xem</div>
                     </a>";
 
-                echo "<a href='editsp.php?hd=s&id=" . $row["MaSP"] . "' class='sua'>
+                echo "<a href='editSP.php?hd=s&id=" . $row["MaSP"] . "' class='sua'>
                         <div class='col'>Sửa</div>
                     </a>";
 

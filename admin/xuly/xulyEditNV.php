@@ -14,17 +14,17 @@ if (isset($_POST['hd'])) {
             if (preg_match('/^0\d{9}$/', $_POST['sdt']) == false) {
                 echo "<script>
                     alert('Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại 10 chữ số và bắt đầu bằng số 0.');
-                    window.location = '../editnv.php?id=$id&hd=$hd'
+                    window.location = '../editNV.php?id=$id&hd=$hd'
                     </script>";
                 return;
             }
 
             if (!preg_match('/^[a-zA-Z0-9]{5,}$/', $_POST['tendn'])) {
-                echo "<script>alert('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số.'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
+                echo "<script>alert('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số.'); window.location = '../editNV.php?id=$id&hd=$hd';</script>";
                 return;
             }
             if (substr($_POST['email'], -10) !== "@gmail.com") {
-                echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
+                echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editNV.php?id=$id&hd=$hd';</script>";
                 return;
             }
             
@@ -50,14 +50,14 @@ if (isset($_POST['hd'])) {
             if ($result) {
                 echo "<script>
                 alert('Sửa Thành Công');
-                window.location = '../editnv.php?id=$id&hd=$hd';
+                window.location = '../editNV.php?id=$id&hd=$hd';
                 </script>";
                 $conn->close();
                 return;
             } else {
                 echo "<script>
                 alert('Sửa không Thành Công');
-                 window.location = '../editnv.php';
+                 window.location = '../editNV.php';
                 </script>";
                 $conn->close();
                 return;
@@ -70,17 +70,17 @@ if (isset($_POST['hd'])) {
             if (preg_match('/^0\d{9}$/', $_POST['sdt']) == false) {
                 echo "<script>
                     alert('Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại 10 chữ số và bắt đầu bằng số 0.');
-                    window.location = '../editnv.php'
+                    window.location = '../editNV.php'
                     </script>";
                 return;
             }
 
             if (!preg_match('/^[a-zA-Z0-9]{5,}$/', $_POST['tendn'])) {
-                echo "<script>alert('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số.'); window.location = '../editnv.php';</script>";
+                echo "<script>alert('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số.'); window.location = '../editNV.php';</script>";
                 return;
             }
             if (substr($_POST['email'], -10) !== "@gmail.com") {
-                echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editnv.php';</script>";
+                echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editNV.php';</script>";
                 return;
             }
 
@@ -165,7 +165,7 @@ if (isset($_POST['hd'])) {
             } else {
                 echo "<script>
                 alert('Thêm không Thành Công');
-                window.location = '../editnv.php?id=$id&hd=$hd';
+                window.location = '../editNV.php?id=$id&hd=$hd';
                 </script>";
                 $conn->close();
                 return;
