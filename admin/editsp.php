@@ -2,7 +2,7 @@
 include('../db/DAOSP.php');
 include('../db/DAOHang.php');
 include('../db/DAODanhMuc.php');
-include('../db/DAOKHuyenMai.php');
+include('../db/DAOKhuyenMai.php');
 include('../db/DAOSosize.php');
 $listconvert = "";
 $daoSP = new DAOSP();
