@@ -3,26 +3,6 @@ include_once("DataBaseConfig.php");
 class DAOPhanQuyen extends DatabaseConfig
 {
 
-
-    private $conn;
-
-    public function __construct(){
-        $this->connect();
-    }
-
-    public function connect(){
-        if(!$this->conn){
-            $this->conn=mysqli_connect($this->host,$this->username,$this->password,$this->database);
-        }
-    }
-
-    public function disConnect() {
-        if($this->conn){
-            mysqli_close($this->conn);
-        }
-    }
-
-
     public function checkQuyen($MaQuyen,$MaChiTiet) {
         $sql = "SELECT * FROM phanquyen WHERE MaQuyen = '".$MaQuyen."' AND MaChiTiet = '".$MaChiTiet."'";
         if($result = mysqli_query($this->conn,$sql)){

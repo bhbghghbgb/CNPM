@@ -3,19 +3,6 @@ include_once("DataBaseConfig.php");
 
 class DAOThongTinTaiKhoan extends DatabaseConfig
 {
-    private $conn;
-
-    public function __construct()
-    {
-        $this->connect();
-    }
-
-    public function connect()
-    {
-        if (!$this->conn) {
-            $this->conn = mysqli_connect($this->host, $this->username, $this->password, $this->database);
-        }
-    }
 
     public function getList()
     {

@@ -99,9 +99,9 @@ class DAOChiTietDonHang
             donhang
         WHERE 
             TrangThai = 1
-            AND MONTH(NgayDat) IN (" . $quarter * 3 - 2 . " ," . $quarter * 3 - 1 . ", " . $quarter * 3 . ")
+            AND MONTH(NgayDat) IN (" . (($quarter * 3) - 2) . ", " . (($quarter * 3) - 1) . ", " . ($quarter * 3) . ")
         GROUP BY 
-        MONTH(NgayDat)";
+            MONTH(NgayDat)";
             $result = $dataPRO->executeQuery($sql);
             $data = [
                 ["Thang" => $quarter * 3 - 2, "TongDoanhThu" => 0],
@@ -118,7 +118,7 @@ class DAOChiTietDonHang
 
         return $data;
     }
-    public function ListPhanTram($hang = null,)
+    public function ListPhanTram($hang = null)
     {
         $dataPRO = new DataProvider();
         if($hang)

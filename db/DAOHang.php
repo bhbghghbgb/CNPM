@@ -2,25 +2,6 @@
 include_once("DataBaseConfig.php");
 class DAOHang extends DatabaseConfig{
 
-
-    private $conn;
-
-    public function __construct(){
-        $this->connect();
-    }
-
-    public function connect(){
-        if(!$this->conn){
-            $this->conn=mysqli_connect($this->host,$this->username,$this->password,$this->database);
-        }
-    } 
-
-    public function disConnect() {
-        if($this->conn){
-            mysqli_close($this->conn);
-        }
-    }
-
     public function getList(){
         $sql = "SELECT * FROM hang";
         $data=null;

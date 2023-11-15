@@ -2,27 +2,6 @@
 include_once("DataBaseConfig.php");
 class DAOChiTietPhieuNhap extends DatabaseConfig
 {
-
-    private $conn;
-
-    public function __construct()
-    {
-        $this->connect();
-    }
-
-    public function connect()
-    {
-        if (!$this->conn) {
-            $this->conn = mysqli_connect($this->host, $this->username, $this->password, $this->database);
-        }
-    }
-
-    public function disConnect()
-    {
-        if ($this->conn)
-            mysqli_close($this->conn);
-    }
-
     public function getList($maphieu)
     {
         $sql = 'SELECT * FROM chitietphieunhap WHERE  MaPhieu =' . $maphieu;
@@ -137,11 +116,13 @@ class DAOChiTietPhieuNhap extends DatabaseConfig
             $sql = "SELECT 
             MONTH(NgayTao) AS Thang,
             SUM(TongDon) AS TongDoanhThu
-        FROM  phieunhaphang
-        WHERE TrangThai = 1
-        AND MONTH(NgayTao) IN (" . $quarter * 3 - 2 . " ," . $quarter * 3 - 1 . ", " . $quarter * 3 . ")
+        FROM  
+            phieunhaphang
+        WHERE 
+            TrangThai = 1
+            AND MONTH(NgayTao) IN ((" . $quarter * 3 . ") - 2, (" . $quarter * 3 . ") - 1, " . $quarter * 3 . ")
         GROUP BY 
-        MONTH(NgayTao)";
+            MONTH(NgayTao)";
             $result = $dataPRO->executeQuery($sql);
             $data = [
                 ["Thang" => $quarter * 3 - 2, "TongDoanhThu" => 0],
@@ -158,7 +139,7 @@ class DAOChiTietPhieuNhap extends DatabaseConfig
 
         return $data;
     }
-    public function ListPhanTram($hang = null, )
+    public function ListPhanTram($hang = null)
     {
         $dataPRO = new DataProvider();
         if ($hang)
