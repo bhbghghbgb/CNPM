@@ -12,7 +12,7 @@ if (isset($_SESSION['MaTaiKhoan']))
 /////////////////////////////////////
 // xử lý chỉnh thông tin người dùng 
 if (isset($_POST['ten'])) {
-    $pattern = '/^\+(?:[0-9] ?){6,14}[0-9]$/';
+    $pattern = '/^0[0-9]{9}$/';
     if (preg_match($pattern, $_POST['sodienthoai'])) {
         
         if ($daoTTTK->hasKhach($MaTK)) {
@@ -25,7 +25,7 @@ if (isset($_POST['ten'])) {
         }
 
     }
-    else  echo "<script>addmessText('Số điện thoại bắt buộc 10 chữ số')</script>";
+    else  echo "<script>addmessText('Sai định dạng số điện thoại !')</script>";
         
     
 
