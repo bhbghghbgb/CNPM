@@ -34,6 +34,11 @@ if (isset($_POST['hd'])) {
                     echo "<script>alert('Tên đăng nhập đã tồn tại.'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
                     return;
                 }}
+            if (strlen($_POST['matkhau']) <5 && $_POST['matkhau'] != "") {
+                echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự !'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
+                return;
+            }
+
             if (substr($_POST['email'], -10) !== "@gmail.com") {
                 echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
                 return;
@@ -100,6 +105,11 @@ if (isset($_POST['hd'])) {
             
             if ($daoThongTinTaiKhoan->hasTaiKhoan( $_POST['tendn'])== false) {
                 echo "<script>alert('Tên đăng nhập đã tồn tại.'); window.location = '../editnv.php';</script>";
+                return;
+            }
+
+            if (strlen($_POST['matkhau']) <5  && $_POST['matkhau'] != "") {
+                echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự !'); window.location = '../editnv.php';</script>";
                 return;
             }
 

@@ -37,6 +37,12 @@ if (isset($_POST['hd'])) {
                     return;
                 }
             }
+
+            if (strlen($_POST['matkhau']) <5 && $_POST['matkhau'] != "") {
+                echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự !'); window.location = '../editkh.php?id=$id&hd=$hd';</script>";
+                return;
+            }
+
             if (substr($_POST['email'], -10) !== "@gmail.com") {
                 echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editkh.php?id=$id&hd=$hd';</script>";
                 return;
@@ -98,8 +104,14 @@ if (isset($_POST['hd'])) {
                 echo "<script>alert('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số.'); window.location = '../editkh.php';</script>";
                 return;
             }
+
             if ($daoThongTinTaiKhoan->hasTaiKhoan( $_POST['tendn'])== false) {
                 echo "<script>alert('Tên đăng nhập đã tồn tại'); window.location = '../editkh.php';</script>";
+                return;
+            }
+
+            if (strlen($_POST['matkhau']) <5 && $_POST['matkhau'] != "" ) {
+                echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự !'); window.location = '../editkh.php?';</script>";
                 return;
             }
             if (substr($_POST['email'], -10) !== "@gmail.com") {

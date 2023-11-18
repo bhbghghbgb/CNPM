@@ -6,7 +6,7 @@
     Password: 
     <input type="password" name="password" value="" required/>
     Email: 
-    <input type="text" name="email" value="" required/>
+    <input type="email" name="email" value="" required/>
     Tên khách hàng:
     <input type="text" name="TenKhach" value="" required/>
     Địa chỉ:
