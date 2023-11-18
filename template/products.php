@@ -97,7 +97,7 @@
                             </div>
                             <div class="product-info">
                                 <div class="product-name">
-                                    <a href = "./ChiTietSP.php?MaSP=<?php echo $data[$i][0]?>"><?php echo $data[$i][1]?></a>
+                                    <a href = "./chitietsp.php?MaSP=<?php echo $data[$i][0]?>"><?php echo $data[$i][1]?></a>
                                 </div>
                                 <div class="product-vendor"><?php echo $data[$i]['TenHang']?></div>
                                 <div class="product-price">
@@ -147,7 +147,7 @@
                         </div>
                         <div class="product-info">
                             <div class="product-name">
-                                <a href = "./ChiTietSP.php?MaSP=<?php echo $data[$i][0]?>"><?php echo $data[$i][1]?></a>
+                                <a href = "./chitietsp.php?MaSP=<?php echo $data[$i][0]?>"><?php echo $data[$i][1]?></a>
                             </div>
                             <div class="product-vendor"><?php echo $data[$i]['TenHang']?></div>
                             <div class="product-price">
@@ -197,7 +197,7 @@
                         </div>
                         <div class="product-info">
                             <div class="product-name">
-                                <a href = "./ChiTietSP.php?MaSP=<?php echo $data[$i][0]?>"><?php echo $data[$i][1]?></a>
+                                <a href = "./chitietsp.php?MaSP=<?php echo $data[$i][0]?>"><?php echo $data[$i][1]?></a>
                             </div>
                             <div class="product-vendor"><?php echo $data[$i]['TenHang']?></div>
                             <div class="product-price">

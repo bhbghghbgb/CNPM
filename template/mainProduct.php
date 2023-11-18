@@ -169,7 +169,7 @@ if (isset($_GET['MaSP'])) {
 
                     ?>
                     <li>
-                        <a href="ChiTietSP.php?MaSP=<?php echo $dataLq[$i][0] ?>">
+                        <a href="chitietsp.php?MaSP=<?php echo $dataLq[$i][0] ?>">
                             <div class="item">
                                 <img src="./img/products/<?php echo $dataLq[$i][3] ?>">
                                 <div class="content_list">
