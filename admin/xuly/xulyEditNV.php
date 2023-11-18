@@ -43,6 +43,13 @@ if (isset($_POST['hd'])) {
                 echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
                 return;
             }
+
+            if ($_POST['email'] != $data['Email']) {
+                if ($daoThongTinTaiKhoan->hasEmail( $_POST['email'])== false) {
+                    echo "<script>alert('Email đã tồn tại'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
+                    return;
+                }
+            }
             
             // Truy vấn danh sách tai khoan
             $mataikhoan=$_POST['idtk'];
@@ -118,6 +125,10 @@ if (isset($_POST['hd'])) {
                 return;
             }
 
+            if ($daoThongTinTaiKhoan->hasEmail( $_POST['email'])== false) {
+                echo "<script>alert('Email đã tồn tại !'); window.location = '../editnv.php';</script>";
+                return;
+            }
             //tạo id mơi
             // Tao listid da co san
             $listId = [];

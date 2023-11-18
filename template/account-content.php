@@ -49,7 +49,10 @@ if (isset($_POST['tenDN'])) {
         echo "<script>addmessText('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số ! ')</script>";
     } else if (strlen($_POST['matkhau']) <5 && $_POST['matkhau'] != ""){
         echo "<script>addmessText('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự ')</script>";
-    } else{ 
+    } else if ($data['Email'] != $_POST['email'] && $daoTTTK->hasEmail($_POST['email']) == false ) {
+        echo "<script>addmessText('Email đã tồn tại')</script>";
+    } 
+    else{ 
         if ($_POST['tenDN'] == $data['TenDN'] ){
             if ($_POST['matkhau'] === $_POST['matkhau1']){
                 if ($daoTTTK->updateTaiKhoan($MaTK, $_POST['tenDN'], $_POST['matkhau'], $_POST['email'])) {
@@ -115,7 +118,7 @@ if (isset($_SESSION['MaTaiKhoan'])) {
                             <div class="row py-2">
                                 <div class="col-4">Số điện thoại:</div>
                                 <div class="col-8">
-                                    <input class="w-100" type="text" name="sodienthoai"
+                                    <input class="w-100" type="number" name="sodienthoai"
                                         value="<?php echo $data['SDT'] ?>">
                                 </div>
                             </div>

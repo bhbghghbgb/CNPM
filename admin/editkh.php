@@ -105,7 +105,7 @@
                                     <label class="row">
                                         <div class="col col-3">Số Điện Thoại: </div>
                                         <div class="col col-9">
-                                            <input class="w-100" required type="text" name='sdt' value="<?php echo $sdt; ?>">
+                                            <input class="w-100" required type="number" name='sdt' value="<?php echo $sdt; ?>">
                                         </div>
                                     </label>
                                 </div>

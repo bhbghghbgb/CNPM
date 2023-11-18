@@ -38,6 +38,7 @@ if (isset($_POST['hd'])) {
                 }
             }
 
+
             if (strlen($_POST['matkhau']) <5 && $_POST['matkhau'] != "") {
                 echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự !'); window.location = '../editkh.php?id=$id&hd=$hd';</script>";
                 return;
@@ -46,6 +47,13 @@ if (isset($_POST['hd'])) {
             if (substr($_POST['email'], -10) !== "@gmail.com") {
                 echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editkh.php?id=$id&hd=$hd';</script>";
                 return;
+            }
+
+            if ($_POST['email'] != $data['Email']) {
+                if ($daoThongTinTaiKhoan->hasEmail( $_POST['email'])== false) {
+                    echo "<script>alert('Email tồn tại !'); window.location = '../editkh.php?id=$id&hd=$hd';</script>";
+                    return;
+                }
             }
 
             // Truy vấn danh sách tai khoan
@@ -94,7 +102,7 @@ if (isset($_POST['hd'])) {
 
             if (preg_match('/^0\d{9}$/', $_POST['sdt']) == false) {
                 echo "<script>
-                    alert('Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại 10 chữ số và bắt đầu bằng số 0.');
+                alert('Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại 10 chữ số và bắt đầu bằng số 0.');
                     window.location = '../editkh.php'
                     </script>";
                 return;
@@ -119,6 +127,10 @@ if (isset($_POST['hd'])) {
                 return;
             }
 
+            if ($daoThongTinTaiKhoan->hasEmail( $_POST['email'])== false) {
+                echo "<script>alert('Email tồn tại !'); window.location = '../editkh.php?';</script>";
+                return;
+            }
 
             // Tao listid tài khoản da co san
             $listIdtk = [];
