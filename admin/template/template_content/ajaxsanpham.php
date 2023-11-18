@@ -39,7 +39,7 @@ if (isset($_POST['sort'])&&isset($_POST['order'])) {
             . $row["Ten"] . "
             </div>
             <div class='row hanhdong'>";
-        echo "<a href='../ChiTietSP.php?MaSP=" . $row["MaSP"] . "' class='xem'>
+        echo "<a href='../chitietsp.php?MaSP=" . $row["MaSP"] . "' class='xem'>
 
                         <div class='col'>
                         Xem

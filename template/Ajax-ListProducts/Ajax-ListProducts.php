@@ -109,7 +109,7 @@ if (isset($_GET['MaDM']) || isset($_GET['Sale']) || isset($_GET['MaHang']) || is
 
                 <div class="product-name">
 
-                    <a href="./ChiTietSP.php?MaSP=<?php echo $data[$i][0] ?>">
+                    <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>">
                         <?php echo $data[$i][1] ?>
                     </a>
                 </div>

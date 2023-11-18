@@ -80,7 +80,7 @@ if (isset($_GET['search'])) {
             <td> <img style='max-height:60px; max-width:60px' src='../img/products/" . $row["AnhChinh"] . "' alt=''> </td>
             <td> <div class='row'>" . $row["Ten"] . " </div>
                 <div class='row hanhdong'>";
-                echo "<a href='../ChiTietSP.php?MaSP=" . $row["MaSP"] . "' class='xem'>
+                echo "<a href='../chitietsp.php?MaSP=" . $row["MaSP"] . "' class='xem'>
                         <div class='col'>Xem</div>
                     </a>";
 
