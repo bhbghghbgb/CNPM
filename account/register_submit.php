@@ -2,7 +2,7 @@
 // session_start();
 // Kết nối cơ sở dữ liệu
 include("./db/dbconnect.php");
-
+// include("./db/DAOThongTinTaiKhoan.php");
 function getMaTaiKhoan($conn){
     $sql5 = 'SELECT MAX(MaTaiKhoan) FROM taikhoan';
     $data = null;
@@ -31,11 +31,38 @@ if(isset($_POST['dangky'])){
         exit;
     }
 
+    if (!preg_match('/^[a-zA-Z0-9]{5,}$/', $username)) {
+        $_SESSION["message"] = "Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số !";
+        header("Location: index.php");
+        exit;
+    }
+    if (strlen($password) <5) {
+        $_SESSION["message"] = "Mật khẩu phải lớn hơn hoặc bằng 5 ký tự";
+        header("Location: index.php");
+        exit;
+    }
+    
+
+    $pattern = '/^0[0-9]{9}$/';
+    if (preg_match($pattern, $SDT) == false) {
+        $_SESSION["message"] = "Sai định dạng số điện thoại";
+        header("Location: index.php");
+        exit;
+    }
+   
+    
+
+    
+
+    
+
+    
+
     //Mã hoá mật khẩu:
     $password = md5($password);
 
     // Kiểm tra username hoặc email có bị trùng hay không
-    $sql = "SELECT * FROM taikhoan WHERE TenDN = '$username' OR Email = '$email'";
+    $sql = "SELECT * FROM taikhoan WHERE TrangThai = 1 AND TenDN = '$username' OR TrangThai = 1 AND Email = '$email'";
     // Thực thi câu truy vấn
     $result = mysqli_query($conn, $sql);
     $tinhtrang=1;

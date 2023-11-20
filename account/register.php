@@ -6,13 +6,13 @@
     Password: 
     <input type="password" name="password" value="" required/>
     Email: 
-    <input type="text" name="email" value="" required/>
+    <input type="email" name="email" value="" required/>
     Tên khách hàng:
     <input type="text" name="TenKhach" value="" required/>
     Địa chỉ:
     <input type="text" name="DiaChi" value="" required/>
     Số điện thoại:
-    <input type="text" name="SDT" value="" required/>
+    <input type="number" name="SDT" value="" required/>
     <br/>
     <br/>
     <input type="button" class="buttonDN" name="dangnhap" value="Đăng Nhập" onclick="hienthidangnhap()"/>
