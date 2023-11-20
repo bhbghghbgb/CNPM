@@ -35,7 +35,7 @@
 
 <body>
     <div id="message">
-            <div id="hihi">
+            <div id="content_mess">
             </div>
         </div>
     <div class="wrapper">

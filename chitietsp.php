@@ -37,9 +37,10 @@
     <div id="wrapper">
 
         <div id="message">
-            <div id="hihi"></div>
+            <div id="content_mess"></div>
         </div>
         <?php include('account/login.php'); ?>
+        <?php include('account/quenmatkhau.php'); ?>
         <?php include('account/register.php'); ?>
         <?php include('template/header.php'); ?>
         <?php include('template/top_menu.php'); ?>

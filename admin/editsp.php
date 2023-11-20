@@ -165,12 +165,12 @@ $listKM = $daoKM->getList();
                                         for (var i = 0; i < arraysize.length; i++) {
 
                                             stringtbody += "<tr class='sizerow'>"
-                                            stringtbody += "<td>"+
-                                                "<input  class='w-100' style='border:0!important' type='text' name='ArraySize[]' value='" + arraysize[i].size + "'> </td>"
+                                            stringtbody += "<td>"+ arraysize[i].size +
+                                                " <input  class='w-100' style='border:0!important' type='hidden' name='ArraySize[]' value='" + arraysize[i].size + "'> </td>"
                                             stringtbody += "<td>"  +
                                                 "<input  class='w-100' style='border:0!important' type='text' name='ArrayPrice[]' value='" + arraysize[i].price + "'> </td>"
-                                            stringtbody += "<td style='display:flex; justify-content:space-between'>" +
-                                                "<input  class='w-100' style='border:0!important' type='text' name='ArrayQuantity[]' value='" + arraysize[i].quantity + "'>"
+                                            stringtbody += "<td style='display:flex; justify-content:space-between'>" + arraysize[i].quantity +
+                                                "<input  class='w-100' style='border:0!important' type='hidden' name='ArrayQuantity[]' value='" + arraysize[i].quantity + "'>"
                                             if (arraysize[i].quantity == 0)
                                                 stringtbody += " <div class='xoa' onclick='xoasize(" + i + ")'>Xóa</div>"
                                             stringtbody += "</td></tr>"

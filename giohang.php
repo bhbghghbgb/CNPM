@@ -30,6 +30,7 @@
 <body>
     <div id="wrapper">
         <?php include('account/login.php');?>
+        <?php include('account/quenmatkhau.php'); ?>
         <?php include('template/header.php');?>
         <?php include('template/top_menu.php');?>
         <?php include('account/register.php');?>

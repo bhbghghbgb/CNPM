@@ -41,7 +41,7 @@ function getValueImgQuickview() {
 }
 function addmess(text, bgcolor, textcolor, time) {
     var al = document.getElementById('message');
-    var a = document.getElementById('hihi');
+    var a = document.getElementById('content_mess');
     a.innerHTML = text;
 
     al.style.backgroundColor = bgcolor;

@@ -50,13 +50,15 @@
 
 
         <div id="message">
-            <div id="hihi">
+            <div id="content_mess">
 
             </div>
         </div>
 
 
         <?php include('account/login.php'); ?>
+
+        <?php include('account/quenmatkhau.php'); ?>
 
         <?php include('account/register.php'); ?>
 
