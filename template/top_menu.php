@@ -52,9 +52,9 @@
             <li>
                 <a href="">HƯỚNG DẪN MUA HÀNG <i class="ti-angle-down"></i></a>
                 <ul class="ds_phu">
-                    <li><a href="ChinhSachBaoHanh.html">Chính sách bảo hành</a></li>
-                    <li><a href="ChinhSachDoiHang.html">Chính sách đổi hàng</a></li>
-                    <li><a href="ChinhSachThanhToan.html">Chính sách thanh toán</a></li>
+                    <li><a href="ChinhSachBaoHanh.php">Chính sách bảo hành</a></li>
+                    <li><a href="ChinhSachDoiHang.php">Chính sách đổi hàng</a></li>
+                    <li><a href="ChinhSachThanhToan.php">Chính sách thanh toán</a></li>
                 </ul>
             </li>
         </ul>

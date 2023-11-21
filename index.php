@@ -24,7 +24,8 @@
 
     <!-- slider -->
     <link rel="stylesheet" href="./css/slider.css">
-    <script src="./js/slider.js">
+    <script src="./js/slider.js"></script>
+    <script src="./js/QuenMatKhau.js"></script>
 
     </script>
 

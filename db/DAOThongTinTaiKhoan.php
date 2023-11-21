@@ -100,17 +100,17 @@ class DAOThongTinTaiKhoan extends DatabaseConfig
         }
         return false;
     }
-    public function hasEmail( $Email)
-    {
-        $sql = "select * FROM taikhoan
-        WHERE Email = '$Email'";
-        if($result = mysqli_query($this->conn,$sql)){
-            if($result->num_rows != 0){
-                return true;
-            }
-        }
-        return false;
-    }
+    // public function hasEmail( $Email)
+    // {
+    //     $sql = "select * FROM taikhoan
+    //     WHERE Email = '$Email'";
+    //     if($result = mysqli_query($this->conn,$sql)){
+    //         if($result->num_rows != 0){
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
 
 
     public function insertNhanVien($MaNhanVien, $Quyen, $DiaChi, $TenNhanVien, $SDT, $MaTaiKhoan)

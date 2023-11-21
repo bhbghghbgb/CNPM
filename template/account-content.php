@@ -47,8 +47,8 @@ if (isset($_SESSION['MaTaiKhoan'])) {
 if (isset($_POST['tenDN'])) {
     if (!preg_match('/^[a-zA-Z0-9]{5,}$/', $_POST['tenDN'])) {
         echo "<script>addmessText('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số ! ')</script>";
-    } else if (strlen($_POST['matkhau']) <5 && $_POST['matkhau'] != ""){
-        echo "<script>addmessText('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự ')</script>";
+    } else if (!preg_match('/^\S{5,}$/', trim($_POST['matkhau'])) && $_POST['matkhau'] != ""){
+        echo "<script>addmessText('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự và không chứa khoảng trắng !')</script>";
     } else if ($data['Email'] != $_POST['email'] && $daoTTTK->hasEmail($_POST['email']) == false ) {
         echo "<script>addmessText('Email đã tồn tại')</script>";
     } 

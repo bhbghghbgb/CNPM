@@ -1,4 +1,5 @@
 <?php
+
 include('../db/DAOThongTinTaiKhoan.php');
 $daotttk=new DAOThongTinTaiKhoan();
 session_start();
@@ -54,7 +55,7 @@ function sendResetEmail($email, $token)
 // Xử lý yêu cầu đặt lại mật khẩu
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"]) &&!isset($_POST["token"])) {
     $email = $_POST["email"]; // Địa chỉ email từ biểu mẫu
-    if($daotttk->hasEmail($email)){
+    if($daotttk->hasEmail($email) == false){
         $token = generateResetToken();
         sendResetEmail($email, $token);
         if (isset($token))
@@ -80,11 +81,18 @@ if (isset($_POST["token"]) && isset($_POST["token1"])&& isset($_POST["email"])) 
 
 //Xử lý khi thêm mat khau moi
 if(isset($_POST['mat_khau'])&&isset($_POST['mat_khau1'])&&isset($_POST['email1'])){
-    if($_POST['mat_khau']==$_POST['mat_khau1']){
+   
+    if(trim($_POST['mat_khau'])==trim($_POST['mat_khau1'])){
+        if (!preg_match('/^\S{5,}$/', trim($_POST['mat_khau']))) {
+            $_SESSION["message"] = "Mật khẩu phải lớn hơn hoặc bằng 5 ký tự và không chứa khoảng trắng !";
+        } else 
         if($daotttk->updatePassTaiKhoan($_POST['mat_khau'],$_POST['email1'])){
-            $_SESSION["message"] = "doi mat khau thanh cong".$_POST['mat_khau'].$_POST['email1']."";
-        }else
-        $_SESSION["message"] = "doi mat khau khong thanh cong".$_POST['mat_khau'].$_POST['email1']."";
-    }
+            $_SESSION["message"] = "Đổi mật khẩu thành công ".$_POST['mat_khau']." ". $_POST['email1']."";
+        }else{
+        $_SESSION["message"] = "Đổi mật khẩu không thành công".$_POST['mat_khau'].$_POST['email1']."";}
+    } else if ($_POST['mat_khau']!=$_POST['mat_khau1']){
+        $_SESSION["message"] = "Mật khẩu không khớp !";
+    } 
     header("Location: ../index.php");
+    exit;
 }

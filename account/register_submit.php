@@ -2,7 +2,7 @@
 // session_start();
 // Kết nối cơ sở dữ liệu
 include("./db/dbconnect.php");
-// include("./db/DAOThongTinTaiKhoan.php");
+include("./db/DAOThongTinTaiKhoan.php");
 function getMaTaiKhoan($conn){
     $sql5 = 'SELECT MAX(MaTaiKhoan) FROM taikhoan';
     $data = null;

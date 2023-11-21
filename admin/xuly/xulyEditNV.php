@@ -34,8 +34,8 @@ if (isset($_POST['hd'])) {
                     echo "<script>alert('Tên đăng nhập đã tồn tại.'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
                     return;
                 }}
-            if (strlen($_POST['matkhau']) <5 && $_POST['matkhau'] != "") {
-                echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự !'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
+            if (!preg_match('/^\S{5,}$/', trim($_POST['matkhau'])) && $_POST['matkhau'] != "") {
+                echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự và không chứa khoảng trắng!'); window.location = '../editnv.php?id=$id&hd=$hd';</script>";
                 return;
             }
 
@@ -114,9 +114,9 @@ if (isset($_POST['hd'])) {
                 echo "<script>alert('Tên đăng nhập đã tồn tại.'); window.location = '../editnv.php';</script>";
                 return;
             }
-
-            if (strlen($_POST['matkhau']) <5  && $_POST['matkhau'] != "") {
-                echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự !'); window.location = '../editnv.php';</script>";
+            
+            if (!preg_match('/^\S{5,}$/', trim($_POST['matkhau']))  && $_POST['matkhau'] != "") {
+                echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự và không chứa khoảng trắng !'); window.location = '../editnv.php';</script>";
                 return;
             }
 

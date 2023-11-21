@@ -115,14 +115,14 @@
                         flagLoc = 1;
                     }else if ( fromDate > toDate){ // ngay sai
                         console.log("sai");
-                        alert ("Ngày bắt đầu không được lớn hơn ngày kết thúc !");
+                        addmessText ("Ngày bắt đầu không được lớn hơn ngày kết thúc !");
                         flagLoc =2;
                     } else {
                         console.log("bằng nhau"); // ngay bang nhau
                         flagLoc = 3;
                     }
                 } else {
-                    alert ("Vui lòng chọn đầy đủ thời gian để lọc !");
+                    addmessText ("Vui lòng chọn đầy đủ thời gian để lọc !");
                 }
 
                 if (flagLoc == 1 || flagLoc == 3){
@@ -163,7 +163,7 @@
                     });
 
                 } else {
-                    alert ("Vui lòng chọn thời gian để lọc");
+                    addmessText ("Vui lòng chọn thời gian để lọc");
                 }
             });
 
