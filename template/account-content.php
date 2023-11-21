@@ -1,5 +1,5 @@
 <?php
-include("./db/DAOThongTinTaiKhoan.php");
+// include("./db/DAOThongTinTaiKhoan.php");
 include("./db/DAODonHang.php");
 include("./db/DAOChiTietDonHang.php");
 $daoTTTK = new DAOThongTinTaiKhoan();
