@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 04, 2023 lúc 02:57 PM
+-- Thời gian đã tạo: Th10 21, 2023 lúc 05:36 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.1.17
 
@@ -41,25 +41,14 @@ CREATE TABLE `chitietdonhang` (
 --
 
 INSERT INTO `chitietdonhang` (`MaSP`, `MaDonHang`, `SoLuong`, `GiaBan`, `TongTien`, `Size`) VALUES
-('001', 2, 10, 1190000, 11900000, 0),
-('001', 44, 1, 1011500, 1011500, 0),
-('002', 45, 8, 1701000, 13608000, 0),
-('003', 5, 1, 1900000, 1900000, 0),
-('003', 49, 1, 108000, 108000, 44),
-('004', 46, 3, 1760000, 5280000, 0),
-('006', 44, 1, 3230000, 3230000, 0),
-('007', 3, 1, 3100000, 3100000, 0),
-('007', 4, 2, 3100000, 6200000, 0),
-('007', 47, 1, 3100000, 3100000, 0),
-('007', 48, 1, 3100000, 3100000, 0),
-('008', 7, 1, 3500000, 3500000, 0),
-('008', 46, 1, 3500000, 3500000, 0),
-('010', 8, 1, 2900000, 2900000, 0),
-('013', 5, 1, 4100000, 4100000, 0),
-('013', 6, 1, 4100000, 4100000, 0),
-('013', 9, 1, 4100000, 4100000, 0),
-('021', 10, 1, 3500000, 3500000, 0),
-('035', 47, 1, 540000, 540000, 0);
+('003', 52, 1, 20700, 20700, 40),
+('003', 54, 1, 20700, 20700, 40),
+('003', 60, 1, 20700, 20700, 40),
+('004', 57, 1, 20000, 20000, 20),
+('005', 53, 1, 21600, 21600, 35),
+('006', 53, 1, 33150, 33150, 39),
+('016', 53, 1, 42000, 42000, 42),
+('016', 61, 1, 50000, 50000, 40);
 
 -- --------------------------------------------------------
 
@@ -82,30 +71,25 @@ CREATE TABLE `chitietphieunhap` (
 --
 
 INSERT INTO `chitietphieunhap` (`MaSP`, `MaPhieu`, `SoLuong`, `GiaNhap`, `TongGia`, `TrangThai`, `Size`) VALUES
-('001', 1, 55, 20000, 30000, 1, 25),
-('001', 16, 2, 12, 24, 0, 36),
-('001', 16, 2, 12, 24, 0, 39),
-('001', 18, 212, 121, 25652, 0, 36),
-('001', 20, 5, 15, 75, 0, 36),
-('001', 20, 5, 15, 75, 0, 39),
-('001', 22, 21, 2000, 42000, 0, 36),
-('003', 22, 17, 20, 340, 0, 42),
-('003', 22, 5, 10, 50, 0, 42),
-('001', 22, 5, 20, 100, 0, 36),
-('001', 22, 5, 15, 75, 0, 36),
-('001', 22, 5, 20, 100, 0, 36),
-('003', 22, 12, 13, 156, 0, 42),
-('001', 28, 5, 20000, 100000, 0, 36),
-('001', 29, 5, 20000, 100000, 0, 36),
-('001', 30, 5, 20, 100, 0, 36),
-('001', 31, 20, 5, 100, 0, 36),
-('001', 31, 5, 15, 75, 0, 36),
-('001', 1, 2, 23, 46, 0, 36),
-('001', 35, 12, 200, 2400, 0, 36),
-('003', 36, 12, 23, 276, 0, 42),
-('004', 38, 45, 12, 540, 0, 40),
-('004', 40, 1212, 12, 14544, 0, 40),
-('004', 42, 30, 2, 60, 0, 40);
+('002', 1, 12, 1300, 15600, 0, 40),
+('002', 2, 21, 22, 462, 0, 40),
+('002', 3, 5, 12000, 60000, 0, 40),
+('002', 4, 5, 12000, 60000, 0, 40),
+('005', 5, 15, 12, 180, 0, 35),
+('006', 5, 10, 13, 130, 0, 39),
+('016', 6, 15, 20, 300, 0, 40),
+('016', 7, 5, 45, 225, 0, 42),
+('018', 8, 20, 150000, 3000000, 0, 30),
+('002', 10, 45, 1312, 59040, 0, 40),
+('004', 10, 12, 123, 1476, 0, 20),
+('007', 10, 45, 456, 20520, 0, 50),
+('010', 11, 45, 54, 2430, 0, 30),
+('013', 11, 54, 54, 2916, 0, 41),
+('002', 12, 45645, 45, 2054025, 0, 40),
+('005', 14, 10, 12000000, 120000000, 0, 42),
+('002', 15, 5, 140000, 700000, 0, 40),
+('002', 16, 12, 13000, 156000, 0, 40),
+('002', 19, 4, 455, 1820, 0, 40);
 
 -- --------------------------------------------------------
 
@@ -124,7 +108,6 @@ CREATE TABLE `chitietquyen` (
 --
 
 INSERT INTO `chitietquyen` (`MaChiTiet`, `TenChiTiet`, `MoTa`) VALUES
-('bd', 'Bài đăng', 'Quản lý bài đăng'),
 ('d', 'Duyệt phiếu nhập', 'Được duyệt phiếu nhập'),
 ('dh', 'Đơn hàng', 'Quản lý đơn hàng'),
 ('dm', 'Danh mục', 'Quản lý danh mục'),
@@ -153,7 +136,7 @@ CREATE TABLE `danhmuc` (
 --
 
 INSERT INTO `danhmuc` (`MaDM`, `TenDM`, `TrangThai`) VALUES
-('DM-1', 'Giay dinh san co nhan ', 1),
+('DM-1', 'Giay dinh san co nhan tao', 1),
 ('DM-2', 'Giay dinh san co tu nhien', 1),
 ('DM-3', 'Giay tre em', 1),
 ('DM-4', 'Giay de bang', 1),
@@ -178,22 +161,12 @@ CREATE TABLE `donhang` (
 --
 
 INSERT INTO `donhang` (`MaDonHang`, `MaTaiKhoan`, `NgayDat`, `TrangThai`, `TongTien`) VALUES
-(2, 2, '2023-12-31', 1, 11900000),
-(3, 2, '2023-07-12', 1, 3100000),
-(4, 2, '2023-08-09', 1, 6200000),
-(5, 3, '2023-09-13', 1, 6000000),
-(6, 2, '2023-09-17', 1, 4100000),
-(7, 2, '2023-02-17', 1, 3500000),
-(8, 2, '2023-02-28', 1, 2900000),
-(9, 3, '2023-05-28', 1, 4100000),
-(10, 2, '2023-06-23', 1, 3500000),
-(44, 11, '2023-09-11', 1, 4241500),
-(45, 11, '2023-09-11', 1, 13608000),
-(46, 1, '2023-09-12', 1, 8780000),
-(47, 1, '2023-09-12', 1, 3640000),
-(48, 11, '2023-09-22', 0, 3100000),
-(49, 1, '2023-11-04', 0, 108000),
-(50, 1, '2023-11-04', 0, 0);
+(52, 18, '2023-11-06', 1, 20700),
+(53, 18, '2023-11-06', 1, 96750),
+(54, 18, '2023-11-06', 1, 20700),
+(57, 18, '2023-11-14', 1, 20000),
+(60, 18, '2023-11-14', 1, 20700),
+(61, 18, '2023-11-14', 1, 50000);
 
 -- --------------------------------------------------------
 
@@ -228,9 +201,10 @@ CREATE TABLE `hang` (
 INSERT INTO `hang` (`MaHang`, `Ten`, `NgayTao`, `TrangThai`) VALUES
 ('MH-001', 'Adidas', '2022-02-23', 1),
 ('MH-002', 'Nike', '2021-09-23', 1),
+('MH-007', 'Hãng mơi', '2023-11-10', 1),
 ('MH-021', 'Pan Thailand', '2020-06-18', 1),
 ('MH-033', 'Puma', '2023-02-23', 1),
-('MH-rtes', 'ádđ', '2023-05-17', 0);
+('MH-TDVietNam', 'Thượng Đình', '2023-11-14', 0);
 
 -- --------------------------------------------------------
 
@@ -252,10 +226,12 @@ CREATE TABLE `khachhang` (
 --
 
 INSERT INTO `khachhang` (`MaKhach`, `TenKhach`, `DiaChi`, `SDT`, `MaTaiKhoan`, `TrangThai`) VALUES
-(1, 'Le Trung Kien', '187 Le Van Tho Phuong 15 Quan Go Vap', '0908123456', 2, 1),
-(2, 'Nguyen Thi Trang', '589/965 Nguyen Kiem Quan Go Vap', '0908878795', 5, 1),
-(9, '1', '1', '1', 11, 1),
-(10, '12312', '1231231', '123123', 12, 1);
+(1, 'Nguyễn Văn D', 'Tân Phú', '0963717300', 5, 1),
+(2, 'Nguyen van khach moi', 'Tân Phú', '0963717300', 8, 1),
+(3, 'Nguyen Khach Hang', 'Tan Phu', '0963717300', 7, 1),
+(9, 'Nguyễn Văn A', 'Tân Phú', '0963717300', 11, 1),
+(12, 'Nguyễn Văn BCDEDER', 'hcm', '0963714568', 18, 1),
+(16, 'Nguyễn Văn B', 'hcm', '0963717845', 22, 1);
 
 -- --------------------------------------------------------
 
@@ -302,12 +278,12 @@ CREATE TABLE `nhanvien` (
 --
 
 INSERT INTO `nhanvien` (`MaNhanVien`, `Quyen`, `DiaChi`, `TenNhanVien`, `SDT`, `MaTaiKhoan`, `TrangThai`) VALUES
-('', 1, 'Tan phu', 'admin ne', '0963717300', 1, 1),
-('1', 1, '589/965 Le Van Duyet Quan Binh Thanh', 'Nguyen Thi Linh', '0569896512', 3, 1),
-('2', 1, '589/965 Le Quang Dinh Quan Binh Thanh', 'Nguyen Van Tai', '0598978954', 4, 1),
-('3', 1, '589/965 Le Quang Dinh Quan Binh Thanh', 'Le Kien', '0598978985', 8, 1),
+('1', 1, 'Tan phu hoa binh', 'Nguyễn Văn Admin', '0987415423', 1, 1),
+('2', 0, 'Tân Phú', 'Nguyễn Văn Kho', '0963717300', 2, 1),
+('3', 0, 'Tân Phú', 'Lê Nguyễn Bán Hàng', '0963717300', 3, 1),
 ('4', 0, 'Tân Phú', 'Nguyễn Văn Kho', '0963717300', 6, 0),
-('5', 0, 'Tân Phú', 'nhanvienkho', '0963717300', 7, 1);
+('5', 0, 'Tân Phú', 'Nguyễn Văn A', '0963717300', 9, 1),
+('6', 0, 'Tân Phú', 'Nguyễn Văn A', '0963717300', 10, 1);
 
 -- --------------------------------------------------------
 
@@ -325,7 +301,6 @@ CREATE TABLE `phanquyen` (
 --
 
 INSERT INTO `phanquyen` (`MaQuyen`, `MaChiTiet`) VALUES
-('Admin', 'bd'),
 ('Admin', 'd'),
 ('Admin', 'dh'),
 ('Admin', 'dm'),
@@ -336,12 +311,16 @@ INSERT INTO `phanquyen` (`MaQuyen`, `MaChiTiet`) VALUES
 ('Admin', 'pq'),
 ('Admin', 'sp'),
 ('Admin', 'tc'),
-('BTV', 'bd'),
-('BTV', 'dh'),
-('BTV', 'pn'),
+('NVBanHang', 'dh'),
+('NVBanHang', 'dm'),
+('NVBanHang', 'km'),
+('NVBanHang', 'sp'),
+('QLKho', 'dm'),
 ('QLKho', 'h'),
+('QLKho', 'km'),
 ('QLKho', 'pn'),
-('QLKho', 'sp');
+('QLKho', 'sp'),
+('QLKho', 'tc');
 
 -- --------------------------------------------------------
 
@@ -355,29 +334,29 @@ CREATE TABLE `phieunhaphang` (
   `TongDon` int(11) NOT NULL,
   `MaHang` varchar(50) NOT NULL,
   `MaTaiKhoan` int(50) NOT NULL,
-  `TrangThai` int(2) NOT NULL DEFAULT 1,
-  `GhiChu` varchar(255) DEFAULT NULL
+  `TrangThai` int(2) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `phieunhaphang`
 --
 
-INSERT INTO `phieunhaphang` (`MaPhieu`, `NgayTao`, `TongDon`, `MaHang`, `MaTaiKhoan`, `TrangThai`, `GhiChu`) VALUES
-(1, '2023-11-09', 20000, 'MH-002', 3, 1, NULL),
-(16, '2023-11-02', 48, 'MH-001', 7, 1, ''),
-(18, '2023-11-02', 25652, 'MH-001', 7, 1, ''),
-(20, '2023-11-03', 150, 'MH-001', 7, 1, ''),
-(22, '2023-11-03', 42390, 'MH-001', 7, 1, ''),
-(28, '2023-11-03', 100000, 'MH-001', 7, 1, ''),
-(29, '2023-11-03', 100000, 'MH-001', 7, 1, ''),
-(30, '2023-11-03', 100, 'MH-001', 7, 1, ''),
-(31, '2023-11-03', 100, 'MH-001', 7, 1, ''),
-(35, '2023-11-03', 2400, 'MH-001', 1, 1, ''),
-(36, '2023-11-03', 276, 'MH-001', 1, 1, ''),
-(38, '2023-11-04', 540, 'MH-001', 1, 1, ''),
-(40, '2023-11-04', 14544, 'MH-001', 1, 1, ''),
-(42, '2023-11-04', 60, 'MH-001', 1, 0, '');
+INSERT INTO `phieunhaphang` (`MaPhieu`, `NgayTao`, `TongDon`, `MaHang`, `MaTaiKhoan`, `TrangThai`) VALUES
+(1, '2023-11-10', 15600, 'MH-001', 1, 1),
+(2, '2023-11-10', 462, 'MH-001', 1, 1),
+(3, '2023-11-10', 60000, 'MH-001', 1, 1),
+(4, '2023-11-10', 60000, 'MH-001', 1, 1),
+(5, '2023-11-11', 310, 'MH-001', 1, 1),
+(6, '2023-11-11', 300, 'MH-002', 1, 1),
+(7, '2023-11-11', 225, 'MH-002', 1, 1),
+(8, '2023-11-11', 3000000, 'MH-002', 1, 1),
+(10, '2023-11-11', 81036, 'MH-001', 1, 1),
+(11, '2023-11-13', 5346, 'MH-002', 1, 1),
+(12, '2023-11-13', 2054025, 'MH-001', 1, 1),
+(14, '2023-11-14', 120000000, 'MH-001', 1, 1),
+(15, '2023-11-14', 700000, 'MH-001', 2, 1),
+(16, '2023-11-15', 156000, 'MH-001', 1, 1),
+(19, '2023-11-18', 1820, 'MH-001', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -396,8 +375,8 @@ CREATE TABLE `quyen` (
 
 INSERT INTO `quyen` (`MaQuyen`, `TenQuyen`) VALUES
 ('Admin', 'Quản lý'),
-('BTV', 'Biên tập viên'),
-('QLKho', 'Nhân viên kho'),
+('NVBanHang', 'Nhân viên bán hàng'),
+('QLKho', 'Quản lý kho'),
 ('User', 'Thành viên đăng ký');
 
 -- --------------------------------------------------------
@@ -424,37 +403,33 @@ CREATE TABLE `sanpham` (
 
 INSERT INTO `sanpham` (`MaSP`, `Ten`, `MaKhuyenMai`, `AnhChinh`, `MaDM`, `MoTa`, `NgayTao`, `MaHang`, `TrangThai`) VALUES
 ('001', 'ADIDAS NEMEZIZ 19.3 TF TRẮNG XANH MUTATOR 2020 PAC', 'KM_001', '19-05-2023/LOGO.jpg                      ', 'DM-1', '&lt;p&gt;helloo&lt;/p&gt;\r\n', '2021-09-23', 'MH-001', 0),
-('002', 'ADIDAS COPA SENSE.3 TF GAME DATA PACK - GZ1366', 'KM_002', '002.jpg', 'DM-1', '#', '2022-06-23', 'MH-001', 1),
-('003', 'ADIDAS PREDATOR EDGE.3 L TF - GV8527 Data Game Pac', 'KM_002', '003.jpg', 'DM-1', '#', '2022-06-23', 'MH-001', 1),
-('004', ' ADIDAS PREDATOR EDGE .1 TF GW9997 SAPPHIRE EDGE', 'KM_003', '004.jpg', 'DM-1', '#', '2021-12-10', 'MH-001', 1),
-('005', 'ADIDAS X SPEEDPORTAL.1 TF GW8973 GAME DATA PACK - ', 'KM_002', '005.jpg ', 'DM-1', '&lt;p&gt;#&lt;/p&gt;\r\n', '2021-12-12', 'MH-001', 1),
-('006', 'ADIDAS X SPEEDPORTAL .1 FG GW8426 GAME DATA PACK', 'KM_001', '006.jpg', 'DM-2', '#', '2023-03-11', 'MH-001', 1),
-('007', 'ADIDAS PREDATOR MUTATOR 20.1 FG EG1602', '#', '007.jpg', 'DM-2', '#', '2021-03-11', 'MH-001', 1),
+('002', 'ADIDAS COPA SENSE.3 TF GAME DATA PACK - GZ1366', 'KM_002', '002.jpg ', 'DM-1', '&lt;p&gt;#&lt;/p&gt;\r\n', '2022-06-23', 'MH-001', 1),
+('003', 'ADIDAS PREDATOR EDGE.3 L TF - GV8527 Data Game Pac', 'KM_002', '003.jpg  ', 'DM-1', '&lt;p&gt;#&lt;/p&gt;\r\n', '2022-06-23', 'MH-001', 1),
+('004', ' ADIDAS PREDATOR EDGE .1 TF GW9997 SAPPHIRE EDGE', 'KM_003', '004.jpg ', 'DM-1', '&lt;p&gt;#&lt;/p&gt;\r\n', '2021-12-10', 'MH-001', 1),
+('005', 'ADIDAS X SPEEDPORTAL.1 TF GW8973 GAME DATA PACK - ', 'KM_002', '005.jpg  ', 'DM-1', '&lt;p&gt;#&lt;/p&gt;\r\n', '2021-12-12', 'MH-001', 1),
+('006', 'ADIDAS X SPEEDPORTAL .1 FG GW8426 GAME DATA PACK', 'KM_001', '006.jpg ', 'DM-2', '&lt;p&gt;#&lt;/p&gt;\r\n', '2023-03-11', 'MH-001', 1),
+('007', 'ADIDAS PREDATOR MUTATOR 20.1 FG EG1602', '#', '007.jpg ', 'DM-2', '&lt;p&gt;#&lt;/p&gt;\r\n', '2021-03-11', 'MH-001', 1),
 ('008', 'ADIDAS X SPEEDFLOW .1 FG GW7456 DIAMOND EDGE PACK ', '#', '008.jpg', 'DM-2', '#', '2021-03-11', 'MH-001', 1),
-('009', 'ten', '#', '19-05-2023/LOGO(1).jpg ', 'DM-1', '<p>RTGR</p>\r\n', '2023-05-19', 'MH-001', 0),
-('010', 'NIKE ZOOM MERCURIAL VAPOR 15 PRO TF TRẮNG', '#', '010.jpg', 'DM-1', '#', '2023-02-10', 'MH-002', 1),
-('011', 'NIKE GRIPKNIT PHANTOM GX ELITE FG', '#', '011.jpg', 'DM-2', '#', '2020-09-10', 'MH-002', 1),
+('010', 'NIKE ZOOM MERCURIAL VAPOR 15 PRO TF TRẮNG', '#', '010.jpg ', 'DM-1', '&lt;p&gt;#&lt;/p&gt;\r\n', '2023-02-10', 'MH-002', 1),
+('011', 'NIKE GRIPKNIT PHANTOM GX ELITE FG', '#', '011.jpg ', 'DM-2', '&lt;p&gt;#&lt;/p&gt;\r\n', '2020-09-10', 'MH-002', 1),
 ('012', 'NIKE TIEMPO LEGEND 9 ELITE FG CZ8482-075 RECHARGE ', '#', '012.jpg', 'DM-2', '#', '2022-09-11', 'MH-002', 1),
-('013', 'NIKE MERCURIAL SUPERFLY 8 ELITE FG CV0958-760 MOTI', '#', '013.jpg', 'DM-2', '#', '2023-09-11', 'MH-002', 1),
-('014', '34534', '#', ' ', 'DM-1', '<p>45643</p>\r\n', '2023-05-19', 'MH-001', 0),
-('015', 'Adidas 1', '#', ' ', 'DM-1', '<p>Si&ecirc;u bền</p>\r\n', '2023-09-12', 'MH-001', 1),
-('016', ' NIKE TIEMPO LEGEND 9 ACADEMY TF WORLD CUP', '#', '016.jpg', 'DM-1', '#', '2020-09-10', 'MH-002', 1),
-('017', 'NIKE TIEMPO REACT LEGEND 9 PRO TF WORLD CUP', '#', '017.jpg', 'DM-1', '#', '2021-09-10', 'MH-002', 1),
-('018', 'NIKE TIEMPO REACT LEGEND 9 PRO TF', '#', '018.jpg', 'DM-1', '#', '2021-09-10', 'MH-002', 1),
-('019', ' NIKE ZOOM MERCURIAL VAPOR 15 PRO TF HỒNG', '#', '019.jpg', 'DM-1', '#', '2023-02-10', 'MH-002', 1),
-('020', '  PUMA ULTRA ULTIMATE CAGE TF 10689301 FASTEST PAC', '#', '020.jpg', 'DM-1', '#', '2023-02-10', 'MH-033', 1),
-('021', 'PUMA ULTRA 1.3 FG/AG 106477-02 FASTER FOOTBALL PAC', '#', '021.jpg', 'DM-2', '#', '2023-01-10', 'MH-033', 1),
-('022', 'PUMA FUTURE Z NEYMAR X COPA AMERICA FG 10684201', '#', '022.jpg', 'DM-2', '#', '2022-01-10', 'MH-033', 1),
-('023', 'hello', 'KM_001', ' ', 'DM-1', '', '0000-00-00', 'MH-001', 1),
-('031', 'GIÀY PAN VIGOR X TF ĐẾ ĐINH', '#', '031.jpg', 'DM-1', '#', '2023-07-11', 'MH-021', 1),
-('032', 'GIÀY PAN VIGOR X LTD XANH DƯƠNG', '#', '032.jpg', 'DM-4', '#', '2022-07-11', 'MH-021', 1),
-('033', 'GIÀY PAN WAVE II LEGEND IC ĐEN', '#', '033.jpg', 'DM-4', '#', '2023-03-11', 'MH-021', 1),
-('034', 'GIÀY PAN VIGOR X IC ĐẾ BẰNG', '#', '034.jpg', 'DM-4', '#', '2023-02-11', 'MH-021', 1),
+('013', 'NIKE MERCURIAL SUPERFLY 8 ELITE FG CV0958-760 MOTI', '#', '013.jpg ', 'DM-2', '&lt;p&gt;#&lt;/p&gt;\r\n', '2023-09-11', 'MH-002', 1),
+('016', ' NIKE TIEMPO LEGEND 9 ACADEMY TF WORLD CUP', '#', '016.jpg ', 'DM-1', '&lt;p&gt;#&lt;/p&gt;\r\n', '2020-09-10', 'MH-002', 1),
+('017', 'NIKE TIEMPO REACT LEGEND 9 PRO TF WORLD CUP', '#', '017.jpg', 'DM-1', '#', '2021-09-10', 'MH-002', 0),
+('018', 'NIKE TIEMPO REACT LEGEND 9 PRO TF', '#', '018.jpg ', 'DM-1', '&lt;p&gt;#&lt;/p&gt;\r\n', '2021-09-10', 'MH-002', 1),
+('019', ' NIKE ZOOM MERCURIAL VAPOR 15 PRO TF HỒNG', '#', '019.jpg ', 'DM-1', '&lt;p&gt;#&lt;/p&gt;\r\n', '2023-02-10', 'MH-002', 1),
+('020', '  PUMA ULTRA ULTIMATE CAGE TF 10689301 FASTEST PAC', 'KM_001', '020.jpg ', 'DM-1', '&lt;p&gt;#&lt;/p&gt;\r\n', '2023-02-10', 'MH-033', 1),
+('021', 'PUMA ULTRA 1.3 FG/AG 106477-02 FASTER FOOTBALL PAC', '#', '021.jpg ', 'DM-2', '&lt;p&gt;#&lt;/p&gt;\r\n', '2023-01-10', 'MH-033', 1),
+('022', 'PUMA FUTURE Z NEYMAR X COPA AMERICA FG 10684201', '#', '022.jpg ', 'DM-2', '&lt;p&gt;#&lt;/p&gt;\r\n', '2022-01-10', 'MH-033', 1),
+('031', 'GIÀY PAN VIGOR X TF ĐẾ ĐINH', '#', '031.jpg ', 'DM-1', '&lt;p&gt;#&lt;/p&gt;\r\n', '2023-07-11', 'MH-021', 1),
+('032', 'GIÀY PAN VIGOR X LTD XANH DƯƠNG', '#', '032.jpg ', 'DM-4', '&lt;p&gt;#&lt;/p&gt;\r\n', '2022-07-11', 'MH-021', 1),
+('033', 'GIÀY PAN WAVE II LEGEND IC ĐEN', '#', '033.jpg ', 'DM-4', '&lt;p&gt;#&lt;/p&gt;\r\n', '2023-03-11', 'MH-021', 1),
+('034', 'GIÀY PAN VIGOR X IC ĐẾ BẰNG', '#', '034.jpg ', 'DM-4', '&lt;p&gt;#&lt;/p&gt;\r\n', '2023-02-11', 'MH-021', 1),
 ('035', 'GIÀY PAN SUPER SONIC IC ĐẾ BẰNG', '#', '035.jpg', 'DM-4', '#', '2023-02-11', 'MH-021', 1),
-('036', 'PHANTOM VSN ACADEMY BRIGHT CRIMSON IC', '#', '035.jpg', 'DM-4', '#', '2023-02-11', 'MH-021', 1),
-('041', 'NIKE JR. MERCURIAL VAPOR 14 ACADEMY TF CV0822-474 ', '#', '041.jpg', 'DM-3', '#', '2022-02-11', 'MH-002', 1),
+('036', 'PHANTOM VSN ACADEMY BRIGHT CRIMSON IC', '#', '035.jpg  ', 'DM-4', '&lt;p&gt;#&lt;/p&gt;\r\n', '2023-02-11', 'MH-021', 1),
+('041', 'NIKE JR. MERCURIAL VAPOR 14 ACADEMY TF CV0822-474 ', '#', '041.jpg ', 'DM-3', '&lt;p&gt;#&lt;/p&gt;\r\n', '2022-02-11', 'MH-002', 1),
 ('042', 'NIKE PHANTOM VNM ACADEMY TF KIDS AO0377-600', '#', '042.jpg', 'DM-3', '#', '2022-02-11', 'MH-002', 1),
-('043', 'NIKE PHANTOM VSN ACADEMY TF KIDS AR4343-060', '#', '043.jpg', 'DM-3', '#', '2022-02-11', 'MH-002', 1),
+('043', 'NIKE PHANTOM VSN ACADEMY TF KIDS AR4343-060', '#', '043.jpg ', 'DM-3', '&lt;p&gt;#&lt;/p&gt;\r\n', '2022-02-11', 'MH-002', 1),
 ('044', '  NIKE TIEMPO LEGEND 9 ACADEMY TF FOR KIDS', '#', '044.jpg', 'DM-3', '#', '2022-02-11', 'MH-002', 1);
 
 -- --------------------------------------------------------
@@ -475,14 +450,49 @@ CREATE TABLE `sosize` (
 --
 
 INSERT INTO `sosize` (`MaSP`, `SoLuong`, `Size`, `GiaBan`) VALUES
-('001', 0, 5, 12),
-('001', 0, 45, 45),
-('003', 14, 42, 145000),
-('003', 5, 44, 120000),
-('004', 1269, 40, 150000),
-('005', 0, 12, 12),
-('006', 12, 41, 130000),
-('010', 5, 23, 20000);
+('002', 45778, 40, 20000),
+('002', 0, 41, 21000),
+('002', 0, 42, 22000),
+('002', 0, 43, 23000),
+('003', 20, 40, 23000),
+('003', 0, 41, 50000),
+('004', 36, 20, 25000),
+('004', 0, 40, 50000),
+('005', 14, 35, 24000),
+('005', 10, 42, 42000),
+('006', 9, 39, 39000),
+('006', 0, 40, 40000),
+('007', 0, 30, 30000),
+('007', 45, 50, 20000),
+('010', 45, 30, 46000),
+('010', 0, 35, 40000),
+('011', 0, 45, 45000),
+('011', 0, 60, 40000),
+('013', 54, 41, 30000),
+('013', 0, 42, 42000),
+('016', 14, 40, 50000),
+('016', 4, 42, 42000),
+('018', 0, 23, 23000),
+('018', 20, 30, 32000),
+('019', 0, 20, 23000),
+('019', 0, 50, 50000),
+('021', 0, 23, 23000),
+('021', 0, 45, 42000),
+('022', 0, 30, 30000),
+('022', 0, 35, 35000),
+('031', 0, 23, 23000),
+('031', 0, 25, 25000),
+('032', 0, 41, 40000),
+('032', 0, 42, 42000),
+('033', 0, 23, 32000),
+('033', 0, 41, 41000),
+('034', 0, 30, 35000),
+('034', 0, 35, 35000),
+('036', 0, 23, 30000),
+('036', 0, 25, 20000),
+('041', 0, 30, 30000),
+('041', 0, 35, 35000),
+('043', 0, 50, 50000);
 
 -- --------------------------------------------------------
 
@@ -506,16 +516,19 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`MaTaiKhoan`, `TenDN`, `MatKhau`, `Email`, `NgayTao`, `TinhTrang`, `Quyen`, `TrangThai`) VALUES
-(1, 'TK1', 'c4ca4238a0b923820dcc509a6f75849b', 'TK1@gmail.com', '2023-05-24', 1, 'Admin', 1),
-(2, 'TK222', 'c4ca4238a0b923820dcc509a6f75849b', 'TK2@gmail.com', '2023-03-24', 1, 'BTV', 1),
-(3, 'TK33423', 'c4ca4238a0b923820dcc509a6f75849b', 'TK3@gmail.com', '2020-03-24', 1, 'BTV', 1),
-(4, 'TK444', 'c4ca4238a0b923820dcc509a6f75849b', 'TK4@gmail.com', '2020-12-24', 1, 'BTV', 1),
-(5, 'TK5', 'c4ca4238a0b923820dcc509a6f75849b', 'TK5@gmail.com', '2020-12-24', 1, 'User', 1),
-(6, 'nvkho', '70873e8580c9900986939611618d7b1e', 'lengocduong003@gmail.com', '2023-11-02', 1, 'QLKho', 0),
-(7, 'nvkhohang', 'c4ca4238a0b923820dcc509a6f75849b', 'lengocduong003@gmail.com', '2023-11-02', 1, 'QLKho', 1),
-(8, 'kiennhanvien', 'c4ca4238a0b923820dcc509a6f75849b', 'a@gmail.com', '2023-05-14', 1, 'User', 1),
-(11, '1', 'c4ca4238a0b923820dcc509a6f75849b', '111@111.111', '2023-09-11', 1, 'User', 1),
-(12, '1231', '202cb962ac59075b964b07152d234b70', '1231', '2023-09-22', 1, 'User', 1);
+(1, 'admin', '827ccb0eea8a706c4c34a16891f84e7b', 'lengocduong003@gmail.com', '2023-11-05', 1, 'Admin', 1),
+(2, 'nvkho', '827ccb0eea8a706c4c34a16891f84e7b', 'nvkho@gmail.com', '2023-11-05', 1, 'QLKho', 1),
+(3, 'nvbanhang', '827ccb0eea8a706c4c34a16891f84e7b', 'nvbanhang@gmail.com', '2023-11-05', 1, 'NVBanHang', 1),
+(4, 'khachhang1', '827ccb0eea8a706c4c34a16891f84e7b', 'lengocduong003@gmail.com', '2023-11-10', 1, 'User', 0),
+(5, 'khachhangmoinhat', '827ccb0eea8a706c4c34a16891f84e7b', 'lengocduong3@gmail.com', '2023-11-11', 1, 'User', 1),
+(6, 'nvkho', '827ccb0eea8a706c4c34a16891f84e7b', '', '2023-11-11', 1, 'User', 0),
+(7, 'khachhanghi', '827ccb0eea8a706c4c34a16891f84e7b', 'lengocduong00@gmail.com', '2023-11-15', 1, 'User', 1),
+(8, 'khachhangm', '827ccb0eea8a706c4c34a16891f84e7b', 'lengocduong0@gmail.com', '2023-11-15', 1, 'User', 1),
+(9, 'adminnehihi', '827ccb0eea8a706c4c34a16891f84e7b', 'quanlynehihi@gmail.com', '2023-11-15', 0, 'Admin', 1),
+(10, 'nhanvienmoi', '827ccb0eea8a706c4c34a16891f84e7b', 'nhanvienmoi@gmail.com', '2023-11-16', 1, 'Admin', 1),
+(11, 'khachhangmneeee', '827ccb0eea8a706c4c34a16891f84e7b', 'lengocduong005@gmail.com', '2023-11-16', 1, 'Admin', 1),
+(18, 'khachhang', '827ccb0eea8a706c4c34a16891f84e7b', 'lengocduong4231@gmail.com', '2023-11-06', 1, 'User', 1),
+(22, 'khachhang123', '827ccb0eea8a706c4c34a16891f84e7b', 'lengocduong00354@gmail.com', '2023-11-21', 1, 'User', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -638,25 +651,25 @@ ALTER TABLE `taikhoan`
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `MaDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `MaDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT cho bảng `khachhang`
 --
 ALTER TABLE `khachhang`
-  MODIFY `MaKhach` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `MaKhach` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `phieunhaphang`
 --
 ALTER TABLE `phieunhaphang`
-  MODIFY `MaPhieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `MaPhieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `MaTaiKhoan` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `MaTaiKhoan` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
