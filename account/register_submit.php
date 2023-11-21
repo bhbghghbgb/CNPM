@@ -36,8 +36,8 @@ if(isset($_POST['dangky'])){
         header("Location: index.php");
         exit;
     }
-    if (strlen($password) <5) {
-        $_SESSION["message"] = "Mật khẩu phải lớn hơn hoặc bằng 5 ký tự";
+    if (!preg_match('/^\S{5,}$/', trim($password))) {
+        $_SESSION["message"] = "Mật khẩu phải lớn hơn hoặc bằng 5 ký tự, và không chứa khoảng trắng !";
         header("Location: index.php");
         exit;
     }
