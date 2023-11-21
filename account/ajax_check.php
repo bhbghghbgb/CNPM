@@ -87,7 +87,7 @@ if(isset($_POST['mat_khau'])&&isset($_POST['mat_khau1'])&&isset($_POST['email1']
             $_SESSION["message"] = "Mật khẩu phải lớn hơn hoặc bằng 5 ký tự và không chứa khoảng trắng !";
         } else 
         if($daotttk->updatePassTaiKhoan($_POST['mat_khau'],$_POST['email1'])){
-            $_SESSION["message"] = "Đổi mật khẩu thành công ".$_POST['mat_khau']." ". $_POST['email1']."";
+            $_SESSION["message"] = "Đặt lại mật khẩu thành công";
         }else{
         $_SESSION["message"] = "Đổi mật khẩu không thành công".$_POST['mat_khau'].$_POST['email1']."";}
     } else if ($_POST['mat_khau']!=$_POST['mat_khau1']){
