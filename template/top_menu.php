@@ -45,8 +45,8 @@
             <li>
                 <a href="">GIỚI THIỆU <i class="ti-angle-down"></i></a>
                 <ul class="ds_phu">
-                    <li><a href="https://web.facebook.com/duongngocle4231">Thêu tên FREE Tag ID</a></li>
-                    <li><a href="https://web.facebook.com/dinhchien01">Album khách hàng</a></li>
+                    <li><a href="https://www.facebook.com/giaydabanhchinhhang.vn/photos/?tab=album&album_id=2420665091507845">Liên hệ Thêm</a></li>
+                    <!-- <li><a href="https://web.facebook.com/dinhchien01">Album khách hàng</a></li> -->
                 </ul>
             </li>
             <li>

@@ -22,13 +22,11 @@
         <?php include('template/header.php');?>
         <?php include('template/top_menu.php');?>
         <div id="main">
-            <h1>CHÍNH SÁCH BẢO HÀNH</h1>
-            <div class="logo">
-                <img src="img\img-CS\2.png" >
+            <h1 style="margin-left: 165px; margin-top: 30px;  " >CHÍNH SÁCH BẢO HÀNH</h1>
+            <div style="margin-left: 165px;"  class="logo">
+                <img src="img\img-CS\2.png" style="width: 500px; height: 400px;" >
             </div>
-            <div class="giay">
-                <img src="img\img-CS\4.jpg" >
-            </div><br>
+            
             <div class="container">
                 <p class="text1">Tất cả sản phẩm Giày Bóng Đá Chính Hãng đều được hỗ trợ bảo hành như sau:</p>
                 <ul class="BH">
