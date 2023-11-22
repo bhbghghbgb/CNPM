@@ -41,7 +41,7 @@ if (isset($_GET['search'])) {
     </div>
 
     <?php
-    // echo isset($_GET['search']) ? "Kết quả tìm kiếm cho '<p class='d-inline text-danger'><strong>" . $_GET['search'] . "</strong></p>' là:" : '';
+    echo isset($_GET['search']) ? "Kết quả tìm kiếm cho '<p class='d-inline text-danger'><strong>" . $_GET['search'] . "</strong></p>' là:" : '';
     ?>
 
     <div class="row">
