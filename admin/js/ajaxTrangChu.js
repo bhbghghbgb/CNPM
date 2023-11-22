@@ -259,7 +259,7 @@ function VeBieuDoTronHangNhap(dataPhanTram) {
     
     
     var options = {
-        title: 'Tỉ lệ bán từng Hãng'
+        title: 'Tỉ lệ nhập từng hãng'
     };
     
     var chart = new google.visualization.PieChart(document.getElementById('BieuDoTronHangNhap'));
@@ -275,9 +275,9 @@ function VeBieuDoTronSPNhap(dataPhanTram, valueHang = null) {
 
     var data = google.visualization.arrayToDataTable(dataArray)
     if (valueHang)
-        var options = { title: 'Tỉ lệ bán từng sản phẩm của ' + valueHang }
+        var options = { title: 'Tỉ lệ nhập từng sản phẩm của ' + valueHang }
     else
-        var options = { title: 'Tỉ lệ bán từng sản phẩm' }
+        var options = { title: 'Tỉ lệ nhập từng sản phẩm' }
     var chart = new google.visualization.PieChart(document.getElementById('BieuDoTronSPNhap'));
     chart.draw(data, options);
 
@@ -317,13 +317,13 @@ function VeBieuDoCotNhap(dataDoanhThu, quarter = null) {
     ]);
     if (quarter)
         var options = {
-            title: "Biểu đồ doanh thu theo tháng trong quý " + quarter + " (VND)",
+            title: "Biểu đồ số tiền nhập hàng theo tháng trong quý " + quarter + " (VND)",
             bar: { groupWidth: "95%" },
             legend: { position: "none" },
         };
     else
         var options = {
-            title: "Biểu đồ doanh thu theo quý (VND)",
+            title: "Biểu đồ số tiền nhập hàng theo quý (VND)",
             bar: { groupWidth: "95%" },
             legend: { position: "none" },
         };
