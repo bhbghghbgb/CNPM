@@ -6,7 +6,7 @@
         $username = trim($_POST['username']); //trim để loại bỏ khoảng trắng ở đầu và cuối của username
         $password = trim($_POST['password']);
 
-        $sql = "SELECT MaTaiKhoan,TenDN,MatKhau,Quyen FROM taikhoan WHERE TrangThai=1 AND TenDN = '$username'";
+        $sql = "SELECT MaTaiKhoan,TenDN,MatKhau,Quyen FROM taikhoan WHERE TrangThai=1 AND TinhTrang = 1 AND TenDN = '$username'";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) == 0){

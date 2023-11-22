@@ -101,32 +101,43 @@ if (isset($_POST['hd'])) {
                 echo "<script>
                     alert('Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại 10 chữ số và bắt đầu bằng số 0.');
                     window.location = '../editnv.php'
+                    window.history.back();
                     </script>";
                 return;
             }
 
             if (!preg_match('/^[a-zA-Z0-9]{5,}$/', $_POST['tendn'])) {
-                echo "<script>alert('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số.'); window.location = '../editnv.php';</script>";
+                echo "<script>alert('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số.'); window.location = '../editnv.php';
+                window.history.back();
+                </script>";
                 return;
             }
             
             if ($daoThongTinTaiKhoan->hasTaiKhoan( $_POST['tendn'])== false) {
-                echo "<script>alert('Tên đăng nhập đã tồn tại.'); window.location = '../editnv.php';</script>";
+                echo "<script>alert('Tên đăng nhập đã tồn tại.'); window.location = '../editnv.php';
+                window.history.back();
+                </script>";
                 return;
             }
             
             if (!preg_match('/^\S{5,}$/', trim($_POST['matkhau']))  && $_POST['matkhau'] != "") {
-                echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự và không chứa khoảng trắng !'); window.location = '../editnv.php';</script>";
+                echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự và không chứa khoảng trắng !'); window.location = '../editnv.php';
+                window.history.back();
+                </script>";
                 return;
             }
 
             if (substr($_POST['email'], -10) !== "@gmail.com") {
-                echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editnv.php';</script>";
+                echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editnv.php';
+                window.history.back();
+                </script>";
                 return;
             }
 
             if ($daoThongTinTaiKhoan->hasEmail( $_POST['email'])== false) {
-                echo "<script>alert('Email đã tồn tại !'); window.location = '../editnv.php';</script>";
+                echo "<script>alert('Email đã tồn tại !'); window.location = '../editnv.php';
+                window.history.back();
+                </script>";
                 return;
             }
             //tạo id mơi

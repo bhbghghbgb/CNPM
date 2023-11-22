@@ -57,7 +57,7 @@
             
         } 
 
-        echo "<script>alert('Phan quyen thanh cong');window.location='../../../index.php?id=pq';</script>";
+        echo "<script>alert('Phân quyền thành công !');window.location='../../../index.php?id=pq';</script>";
     }
 ?>
 

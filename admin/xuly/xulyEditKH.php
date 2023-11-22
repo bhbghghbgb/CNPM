@@ -74,7 +74,7 @@ if (isset($_POST['hd'])) {
                                         WHERE MaTaiKhoan='" . $_POST['idtk'] . "'";}
 
             $result = mysqli_query($conn, $sql);
-            echo $sql;
+            // echo $sql;
             // Truy vấn danh sách khách hàng
             $sql = "UPDATE khachhang   SET TenKhach='" . $_POST['ten'] . "',
                                         DiaChi='" . $_POST['diachi'] . "',
@@ -104,31 +104,42 @@ if (isset($_POST['hd'])) {
                 echo "<script>
                 alert('Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại 10 chữ số và bắt đầu bằng số 0.');
                     window.location = '../editkh.php'
+                    window.history.back();
                     </script>";
                 return;
             }
 
             if (!preg_match('/^[a-zA-Z0-9]{5,}$/', $_POST['tendn'])) {
-                echo "<script>alert('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số.'); window.location = '../editkh.php';</script>";
+                echo "<script>alert('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số.'); window.location = '../editkh.php';
+                window.history.back();
+                </script>";
                 return;
             }
 
             if ($daoThongTinTaiKhoan->hasTaiKhoan( $_POST['tendn'])== false) {
-                echo "<script>alert('Tên đăng nhập đã tồn tại'); window.location = '../editkh.php';</script>";
+                echo "<script>alert('Tên đăng nhập đã tồn tại'); window.location = '../editkh.php';
+                window.history.back();
+                </script>";
                 return;
             }
 
             if (!preg_match('/^\S{5,}$/', trim($_POST['matkhau']))  && $_POST['matkhau'] != "" ) {
-                echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự và không chứa khoảng trắng !'); window.location = '../editkh.php?';</script>";
+                echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự và không chứa khoảng trắng !'); window.location = '../editkh.php?';
+                window.history.back();
+                </script>";
                 return;
             }
             if (substr($_POST['email'], -10) !== "@gmail.com") {
-                echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editkh.php?';</script>";
+                echo "<script>alert('Email phải có đuôi @gmail.com.'); window.location = '../editkh.php?';
+                window.history.back();
+                </script>";
                 return;
             }
 
             if ($daoThongTinTaiKhoan->hasEmail( $_POST['email'])== false) {
-                echo "<script>alert('Email tồn tại !'); window.location = '../editkh.php?';</script>";
+                echo "<script>alert('Email tồn tại !'); window.location = '../editkh.php?';
+                window.history.back();
+                </script>";
                 return;
             }
 
@@ -191,7 +202,7 @@ if (isset($_POST['hd'])) {
             '" . $mataikhoan . "',
             CURDATE(),1)";
             $result = mysqli_query($conn, $sql);
-            echo $sql;
+            // echo $sql;
             // Truy vấn danh sách khách hàng
             $sql = "INSERT INTO khachhang  (TenKhach,DiaChi,SDT ,MaTaiKhoan,MaKhach,TrangThai)
             VALUES (

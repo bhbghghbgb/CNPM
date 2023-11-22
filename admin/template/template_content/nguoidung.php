@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
                         </div>
                     </a>";
                 
-                echo"<a href='xuly/xulyXoaKH.php?idnd=".$row['MaKhach']."&idtk=".$row['MaTaiKhoan']."' class='xoa' onclick=\"return confirm('Bạn có chắc chắn muốn xóa sản phẩm ".$row['TenKhach']."  <3')\">
+                echo"<a href='xuly/xulyXoaKH.php?idnd=".$row['MaKhach']."&idtk=".$row['MaTaiKhoan']."' class='xoa' onclick=\"return confirm('Bạn có chắc chắn muốn xóa người dùng ".$row['TenKhach']."  <3')\">
                 
                         <div class='col'>
                             Xóa
@@ -137,7 +137,7 @@ if ($result->num_rows > 0) {
                             Sửa
                         </div>
                     </a>";
-                echo"<a href='xuly/xulyXoanv.php?&idnd=".$row['MaNhanVien']."&idtk=".$row['MaTaiKhoan']."' class='xoa' onclick=\"return confirm('Bạn có chắc chắn muốn xóa sản phẩm ".$row['TenNhanVien']." <3')\">                
+                echo"<a href='xuly/xulyXoanv.php?&idnd=".$row['MaNhanVien']."&idtk=".$row['MaTaiKhoan']."' class='xoa' onclick=\"return confirm('Bạn có chắc chắn muốn xóa người dùng ".$row['TenNhanVien']." <3')\">                
                         <div class='col'>
                             Xóa
                         </div>
