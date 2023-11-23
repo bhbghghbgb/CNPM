@@ -121,7 +121,7 @@
 
         
         if($db->insertHang($_MaHang,$_TenHang,$_NgayTao) == true){
-            echo "<script>alert('Them thanh cong');window.location='../../../index.php?id=h';</script>";
+            echo "<script>alert('Thêm thành công');window.location='../../../index.php?id=h';</script>";
         }
     }
 
@@ -130,15 +130,15 @@
         $_TenHang = $_POST['TenHang'];
 
         if($_MaHang == "" || $_TenHang == "" ){
-            echo "<script>alert('Khong duoc de trong thong tin')</script>";
+            echo "<script>alert('Không được để trống thông tin')</script>";
             return;
         }
 
         if($db->updateHang($_MaHang,$_TenHang) == true){
-            echo "<script>alert('Sua thanh cong');window.location='../../../index.php?id=h';</script>";
+            echo "<script>alert('Sửa thành công');window.location='../../../index.php?id=h';</script>";
         }
         else{
-            echo "<script>alert('Sua that bai');</script>";
+            echo "<script>alert('Sửa thất bại');</script>";
         }
 
     }

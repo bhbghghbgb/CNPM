@@ -75,7 +75,7 @@ class DAODanhMuc extends DatabaseConfig{
 
 
     public function hasDanhMucSP ($MaDanhMuc) {
-        $sql = "SELECT * FROM sanpham WHERE MaDM = '".$MaDanhMuc."'";
+        $sql = "SELECT * FROM sanpham WHERE TrangThai = 1 AND MaDM = '".$MaDanhMuc."'";
         $data=null;
         if($result = mysqli_query($this->conn,$sql)){
             while($row=mysqli_fetch_array($result)){

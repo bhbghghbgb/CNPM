@@ -135,22 +135,22 @@
 
 
         if($_MaKM == "" || $_TenKM == "" || $_MoTa == "" || $_TiLeGiam == ""){
-            echo "<script>alert('Khong duoc de trong thong tin')</script>";
+            echo "<script>alert('Không được để trống thông tin')</script>";
             return;
         }
 
         $pattern = '/^KM_/';
         if(preg_match($pattern, $_MaKM) == false){
-            echo "<script>alert('Ma khuyen mai phai bat dau bang KM_')</script>";
+            echo "<script>alert('Mã khuyến mãi phải bắt đầu bằng KM_')</script>";
             return;
         }
 
         if($db->hasKM($_MaKM) == false){
-            echo "<script>alert('Ma khuyen mai da ton tai ')</script>";
+            echo "<script>alert('Mã khuyến mãi đã tồn tại ')</script>";
             return;
         }
         if($db->insertKM($_MaKM,$_TenKM,$_MoTa,$_TiLeGiam) == true){
-            echo "<script>alert('Them thanh cong');window.location='../../../index.php?id=km';</script>";
+            echo "<script>alert('Thêm thành công');window.location='../../../index.php?id=km';</script>";
         }
     }
 
@@ -162,15 +162,15 @@
 
 
         if($_MaKM == "" || $_TenKM == "" || $_MoTa == "" || $_TiLeGiam == ""){
-            echo "<script>alert('Khong duoc de trong thong tin')</script>";
+            echo "<script>alert('Không được để trống thông tin')</script>";
             return;
         }
 
         if($db->updateKM($_MaKM,$_TenKM,$_MoTa,$_TiLeGiam) == true){
-            echo "<script>alert('Sua thanh cong');window.location='../../../index.php?id=km';</script>";
+            echo "<script>alert('Sửa thành công');window.location='../../../index.php?id=km';</script>";
         }
         else{
-            echo "<script>alert('Sua that bai');</script>";
+            echo "<script>alert('Sửa thất bại');</script>";
         }
 
     }

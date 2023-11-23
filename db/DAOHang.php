@@ -72,7 +72,7 @@ class DAOHang extends DatabaseConfig{
         return false;
     }
     public function hasHangSP ($MaHang) {
-        $sql = "SELECT * FROM sanpham WHERE MaHang = '".$MaHang."'";
+        $sql = "SELECT * FROM sanpham WHERE TrangThai = 1 AND MaHang = '".$MaHang."'";
         $data=null;
         if($result = mysqli_query($this->conn,$sql)){
             while($row=mysqli_fetch_array($result)){
