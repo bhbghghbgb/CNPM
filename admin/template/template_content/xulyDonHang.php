@@ -37,20 +37,6 @@
             }
         }
 
-        // for ($i = 0; $i < count($dataCTDH);$i++){
-        //     for ($j = 0; $j < count($dataSP);$j++){
-        //         if($dataCTDH[$i][0] == $dataSP[$j][0]){
-        //             $SoLuongMoi = $dataSP[$j][9] - $dataCTDH[$i][1];
-        //             $ThongTin[$dataCTDH[$i][0]] = $SoLuongMoi;
-        //             if($SoLuongMoi < 0){
-        //                 $count += 1;
-                        
-        //             }
-        //             break;
-        //         }
-        //     }
-        // }
-
         if($count != 0){
             $HangThieu = "";
             ?>
@@ -59,9 +45,9 @@
             foreach($ThongTin as $value)
             {       
                 if($value[2] <= 0)  {
-                    $HangThieu = $HangThieu . '\nMã hàng ' . $MaSP . ' thiếu '. -1 * $value[2] . ' đôi' ;
+                    $HangThieu = $HangThieu . '\nMã hàng ' . $value[0]." Size ".$value[1]. ' thiếu '. -1 * $value[2] . ' đôi' ;
 ?>
-                    <p class="ThongBao-content">Mã hàng <?php echo $value[0]?> thiếu <?php echo -1 * $value[2]?> đôi</p>
+                    <p class="ThongBao-content">Mã hàng <?php echo $value[0]?> Size <?php echo $value[1]?> thiếu <?php echo -1 * $value[2]?> đôi</p>
 <?php
                 }
             }
