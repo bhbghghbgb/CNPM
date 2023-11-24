@@ -13,7 +13,7 @@
     $db_kh->connect();
     
     $data = $db_kh->LayThongTinKhach($MaTK);
-
+    
     $db_sp = new DAOSP();
     $db_sp->connect();
 
