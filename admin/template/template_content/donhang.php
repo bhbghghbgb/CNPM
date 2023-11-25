@@ -81,21 +81,31 @@
                     <td><?php echo $data[$i][1] ?></td>
                     <td><?php echo $data[$i][2] ?></td>
                     <td <?php
-                        if ($data[$i][3] != 1) {
+                        if ($data[$i][3] == 0) {
+                            echo "style = 'background-color: #bdbd44; color: white;'";
+                        } else if ($data[$i][3] == 2) {
                             echo "style = 'background-color: red; color: white;'";
                         }
                         ?>>
                         <?php
-                        if ($data[$i][3] == 1) {
-                            echo 'Đã xử lý';
-                        } else {
-                            echo 'Chưa xử lý';
+                        switch ($data[$i][3]) {
+                            case 0:
+                                echo 'Chưa xử lý';
+                                break;
+                            case 1:
+                                echo 'Đã xử lý';
+                                break;
+                            case 2:
+                                echo 'Đã bị hủy';
+                                break;
+                            default:
+                                break;
                         }
                         ?></td>
                     <td><?php echo number_format($data[$i][4], 0, ',', '.') . "đ" ?></td>
                     <td>
                         <?php
-                        if ($data[$i][3] != 1) {
+                        if ($data[$i][3] == 0) {
                             echo '<button type="button" class="XuLyDon" value = "' . $data[$i][0] . '">Xử lý</button>
                                 <button type="button" class="HuyDon" value = "' . $data[$i][0] . '">Hủy</button></td>';
                         }
@@ -130,21 +140,31 @@
                         <td><?php echo $data[$i][1] ?></td>
                         <td><?php echo $data[$i][2] ?></td>
                         <td <?php
-                            if ($data[$i][3] != 1) {
-                                echo "style = 'background-color: red; color: white;$'";
+                            if ($data[$i][3] == 0) {
+                                echo "style = 'background-color: #bdbd44; color: white;'";
+                            } else if ($data[$i][3] == 2) {
+                                echo "style = 'background-color: red; color: white;'";
                             }
                             ?>>
                             <?php
-                            if ($data[$i][3] == 1) {
-                                echo 'Đã xử lý';
-                            } else {
-                                echo 'Chưa xử lý';
+                            switch ($data[$i][3]) {
+                                case 0:
+                                    echo 'Chưa xử lý';
+                                    break;
+                                case 1:
+                                    echo 'Đã xử lý';
+                                    break;
+                                case 2:
+                                    echo 'Đã bị hủy';
+                                    break;
+                                default:
+                                    break;
                             }
                             ?></td>
                         <td><?php echo number_format($data[$i][4], 0, ',', '.') . "đ" ?></td>
                         <td>
                             <?php
-                            if ($data[$i][3] != 1) {
+                            if ($data[$i][3] == 0) {
                                 echo '<button type="button" class="XuLyDon" value = "' . $data[$i][0] . '">Xử lý</button>
                                 <button type="button" class="HuyDon" value = "' . $data[$i][0] . '">Hủy</button></td>';
                             }

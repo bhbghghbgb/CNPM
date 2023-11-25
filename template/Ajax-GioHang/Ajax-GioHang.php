@@ -52,14 +52,16 @@
                     <td><?php echo $data[$i][0]?></td>
                     <td><?php echo $data[$i][1]?></td>
                     <td><?php echo $data[$i][2]?></td>
-                    <td><div class="TinhTrang<?php if($data[$i][3] != 1) { echo " chuaXuLy";}?>" value=<?php echo $data[$i][0]?>>
+                    <td><div class="TinhTrang<?php if($data[$i][3] ==0) { echo " chuaXuLy";} if($data[$i][3] == 2){ echo " daBiHuy";}?>" value=<?php echo $data[$i][0]?>>
                         <?php 
                             if($data[$i][3]==1){
                                 echo 'Đã xử lý';
                             }
-                            else{
+                             else if($data[$i][3]==0){
                                 echo '<span class="initial">Chưa xử lý</span>';
                                 echo '<span class="hovered">Hủy đơn hàng</span>';
+                            }else {
+                                echo 'Đã bị hủy';
                             }
                         ?></div>
                     </td>

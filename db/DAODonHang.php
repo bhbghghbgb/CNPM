@@ -57,6 +57,15 @@ class DAODonHang extends DatabaseConfig
         } else
             return false;
     }
+
+    public function huyDon($madon) {
+        $sql = 'UPDATE donhang SET TrangThai = 2 WHERE MaDonHang = ' . $madon;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            return true;
+        } else
+            return false;
+    }
+
     public function Loc($from, $to)
     {
         $sql = "SELECT * FROM donhang WHERE NgayDat between '$from' AND '$to'";
