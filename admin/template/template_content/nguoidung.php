@@ -87,7 +87,7 @@ if ($result->num_rows > 0) {
     echo "</table>
     </div>";
 } else {
-    echo "Không có sản phẩm.";
+    echo "Không có khách hàng.";
 }
 
 $sql = "SELECT * FROM nhanvien Where TrangThai=1 ";
