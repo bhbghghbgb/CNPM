@@ -53,7 +53,7 @@
         $cache='';
         if( $cache!=$_SESSION['message']);
         $cache=$_SESSION['message'];
-        echo '<script language="javascript"> addmess("' . $_SESSION['message'] . '", "#434343", "white", 2000);</script>';
+        echo '<script language="javascript"> addmessText("' . $_SESSION['message'] . '");</script>';
         unset($_SESSION['message']); // Xóa thông báo sau khi hiển thị
     } 
 ?>

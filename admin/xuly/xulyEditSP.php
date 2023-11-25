@@ -134,17 +134,15 @@ if (isset($_POST['hd'])) {
         case "Lưu":
             $result = $daoSP->updateSP($_POST['id'], $_POST['ten'], $_POST['khuyenmai'], $anhchinh, $_POST['danhmuc'], $mota, $_POST['hang'], );
             if ($result) {
+                if ($daoSoSize->deleteAllSozsize($_POST['id']))
                 if (isset($_POST["ArraySize"]) && isset($_POST["ArrayQuantity"]) && isset($_POST["ArrayPrice"])) {
                     $ArraySize = $_POST["ArraySize"];
                     $ArrayQuantity = $_POST["ArrayQuantity"];
                     $ArrayPrice = $_POST["ArrayPrice"];
-
-                    if ($daoSoSize->deleteAllSozsize($_POST['id']))
-                        //check số lượng
-                        for ($i = 0; $i < count($ArraySize); $i++) {
+                    for ($i = 0; $i < count($ArraySize); $i++) {
                             $daoSoSize->insertSozise($_POST['id'], $ArraySize[$i], $ArrayQuantity[$i], $ArrayPrice[$i]);
 
-                        }
+                    }
 
                 }
             }

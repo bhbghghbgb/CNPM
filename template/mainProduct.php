@@ -54,12 +54,12 @@ if (isset($_GET['MaSP'])) {
         if (<?php echo isset($_SESSION["MaTaiKhoan"]) ? 'true' : 'false'; ?>) {
             var sl = document.querySelector("#tonkho p span").textContent;
             if(sl == 0) {
-                addmess("Sản phẩm đã hết hàng!", "#434343", "white", 1500);
+                addmessText("Sản phẩm đã hết hàng!");
                 return false;
             }
             return true;
         } else {
-            addmess("Vui lòng đăng nhập!", "#434343", "white", 1500);
+            addmessText("Vui lòng đăng nhập!");
             return false;
         }
     }
