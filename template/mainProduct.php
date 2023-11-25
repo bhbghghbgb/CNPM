@@ -25,7 +25,11 @@ if (isset($_GET['MaSP'])) {
         return $gia - $gia * $Tilegiam / 100;
     }
 }
-
+$urlAnh = './img/products/';
+if ($data['AnhChinh'])
+    $urlAnh = $urlAnh . $data['AnhChinh'];
+else
+    $urlAnh = $urlAnh . 'giay404.jpg';
 ?>
 <script>
     var tilegiam = <?php echo json_decode($Tilegiam) ?>;
@@ -39,10 +43,10 @@ if (isset($_GET['MaSP'])) {
         var firstChild = document.querySelector('#price :first-child');
         var secondChild = document.querySelector('#price :nth-child(2)');
         var priceGiam = Math.round(price - price * tilegiam / 100);
-        if(tilegiam!=0){
+        if (tilegiam != 0) {
             firstChild.innerHTML = formatCash(priceGiam);
             secondChild.innerHTML = formatCash(price);
-        }else{
+        } else {
             firstChild.innerHTML = formatCash(price);
         }
 
@@ -53,7 +57,7 @@ if (isset($_GET['MaSP'])) {
     function validate() {
         if (<?php echo isset($_SESSION["MaTaiKhoan"]) ? 'true' : 'false'; ?>) {
             var sl = document.querySelector("#tonkho p span").textContent;
-            if(sl == 0) {
+            if (sl == 0) {
                 addmessText("Sản phẩm đã hết hàng!");
                 return false;
             }
@@ -73,12 +77,7 @@ if (isset($_GET['MaSP'])) {
             <div id="selection">
                 <div class="item_selection">
                     <label>
-                        <input type="radio" name="img_selected"
-                            onclick="ChuyenAnh('./img/products/<?php if ($data['AnhChinh'])
-                                echo $data['AnhChinh'];
-                            else
-                                echo 'giay404.jpg'; ?>)"
-                            checked />
+                        <input type="radio" name="img_selected" onclick="ChuyenAnh('<?php echo $urlAnh ?>')" checked />
                         <img src="./img/products/<?php echo $data['AnhChinh'] ?>">
                     </label>
                 </div>
@@ -103,10 +102,10 @@ if (isset($_GET['MaSP'])) {
                 <?php
                 if ($data['GiaMin']) {
                     echo '<div id="price">';
-                    if($Tilegiam!=0){
+                    if ($Tilegiam != 0) {
                         echo '<p>' . number_format(TinhTienGiam($Tilegiam, $data['GiaMin']), 0, ',', '.') . 'đ</p>';
                         echo '<p id="niemyet">' . number_format($data['GiaMin'], 0, ',', '.') . 'đ</p>';
-                    }else{
+                    } else {
                         echo '<p>' . number_format($data['GiaMin'], 0, ',', '.') . 'đ</p>';
                     }
                     echo '</div>';
@@ -118,7 +117,7 @@ if (isset($_GET['MaSP'])) {
                         echo '<li class="size-item">';
                         echo '<label>';
                         echo '<input type="radio" name="Size" value="' . $size['Size'] . '"' . $checked . '>';
-                        echo '<span onclick="changeSize(' . $size['GiaBan'] . ',' . $size['SoLuong'] . ')"'.'>' . $size['Size'] . '</span>';
+                        echo '<span onclick="changeSize(' . $size['GiaBan'] . ',' . $size['SoLuong'] . ')"' . '>' . $size['Size'] . '</span>';
                         echo '</label>';
                         echo '</li>';
                     }
@@ -183,7 +182,7 @@ if (isset($_GET['MaSP'])) {
                             </div>
                         </a>
                     </li>
-                <?php
+                    <?php
                 }
             }
             ?>
