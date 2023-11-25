@@ -163,6 +163,9 @@ table.bangnoidung tr td .row .sua{
 table.bangnoidung tr td .row .xem{
     background-color: rgb(73, 167, 73);
 }
+table.bangnoidung tr th{
+    cursor: pointer;
+}
 table.bangnoidung tr td ,table.bangnoidung tr th{
     padding-left:15px;
 }
