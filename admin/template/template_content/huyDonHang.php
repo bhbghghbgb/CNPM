@@ -5,10 +5,9 @@ include("../../../db/DAODonHang.php");
 
 if (isset($_GET['MaDon'])) {
     $MaDon = $_GET['MaDon'];
-    $dbCTDH = new DAOChiTietDonHang();
     $dbDH = new DAODonHang();
     $dbDH->connect();
-    if($dbCTDH->RemoveAll($MaDon) && $dbDH->Remove($MaDon)){
+    if($dbDH->huyDon($MaDon)){
         echo "<script>alert('Hủy thành công đơn ".$MaDon."!')</script>";
         if (isset($_GET['pq'])) {
             echo "<script>window.location='index.php?id=dh'</script>";

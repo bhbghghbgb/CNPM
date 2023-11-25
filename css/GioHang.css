@@ -244,8 +244,12 @@ body{
 }
 
 .chuaXuLy {
-    background-color: red !important;
+    background-color: #bdbd44 !important;
     cursor: pointer;
+}
+
+.daBiHuy {
+    background-color: #e32124 !important;
 }
 
 #donhang_container #donhang table td .TinhTrang.chuaXuLy:hover {
