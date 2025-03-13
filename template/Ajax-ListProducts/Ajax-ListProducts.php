@@ -117,12 +117,18 @@ if (isset($_GET['MaDM']) || isset($_GET['Sale']) || isset($_GET['MaHang']) || is
                     <?php echo $data[$i]['TenHang'] ?>
                 </div>
                 <div class="product-price">
-                    <span class="price-new price">
-                        <?php echo number_format(TinhTienGiam($TiLeGiam, $data[$i]['GiaMin']), 0, ',', '.') . "đ" ?>
-                    </span>
-                    <span class="price-old price">
-                        <?php echo number_format($data[$i]['GiaMin'], 0, ',', '.') . "đ" ?>
-                    </span>
+                    <?php if ($data[$i]['GiaMin'] === null) { ?>
+                        <span class="price-new price">Sắp ra mắt</span>
+                    <?php } else { ?>
+                        <span class="price-new price">
+                            <?php echo number_format(TinhTienGiam($TiLeGiam, $data[$i]['GiaMin']), 0, ',', '.') . "đ" ?>
+                        </span>
+                        <?php if (TinhTienGiam($TiLeGiam, $data[$i]['GiaMin']) != $data[$i]['GiaMin']) { ?>
+                            <span class="price-old price">
+                                <?php echo number_format($data[$i]['GiaMin'], 0, ',', '.') . "đ" ?>
+                            </span>
+                        <?php } ?>
+                    <?php } ?>
                 </div>
             </div>
         </div>
