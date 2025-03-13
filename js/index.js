@@ -51,8 +51,9 @@ function addmess(text, bgcolor, textcolor, time) {
     if (textcolor) al.style.color = textcolor;
     if (time)
         setTimeout(function () {
-            al.style.opacity = 0;
-            al.style.zIndex = 200;
+            al.style.display = "none";
+            // al.style.opacity = 0;
+            // al.style.zIndex = 200;
         }, time);
 }
 function addmessText(text) {

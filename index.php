@@ -1,3 +1,4 @@
+<?php require 'account/login_submit.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,36 +57,38 @@
             </div>
         </div>
 
-
+        <span>Location: account/login.php</span>
         <?php include('account/login.php'); ?>
 
+        <span>Location: account/quenmatkhau.php</span>
         <?php include('account/quenmatkhau.php'); ?>
 
+        <span>Location: account/register.php</span>
         <?php include('account/register.php'); ?>
 
+        <span>Location: template/header.php</span>
         <?php include('template/header.php'); ?>
 
+        <span>Location: template/top_menu.php</span>
         <?php include('template/top_menu.php'); ?>
 
-
         <div id="main">
-
+            <span>Location: template/slider.php</span>
             <?php include('template/slider.php'); ?>
+
+            <span>Location: template/products.php</span>
             <?php include('template/products.php'); ?>
+
             <?php
             // include('template/post.php');
             ?>
-
         </div>
+
         <div id="footer">
+            <span>Location: template/footer.php</span>
             <?php include('template/footer.php'); ?>
         </div>
-
-
-        <?php
-        
-        ?>
-    </div>
+        </div>
 
 
 

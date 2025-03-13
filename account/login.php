@@ -15,5 +15,5 @@
     <br />
     <br />
     <input type="button" class="buttonDN" name="dangky" value="Đăng Ký" onclick=hienthidangky() />
-    <?php require 'login_submit.php'; ?>
+    <!-- <?php require 'login_submit.php'; ?> -->
 </form>

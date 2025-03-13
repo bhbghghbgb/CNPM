@@ -1,3 +1,4 @@
+<?php include('template/menu_ad.php');?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +42,6 @@
     <div class="wrapper">
         <?php include('template/topbar_ad.php');?>
         <div class="container-fluid">
-                <?php include('template/menu_ad.php');?>
                 <?php include('template/main_ad.php');?>
                 
             </div>
