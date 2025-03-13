@@ -1,6 +1,6 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
+$host = "db";
+$user = "user";
+$pass = "password";
 $db = "ql_cuahanggiay";
 ?>

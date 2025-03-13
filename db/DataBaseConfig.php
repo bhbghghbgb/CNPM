@@ -1,8 +1,8 @@
 <?php
 class DatabaseConfig {
-    protected $host = 'localhost';
-    protected $username = 'root';
-    protected $password = '';
+    protected $host = 'db';
+    protected $username = 'user';
+    protected $password = 'password';
     protected $database = 'ql_cuahanggiay';
     
     protected $conn;
