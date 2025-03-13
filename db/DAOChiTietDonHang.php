@@ -50,12 +50,13 @@ class DAOChiTietDonHang
             return false;
     }
 
-    public function RemoveAll($MaDonHang){
+    public function RemoveAll($MaDonHang)
+    {
         $data = new DataProvider();
         $result = $data->Delete($this->table, "MaDonHang=$MaDonHang");
-        if($result){
+        if ($result) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -84,11 +85,11 @@ class DAOChiTietDonHang
                 ["Quy" => 2, "TongDoanhThu" => 0],
                 ["Quy" => 3, "TongDoanhThu" => 0],
                 ["Quy" => 4, "TongDoanhThu" => 0]
-               
+
             ];
             if ($result) {
                 while ($row = mysqli_fetch_array($result)) {
-                    $data[$row["Quy"]-1]["TongDoanhThu"] = $row["TongDoanhThu"];
+                    $data[$row["Quy"] - 1]["TongDoanhThu"] = $row["TongDoanhThu"];
                 }
             }
         } else {
@@ -111,7 +112,7 @@ class DAOChiTietDonHang
 
             if ($result) {
                 while ($row = mysqli_fetch_array($result)) {
-                    $data[$row['Thang']-($quarter-1)*3-1]["TongDoanhThu"] = $row["TongDoanhThu"];
+                    $data[$row['Thang'] - ($quarter - 1) * 3 - 1]["TongDoanhThu"] = $row["TongDoanhThu"];
                 }
             }
         }
@@ -121,14 +122,14 @@ class DAOChiTietDonHang
     public function ListPhanTram($hang = null)
     {
         $dataPRO = new DataProvider();
-        if($hang)
-        $sql = "SELECT sanpham.Ten, SUM(chitietdonhang.SoLuong) AS TongSoLuong
+        if ($hang)
+            $sql = "SELECT sanpham.Ten, SUM(chitietdonhang.SoLuong) AS TongSoLuong
         FROM chitietdonhang
         JOIN sanpham ON chitietdonhang.MaSP = sanpham.MaSP
         where MaHang = '$hang'
         GROUP BY chitietdonhang.MaSP";
         else
-        $sql = "SELECT sanpham.Ten, SUM(chitietdonhang.SoLuong) AS TongSoLuong
+            $sql = "SELECT sanpham.Ten, SUM(chitietdonhang.SoLuong) AS TongSoLuong
         FROM chitietdonhang
         JOIN sanpham ON chitietdonhang.MaSP = sanpham.MaSP
         GROUP BY chitietdonhang.MaSP";
@@ -155,4 +156,3 @@ class DAOChiTietDonHang
         return $data;
     }
 }
-?>

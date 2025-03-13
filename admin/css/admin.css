@@ -7,30 +7,29 @@
     margin: 0;
     box-sizing: border-box;
 }
-p,a{
-    text-decoration:none;
+p,
+a {
+    text-decoration: none;
 }
 
-li .border-size-menu+.border-size-menu {
+li .border-size-menu + .border-size-menu {
     border: 2px solid red;
 }
 
 .position-static {
     position: static !important;
 }
-.adminthem{
-    max-width:180px;
+.adminthem {
+    max-width: 180px;
     border-radius: 20px;
     background-color: #5ba0ee;
     color: #000;
 }
-#main{
-    margin-top:55px;
+#main {
+    margin-top: 55px;
 }
 
 /* sm */
-
-
 
 @media screen and (min-width: 576px) {
     .absolute-sm {
@@ -40,9 +39,6 @@ li .border-size-menu+.border-size-menu {
     .static-sm {
         position: static !important;
     }
-
-    
-
 }
 
 /* md */
@@ -59,20 +55,19 @@ li .border-size-menu+.border-size-menu {
     .static-md {
         position: static !important;
     }
-    #menu{
-        height:100vh;
-        top:30px !important;
-        width:100%;
+    #menu {
+        height: 100vh;
+        top: 30px !important;
+        width: 100%;
     }
-    #main{
+    #main {
         margin-top: 30px;
-        margin-left:160px;
-        padding:10px;
+        margin-left: 160px;
+        padding: 10px;
     }
-    .container-fluid{
-        margin-top:0;
+    .container-fluid {
+        margin-top: 0;
     }
-
 }
 
 /* lg */
@@ -81,37 +76,34 @@ li .border-size-menu+.border-size-menu {
     .static-lg {
         position: static !important;
     }
-    #menu{
-        height:100vh;
-        top:30px !important;
+    #menu {
+        height: 100vh;
+        top: 30px !important;
     }
-    
-
 }
 /* lg max */
 @media (min-width: 1400px) {
-    table.bangnoidung tr:hover .row.hanhdong>* {
+    table.bangnoidung tr:hover .row.hanhdong > * {
         display: block;
     }
-    
-    table.bangnoidung .row.hanhdong >* {
+
+    table.bangnoidung .row.hanhdong > * {
         display: none;
     }
-    table.bangnoidung .hanhdong{
-        height:24px;
+    table.bangnoidung .hanhdong {
+        height: 24px;
     }
-
 }
 /*  index*/
-.list-unstyled.text-black >a{
-    color:#fff;
+.list-unstyled.text-black > a {
+    color: #fff;
     text-decoration: none;
 }
-#menu{
-    left:0;
-    top:0;
+#menu {
+    left: 0;
+    top: 0;
     z-index: 5;
-    width:160px;
+    width: 160px;
 }
 div#topbar {
     position: fixed;
@@ -119,9 +111,10 @@ div#topbar {
     width: 100vw;
     top: 0px;
     z-index: 50;
-    box-shadow: 0 1px 6px 0 rgb(152 152 152 / 34%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    box-shadow: 0 1px 6px 0 rgb(152 152 152 / 34%),
+        0 2px 6px 2px rgb(60 64 67 / 15%);
 }
-#main > *:nth-child(2) > *{
+#main > *:nth-child(2) > * {
     margin-top: 10px !important;
     margin-bottom: 10px !important;
 }
@@ -129,71 +122,68 @@ div#topbar {
     border-radius: 15px;
     margin-bottom: 50px;
 }
-#topbar-1:hover{
+#topbar-1:hover {
     opacity: 0.5;
     cursor: pointer;
 }
-#topbar-1 a{
-    color:#fff;
-    max-height:30px;
-
-    
+#topbar-1 a {
+    color: #fff;
+    max-height: 30px;
 }
-.icon-back{
-    margin-right:10px;
-    max-height:30px
+.icon-back {
+    margin-right: 10px;
+    max-height: 30px;
 }
 /* menu */
-table.bangnoidung tr td .row > a:hover{
+table.bangnoidung tr td .row > a:hover {
     background-color: #ccc;
 }
-table.bangnoidung tr td .row > a{
-    width:50px;
-    color:#000;
+table.bangnoidung tr td .row > a {
+    width: 50px;
+    color: #000;
     text-align: center;
     cursor: pointer;
-
 }
-table.bangnoidung tr td .row .xoa{
+table.bangnoidung tr td .row .xoa {
     background-color: rgb(165, 48, 48);
 }
-table.bangnoidung tr td .row .sua{
+table.bangnoidung tr td .row .sua {
     background-color: rgb(199, 199, 0);
 }
-table.bangnoidung tr td .row .xem{
+table.bangnoidung tr td .row .xem {
     background-color: rgb(73, 167, 73);
 }
-table.bangnoidung tr th{
+table.bangnoidung tr th {
     cursor: pointer;
 }
-table.bangnoidung tr td ,table.bangnoidung tr th{
-    padding-left:15px;
+table.bangnoidung tr td,
+table.bangnoidung tr th {
+    padding-left: 15px;
 }
-table.bangnoidung tr + tr{
-    
+table.bangnoidung tr + tr {
     border-top: 1px dashed black;
     border-bottom: 1px dashed black;
     border-radius: 10%;
 }
-table.bangnoidung tr td .hanhdong{
+table.bangnoidung tr td .hanhdong {
     margin-bottom: 10px;
 }
-table.bangnoidung tr td .hanhdong >a{
+table.bangnoidung tr td .hanhdong > a {
     border-radius: 10px;
 }
 
-#khachhang{
+#khachhang {
     display: flex;
 }
-#nhanvien{
+#nhanvien {
     display: flex;
 }
-#imageContainer > img{
+#imageContainer > img {
     width: 100px;
     margin: 0 0 0 10px;
 }
 
-#ListAnhPhu > *{
+#ListAnhPhu > * {
     max-height: 100px;
     min-width: 50px;
     margin: 5px;
@@ -207,23 +197,23 @@ div#myButton {
     border: 3px solid #048390;
     cursor: pointer;
 }
-li.row.LiMenu.mx-0.text-center.p-2.align-items-center.border-secondary.border-size-menu{
+li.row.LiMenu.mx-0.text-center.p-2.align-items-center.border-secondary.border-size-menu {
     transition: box-shadow 0.5s ease;
 }
-li.row.LiMenu.mx-0.text-center.p-2.align-items-center.border-secondary.border-size-menu:hover{
-box-shadow: -8px 0 0 #6c757d;
-background-color: #735fe61b;
+li.row.LiMenu.mx-0.text-center.p-2.align-items-center.border-secondary.border-size-menu:hover {
+    box-shadow: -8px 0 0 #6c757d;
+    background-color: #735fe61b;
 }
-.wrapper{
-    background-color: #6c757d
-    ;height:100%;
-    min-height:100vh;
+.wrapper {
+    background-color: #6c757d;
+    height: 100%;
+    min-height: 100vh;
 }
 #message {
-    top:50px;
-    padding :20px 50px;
+    top: 50px;
+    padding: 20px 50px;
     right: 10px;
-    position:fixed;
+    position: fixed;
     border-bottom: 2px solid red;
-    opacity:0;
-  }
+    opacity: 0;
+}

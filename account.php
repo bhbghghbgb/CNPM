@@ -1,6 +1,7 @@
 <?php require 'account/login_submit.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +16,7 @@
 
     <link rel="stylesheet" href="./css/mainProduct.css">
     <link rel="stylesheet" href="./admin/css/font-awesome_5.15.4_css_all.min.css">
-    
+
     <!-- header -->
     <link rel="stylesheet" href="./css/top_menu.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">

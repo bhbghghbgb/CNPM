@@ -1,6 +1,7 @@
 <?php require 'account/login_submit.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,12 +17,13 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/ChinhSachDoiHang.css">
 </head>
+
 <body>
     <div id="wrapper">
-        <?php include('account/login.php');?>
-        <?php include('account/register.php');?>
-        <?php include('template/header.php');?>
-        <?php include('template/top_menu.php');?>
+        <?php include('account/login.php'); ?>
+        <?php include('account/register.php'); ?>
+        <?php include('template/header.php'); ?>
+        <?php include('template/top_menu.php'); ?>
         <div id="main">
             <h1 style="margin-left: 165px; margin-top:30px;">CHÍNH SÁCH ĐỔI HÀNG</h1>
             <div class="top">
@@ -62,8 +64,9 @@
             </div>
         </div>
         <div id="footer">
-            <?php include('template/footer.php');?>
+            <?php include('template/footer.php'); ?>
         </div>
     </div>
 </body>
+
 </html>

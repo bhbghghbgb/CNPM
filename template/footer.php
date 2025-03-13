@@ -39,10 +39,10 @@
 if (isset($_SESSION['message'])) {
     $message = $_SESSION['message'];
     echo '<script>console.log("' . $message . '")</script>';
-    
+
     // Sử dụng json_encode để truyền dữ liệu PHP sang JavaScript an toàn
     echo '<script language="javascript">addmessText(' . json_encode($message) . ');</script>';
-    
+
     unset($_SESSION['message']); // Xóa thông báo sau khi hiển thị
 }
 ?>

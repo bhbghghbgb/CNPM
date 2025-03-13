@@ -1,4 +1,4 @@
-<?php include('template/menu_ad.php');?>
+<?php include('template/menu_ad.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="./css/font-awesome_5.15.4_css_all.min.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 
@@ -36,27 +36,27 @@
 
 <body>
     <div id="message">
-            <div id="content_mess">
-            </div>
-        </div>
-    <div class="wrapper">
-        <?php include('template/topbar_ad.php');?>
-        <div class="container-fluid">
-                <?php include('template/main_ad.php');?>
-                
-            </div>
+        <div id="content_mess">
         </div>
     </div>
+    <div class="wrapper">
+        <?php include('template/topbar_ad.php'); ?>
+        <div class="container-fluid">
+            <?php include('template/main_ad.php'); ?>
 
-    <?php 
+        </div>
+    </div>
+    </div>
+
+    <?php
     if (isset($_SESSION['message'])) {
-        $cache='';
-        if( $cache!=$_SESSION['message']);
-        $cache=$_SESSION['message'];
+        $cache = '';
+        if ($cache != $_SESSION['message']);
+        $cache = $_SESSION['message'];
         echo '<script language="javascript"> addmessText("' . $_SESSION['message'] . '");</script>';
         unset($_SESSION['message']); // Xóa thông báo sau khi hiển thị
-    } 
-?>
+    }
+    ?>
     </div>
     <script>
         showmenu();

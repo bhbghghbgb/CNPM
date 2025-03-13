@@ -1,6 +1,7 @@
 <?php require 'account/login_submit.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,29 +29,31 @@
     <link rel="stylesheet" href="./css/DanhSach.css">
 
 </head>
+
 <body>
     <div id="wrapper">
-        <?php include('account/login.php');?>
+        <?php include('account/login.php'); ?>
         <?php include('account/quenmatkhau.php'); ?>
-        <?php include('account/register.php');?>
-        <?php include('template/header.php');?>
-        <?php include('template/top_menu.php');?>
+        <?php include('account/register.php'); ?>
+        <?php include('template/header.php'); ?>
+        <?php include('template/top_menu.php'); ?>
         <div id="main" class="container">
             <?php
-                if(isset($_GET['Find'])){
+            if (isset($_GET['Find'])) {
             ?>
-                 <div id="NoiDungTim">
-                    <p>Bạn vừa tìm kiếm: <?php echo $_GET['Find'] ;?></p>
+                <div id="NoiDungTim">
+                    <p>Bạn vừa tìm kiếm: <?php echo $_GET['Find']; ?></p>
                 </div>
             <?php
-                }
+            }
             ?>
 
-            <?php include('template/listProducts.php');?>
+            <?php include('template/listProducts.php'); ?>
         </div>
     </div>
     <div id="footer">
-            <?php include('template/footer.php');?>
+        <?php include('template/footer.php'); ?>
     </div>
 </body>
+
 </html>

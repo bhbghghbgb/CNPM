@@ -1,47 +1,44 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
 }
 
-body{
+body {
     font-size: 15px;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
-#gio_hang_container{
+#gio_hang_container {
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
     padding: 0px 15px;
     width: 1170px;
     display: flex;
-
 }
 
-#gio_hang_container form{
+#gio_hang_container form {
     width: 180%;
-    
 }
 
-#gio_hang_container #thong_tin{
+#gio_hang_container #thong_tin {
     padding: 0px 15px;
 }
 
-#gio_hang_container #thong_tin h1{
+#gio_hang_container #thong_tin h1 {
     font-size: 21px;
     margin: 20px 0px;
     color: black;
     font-weight: 100;
 }
 
-#gio_hang_container #thong_tin #cart_form #don_hang{
-
+#gio_hang_container #thong_tin #cart_form #don_hang {
     border: 0.5px solid #333;
     border-collapse: collapse;
     width: 100%;
     height: 100%;
 }
 
-#gio_hang_container #thong_tin #cart_form #don_hang  th{
+#gio_hang_container #thong_tin #cart_form #don_hang th {
     white-space: pre-wrap;
     border: 0.5px solid #333;
     text-align: center;
@@ -49,32 +46,32 @@ body{
     padding: 5px 10px;
 }
 
-#gio_hang_container #thong_tin #cart_form #don_hang td{
+#gio_hang_container #thong_tin #cart_form #don_hang td {
     border: 0.5px solid #333;
     text-align: center;
     font-size: 14px;
     padding: 22px 25px;
 }
 
-#gio_hang_container #thong_tin #cart_form #don_hang td a{
+#gio_hang_container #thong_tin #cart_form #don_hang td a {
     text-decoration: none;
     color: black;
 }
 
-#gio_hang_container #thong_tin #cart_form #don_hang td a img{
+#gio_hang_container #thong_tin #cart_form #don_hang td a img {
     max-width: 100%;
 }
-#gio_hang_container #thong_tin #cart_form #don_hang td strong{
+#gio_hang_container #thong_tin #cart_form #don_hang td strong {
     width: 100%;
     float: left;
 }
 
-#gio_hang_container #thong_tin #cart_form #don_hang td .variant_title{
+#gio_hang_container #thong_tin #cart_form #don_hang td .variant_title {
     width: 100%;
     float: left;
 }
 
-#gio_hang_container #thong_tin #cart_form #don_hang td .sl{
+#gio_hang_container #thong_tin #cart_form #don_hang td .sl {
     font-size: 17px;
     width: 89%;
     height: 25%;
@@ -83,20 +80,21 @@ body{
     border-radius: 10px;
 }
 
-#gio_hang_container #thong_tin #cart_form #don_hang td .delete{
+#gio_hang_container #thong_tin #cart_form #don_hang td .delete {
     border: 0px;
     background-color: white;
     cursor: pointer;
 }
 
-#gio_hang_container #thong_tin #cart_form #don_hang td .trash{
+#gio_hang_container #thong_tin #cart_form #don_hang td .trash {
     font-size: 20px;
 }
 
-#gio_hang_container #thong_tin .clearfix{
+#gio_hang_container #thong_tin .clearfix {
     width: 100%;
 }
-#gio_hang_container #thong_tin .clearfix a, #gio_hang_container #thong_tin .clearfix #update-click{
+#gio_hang_container #thong_tin .clearfix a,
+#gio_hang_container #thong_tin .clearfix #update-click {
     margin-top: 20px;
     margin-right: 25px;
     padding: 8px 25px;
@@ -109,36 +107,35 @@ body{
     cursor: pointer;
 }
 
-#gio_hang_container #thanh_toan{
+#gio_hang_container #thanh_toan {
     width: 70%;
     padding: 0px 15px;
 }
 
-#gio_hang_container #thanh_toan > h2{
+#gio_hang_container #thanh_toan > h2 {
     font-size: 21px;
     color: black;
     margin: 20px 0px;
     font-weight: 100;
 }
 
-#gio_hang_container #thanh_toan #thanh_toan_container{
+#gio_hang_container #thanh_toan #thanh_toan_container {
     border: 1px solid black;
     padding: 27px 22px;
 }
 
-#gio_hang_container #thanh_toan #thanh_toan_container h2{
+#gio_hang_container #thanh_toan #thanh_toan_container h2 {
     font-size: 18px;
     margin: 20px 0px;
     width: 100%;
 }
 
-
-#gio_hang_container #thanh_toan #thanh_toan_container h2 .tien{
+#gio_hang_container #thanh_toan #thanh_toan_container h2 .tien {
     color: #e32124;
     float: right;
 }
 
-#gio_hang_container #thanh_toan #thanh_toan_container a{
+#gio_hang_container #thanh_toan #thanh_toan_container a {
     text-align: center;
     font-size: 15px;
     font-weight: 300;
@@ -149,7 +146,7 @@ body{
     display: block;
 }
 
-#donhang_container{
+#donhang_container {
     margin-left: auto;
     margin-right: auto;
     padding: 15px;
@@ -166,7 +163,7 @@ body{
     border-radius: 15px;
 }
 
-#donhang_container #title h2{
+#donhang_container #title h2 {
     text-align: center;
 
     color: white;
@@ -174,25 +171,25 @@ body{
     text-transform: uppercase;
 }
 
-#donhang_container #Loc{
+#donhang_container #Loc {
     margin: 5px 50px;
     padding: 10px 0px;
 }
 
-#donhang_container #Loc label{
+#donhang_container #Loc label {
     font-weight: bold;
     font-size: 17px;
     margin-right: 15px;
 }
 
-#donhang_container #Loc input{
+#donhang_container #Loc input {
     font-size: 17px;
     margin-right: 15px;
     padding: 3px 10px;
     height: 100%;
 }
 
-#donhang_container #Loc button{
+#donhang_container #Loc button {
     border: none;
     border-radius: 15px;
     padding: 10px 15px;
@@ -202,33 +199,31 @@ body{
     cursor: pointer;
 }
 
-#donhang_container #Loc button:hover{
+#donhang_container #Loc button:hover {
     background-color: rgb(9, 184, 9);
 }
 
-#donhang_container #donhang{
+#donhang_container #donhang {
     margin: 5px 0px;
     padding: 10px 15px;
     border: none;
     border-radius: 30px;
     box-shadow: 0px 2px 5px 3px gray;
-    
 }
 
-
-#donhang_container #donhang table{
+#donhang_container #donhang table {
     width: 100%;
     border-collapse: collapse;
-    
 }
 
-#donhang_container #donhang table td,#donhang_container #donhang table th{
+#donhang_container #donhang table td,
+#donhang_container #donhang table th {
     padding: 5px 10px;
     border-bottom: 1px dashed black;
     text-align: center;
 }
 
-#donhang_container #donhang table td .TinhTrang{
+#donhang_container #donhang table td .TinhTrang {
     background-color: rgb(17, 82, 17);
     padding: 5px 10px;
     border-radius: 15px;
@@ -264,24 +259,23 @@ body{
     display: none;
 }
 
-#donhang_container #donhang table td a{
+#donhang_container #donhang table td a {
     text-decoration: none;
     color: white;
 }
 
-#donhang_container #donhang table td a div{
+#donhang_container #donhang table td a div {
     background-color: rgb(17, 82, 17);
     padding: 5px 10px;
     border-radius: 15px;
 }
 
-
-#donhang_container #xemthem_block{
+#donhang_container #xemthem_block {
     margin: 10px 50px;
     text-align: center;
 }
 
-#donhang_container #xemthem_block #xemthem{
+#donhang_container #xemthem_block #xemthem {
     display: inline-block;
     padding: 10px 30px;
     background-color: rgb(17, 82, 17);
@@ -290,38 +284,36 @@ body{
     cursor: pointer;
 }
 
-#donhang_container #xemthem_block #xemthem:hover{
+#donhang_container #xemthem_block #xemthem:hover {
     background-color: rgb(9, 184, 9);
 }
 
-
-
-@media  screen and (max-width: 800px){
-    #gio_hang_container{
+@media screen and (max-width: 800px) {
+    #gio_hang_container {
         padding: 0px;
         max-width: 100%;
         display: block;
     }
 
-    #donhang_container{
+    #donhang_container {
         padding: 10px;
         max-width: 100%;
         display: block;
     }
 
-    #donhang_container #donhang{
+    #donhang_container #donhang {
         overflow-y: scroll;
     }
 
-    #donhang_container #Loc{
+    #donhang_container #Loc {
         margin: 5px 6px;
     }
 
-    #gio_hang_container #thong_tin{
+    #gio_hang_container #thong_tin {
         width: 100%;
     }
-    
-    #gio_hang_container #thanh_toan{
+
+    #gio_hang_container #thanh_toan {
         width: 100%;
     }
 
@@ -329,58 +321,57 @@ body{
         width: 100%;
         overflow-y: scroll;
     }
-    #gio_hang_container #thong_tin #cart_form{
+    #gio_hang_container #thong_tin #cart_form {
         overflow-y: scroll;
     }
 
-    #gio_hang_container #thong_tin #cart_form  #don_hang td{
+    #gio_hang_container #thong_tin #cart_form #don_hang td {
         max-width: 300px;
         padding: 5px;
     }
 
-    #gio_hang_container #thong_tin #cart_form #don_hang td strong{
+    #gio_hang_container #thong_tin #cart_form #don_hang td strong {
         width: 100%;
         white-space: pre;
         float: left;
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    
-    #gio_hang_container #thong_tin #cart_form #don_hang td .variant_title{
+
+    #gio_hang_container #thong_tin #cart_form #don_hang td .variant_title {
         width: 100%;
         float: left;
     }
-    
 
-    #gio_hang_container #thong_tin #cart_form #don_hang td .sl{
+    #gio_hang_container #thong_tin #cart_form #don_hang td .sl {
         font-size: 20px;
         width: 100%;
-        padding: 5px 0px
+        padding: 5px 0px;
     }
 
-    #gio_hang_container #thong_tin .clearfix{
+    #gio_hang_container #thong_tin .clearfix {
         display: block;
     }
 
-    #gio_hang_container #thong_tin .clearfix a, #gio_hang_container #thong_tin .clearfix .btn{
+    #gio_hang_container #thong_tin .clearfix a,
+    #gio_hang_container #thong_tin .clearfix .btn {
         font-size: 14px;
         display: inline-block;
         margin-right: 0px;
     }
-    
 }
 
-@media  screen and (max-width: 400px){
-    #donhang_container #Loc label{
+@media screen and (max-width: 400px) {
+    #donhang_container #Loc label {
         display: block;
     }
 
-    #donhang_container #Loc input{
+    #donhang_container #Loc input {
         display: block;
         margin-bottom: 5px;
     }
 
-    #donhang_container #Loc button{
+    #donhang_container #Loc button {
         margin-top: 5px;
     }
 }

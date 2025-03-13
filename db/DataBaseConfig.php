@@ -1,10 +1,11 @@
 <?php
-class DatabaseConfig {
+class DatabaseConfig
+{
     protected $host = 'db';
     protected $username = 'user';
     protected $password = 'password';
     protected $database = 'ql_cuahanggiay';
-    
+
     protected $conn;
 
     public function __construct()

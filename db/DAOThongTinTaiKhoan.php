@@ -41,7 +41,7 @@ class DAOThongTinTaiKhoan extends DatabaseConfig
 
 
         $sql .= " FROM taikhoan as tk";
-        $sql .= $join." where tk.MaTaiKhoan = $MaTK";
+        $sql .= $join . " where tk.MaTaiKhoan = $MaTK";
         $data = array();
         if ($result = mysqli_query($this->conn, $sql)) {
             while ($row = mysqli_fetch_array($result)) {
@@ -79,11 +79,11 @@ class DAOThongTinTaiKhoan extends DatabaseConfig
              WHERE MaTaiKhoan = '$MaTaiKhoan'";
         } else {
             $MatKhau = md5($MatKhau);
-             $sql = "UPDATE taikhoan SET TenDN = '$TenDN', MatKhau = '$MatKhau', Email = '$Email'
+            $sql = "UPDATE taikhoan SET TenDN = '$TenDN', MatKhau = '$MatKhau', Email = '$Email'
              WHERE MaTaiKhoan = '$MaTaiKhoan'";
         }
 
-        
+
         if ($result = mysqli_query($this->conn, $sql)) {
             return true;
         }
@@ -94,7 +94,7 @@ class DAOThongTinTaiKhoan extends DatabaseConfig
         $MatKhau = md5($MatKhau);
         $sql = "UPDATE taikhoan SET MatKhau = '$MatKhau'
         WHERE Email = '$Email'";
-                
+
         if ($result = mysqli_query($this->conn, $sql)) {
             return true;
         }
@@ -124,7 +124,7 @@ class DAOThongTinTaiKhoan extends DatabaseConfig
 
         return false;
     }
-    public function updateNhanVien($MaTaiKhoan,$TenNhanVien ,$DiaChi,  $SDT)
+    public function updateNhanVien($MaTaiKhoan, $TenNhanVien, $DiaChi,  $SDT)
     {
         $sql = "UPDATE nhanvien 
             SET  DiaChi = '$DiaChi', TenNhanVien = '$TenNhanVien', SDT = '$SDT'
@@ -179,56 +179,59 @@ class DAOThongTinTaiKhoan extends DatabaseConfig
         return false;
     }
 
-    public function hasTaiKhoan ($taiKhoan) {
-        $sql = "SELECT * FROM taikhoan WHERE TrangThai = 1 AND TenDN = '".$taiKhoan."'";
-        $data=null;
-        if($result = mysqli_query($this->conn,$sql)){
-            while($row=mysqli_fetch_array($result)){
-                    $data[] = $row;
+    public function hasTaiKhoan($taiKhoan)
+    {
+        $sql = "SELECT * FROM taikhoan WHERE TrangThai = 1 AND TenDN = '" . $taiKhoan . "'";
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+                $data[] = $row;
             }
             mysqli_free_result($result);
         }
-        if ($data ==null) {
+        if ($data == null) {
             return true;
         } else {
             return false;
-        } 
+        }
     }
 
-    public function LayThongTinNhanVien($maNhanVien){
+    public function LayThongTinNhanVien($maNhanVien)
+    {
         $sql = "SELECT * FROM nhanvien WHERE TrangThai = 1 AND MaNhanVien = '$maNhanVien'";
         $data = null;
-        if($result = mysqli_query($this->conn, $sql)){
-           $data = mysqli_fetch_array($result);
-           return $data;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            $data = mysqli_fetch_array($result);
+            return $data;
         }
         return null;
     }
 
-    public function LayMaTKKhachHang($maKhachHang){
+    public function LayMaTKKhachHang($maKhachHang)
+    {
         $sql = "SELECT * FROM khachhang WHERE TrangThai = 1 AND MaKhach = '$maKhachHang'";
         $data = null;
-        if($result = mysqli_query($this->conn, $sql)){
-           $data = mysqli_fetch_array($result);
-           return $data;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            $data = mysqli_fetch_array($result);
+            return $data;
         }
         return null;
     }
 
-    public function hasEmail ($email) {
-        $sql = "SELECT * FROM taikhoan WHERE TrangThai = 1 AND Email = '".$email."'";
-        $data=null;
-        if($result = mysqli_query($this->conn,$sql)){
-            while($row=mysqli_fetch_array($result)){
-                    $data[] = $row;
+    public function hasEmail($email)
+    {
+        $sql = "SELECT * FROM taikhoan WHERE TrangThai = 1 AND Email = '" . $email . "'";
+        $data = null;
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
+                $data[] = $row;
             }
             mysqli_free_result($result);
         }
-        if ($data ==null) {
+        if ($data == null) {
             return true;
         } else {
             return false;
-        } 
+        }
     }
 }
-?>

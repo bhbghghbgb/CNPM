@@ -1,11 +1,11 @@
 /*----*/
-#post .row{
+#post .row {
     text-align: center;
     margin-bottom: 15px;
     position: relative;
     z-index: 0;
 }
-#post .wap-content::before{
+#post .wap-content::before {
     content: "";
     position: absolute;
     left: 0;
@@ -16,11 +16,11 @@
     color: black;
     z-index: -1;
 }
-#post .wap-content{
+#post .wap-content {
     display: inline-block;
     background-color: #fff;
 }
-#post .wap-content::after{
+#post .wap-content::after {
     content: "";
     position: absolute;
     left: 0;
@@ -31,67 +31,64 @@
     color: black;
     z-index: -1;
 }
-#post .title-group{
+#post .title-group {
     margin-bottom: 5px;
 }
-#post .title-group-note{
-    font-size:15px;
+#post .title-group-note {
+    font-size: 15px;
     opacity: 0.5;
 }
 /*---*/
-#post .blogs{
+#post .blogs {
     display: inline-flex;
     width: auto;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
-#post .blog{
+#post .blog {
     height: 370px;
     width: 280px;
-
 }
-#post .blog-image img{
+#post .blog-image img {
     width: 280px;
     height: 200px;
-    
 }
-#post .blog-info{
+#post .blog-info {
     width: 280px;
     height: 160px;
-   
 }
-#post .blog-info a{
+#post .blog-info a {
     text-decoration: none;
     height: 20px;
     width: 280px;
 }
-#post .blog-info h2{
+#post .blog-info h2 {
     color: #333;
     font-size: 17px;
     margin-top: 4px;
 }
-#post .blog-content{  
+#post .blog-content {
     height: 100px;
     width: 280px;
     margin-top: -5px;
 }
-#post .blog-content p{
-    font-size: 15px; 
-} 
+#post .blog-content p {
+    font-size: 15px;
+}
 
 /*----view-all----*/
-#post .viewall{
+#post .viewall {
     justify-content: center;
     text-align: center;
     margin-top: 30px;
 }
-#post .viewall-content:hover{
+#post .viewall-content:hover {
     color: #333;
 }
-#post .viewall-content{
-    width:120px;
-    height:40px;
-    line-height:40px;
+#post .viewall-content {
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
     border-radius: 20px;
     background-color: rgb(76, 134, 234);
     text-align: center;
@@ -99,19 +96,19 @@
     cursor: pointer;
     font-weight: 500;
 }
-#post .viewall-content a{
-    color:#fff;
+#post .viewall-content a {
+    color: #fff;
     font-size: 15px;
     text-decoration: none;
 }
 /*---container2---*/
-#post .container-post{
+#post .container-post {
     max-width: 1200px;
     margin: 0 auto;
     display: block;
 }
 
-#post .conten-seopage b{
+#post .conten-seopage b {
     font-size: 40px;
     margin-bottom: 12px;
 }
@@ -119,101 +116,97 @@
     text-decoration: none;
     color: blue;
 }
-#post .conten-seopage p{
+#post .conten-seopage p {
     font-size: 20px;
     margin-top: 5px;
 }
-#post .ytb-wrapper{
+#post .ytb-wrapper {
     margin-top: 5px;
 }
 #post .container-post h2 {
     margin-top: 15px;
     margin-bottom: 10px;
 }
-#post .container-post a{
+#post .container-post a {
     text-decoration: none;
     color: blue;
 }
-#post h2 b{
+#post h2 b {
     font-size: 35px;
 }
-#post .container-post p{
+#post .container-post p {
     font-size: 18px;
 }
 /*--------hien trang----------*/
-#post .collapsible{
-    overflow: hidden; 
+#post .collapsible {
+    overflow: hidden;
 }
-#post .collapsible input{
+#post .collapsible input {
     display: none;
 }
-#post .collapsible label{
+#post .collapsible label {
     position: relative;
     color: #f4efef;
     display: block;
-    cursor: pointer;   
+    cursor: pointer;
     text-align: center;
     width: 120px;
     background-color: rgb(76, 134, 234);
     border-radius: 15px;
-    padding: 15px 0 ;
-    margin:20px auto 0;
+    padding: 15px 0;
+    margin: 20px auto 0;
 }
-#post .collapsible label::after{
-    position: absolute; 
-    display: none;     
+#post .collapsible label::after {
+    position: absolute;
+    display: none;
 }
-#post .collapsible-text{
+#post .collapsible-text {
     max-height: 1px;
     overflow: hidden;
-    line-height: 1 .4;
+    line-height: 1 0.4;
     position: relative;
     opacity: 0.5;
     transition: all 0.3s ease;
 }
-#post .collapsible input:checked ~ .collapsible-text{
+#post .collapsible input:checked ~ .collapsible-text {
     max-height: 2000px;
-    opacity: 1;  
+    opacity: 1;
 }
-#post .header{
+#post .header {
     background: #333;
     color: #fff;
     padding: 0.3em 1em;
 }
-#post .content{
+#post .content {
     box-sizing: border-box;
 }
-#post .content{
+#post .content {
     padding: 0.3em 1em;
     margin-bottom: 1em;
 }
 
-@media only screen and (min-width:600px) 
-{
-    #post .main::before, #post .main::after{
+@media only screen and (min-width: 600px) {
+    #post .main::before,
+    #post .main::after {
         content: "";
         display: block;
         clear: both;
     }
-    #post .main{
+    #post .main {
         max-width: 100%;
     }
-    #post .content{
+    #post .content {
         width: 100%;
     }
-    
-    
 }
-@media only screen and (max-width:1200px) {
-    #post .ytb-wrapper{
+@media only screen and (max-width: 1200px) {
+    #post .ytb-wrapper {
         display: none;
     }
 }
-@media only screen and (min-width:1200px) {
+@media only screen and (min-width: 1200px) {
     #post {
         max-width: 1200px;
         margin: 0 auto;
     }
-    
-    
 }

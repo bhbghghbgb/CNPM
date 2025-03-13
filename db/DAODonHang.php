@@ -58,7 +58,8 @@ class DAODonHang extends DatabaseConfig
             return false;
     }
 
-    public function huyDon($madon) {
+    public function huyDon($madon)
+    {
         $sql = 'UPDATE donhang SET TrangThai = 2 WHERE MaDonHang = ' . $madon;
         if ($result = mysqli_query($this->conn, $sql)) {
             return true;
@@ -87,10 +88,10 @@ class DAODonHang extends DatabaseConfig
             return true;
         } else
             return false;
-
     }
 
-    public function Remove($madon) {
+    public function Remove($madon)
+    {
         $sql = "DELETE FROM donhang WHERE MaDonHang = $madon";
         if ($result = mysqli_query($this->conn, $sql)) {
             return true;
@@ -123,4 +124,3 @@ class DAODonHang extends DatabaseConfig
         }
     }
 }
-?>

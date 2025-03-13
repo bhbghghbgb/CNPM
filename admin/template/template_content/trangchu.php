@@ -16,7 +16,11 @@ $listHang = $daoHang->getList();
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="./js/ajaxTrangChu.js"></script>
-<script>google.charts.load("current", { packages: ['corechart'] });</script>
+<script>
+    google.charts.load("current", {
+        packages: ['corechart']
+    });
+</script>
 
 <div id="thongke" class="container-fluid">
     <h2>Thống kê hóa đơn</h2>
@@ -37,7 +41,7 @@ $listHang = $daoHang->getList();
             <div id="BieuDoCotSPDaBan" style=" height: 500px;"></div>
         </div>
         <div class="col col-12 col-md-6">
-            <select  id="BieuDoTronSPDaBan-sel">
+            <select id="BieuDoTronSPDaBan-sel">
                 <option value="0">--Tất Cả--</option>
                 <?php
                 foreach ($listHang as $key) {
@@ -97,4 +101,3 @@ $listHang = $daoHang->getList();
         </div>
     </div>
 </div>
-

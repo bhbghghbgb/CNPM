@@ -1,39 +1,38 @@
-*{
-    padding:0;
+* {
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
     /* user-select: none; */
 }
-html{
-    font-family: 'Roboto', sans-serif;
+html {
+    font-family: "Roboto", sans-serif;
 }
-li{
+li {
     list-style: none;
 }
-.container{
+.container {
     width: 1200px;
     margin: 0 auto;
 }
 
-.block-product{
+.block-product {
     width: 80%;
 }
 
-.products{
+.products {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
-
-.Loc{
+.Loc {
     width: 312px;
     margin-top: 21px;
     margin-left: 15px;
     margin-right: 20px;
 }
 
-.Loc #Loc_submit{
+.Loc #Loc_submit {
     padding: 10px;
     display: block;
     background-color: rgb(58, 189, 58);
@@ -46,12 +45,11 @@ li{
     margin-top: 10px;
     cursor: pointer;
 }
-.Loc #Loc_submit:hover{
+.Loc #Loc_submit:hover {
     background-color: green;
 }
 
-
-.Loc .selection{
+.Loc .selection {
     box-shadow: #000 1px 1px 13px -7px;
 }
 .Loc .selection .title {
@@ -59,7 +57,8 @@ li{
     border-bottom: 3px solid gray;
     position: relative;
 }
-.Loc .selection .title .ti-minus, .Loc .selection .title .ti-plus{
+.Loc .selection .title .ti-minus,
+.Loc .selection .title .ti-plus {
     position: absolute;
     top: 19px;
     right: 4px;
@@ -68,12 +67,12 @@ li{
     cursor: pointer;
 }
 
-.Loc .selection .item{
+.Loc .selection .item {
     padding: 10px;
     border: 1px solid #ccc;
 }
 
-.Loc .selection .item label{
+.Loc .selection .item label {
     display: block;
     margin: 10px;
     padding: 5px;
@@ -82,11 +81,11 @@ li{
     cursor: pointer;
 }
 
-.Loc .selection .item label input{
+.Loc .selection .item label input {
     display: none;
 }
 
-.Loc .selection .item label .content{
+.Loc .selection .item label .content {
     display: inline-block;
     font-weight: bold;
     padding: 0px;
@@ -94,10 +93,8 @@ li{
     width: 100%;
 }
 
-
-
-.Loc .selection .item label .content::before{
-    content: '';
+.Loc .selection .item label .content::before {
+    content: "";
     display: inline-block;
     width: 15px;
     height: 16px;
@@ -106,8 +103,7 @@ li{
     top: 4px;
 }
 
-
-.Loc .selection .item label i{
+.Loc .selection .item label i {
     position: absolute;
     top: -20px;
     left: 3px;
@@ -115,26 +111,25 @@ li{
     font-weight: bold;
     color: steelblue;
     font-size: 19px;
-
 }
 
-.Loc .selection .item label input:checked~i{
+.Loc .selection .item label input:checked ~ i {
     top: 4px;
     left: 5px;
 }
 
-.block-main{
+.block-main {
     margin-top: 10px;
     display: flex;
     justify-content: flex-start;
 }
 
-#block-xemthem{
+#block-xemthem {
     text-align: center;
     display: block;
 }
 
-#block-xemthem #xemthem{
+#block-xemthem #xemthem {
     padding: 20px;
     border: none;
     border-radius: 15px;
@@ -144,34 +139,33 @@ li{
     cursor: pointer;
 }
 
-
-#NoiDungTim{
+#NoiDungTim {
     display: block;
     margin-top: 20px;
     padding: 0px 38px 0px 16px;
 }
 
-#NoiDungTim p{
+#NoiDungTim p {
     padding: 10px;
     box-shadow: 1px 2px 5px 1px gray;
     font-size: 18px;
 }
-@media  screen and (max-width: 1000px){
-    .block-main{
+@media screen and (max-width: 1000px) {
+    .block-main {
         display: inline-block;
     }
 
-    .products{
+    .products {
         display: grid;
         gap: 15px;
         margin-bottom: 20px;
     }
 
-    .Loc{
+    .Loc {
         width: 100%;
     }
 
-    .block-product{
+    .block-product {
         width: 100%;
     }
 }

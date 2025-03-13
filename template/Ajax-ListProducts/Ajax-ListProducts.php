@@ -75,10 +75,8 @@ if (isset($_GET['MaDM']) || isset($_GET['Sale']) || isset($_GET['MaHang']) || is
                         $sql = $sql . " > 3000000 ";
                         break;
                     }
-
             }
         }
-
     }
 
     //Bien de xac dinh so trang khi nguoi dung nhan
@@ -98,7 +96,7 @@ if (isset($_GET['MaDM']) || isset($_GET['Sale']) || isset($_GET['MaHang']) || is
         $TiLeGiam = $db->getTiLeGiam($data[$i]['MaSP']);
         if (!$data)
             return;
-        ?>
+?>
         <div class="product">
             <div class="product-image">
                 <div class="quickview-background">
@@ -132,7 +130,7 @@ if (isset($_GET['MaDM']) || isset($_GET['Sale']) || isset($_GET['MaHang']) || is
                 </div>
             </div>
         </div>
-        <?php
+<?php
     }
 }
 ?>

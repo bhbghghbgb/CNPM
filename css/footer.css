@@ -1,137 +1,137 @@
-.footer-col{
+.footer-col {
     height: 250px;
     max-width: 100%;
     background-color: #333;
     margin-top: 30px;
 }
-.container3{
+.container3 {
     max-width: 1200px;
     margin: 0 auto;
 }
-.boxcenter{
+.boxcenter {
     margin: 0 auto;
 }
-.boxcenter h4{
+.boxcenter h4 {
     font-size: 18px;
     margin-bottom: 15px;
     margin-top: 40px;
     color: #fff;
 }
-.boxcenter p{
+.boxcenter p {
     margin-top: 7px;
     color: #d8d6d6;
 }
-.boxcenter a{
+.boxcenter a {
     color: #d8d6d6;
     text-decoration: none;
 }
-.contact{
+.contact {
     width: 24%;
     float: left;
 }
-.contact h4{
+.contact h4 {
     margin-bottom: 15px;
-    
 }
-.pocicy{
+.pocicy {
     width: 24%;
     float: left;
 }
-.pocicy p{
+.pocicy p {
     margin-left: 7px;
 }
-.links{
+.links {
     width: 24%;
     float: left;
 }
-.links p{
+.links p {
     margin-bottom: 15px;
 }
-.links i{
+.links i {
     width: 40px;
     color: #fff;
 }
-.fangape{
+.fangape {
     width: 24%;
     float: left;
 }
-.fangape img{
+.fangape img {
     height: 130px;
     width: 180px;
 }
-.textcenter{
+.textcenter {
     text-align: center;
-    
 }
 /*------*/
-body{
+body {
     color: #333;
     font-weight: 300;
     margin: 0;
 }
-.header{
+.header {
     background: #333;
     color: #fff;
     padding: 0.3em 1em;
 }
-.content, .slidebar{
+.content,
+.slidebar {
     box-sizing: border-box;
 }
-.content{
+.content {
     padding: 0.3em 1em;
     margin-bottom: 1em;
 }
-.slidebar{
-    
+.slidebar {
     font-size: 95%;
     padding: 0.3em 1em;
 }
-@media  screen and (max-width:700px) 
-{
-    .main::before, .main::after{
+@media screen and (max-width: 700px) {
+    .main::before,
+    .main::after {
         content: "";
         display: table;
         clear: both;
     }
-    .main{
+    .main {
         max-width: 100%;
     }
-    .content{
+    .content {
         width: 63.5%;
         float: left;
         margin-right: 1.5%;
-
     }
-    .slidebar{
+    .slidebar {
         width: 35%;
         float: left;
     }
 
-    .contact, .pocicy, .links, .fangape{
+    .contact,
+    .pocicy,
+    .links,
+    .fangape {
         width: 100%;
     }
 
-    .footer-col{
+    .footer-col {
         height: 529px;
     }
 
-    .fangape img{
+    .fangape img {
         display: none;
     }
-
-
 }
 
-@media  screen and (max-width:375px){
-    .contact, .pocicy, .links, .fangape{
+@media screen and (max-width: 375px) {
+    .contact,
+    .pocicy,
+    .links,
+    .fangape {
         width: 100%;
     }
-    .footer-col{
+    .footer-col {
         height: 539px;
     }
 
-    .fangape img{
+    .fangape img {
         display: none;
     }
-} 
-
+}

@@ -1,26 +1,31 @@
-#form, #formdk, #form_quenmatkhau{
+#form,
+#formdk,
+#form_quenmatkhau {
     position: fixed;
     z-index: 10;
     width: 400px;
     border: 1px solid green;
     padding: 20px;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-weight: 700;
     background-color: white;
     display: none;
 }
 
-#form input,#formdk input ,#form_quenmatkhau input{
+#form input,
+#formdk input,
+#form_quenmatkhau input {
     width: 100%;
     padding: 10px 10px;
     background-color: rgb(195, 205, 230);
     height: 50px;
     font-size: 18px;
-    
 }
-#form .icon-close,#formdk .icon-close ,#form_quenmatkhau .icon-close{
+#form .icon-close,
+#formdk .icon-close,
+#form_quenmatkhau .icon-close {
     cursor: pointer;
     position: absolute;
     top: 10px;
@@ -29,7 +34,7 @@
     font-size: 30px;
     font-weight: 500;
 }
-#backgroundDN{
+#backgroundDN {
     background-color: #281c1c69;
     position: fixed;
     height: 100%;
@@ -37,7 +42,7 @@
     width: 100%;
     display: none;
 }
-.buttonDN{
+.buttonDN {
     background-color: #242121 !important;
     color: #ccc;
 }

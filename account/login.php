@@ -8,7 +8,7 @@
     <input type="password" name="password" value="" required />
     <br />
     <br />
-    <a style='float:right'href="#" onclick=hienformquenmatkhau()>Quên mật khẩu</a>
+    <a style='float:right' href="#" onclick=hienformquenmatkhau()>Quên mật khẩu</a>
     <br />
     <br />
     <input type="submit" class="buttonDN" name="dangnhap" value="Đăng Nhập" />

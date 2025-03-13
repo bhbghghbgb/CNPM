@@ -1,15 +1,14 @@
-.top_menu{
+.top_menu {
     top: 0px;
-    width:100%;
-    padding : 0 110px;
+    width: 100%;
+    padding: 0 110px;
     position: sticky;
     z-index: 8;
     background-color: white;
-    box-shadow: 0 14px 20px -17px rgba(0,0,0,.75);
-    
+    box-shadow: 0 14px 20px -17px rgba(0, 0, 0, 0.75);
 }
 
-.top_menu ul{
+.top_menu ul {
     display: flex;
     max-width: 1500px;
     justify-content: space-around;
@@ -18,78 +17,78 @@
     position: relative;
 }
 
-.top_menu > ul > li{
+.top_menu > ul > li {
     text-align: left;
 }
-.top_menu > ul  > li > a >i{
+.top_menu > ul > li > a > i {
     font-size: 10px;
 }
-.top_menu > ul  > li > a{
+.top_menu > ul > li > a {
     font-size: 14px;
     font-weight: 500;
-    color:black;
+    color: black;
     text-decoration: none;
     height: 50px;
-    line-height:50px;
+    line-height: 50px;
     display: inline-block;
 }
-.top_menu  ul  li:hover > a {
-    color:rgb(12, 80, 190);
+.top_menu ul li:hover > a {
+    color: rgb(12, 80, 190);
     cursor: pointer;
 }
-.top_menu ul li  .ds_phu {
+.top_menu ul li .ds_phu {
     display: none;
     position: absolute;
 }
 
-.top_menu ul li:hover  .ds_phu {
+.top_menu ul li:hover .ds_phu {
     display: block;
-    background-color: white; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) ;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     top: 50px;
-    z-index:1;
+    z-index: 1;
     min-width: 200px;
 }
 
-.top_menu ul li  .ds_phu li a{
+.top_menu ul li .ds_phu li a {
     font-size: 14px;
-    color:black;
+    color: black;
     text-decoration: none;
     top: 30px;
 }
 
-.top_menu ul li .ds_phu li{
+.top_menu ul li .ds_phu li {
     padding: 10px 20px;
     cursor: pointer;
 }
 
-.top_menu ul li a .ti-angle-right{
+.top_menu ul li a .ti-angle-right {
     position: absolute;
     right: 10px;
 }
 
-.top_menu ul li .ds_phu li:hover > a{
+.top_menu ul li .ds_phu li:hover > a {
     color: rgb(13, 0, 255);
 }
 
-.top_menu ul li .ds_phu li .ds_phu_phu{
-   position: absolute;
-   width: 175px;
-   background-color: brown;
-   margin-left: 130px;
-   margin-top: -38px;
-   text-align: left;
-   display: none;
-   top: 38px;
-   z-index: 20;
-} 
+.top_menu ul li .ds_phu li .ds_phu_phu {
+    position: absolute;
+    width: 175px;
+    background-color: brown;
+    margin-left: 130px;
+    margin-top: -38px;
+    text-align: left;
+    display: none;
+    top: 38px;
+    z-index: 20;
+}
 
-.top_menu ul li .ds_phu li:hover .ds_phu_phu{
+.top_menu ul li .ds_phu li:hover .ds_phu_phu {
     display: block;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-#toggle{
+#toggle {
     display: none;
     text-align: right;
     padding: 10px;
@@ -99,16 +98,14 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .top_menu ul{
+    .top_menu ul {
         flex-direction: column;
         text-align: center;
     }
-    #toggle{
+    #toggle {
         display: block;
     }
-    nav{
+    nav {
         display: none;
     }
-
 }
-

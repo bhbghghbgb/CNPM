@@ -151,77 +151,81 @@ $listKM = $daoKM->getList();
                             </div>
                             <script>
                                 var arraysize = <?php if ($listconvert != '')
-                                    echo json_encode($listconvert);
-                                else
-                                    echo "[]" ?>
+                                                    echo json_encode($listconvert);
+                                                else
+                                                    echo "[]" ?>
 
-                                    var addsize = document.getElementById("add")
-                                    var size = document.getElementById("size")
-                                    var price = document.getElementById("price")
-                                    var tbody = document.getElementById("tbody")
+                                var addsize = document.getElementById("add")
+                                var size = document.getElementById("size")
+                                var price = document.getElementById("price")
+                                var tbody = document.getElementById("tbody")
 
-                                    function loadsize() {
-                                        var stringtbody = ""
-                                        for (var i = 0; i < arraysize.length; i++) {
+                                function loadsize() {
+                                    var stringtbody = ""
+                                    for (var i = 0; i < arraysize.length; i++) {
 
-                                            stringtbody += "<tr class='sizerow'>"
-                                            stringtbody += "<td>"+ arraysize[i].size +
-                                                " <input  class='w-100' style='border:0!important' type='hidden' name='ArraySize[]' value='" + arraysize[i].size + "'> </td>"
-                                            stringtbody += "<td>"  +
-                                                "<input  class='w-100' style='border:0!important' type='text' name='ArrayPrice[]' value='" + arraysize[i].price + "'> </td>"
-                                            stringtbody += "<td style='display:flex; justify-content:space-between'>" + arraysize[i].quantity +
-                                                "<input  class='w-100' style='border:0!important' type='hidden' name='ArrayQuantity[]' value='" + arraysize[i].quantity + "'>"
-                                            if (arraysize[i].quantity == 0)
-                                                stringtbody += " <div class='xoa' onclick='xoasize(" + i + ")'>Xóa</div>"
-                                            stringtbody += "</td></tr>"
+                                        stringtbody += "<tr class='sizerow'>"
+                                        stringtbody += "<td>" + arraysize[i].size +
+                                            " <input  class='w-100' style='border:0!important' type='hidden' name='ArraySize[]' value='" + arraysize[i].size + "'> </td>"
+                                        stringtbody += "<td>" +
+                                            "<input  class='w-100' style='border:0!important' type='text' name='ArrayPrice[]' value='" + arraysize[i].price + "'> </td>"
+                                        stringtbody += "<td style='display:flex; justify-content:space-between'>" + arraysize[i].quantity +
+                                            "<input  class='w-100' style='border:0!important' type='hidden' name='ArrayQuantity[]' value='" + arraysize[i].quantity + "'>"
+                                        if (arraysize[i].quantity == 0)
+                                            stringtbody += " <div class='xoa' onclick='xoasize(" + i + ")'>Xóa</div>"
+                                        stringtbody += "</td></tr>"
 
+                                    }
+                                    tbody.innerHTML = stringtbody
+                                    price.value = ''
+                                    size.value = ''
+                                }
+                                loadsize()
+
+                                function addClick() {
+                                    var valuePrice = price.value;
+                                    var valueSize = size.value;
+                                    if (valuePrice == '' || valueSize == '') return
+                                    var elementExists = false;
+
+                                    for (var i = 0; i < arraysize.length; i++) {
+                                        if (arraysize[i].size === valueSize) {
+                                            elementExists = true;
+                                            alert("Size đã được thêm");
+                                            break;
                                         }
-                                        tbody.innerHTML = stringtbody
-                                        price.value = ''
-                                        size.value = ''
+                                    }
+                                    if (!elementExists) {
+                                        arraysize.push({
+                                            price: valuePrice,
+                                            size: valueSize,
+                                            quantity: 0
+                                        });
                                     }
                                     loadsize()
-                                    function addClick() {
-                                        var valuePrice = price.value;
-                                        var valueSize = size.value;
-                                        if (valuePrice == '' || valueSize == '') return
-                                        var elementExists = false;
-
-                                        for (var i = 0; i < arraysize.length; i++) {
-                                            if (arraysize[i].size === valueSize) {
-                                                elementExists=true;
-                                                alert("Size đã được thêm");
-                                                break;
-                                            }
-                                        }
-                                        if (!elementExists) {
-                                            arraysize.push({ price: valuePrice, size: valueSize, quantity: 0 });
-                                        }
-                                        loadsize()
-                                    }
-
-                                    function xoasize(index) {
-                                        arraysize.splice(index, 1)
-                                        loadsize()
-                                    }
-                                    addsize.onclick = addClick;
-
-                                </script>
-
-                                <div class="row mt-2">
-                                    <label class="row">
-                                        <div class="col col-1">Danh mục:</div>
-                                        <div class="col col-11">
-                                            <select required class="w-100" name="danhmuc">
-                                                <option value="">--Chọn--</option>
-                                                <?php
-                                foreach ($listDM as $list) {
-                                    if ($sp["MaDM"] == $list["MaDM"])
-                                        echo '<option value="' . $list["MaDM"] . '" selected>' . $list["TenDM"] . '</option>';
-                                    else
-                                        echo '<option value="' . $list["MaDM"] . '">' . $list["TenDM"] . '</option>';
                                 }
-                                ?>
+
+                                function xoasize(index) {
+                                    arraysize.splice(index, 1)
+                                    loadsize()
+                                }
+                                addsize.onclick = addClick;
+                            </script>
+
+                            <div class="row mt-2">
+                                <label class="row">
+                                    <div class="col col-1">Danh mục:</div>
+                                    <div class="col col-11">
+                                        <select required class="w-100" name="danhmuc">
+                                            <option value="">--Chọn--</option>
+                                            <?php
+                                            foreach ($listDM as $list) {
+                                                if ($sp["MaDM"] == $list["MaDM"])
+                                                    echo '<option value="' . $list["MaDM"] . '" selected>' . $list["TenDM"] . '</option>';
+                                                else
+                                                    echo '<option value="' . $list["MaDM"] . '">' . $list["TenDM"] . '</option>';
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </label>
@@ -231,7 +235,7 @@ $listKM = $daoKM->getList();
                                     <div class="col col-1">Ảnh :</div>
                                     <div class="col col-11">
                                         <input <?php if (!isset($_GET['id']))
-                                            echo 'required'; ?> class="w-100"
+                                                    echo 'required'; ?> class="w-100"
                                             type="file" id="anhSP" name="anhchinh" onchange="getLinkImg()">
                                         <input class="w-100" type="hidden" name="anhchinhcu"
                                             value="<?php echo $sp["AnhChinh"]; ?> ">
@@ -243,13 +247,13 @@ $listKM = $daoKM->getList();
                                 <div class="col col-11">
                                     <div class="row">
                                         <img style="width: 300px;min-height: 150px;" src="<?php
-                                        echo "../img/products/" . $sp["AnhChinh"];
-                                        ?>" alt="" id="imagePreview">
+                                                                                            echo "../img/products/" . $sp["AnhChinh"];
+                                                                                            ?>" alt="" id="imagePreview">
                                         <div id="myButton">Xóa ảnh</div>
                                         <div id="inner"></div>
                                         <script>
                                             var changeButton = document.getElementById('myButton');
-                                            changeButton.addEventListener('click', function () {
+                                            changeButton.addEventListener('click', function() {
                                                 document.getElementById('inner').innerHTML = `<input class="w-100" type="hidden" name="xoa" value="">`;
                                                 document.getElementById('imagePreview').style.display = 'none';
                                             });

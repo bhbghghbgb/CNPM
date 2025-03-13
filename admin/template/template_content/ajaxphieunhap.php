@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("../../../db/DAOPhieuNhap.php");
 include("../../../db/DAOChiTietPhieuNhap.php");
 include("../../../db/DAOSoSize.php");
@@ -12,11 +12,11 @@ if (isset($_POST['flag'])) {
 if (isset($_POST['maPNDuyet'])) {
     $maPN = $_POST['maPNDuyet'];
     $daoPhieuNhap = new DAOPhieuNhap();
-    $daoPhieuNhap->updateTrangThaiPN (1, $maPN);
+    $daoPhieuNhap->updateTrangThaiPN(1, $maPN);
 
     // update lại số lượng trong sản phẩm
     $daoCTPN = new DAOChiTietPhieuNhap();
-    $daoSoSize = new DAOSoSize ();
+    $daoSoSize = new DAOSoSize();
     $ListCTPN = $daoCTPN->getList($maPN);
     foreach ($ListCTPN as $row) {
         $MaSP =  $row['MaSP'];
@@ -27,11 +27,11 @@ if (isset($_POST['maPNDuyet'])) {
 
     echo $maPN;
 }
- 
+
 if (isset($_POST['maPNTuChoi'])) {
     $maPN = $_POST['maPNTuChoi'];
     $daoPhieuNhap = new DAOPhieuNhap();
-    $daoPhieuNhap->updateTrangThaiPN (2, $maPN);
+    $daoPhieuNhap->updateTrangThaiPN(2, $maPN);
     echo $maPN;
 }
 
@@ -44,27 +44,27 @@ if (isset($_POST['maPNXoa'])) {
     echo $maPN;
 }
 
-if (isset ($_POST['dateStart']) && isset($_POST['dateEnd']) && isset($_POST['flagValueLoc'])  ) {
+if (isset($_POST['dateStart']) && isset($_POST['dateEnd']) && isset($_POST['flagValueLoc'])) {
     $dateStart = $_POST['dateStart'];
     $dateEnd = $_POST['dateEnd'];
     $flag = $_POST['flagValueLoc'];
     $daoPhieuNhap = new DAOPhieuNhap();
-    $listPhieuNhap = $daoPhieuNhap->LocTheoKhoangTG($dateStart,$dateEnd);
+    $listPhieuNhap = $daoPhieuNhap->LocTheoKhoangTG($dateStart, $dateEnd);
     loadListPN($listPhieuNhap, $flag);
-
 }
 
-if (isset ($_POST['dateValueLoc'])&& isset($_POST['flagValueLocNgay']) ) {
+if (isset($_POST['dateValueLoc']) && isset($_POST['flagValueLocNgay'])) {
     $date = $_POST['dateValueLoc'];
     $flag = $_POST['flagValueLocNgay'];
     $daoPhieuNhap = new DAOPhieuNhap();
-    $listPhieuNhap = $daoPhieuNhap->LocTheoKhoangTG($date,$date);
+    $listPhieuNhap = $daoPhieuNhap->LocTheoKhoangTG($date, $date);
     loadListPN($listPhieuNhap, $flag);
 }
 
 
 
-function loadListPN ($listPhieuNhap, $flag) {
+function loadListPN($listPhieuNhap, $flag)
+{
     $rows = '';
     echo '<thead>';
     echo '<th>Mã phiếu</th>';
@@ -74,9 +74,11 @@ function loadListPN ($listPhieuNhap, $flag) {
     echo '<th>Ngày tạo</th>';
     echo '<th>Trạng thái</th>';
     echo '<th style="    width: 12%;">Xem Chi tiết</th>';
-   if ($flag == 'getList'){echo '<th style="    width: 20%;">Hành động</th>';}
+    if ($flag == 'getList') {
+        echo '<th style="    width: 20%;">Hành động</th>';
+    }
     echo '</thead>';
-    
+
     foreach ($listPhieuNhap as $row) {
         $MaPhieu = $row['MaPhieu'];
         $MaHang = $row['Ten'];
@@ -85,22 +87,22 @@ function loadListPN ($listPhieuNhap, $flag) {
         $NgayTao = $row['NgayTaoPN'];
         // $GhiChu= $row['GhiChu'];
         $TrangThai = $row['TrangThaiPN'];
-        
-        if ($TrangThai == '1'){ // đã duyệt
+
+        if ($TrangThai == '1') { // đã duyệt
             $TrangThai = 'Đã duyệt';
-            $css ="style = 'background-color:chartreuse'";
+            $css = "style = 'background-color:chartreuse'";
             $XemChiTiet = '<button type="button" class="btn" style="background-color:burlywood" onclick="xemChiTiet(this)"  >Xem chi tiết</button>';
             $HanhDong = '';
         } else if ($TrangThai == '0') { // chờ duyệt
             $TrangThai = 'Chờ duyệt';
-            $css ="style = 'background-color:yellow'";
+            $css = "style = 'background-color:yellow'";
             $XemChiTiet = '<button type="button" class="btn" style="background-color:burlywood" onclick="xemChiTiet(this)"  >Xem chi tiết</button>';
             $HanhDong = '<button type="button" class="btn" style="background-color:chartreuse" onclick="duyet(this)" >Duyệt</button> 
             <button type="button" class="btn" style="background-color:red" onclick="tuChoi(this)" >Từ chối</button> 
             ';
         } else if ($TrangThai == '2') { // từ chối
             $TrangThai = 'Bị từ chối';
-            $css ="style = 'background-color:red'";
+            $css = "style = 'background-color:red'";
             $XemChiTiet = '<button type="button" class="btn" style="background-color:burlywood" onclick="xemChiTiet(this)"  >Xem chi tiết</button>';
             $HanhDong = ' 
             <button type="button" class="btn" style="background-color:red" onclick="xoa(this)">Xóa</button>
@@ -108,15 +110,15 @@ function loadListPN ($listPhieuNhap, $flag) {
         }
 
         $rows .= "<tr><td>$MaPhieu</td><td>$MaHang</td><td>$Tongdon</td><td>$MaTaiKhoan</td><td>$NgayTao</td><td $css >$TrangThai</td><td>$XemChiTiet</td>";
-        if ($flag == 'getList'){
-             $rows.= "<td>$HanhDong</td>";}
-        
-        $rows.="</tr>";
-        
+        if ($flag == 'getList') {
+            $rows .= "<td>$HanhDong</td>";
         }
-       echo '<tbody>';
-       echo $rows;       
-       echo '</tbody>';
+
+        $rows .= "</tr>";
+    }
+    echo '<tbody>';
+    echo $rows;
+    echo '</tbody>';
 }
 
 
@@ -126,13 +128,3 @@ function loadListPN ($listPhieuNhap, $flag) {
 
 // $daoPhieuNhap = new DAOPhieuNhap();
 // $daoPhieuNhap->addPhieuNhap('2023-11-09', 220211, 'MH-002', 8, 1, 'Khong co');
-
-
-
-
-
-
-
-
-
-?>

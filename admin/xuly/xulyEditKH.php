@@ -4,9 +4,9 @@ if (isset($_POST['hd'])) {
     include '../../db/dbconnect.php';
     include("../../db/DAOThongTinTaiKhoan.php");
 
-    
+
     $daoThongTinTaiKhoan = new DAOThongTinTaiKhoan();
-  
+
     //kiểm tra điều kiện pattern
     if (isset($_POST['id']))
         $id = $_POST['id'];
@@ -28,11 +28,11 @@ if (isset($_POST['hd'])) {
             }
             if (isset($_POST['MaTKKH'])) {
                 $dataKhachHang = $daoThongTinTaiKhoan->LayMaTKKhachHang($_POST['MaTKKH']);
-                
-                $data = $daoThongTinTaiKhoan->getTaiKhoan($dataKhachHang['MaTaiKhoan']); 
+
+                $data = $daoThongTinTaiKhoan->getTaiKhoan($dataKhachHang['MaTaiKhoan']);
             }
-            if ($_POST['tendn'] != $data['TenDN']){
-                if ($daoThongTinTaiKhoan->hasTaiKhoan( $_POST['tendn'])== false) {
+            if ($_POST['tendn'] != $data['TenDN']) {
+                if ($daoThongTinTaiKhoan->hasTaiKhoan($_POST['tendn']) == false) {
                     echo "<script>alert('Tên đăng nhập đã tồn tại.'); window.location = '../editkh.php?id=$id&hd=$hd';</script>";
                     return;
                 }
@@ -50,7 +50,7 @@ if (isset($_POST['hd'])) {
             }
 
             if ($_POST['email'] != $data['Email']) {
-                if ($daoThongTinTaiKhoan->hasEmail( $_POST['email'])== false) {
+                if ($daoThongTinTaiKhoan->hasEmail($_POST['email']) == false) {
                     echo "<script>alert('Email tồn tại !'); window.location = '../editkh.php?id=$id&hd=$hd';</script>";
                     return;
                 }
@@ -58,20 +58,20 @@ if (isset($_POST['hd'])) {
 
             // Truy vấn danh sách tai khoan
             $mataikhoan = $_POST['idtk'];
-            if ($_POST['matkhau'] == "")
-            {
-            $sql = "UPDATE taikhoan  SET TenDN='" . $_POST['tendn'] . "',
+            if ($_POST['matkhau'] == "") {
+                $sql = "UPDATE taikhoan  SET TenDN='" . $_POST['tendn'] . "',
                 Email ='" . $_POST['email'] . "',
                 Quyen ='" . $_POST['quyen'] . "',
                 TinhTrang ='" . $_POST['tinhtrang'] . "'
-                WHERE MaTaiKhoan='" . $_POST['idtk'] . "'";    
+                WHERE MaTaiKhoan='" . $_POST['idtk'] . "'";
             } else {
-            $sql = "UPDATE taikhoan  SET TenDN='" . $_POST['tendn'] . "',
+                $sql = "UPDATE taikhoan  SET TenDN='" . $_POST['tendn'] . "',
                                         MatKhau='" . md5($_POST['matkhau']) . "',
                                         Email ='" . $_POST['email'] . "',
                                         Quyen ='" . $_POST['quyen'] . "',
                                         TinhTrang ='" . $_POST['tinhtrang'] . "'
-                                        WHERE MaTaiKhoan='" . $_POST['idtk'] . "'";}
+                                        WHERE MaTaiKhoan='" . $_POST['idtk'] . "'";
+            }
 
             $result = mysqli_query($conn, $sql);
             // echo $sql;
@@ -116,14 +116,14 @@ if (isset($_POST['hd'])) {
                 return;
             }
 
-            if ($daoThongTinTaiKhoan->hasTaiKhoan( $_POST['tendn'])== false) {
+            if ($daoThongTinTaiKhoan->hasTaiKhoan($_POST['tendn']) == false) {
                 echo "<script>alert('Tên đăng nhập đã tồn tại'); window.location = '../editkh.php';
                 window.history.back();
                 </script>";
                 return;
             }
 
-            if (!preg_match('/^\S{5,}$/', trim($_POST['matkhau']))  && $_POST['matkhau'] != "" ) {
+            if (!preg_match('/^\S{5,}$/', trim($_POST['matkhau']))  && $_POST['matkhau'] != "") {
                 echo "<script>alert('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự và không chứa khoảng trắng !'); window.location = '../editkh.php?';
                 window.history.back();
                 </script>";
@@ -136,7 +136,7 @@ if (isset($_POST['hd'])) {
                 return;
             }
 
-            if ($daoThongTinTaiKhoan->hasEmail( $_POST['email'])== false) {
+            if ($daoThongTinTaiKhoan->hasEmail($_POST['email']) == false) {
                 echo "<script>alert('Email tồn tại !'); window.location = '../editkh.php?';
                 window.history.back();
                 </script>";
@@ -165,7 +165,7 @@ if (isset($_POST['hd'])) {
             }
             // ép kiểu string
             $mataikhoan = (string) $mataikhoan;
-//////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////
             //tạo id sản khách hàng
             // Tao listid tài khoản da co san
             $listIdtk = [];
@@ -195,7 +195,7 @@ if (isset($_POST['hd'])) {
             $sql = "INSERT INTO taikhoan (TenDN,MatKhau,Email ,Quyen ,TinhTrang ,MaTaiKhoan,NgayTao,TrangThai )
             VALUES (
             '" . $_POST['tendn'] . "',
-            '" . md5($_POST['matkhau']). "',
+            '" . md5($_POST['matkhau']) . "',
             '" . $_POST['email'] . "',
             '" . $_POST['quyen'] . "',
             '" . $_POST['tinhtrang'] . "',
@@ -231,5 +231,3 @@ if (isset($_POST['hd'])) {
             }
     }
 }
-
-?>

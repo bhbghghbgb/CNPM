@@ -1,23 +1,23 @@
 <div id="nguoidung">
 
-<?php
-include '../db/dbconnect.php';
-$listQuyen = [];
-$sql = "SELECT * FROM quyen";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $listQuyen[$row['MaQuyen']]=$row['TenQuyen'];
+    <?php
+    include '../db/dbconnect.php';
+    $listQuyen = [];
+    $sql = "SELECT * FROM quyen";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $listQuyen[$row['MaQuyen']] = $row['TenQuyen'];
+        }
     }
-}
-// Truy vấn danh sách sản phẩm
-$sql = "SELECT * FROM khachhang Where TrangThai=1";
-$result = $conn->query($sql);
+    // Truy vấn danh sách sản phẩm
+    $sql = "SELECT * FROM khachhang Where TrangThai=1";
+    $result = $conn->query($sql);
 
-// Kiểm tra kết quả trả về
-if ($result->num_rows > 0) {
-    // Hiển thị danh sách sản phẩm
-    echo "
+    // Kiểm tra kết quả trả về
+    if ($result->num_rows > 0) {
+        // Hiển thị danh sách sản phẩm
+        echo "
     <div id='khachhang' class='d-block'>
     <div class='row mark m-0'>
     <p class='text-center'>Bảng khách hàng</p></div>
@@ -37,64 +37,64 @@ if ($result->num_rows > 0) {
                 <th>Tình trạng</th>
                 <th>Quyền</th>
             </tr>";
-    while($row = $result->fetch_assoc()) {
-        $selectTaiKhoan = 'SELECT * FROM taikhoan WHERE TrangThai=1 AND MaTaiKhoan = "'. $row['MaTaiKhoan'] . '"';
-        $resultTaiKhoan = mysqli_query($conn, $selectTaiKhoan);
-        $rowTaiKhoan = mysqli_fetch_assoc($resultTaiKhoan);
-        echo "<tr>
-            <td>" . $row['MaKhach']. "</td>
+        while ($row = $result->fetch_assoc()) {
+            $selectTaiKhoan = 'SELECT * FROM taikhoan WHERE TrangThai=1 AND MaTaiKhoan = "' . $row['MaTaiKhoan'] . '"';
+            $resultTaiKhoan = mysqli_query($conn, $selectTaiKhoan);
+            $rowTaiKhoan = mysqli_fetch_assoc($resultTaiKhoan);
+            echo "<tr>
+            <td>" . $row['MaKhach'] . "</td>
             <td style='width:160px;'>
                 <div class='row'>"
-                    .$row['TenKhach']."
+                . $row['TenKhach'] . "
                 </div>
                 <div class='row hanhdong'>";
-                echo"<a href='#' class='xem'>
+            echo "<a href='#' class='xem'>
                         
                         <div class='col'>
                             Xem
                         </div>
                     </a>";
-                
-                echo"<a href='editkh.php?hd=s&id=".$row['MaKhach']."' class='sua'>
+
+            echo "<a href='editkh.php?hd=s&id=" . $row['MaKhach'] . "' class='sua'>
                         <div class='col'>
                             Sửa
                         </div>
                     </a>";
-                
-                echo"<a href='xuly/xulyXoaKH.php?idnd=".$row['MaKhach']."&idtk=".$row['MaTaiKhoan']."' class='xoa' onclick=\"return confirm('Bạn có chắc chắn muốn xóa người dùng ".$row['TenKhach']."  <3')\">
+
+            echo "<a href='xuly/xulyXoaKH.php?idnd=" . $row['MaKhach'] . "&idtk=" . $row['MaTaiKhoan'] . "' class='xoa' onclick=\"return confirm('Bạn có chắc chắn muốn xóa người dùng " . $row['TenKhach'] . "  <3')\">
                 
                         <div class='col'>
                             Xóa
                         </div>
                     </a>";
-           
-        echo "        </div>
+
+            echo "        </div>
             </td>
-            <td>" . $rowTaiKhoan["TenDN"]. "</td>
-            <td>" . $rowTaiKhoan["MatKhau"]. "</td>";
-            if( $rowTaiKhoan["TinhTrang"]=="0")
-            echo" <td>Khóa</td>";
+            <td>" . $rowTaiKhoan["TenDN"] . "</td>
+            <td>" . $rowTaiKhoan["MatKhau"] . "</td>";
+            if ($rowTaiKhoan["TinhTrang"] == "0")
+                echo " <td>Khóa</td>";
             else
-            echo" <td>Không Khóa</td>";
-           
-            foreach ($listQuyen as $ma=>$ten ){
-                if($rowTaiKhoan["Quyen"]==$ma){
+                echo " <td>Không Khóa</td>";
+
+            foreach ($listQuyen as $ma => $ten) {
+                if ($rowTaiKhoan["Quyen"] == $ma) {
                     echo "<th>$ten</th>";
+                }
             }
-           }
-        echo "</tr>";
-    }
-    echo "</table>
+            echo "</tr>";
+        }
+        echo "</table>
     </div>";
-} else {
-    echo "Không có khách hàng.";
-}
+    } else {
+        echo "Không có khách hàng.";
+    }
 
-$sql = "SELECT * FROM nhanvien Where TrangThai=1 ";
-$result = $conn->query($sql);
+    $sql = "SELECT * FROM nhanvien Where TrangThai=1 ";
+    $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    echo "
+    if ($result->num_rows > 0) {
+        echo "
     <div id='nhanvien' class='d-block mt-5'>
     <div class='row mark m-0'>
     <p class='text-center'>Bảng nhân viên</p></div>
@@ -114,57 +114,57 @@ if ($result->num_rows > 0) {
             <th>Tình trạng</th>
             <th>Quyền</th>
         </tr>";
-    while($row = $result->fetch_assoc()) {
-        $selectTaiKhoan = 'SELECT * FROM taikhoan WHERE TrangThai=1 AND MaTaiKhoan = "'. $row['MaTaiKhoan'] . '"';
-        $resultTaiKhoan = mysqli_query($conn, $selectTaiKhoan);
-        $rowTaiKhoan = mysqli_fetch_assoc($resultTaiKhoan);
-        echo "<tr>
-            <td>" . $row['MaNhanVien']. "</td>
+        while ($row = $result->fetch_assoc()) {
+            $selectTaiKhoan = 'SELECT * FROM taikhoan WHERE TrangThai=1 AND MaTaiKhoan = "' . $row['MaTaiKhoan'] . '"';
+            $resultTaiKhoan = mysqli_query($conn, $selectTaiKhoan);
+            $rowTaiKhoan = mysqli_fetch_assoc($resultTaiKhoan);
+            echo "<tr>
+            <td>" . $row['MaNhanVien'] . "</td>
             <td style='width:160px;'>
                 <div class='row'>"
-                    .$row['TenNhanVien']."
+                . $row['TenNhanVien'] . "
                 </div>
                 <div class='row hanhdong'>";
-                echo"<a href='#' class='xem'>
+            echo "<a href='#' class='xem'>
                         
                         <div class='col'>
                             Xem
                         </div>
                     </a>";
-                
-                echo"<a href='editnv.php?hd=s&id=".$row['MaNhanVien']."' class='sua'>
+
+            echo "<a href='editnv.php?hd=s&id=" . $row['MaNhanVien'] . "' class='sua'>
                         <div class='col'>
                             Sửa
                         </div>
                     </a>";
-                echo"<a href='xuly/xulyXoanv.php?&idnd=".$row['MaNhanVien']."&idtk=".$row['MaTaiKhoan']."' class='xoa' onclick=\"return confirm('Bạn có chắc chắn muốn xóa người dùng ".$row['TenNhanVien']." <3')\">                
+            echo "<a href='xuly/xulyXoanv.php?&idnd=" . $row['MaNhanVien'] . "&idtk=" . $row['MaTaiKhoan'] . "' class='xoa' onclick=\"return confirm('Bạn có chắc chắn muốn xóa người dùng " . $row['TenNhanVien'] . " <3')\">                
                         <div class='col'>
                             Xóa
                         </div>
                     </a>";
-            
-        echo "        </div>
-            </td>
-            <td>" . $rowTaiKhoan["TenDN"]. "</td>
-            <td>" . $rowTaiKhoan["MatKhau"]. "</td>";
-            if( $rowTaiKhoan["TinhTrang"]==0)
-            echo" <td>Khóa</td>";
-            else
-            echo" <td>Không Khóa</td>";
-            foreach ($listQuyen as $ma=>$ten ){
-                if($rowTaiKhoan["Quyen"]==$ma){
-                    echo "<th>$ten</th>";
-            }
-           }
-        echo"</tr>";
-    }
-    echo "</table>
-    </div>";
-} else {
-    echo "Không có sản phẩm.";
-}
 
-// Đóng kết nối
-$conn->close();
-?>
+            echo "        </div>
+            </td>
+            <td>" . $rowTaiKhoan["TenDN"] . "</td>
+            <td>" . $rowTaiKhoan["MatKhau"] . "</td>";
+            if ($rowTaiKhoan["TinhTrang"] == 0)
+                echo " <td>Khóa</td>";
+            else
+                echo " <td>Không Khóa</td>";
+            foreach ($listQuyen as $ma => $ten) {
+                if ($rowTaiKhoan["Quyen"] == $ma) {
+                    echo "<th>$ten</th>";
+                }
+            }
+            echo "</tr>";
+        }
+        echo "</table>
+    </div>";
+    } else {
+        echo "Không có sản phẩm.";
+    }
+
+    // Đóng kết nối
+    $conn->close();
+    ?>
 </div>

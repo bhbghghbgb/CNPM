@@ -7,4 +7,3 @@ session_start();
 $_SESSION["message"] = "Đăng xuất Thành công";
 header("Location: ../index.php");
 exit;
-?>

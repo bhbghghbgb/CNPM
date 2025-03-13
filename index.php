@@ -88,7 +88,7 @@
             <span>Location: template/footer.php</span>
             <?php include('template/footer.php'); ?>
         </div>
-        </div>
+    </div>
 
 
 

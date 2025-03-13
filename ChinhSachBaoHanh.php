@@ -1,6 +1,7 @@
 <?php require 'account/login_submit.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,18 +17,19 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/ChinhSachBaoHanh.css">
 </head>
+
 <body>
-<div id="wrapper">
-        <?php include('account/login.php');?>
-        <?php include('account/register.php');?>
-        <?php include('template/header.php');?>
-        <?php include('template/top_menu.php');?>
+    <div id="wrapper">
+        <?php include('account/login.php'); ?>
+        <?php include('account/register.php'); ?>
+        <?php include('template/header.php'); ?>
+        <?php include('template/top_menu.php'); ?>
         <div id="main">
-            <h1 style="margin-left: 165px; margin-top: 30px;  " >CHÍNH SÁCH BẢO HÀNH</h1>
-            <div style="margin-left: 165px;"  class="logo">
-                <img src="img\img-CS\2.png" style="width: 500px; height: 400px;" >
+            <h1 style="margin-left: 165px; margin-top: 30px;  ">CHÍNH SÁCH BẢO HÀNH</h1>
+            <div style="margin-left: 165px;" class="logo">
+                <img src="img\img-CS\2.png" style="width: 500px; height: 400px;">
             </div>
-            
+
             <div class="container">
                 <p class="text1">Tất cả sản phẩm Giày Bóng Đá Chính Hãng đều được hỗ trợ bảo hành như sau:</p>
                 <ul class="BH">
@@ -36,7 +38,7 @@
                     <li>Thời gian bảo hành miễn phí: 6 tháng đầu tiên (90 ngày) căn cứ vào ngày mua hàng.</li>
                     <li>Hotine hỗ trợ bảo hành: 0962888669 - 0879293979</li>
                     <li>Địa chỉ: 71/88/12G, Đ.Nguyễn Bặc, P.3, Q.Tân Bình TP.HCM.</li>
-                    <li>Sau thời gian bảo hành miễn phí, các vấn đề liên quan đến giày được hỗ trợ bảo hành có tính phí. 
+                    <li>Sau thời gian bảo hành miễn phí, các vấn đề liên quan đến giày được hỗ trợ bảo hành có tính phí.
                         Chi phí bảo hành dự kiến từ 50.000vnd đến 100.000vnd tuỳ tình trạng hư hỏng.</li>
                     <li>Hình thức bảo hành: SỬA CHỮA ĐỂ GIỮ GIÀY CHUẨN FORM VÀ TIẾP TỤC SỬ DỤNG TỐT. BẢO HÀNH KHÔNG PHẢI LÀ ĐỔI MỚI.</li>
                 </ul><br>
@@ -50,9 +52,9 @@
                 <ul class="BH">
                     <li>Gãy đinh hay bể đế do thi đấu trên mặt sân cứng hoặc tiếp xúc vật cứng, sử dụng sai mặt sân (đối với những đôi giày cỏ tự nhiên).</li>
                     <li>Rách da do va chạm hoặc vật sắc nhọn đâm thủng</li>
-                    <img src="img\img-CS\6.png" ><br><br><br>
+                    <img src="img\img-CS\6.png"><br><br><br>
                     <p class="text3">LỖI KHÔNG ĐỔI HÀNG TRONG 30 NGÀY (ĐÃ QUA SỬ DỤNG)</p>
-                    <img src="img\img-CS\8.png" >
+                    <img src="img\img-CS\8.png">
                 </ul><br><br><br>
                 <p class="text1">LƯU Ý:</p>
                 <ul class="BH">
@@ -69,10 +71,11 @@
                 </ul><br><br>
             </div>
         </div>
-           
+
         <div id="footer">
-            <?php include('template/footer.php');?>
+            <?php include('template/footer.php'); ?>
         </div>
     </div>
 </body>
+
 </html>

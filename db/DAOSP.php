@@ -12,11 +12,11 @@ class DAOSP extends DatabaseConfig
                 $sqltGia = 'SELECT MIN(GiaBan)FROM sosize  WHERE MaSP = "' . $row['MaSP'] . '"';
                 $resultGia = mysqli_query($this->conn, $sqltGia);
                 $rowGia = mysqli_fetch_assoc($resultGia);
-                if($rowGia['MIN(GiaBan)']){
-                    
+                if ($rowGia['MIN(GiaBan)']) {
+
                     //lấy list bao gồm số lượng và số size của sản phẩm có giá nhỏ nhất
                     $sqlSoLuong = 'SELECT SoLuong,Size FROM sosize WHERE MaSP = "' . $row['MaSP'] . '" AND GiaBan=' . $rowGia['MIN(GiaBan)'];
-                    
+
                     $resultSoLuong = mysqli_query($this->conn, $sqlSoLuong);
                     if ($resultSoLuong) {
                         $rowSoLuong = mysqli_fetch_array($resultSoLuong);
@@ -25,10 +25,9 @@ class DAOSP extends DatabaseConfig
                         $row["Size"] = $rowSoLuong['Size'];
                         $data[] = $row;
                     }
-                }else{
+                } else {
                     $row["GiaMin"] = null;
                     $data[] = $row;
-
                 }
             }
         }
@@ -78,18 +77,20 @@ class DAOSP extends DatabaseConfig
         return $data[0][0];
     }
 
-    public function getTenSanPham($MaSP) {
+    public function getTenSanPham($MaSP)
+    {
         $sql = "SELECT Ten FROM sanpham WHERE MaSP = '$MaSP'";
         $data = null;
-        if($result = mysqli_query($this->conn,$sql)) {
-            while($row = mysqli_fetch_array($result)){
+        if ($result = mysqli_query($this->conn, $sql)) {
+            while ($row = mysqli_fetch_array($result)) {
                 $data[] = $row;
             }
             mysqli_free_result($result);
         }
         return $data[0];
     }
-    public function getThongTinSanPham($MaSP,$Size) {
+    public function getThongTinSanPham($MaSP, $Size)
+    {
         $sql = "SELECT sanpham.MaSP,Ten,GiaBan,AnhChinh,SoLuong as SLTonKho,Size FROM sanpham,sosize where sanpham.MaSP = sosize.MaSP and sanpham.MaSP = '$MaSP' and sosize.Size = '$Size'";
         $data = null;
         if ($result = mysqli_query($this->conn, $sql)) {
@@ -158,7 +159,7 @@ class DAOSP extends DatabaseConfig
         return $data;
     }
 
-    public function TruSLBanHang($MaSP,$Size, $SoLuongMoi)
+    public function TruSLBanHang($MaSP, $Size, $SoLuongMoi)
     {
         $sql = "UPDATE sosize SET SoLuong = $SoLuongMoi WHERE MaSP = $MaSP AND Size = $Size";
         echo $sql;
@@ -183,7 +184,7 @@ class DAOSP extends DatabaseConfig
     public function insertSP($MaSP, $Ten, $MaKhuyenMai, $AnhChinh, $MaDM, $MoTa, $MaHang)
     {
         $sql = "INSERT INTO `sanpham` (`MaSP`, `Ten`, `MaKhuyenMai`, `AnhChinh`, `MaDM`, `MoTa`, `MaHang`,`TrangThai`) 
-        VALUES ('" . $MaSP . "', '" . $Ten . "', '" . $MaKhuyenMai . "', '". $AnhChinh . "', '" . $MaDM . "', '" . $MoTa . "', '" . $MaHang . "','1');";
+        VALUES ('" . $MaSP . "', '" . $Ten . "', '" . $MaKhuyenMai . "', '" . $AnhChinh . "', '" . $MaDM . "', '" . $MoTa . "', '" . $MaHang . "','1');";
         if (mysqli_query($this->conn, $sql)) {
             return true;
         }
@@ -261,7 +262,5 @@ class DAOSP extends DatabaseConfig
             mysqli_free_result($result);
         }
         return $data;
-
     }
 }
-?>

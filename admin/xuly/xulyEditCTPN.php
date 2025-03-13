@@ -6,15 +6,15 @@ if (isset($_POST['hd'])) {
     if (isset($_POST['id']))
         $id = $_POST['id'];
 
-    $soluong=$_POST['soluong'];
-    $dongia=$_POST['dongia'];
-    (int)$tongtien=(int)$soluong * (int)$dongia;
+    $soluong = $_POST['soluong'];
+    $dongia = $_POST['dongia'];
+    (int)$tongtien = (int)$soluong * (int)$dongia;
     switch ($hd) {
         case "Thêm":
             // Thêm vào db
             $sql = "INSERT INTO chitietphieunhap (MaSP , MaPhieu ,  SoLuong ,  Gia ,  TongGia ,  TrangThai )
             VALUES (
-            '".$_POST['sanpham']."',
+            '" . $_POST['sanpham'] . "',
             $id,
             " . $_POST['soluong'] . ",
             " . $_POST['dongia'] . ",
@@ -42,5 +42,3 @@ if (isset($_POST['hd'])) {
             }
     }
 }
-
-?>

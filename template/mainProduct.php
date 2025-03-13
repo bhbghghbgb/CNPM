@@ -35,10 +35,12 @@ else
     var tilegiam = <?php echo json_decode($Tilegiam) ?>;
 
     var sosize = <?php echo json_encode($dataSize) ?>;
+
     function formatCash(str) {
         str = str + "";
         return str.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + "đ";
     }
+
     function changeSize(price, count) {
         var firstChild = document.querySelector('#price :first-child');
         var secondChild = document.querySelector('#price :nth-child(2)');
@@ -67,7 +69,6 @@ else
             return false;
         }
     }
-
 </script>
 
 <form method="POST" action="giohang.php" onsubmit="return validate()">
@@ -83,7 +84,7 @@ else
                 </div>
                 <?php
                 for ($i = 1; $i < 4; $i++) {
-                    ?>
+                ?>
                     <div class="item_selection">
                         <label>
                             <input type="radio" name="img_selected" onclick="ChuyenAnh('./img/products/giay404.jpg')" />
@@ -166,7 +167,7 @@ else
                 for ($i = 0; $i < $n; $i++) {
 
 
-                    ?>
+            ?>
                     <li>
                         <a href="chitietsp.php?MaSP=<?php echo $dataLq[$i][0] ?>">
                             <div class="item">
@@ -182,7 +183,7 @@ else
                             </div>
                         </a>
                     </li>
-                    <?php
+            <?php
                 }
             }
             ?>

@@ -43,7 +43,6 @@ class DAOChiTietPhieuNhap extends DatabaseConfig
             return $data;
         } else
             return false;
-
     }
 
     public function getTenNhanVien($MaNV)
@@ -58,7 +57,6 @@ class DAOChiTietPhieuNhap extends DatabaseConfig
             return $data;
         } else
             return false;
-
     }
 
     public function addCTPN($MaSP, $MaPhieu, $SoLuong, $GiaNhap, $TongGia, $TrangThai, $Size)
@@ -176,4 +174,3 @@ class DAOChiTietPhieuNhap extends DatabaseConfig
         return $data;
     }
 }
-?>

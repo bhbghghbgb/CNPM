@@ -1,9 +1,9 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
 }
 
-#add_dm{
+#add_dm {
     color: black;
     background-color: cornflowerblue;
     display: inline-block;
@@ -14,11 +14,12 @@
     margin: 10px 30px;
 }
 
-#add_dm:hover{
+#add_dm:hover {
     background-color: #1321c6;
 }
 
-#edit_dm, #delete_dm{
+#edit_dm,
+#delete_dm {
     text-decoration: none;
     color: black;
     font-weight: bold;
@@ -29,19 +30,20 @@
     border: none;
 }
 
-#edit_dm{
+#edit_dm {
     background-color: greenyellow;
 }
 
-#delete_dm{
-    background-color: brown ;
+#delete_dm {
+    background-color: brown;
 }
 
-#edit_dm:hover,#delete_dm:hover{
+#edit_dm:hover,
+#delete_dm:hover {
     background-color: gold;
 }
 
-#form_dm{
+#form_dm {
     border: none;
     border-radius: 20px;
     background-color: #ffe4c4;
@@ -53,7 +55,7 @@
     display: none;
     transform: translate(-50%, -50%);
 }
-#exit_dm{
+#exit_dm {
     color: brown;
     font-weight: bold;
     font-size: 23px;
@@ -62,7 +64,7 @@
     right: 15px;
     cursor: pointer;
 }
-#exit_dm:hover{
+#exit_dm:hover {
     color: #5c3b12;
 }
 label {
@@ -70,7 +72,8 @@ label {
     font-size: 20px;
 }
 
-#MaDanhMuc, #TenDanhMuc{
+#MaDanhMuc,
+#TenDanhMuc {
     width: 100%;
     border: none;
     border-bottom: 5px solid brown;
@@ -93,10 +96,8 @@ label {
 }
 
 @media (max-width: 700px) {
-    #form_dm{
+    #form_dm {
         left: 288px;
         width: 80%;
     }
-
-
 }

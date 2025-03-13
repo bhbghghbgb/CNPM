@@ -1,7 +1,7 @@
 <?php
 include '../../db/dbconnect.php';
 if (isset($_GET['idnd'])) {
-    
+
     $idnd = $_GET['idnd'];
     $idtk = $_GET['idtk'];
     $sql = 'UPDATE khachhang SET TrangThai=0 WHERE MaKhach = "' . $idnd . '"';
@@ -9,7 +9,7 @@ if (isset($_GET['idnd'])) {
     if ($result) {
         $sql = 'UPDATE taikhoan SET TrangThai=0 WHERE MaTaiKhoan = "' . $idtk . '"';
         $result = $conn->query($sql);
-        if($result){
+        if ($result) {
             echo "<script>
             alert('Xóa Thành Công');
             window.location = '../index.php?id=nd'
@@ -25,4 +25,3 @@ if (isset($_GET['idnd'])) {
     $conn->close();
     return;
 }
-?>

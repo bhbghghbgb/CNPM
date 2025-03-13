@@ -12,7 +12,6 @@ if (isset($_GET['idsp'])) {
         </script>";
     $conn->close();
     return;
-
 } else {
     echo "<script>
     alert('Xóa không Thành Công');
@@ -21,4 +20,3 @@ if (isset($_GET['idsp'])) {
     $conn->close();
     return;
 }
-?>

@@ -132,19 +132,17 @@ if (isset($_POST['hd'])) {
 
     switch ($hd) {
         case "Lưu":
-            $result = $daoSP->updateSP($_POST['id'], $_POST['ten'], $_POST['khuyenmai'], $anhchinh, $_POST['danhmuc'], $mota, $_POST['hang'], );
+            $result = $daoSP->updateSP($_POST['id'], $_POST['ten'], $_POST['khuyenmai'], $anhchinh, $_POST['danhmuc'], $mota, $_POST['hang'],);
             if ($result) {
                 if ($daoSoSize->deleteAllSozsize($_POST['id']))
-                if (isset($_POST["ArraySize"]) && isset($_POST["ArrayQuantity"]) && isset($_POST["ArrayPrice"])) {
-                    $ArraySize = $_POST["ArraySize"];
-                    $ArrayQuantity = $_POST["ArrayQuantity"];
-                    $ArrayPrice = $_POST["ArrayPrice"];
-                    for ($i = 0; $i < count($ArraySize); $i++) {
+                    if (isset($_POST["ArraySize"]) && isset($_POST["ArrayQuantity"]) && isset($_POST["ArrayPrice"])) {
+                        $ArraySize = $_POST["ArraySize"];
+                        $ArrayQuantity = $_POST["ArrayQuantity"];
+                        $ArrayPrice = $_POST["ArrayPrice"];
+                        for ($i = 0; $i < count($ArraySize); $i++) {
                             $daoSoSize->insertSozise($_POST['id'], $ArraySize[$i], $ArrayQuantity[$i], $ArrayPrice[$i]);
-
+                        }
                     }
-
-                }
             }
             if ($result) {
                 $_SESSION["message"] = "Sửa thành công";
@@ -152,7 +150,7 @@ if (isset($_POST['hd'])) {
                 exit;
             } else {
                 $_SESSION["message"] = "Sửa không thành công";
-                header("Location: ../editsp.php?hd=s&id=".$_POST['id']."");
+                header("Location: ../editsp.php?hd=s&id=" . $_POST['id'] . "");
                 exit;
             }
         case "Thêm":
@@ -201,9 +199,6 @@ if (isset($_POST['hd'])) {
                 alert('Thêm Thành Công');
                 </script>";
                 header("Location: ../editsp.php?hd=s&id=" . $id . "");
-
             }
     }
 }
-
-?>

@@ -14,21 +14,16 @@ if (isset($_SESSION['MaTaiKhoan']))
 if (isset($_POST['ten'])) {
     $pattern = '/^0[0-9]{9}$/';
     if (preg_match($pattern, $_POST['sodienthoai'])) {
-        
+
         if ($daoTTTK->hasKhach($MaTK)) {
             if ($daoTTTK->updateKhachHang($MaTK, $_POST['ten'], $_POST['diachi'], $_POST['sodienthoai'])) {
                 $_SESSION["message"] = "Thay đổi thông tin thành công";
             }
         } else
             if ($daoTTTK->updateNhanVien($MaTK, $_POST['ten'], $_POST['diachi'], $_POST['sodienthoai'])) {
-                $_SESSION["message"] = "Thay đổi thông tin thành công";
+            $_SESSION["message"] = "Thay đổi thông tin thành công";
         }
-
-    }
-    else  echo "<script>addmessText('Sai định dạng số điện thoại !')</script>";
-        
-    
-
+    } else  echo "<script>addmessText('Sai định dạng số điện thoại !')</script>";
 }
 
 // xử lý chỉnh thông tin người dùng 
@@ -41,35 +36,35 @@ if (isset($_POST['ten'])) {
 // }
 
 if (isset($_SESSION['MaTaiKhoan'])) {
-    $data = $daoTTTK->getTaiKhoan($MaTK); }
-    
+    $data = $daoTTTK->getTaiKhoan($MaTK);
+}
+
 // xử lý chỉnh thông tin người dùng 
 if (isset($_POST['tenDN'])) {
     if (!preg_match('/^[a-zA-Z0-9]{5,}$/', $_POST['tenDN'])) {
         echo "<script>addmessText('Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số ! ')</script>";
-    } else if (!preg_match('/^\S{5,}$/', trim($_POST['matkhau'])) && $_POST['matkhau'] != ""){
+    } else if (!preg_match('/^\S{5,}$/', trim($_POST['matkhau'])) && $_POST['matkhau'] != "") {
         echo "<script>addmessText('Mật khẩu phải lớn hơn hoặc bằng 5 ký tự và không chứa khoảng trắng !')</script>";
-    } else if ($data['Email'] != $_POST['email'] && $daoTTTK->hasEmail($_POST['email']) == false ) {
+    } else if ($data['Email'] != $_POST['email'] && $daoTTTK->hasEmail($_POST['email']) == false) {
         echo "<script>addmessText('Email đã tồn tại')</script>";
-    } 
-    else{ 
-        if ($_POST['tenDN'] == $data['TenDN'] ){
-            if ($_POST['matkhau'] === $_POST['matkhau1']){
+    } else {
+        if ($_POST['tenDN'] == $data['TenDN']) {
+            if ($_POST['matkhau'] === $_POST['matkhau1']) {
                 if ($daoTTTK->updateTaiKhoan($MaTK, $_POST['tenDN'], $_POST['matkhau'], $_POST['email'])) {
                     $_SESSION["message"] = "Thay đổi thông tin đăng nhập thành công";
-                } } else {
-                    echo "<script>addmessText('Xác nhận mật khẩu lại')</script>";
                 }
-        } else if ( $daoTTTK->hasTaiKhoan($_POST['tenDN']))
-        {
-            if ($_POST['matkhau'] === $_POST['matkhau1']){
+            } else {
+                echo "<script>addmessText('Xác nhận mật khẩu lại')</script>";
+            }
+        } else if ($daoTTTK->hasTaiKhoan($_POST['tenDN'])) {
+            if ($_POST['matkhau'] === $_POST['matkhau1']) {
                 if ($daoTTTK->updateTaiKhoan($MaTK, $_POST['tenDN'], $_POST['matkhau'], $_POST['email'])) {
                     $_SESSION["message"] = "Thay đổi thông tin đăng nhập thành công";
-                } } else {
-                    echo "<script>addmessText('Xác nhận mật khẩu lại')</script>";
                 }
-        } else if ( $daoTTTK->hasTaiKhoan($_POST['tenDN']) == false)
-        {
+            } else {
+                echo "<script>addmessText('Xác nhận mật khẩu lại')</script>";
+            }
+        } else if ($daoTTTK->hasTaiKhoan($_POST['tenDN']) == false) {
             echo "<script>addmessText('Tài khoản đã tồn tại !')</script>";
         }
     }

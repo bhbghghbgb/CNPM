@@ -111,8 +111,8 @@ if (isset($_GET['search'])) {
     </div>
 </div>
 <script>
-    $(document).ready(function () {
-        $("#result").on("click", "th:not(#img-table)", function () {
+    $(document).ready(function() {
+        $("#result").on("click", "th:not(#img-table)", function() {
             var clickedTh = $(this);
 
             var sortType = clickedTh.attr("id");
@@ -121,8 +121,11 @@ if (isset($_GET['search'])) {
             $.ajax({
                 type: "POST",
                 url: "./template/template_content/ajaxsanpham.php",
-                data: { sort: sortType, order: sortOrder },
-                success: function (response) {
+                data: {
+                    sort: sortType,
+                    order: sortOrder
+                },
+                success: function(response) {
                     $("#result tbody").html(response);
                     $("th").removeClass("asc desc");
                     clickedTh.addClass(sortOrder); // Sử dụng biến lưu trữ đối tượng thẻ th
@@ -130,7 +133,7 @@ if (isset($_GET['search'])) {
             });
         });
 
-        $("input[name='search']").on("input", function () {
+        $("input[name='search']").on("input", function() {
             var searchQuery = $(this).val();
             var searchSuggestions = $("#search-suggestions");
             if (searchQuery === "")
@@ -141,8 +144,10 @@ if (isset($_GET['search'])) {
                     // Thực hiện AJAX request để lấy gợi ý tìm kiếm
                     type: "GET",
                     url: "./template/template_content/ajaxsanpham.php", // Thay đổi thành địa chỉ URL xử lý gợi ý tìm kiếm trên máy chủ
-                    data: { search: searchQuery },
-                    success: function (response) {
+                    data: {
+                        search: searchQuery
+                    },
+                    success: function(response) {
                         // Hiển thị kết quả gợi ý trong khu vực search-suggestions
                         $("#search-suggestions").html(response);
                     }

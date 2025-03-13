@@ -46,9 +46,7 @@ if (isset($_POST['daban']) && $_POST['daban']) {
             echo '["' . $key['TenHang'] . '",' . $key['TongSoLuong'] . '],';
         echo ']';
     }
-
-}
-else {
+} else {
     if (isset($_POST['quarter'])) {
         if ($_POST['quarter'] != 0) {
             $dataDoanhThu = $daoCTPN->ListDoanhThu(false, $_POST['quarter']);

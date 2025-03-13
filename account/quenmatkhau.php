@@ -1,6 +1,3 @@
-
-
-
 <div id="form_quenmatkhau">
     <h2>Nhập địa chỉ email của bạn </h2>
     <p class="icon-close" onclick=tatqmk()>X</p>
@@ -26,5 +23,7 @@
 <!-- <script src="QuenMatKhau.js"> </script> -->
 
 <style>
-    #ma{display:none;}
-</style> 
+    #ma {
+        display: none;
+    }
+</style>

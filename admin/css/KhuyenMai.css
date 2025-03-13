@@ -1,9 +1,9 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
 }
 
-#title_km{
+#title_km {
     text-align: center;
     background-color: bisque;
     color: brown;
@@ -12,7 +12,7 @@
     margin: 10px 30px;
 }
 
-#add_km{
+#add_km {
     color: black;
     background-color: cornflowerblue;
     display: inline-block;
@@ -23,32 +23,32 @@
     margin: 10px 30px;
 }
 
-#add_km:hover{
+#add_km:hover {
     background-color: #1321c6;
 }
 
-#tbl_km{
+#tbl_km {
     width: 95%;
     border: 1px solid black;
     border-radius: 50px;
     margin: 10px 30px;
 }
 
-#tbl_km  th{
+#tbl_km th {
     border: 1px solid black;
     background-color: burlywood;
     text-align: center;
     padding: 10px 0px;
 }
 
-
-#tbl_km  td{
+#tbl_km td {
     border: 1px solid black;
     text-align: center;
     padding: 10px 0px;
 }
 
-#tbl_km #edit_km, #tbl_km #delete_km {
+#tbl_km #edit_km,
+#tbl_km #delete_km {
     text-decoration: none;
     color: black;
     font-weight: bold;
@@ -58,14 +58,15 @@
     margin: 0px 8px;
 }
 
-#tbl_km #edit_km{
+#tbl_km #edit_km {
     background-color: greenyellow;
 }
 
-#tbl_km #delete_km{
-    background-color: brown ;
+#tbl_km #delete_km {
+    background-color: brown;
 }
 
-#tbl_km #edit_km:hover, #tbl_km #delete_km:hover{
+#tbl_km #edit_km:hover,
+#tbl_km #delete_km:hover {
     background-color: gold;
 }
