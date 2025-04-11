@@ -1,7 +1,7 @@
 <?php
 class DatabaseConfig
 {
-    protected $host = 'db';
+    protected $host = 'mysql';
     protected $username = 'user';
     protected $password = 'password';
     protected $database = 'ql_cuahanggiay';

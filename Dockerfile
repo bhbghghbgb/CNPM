@@ -1,5 +1,5 @@
 # Use the official PHP image as a base
-FROM php:8.1-apache-bookworm
+FROM php:8.3.19-apache-bookworm
 
 # Copy the content of your project to the /var/www/html directory in the container
 # COPY . /var/www/html/

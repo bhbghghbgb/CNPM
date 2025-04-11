@@ -1,5 +1,5 @@
 <?php
-$host = "db";
+$host = "mysql";
 $user = "user";
 $pass = "password";
 $db = "ql_cuahanggiay";
