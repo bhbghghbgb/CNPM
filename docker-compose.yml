@@ -6,7 +6,8 @@ services:
         ports:
             - "86:80"
         volumes:
-            - .:/var/www/html
+            - .:/var/www/html:ro
+            - ./php.ini:/usr/local/etc/php/php.ini:ro
         depends_on:
             - mysql
 
@@ -23,7 +24,17 @@ services:
         volumes:
             - mysql-data:/var/lib/mysql
             - ./DatabaseServer/ql_cuahanggiay.sql:/docker-entrypoint-initdb.d/ql_cuahanggiay.sql:ro
-            - ./php.ini:/usr/local/etc/php/php.ini:ro
+
+    phpmyadmin:
+        image: phpmyadmin:5.2.2-apache
+        environment:
+            PMA_HOST: mysql
+            PMA_USER: user
+            PMA_PASSWORD: password
+        ports:
+            - "8080:80"
+        depends_on:
+            - mysql
 
 volumes:
     mysql-data:
