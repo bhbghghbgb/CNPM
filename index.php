@@ -11,24 +11,22 @@
     <script src="./js/jquery-3.7.0.min.js">
 
     </script>
-
+http://localhost:86/
     <link rel="stylesheet" href="./css/main.css">
 
     <!-- products -->
     <link rel="stylesheet" href="./css/products.css">
-    <script src="./js/index.js">
-
-    </script>
-    <script src="./js/login.js">
-
-    </script>
+    <script src="./js/index.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/scroll-effects.js"></script>
 
     <!-- slider -->
     <link rel="stylesheet" href="./css/slider.css">
-    <script src="./js/slider.js"></script>
+    <link rel="stylesheet" href="./css/modern-slider.css">
+    <!-- <script src="./js/slider.js"></script> -->
+    <!-- <script src="./js/modern-slider.js"></script> -->
+    <script src="./js/slider-fix.js?v=1"></script> <!-- New fixed slider script -->
     <script src="./js/QuenMatKhau.js"></script>
-
-    </script>
 
     <!-- header -->
     <link rel="stylesheet" href="./css/top_menu.css">
@@ -40,6 +38,12 @@
 
     <!-- post -->
     <link rel="stylesheet" href="./css/post.css">
+    
+    <!-- Modern design -->
+    <link rel="stylesheet" href="./css/modern-categories.css">
+    <link rel="stylesheet" href="./css/modern-products.css">
+    <link rel="stylesheet" href="./css/modern-utilities.css">
+    <script src="./js/modern-products.js"></script>
 
     <!-- login -->
     <link rel="stylesheet" href="./css/formDN.css">
