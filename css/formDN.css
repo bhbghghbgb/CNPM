@@ -3,46 +3,204 @@
 #form_quenmatkhau {
     position: fixed;
     z-index: 10;
-    width: 400px;
-    border: 1px solid green;
-    padding: 20px;
+    width: 450px;
+    border-radius: 12px;
+    padding: 30px 40px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-weight: 700;
     background-color: white;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     display: none;
+    transition: all 0.3s ease;
 }
 
-#form input,
-#formdk input,
-#form_quenmatkhau input {
-    width: 100%;
-    padding: 10px 10px;
-    background-color: rgb(195, 205, 230);
-    height: 50px;
-    font-size: 18px;
+#form h2,
+#formdk h2,
+#form_quenmatkhau h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 25px;
+    font-weight: 600;
 }
+
+#form input:not([type="submit"]),
+#formdk input:not([type="submit"]),
+#form_quenmatkhau input:not([type="submit"]) {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    height: 48px;
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    transition: all 0.2s;
+}
+
+#form input:focus,
+#formdk input:focus,
+#form_quenmatkhau input:focus {
+    border-color: #4285F4;
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+    outline: none;
+}
+
 #form .icon-close,
 #formdk .icon-close,
 #form_quenmatkhau .icon-close {
     cursor: pointer;
     position: absolute;
-    top: 10px;
-    cursor: pointer;
-    right: 15px;
-    font-size: 30px;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
     font-weight: 500;
+    color: #777;
+    transition: color 0.2s;
 }
+
+#form .icon-close:hover,
+#formdk .icon-close:hover,
+#form_quenmatkhau .icon-close:hover {
+    color: #333;
+}
+
 #backgroundDN {
-    background-color: #281c1c69;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
     position: fixed;
     height: 100%;
     z-index: 9;
     width: 100%;
     display: none;
+    transition: all 0.3s ease;
 }
+
 .buttonDN {
-    background-color: #242121 !important;
-    color: #ccc;
+    background-color: #4285F4 !important;
+    color: white !important;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 16px;
+    height: 48px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.buttonDN:hover {
+    background-color: #3367d6 !important;
+}
+
+.buttonDN::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.buttonDN:active::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+}
+
+#form a,
+#formdk a,
+#form_quenmatkhau a {
+    color: #4285F4;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#form a:hover,
+#formdk a:hover,
+#form_quenmatkhau a:hover {
+    text-decoration: underline;
+}
+
+/* Thêm CSS mới */
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.form-action {
+    margin: 24px 0 16px;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #555;
+    font-size: 14px;
+}
+
+.form-footer a {
+    color: #4285F4;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-description {
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.forgot-password {
+    text-align: right;
+    margin: 8px 0;
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+    #form,
+    #formdk,
+    #form_quenmatkhau {
+        width: 90%;
+        padding: 25px 20px;
+    }
+}
+
+/* Social login buttons (if needed in future) */
+.social-login {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.social-login-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.social-login-btn:hover {
+    background-color: #f5f5f5;
 }
