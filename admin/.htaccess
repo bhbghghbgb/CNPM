@@ -1,0 +1,34 @@
+# Bảo vệ tất cả các file trong thư mục admin
+# Chuyển hướng đến trang đăng nhập nếu không tìm thấy file login.php
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /admin/
+    
+    # Không áp dụng cho login.php, login_submit.php và các file tài nguyên
+    RewriteCond %{REQUEST_URI} !login\.php$ [NC]
+    RewriteCond %{REQUEST_URI} !login_submit\.php$ [NC]
+    RewriteCond %{REQUEST_URI} !\.css$ [NC]
+    RewriteCond %{REQUEST_URI} !\.js$ [NC]
+    RewriteCond %{REQUEST_URI} !\.jpg$ [NC]
+    RewriteCond %{REQUEST_URI} !\.png$ [NC]
+    RewriteCond %{REQUEST_URI} !\.gif$ [NC]
+    
+    # Chuyển hướng đến trang đăng nhập nếu chưa đăng nhập
+    RewriteCond %{HTTP_COOKIE} !MaQuyen [NC]
+    RewriteRule ^(.*)$ login.php [L,R=302]
+</IfModule>
+
+# Tắt chế độ chỉ mục thư mục
+Options -Indexes
+
+# Cấm truy cập trực tiếp đến các file PHP quan trọng
+<FilesMatch "^(dbconnect\.php|config\.php)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Bảo vệ file .htaccess
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
