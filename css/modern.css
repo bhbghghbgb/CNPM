@@ -294,11 +294,56 @@
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    padding: 0 15px 15px;
 }
 
-.modern-product-btn {
+.modern-product-button {
+    padding: 10px 15px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.modern-product-button.btn-details {
+    background-color: transparent;
+    border: 2px solid #3a86ff;
+    color: #3a86ff;
+    flex: 1;
+    margin-right: 8px;
+}
+
+.modern-product-button.btn-details:hover {
     background-color: #3a86ff;
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(58, 134, 255, 0.2);
+}
+
+.modern-product-button.btn-add-to-cart {
+    background: linear-gradient(45deg, #3a86ff, #00c6ff);
+    color: white;
+    flex: 1.5;
+    box-shadow: 0 4px 10px rgba(58, 134, 255, 0.3);
+}
+
+.modern-product-button.btn-add-to-cart i {
+    margin-right: 5px;
+}
+
+.modern-product-button.btn-add-to-cart:hover {
+    background: linear-gradient(45deg, #1a66ff, #00a6ff);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(58, 134, 255, 0.4);
+}
     border: none;
     padding: 8px 16px;
     border-radius: 4px;

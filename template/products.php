@@ -1,4 +1,4 @@
-    <div class="block-main">
+<div class="block-main">
         <div class="block-product favorite-categories">
             <div class="container">
                 <div class="category-title-section">
@@ -103,8 +103,8 @@
                                 </div>
                             </div>
                             <div class="modern-product-actions">
-                                <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>" class="modern-product-button">Chi tiết</a>
-                                <button class="modern-product-button" onclick="addToCart('<?php echo $data[$i][0] ?>')"><i class="ti-shopping-cart"></i> Mua</button>
+                                <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>" class="modern-product-button btn-details">Xem chi tiết</a>
+                                <button class="modern-product-button btn-add-to-cart" onclick="addToCart('<?php echo $data[$i][0] ?>')"><i class="ti-shopping-cart"></i> Thêm vào giỏ</button>
                             </div>
                         </div>
                     <?php
@@ -161,8 +161,8 @@
                                 </div>
                             </div>
                             <div class="modern-product-actions">
-                                <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>" class="modern-product-button">Chi tiết</a>
-                                <button class="modern-product-button" onclick="addToCart('<?php echo $data[$i][0] ?>')"><i class="ti-shopping-cart"></i> Mua</button>
+                                <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>" class="modern-product-button btn-details">Xem chi tiết</a>
+                                <button class="modern-product-button btn-add-to-cart" onclick="addToCart('<?php echo $data[$i][0] ?>')"><i class="ti-shopping-cart"></i> Thêm vào giỏ</button>
                             </div>
                         </div>
                     <?php
@@ -206,15 +206,19 @@
                                 </div>
                                 <img src="./img/products/<?php echo $data[$i]['AnhChinh'] ?>" alt="<?php echo $data[$i][1] ?>">
                             </div>
-                            <div class="product-info">
-                                <div class="product-name">
+                            <div class="modern-product-info">
+                                <div class="modern-product-vendor"><?php echo $data[$i]['TenHang'] ?></div>
+                                <div class="modern-product-name">
                                     <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>"><?php echo $data[$i][1] ?></a>
                                 </div>
-                                <div class="product-vendor"><?php echo $data[$i]['TenHang'] ?></div>
-                                <div class="product-price">
-                                    <span class="price-new price"><?php echo number_format(TinhTienGiam($TiLeGiam, $data[$i]['GiaMin']), 0, ',', '.') . "đ" ?></span>
-                                    <span class="price-old price"><?php echo $TiLeGiam == 0 ? "" : number_format($data[$i]['GiaMin'], 0, ',', '.') . "đ" ?></span>
+                                <div class="modern-product-price">
+                                    <span class="price-new"><?php echo number_format(TinhTienGiam($TiLeGiam, $data[$i]['GiaMin']), 0, ',', '.') . "đ" ?></span>
+                                    <span class="price-old"><?php echo $TiLeGiam == 0 ? "" : number_format($data[$i]['GiaMin'], 0, ',', '.') . "đ" ?></span>
                                 </div>
+                            </div>
+                            <div class="modern-product-actions">
+                                <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>" class="modern-product-button btn-details">Xem chi tiết</a>
+                                <button class="modern-product-button btn-add-to-cart" onclick="addToCart('<?php echo $data[$i][0] ?>')"><i class="ti-shopping-cart"></i> Thêm vào giỏ</button>
                             </div>
                         </div>
                     <?php
