@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./css/GioHang.css">
 
     <script src="./js/login.js"></script>
+    <script src="./js/quantity-handler.js"></script>
     <!-- header -->
     <link rel="stylesheet" href="./css/top_menu.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
@@ -47,7 +48,6 @@
             <?php include('template/footer.php'); ?>
         </div>
     </div>
-
 </body>
 
 </html>

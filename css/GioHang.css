@@ -32,25 +32,32 @@ body {
 }
 
 #gio_hang_container #thong_tin #cart_form #don_hang {
-    border: 0.5px solid #333;
-    border-collapse: collapse;
     width: 100%;
-    height: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 #gio_hang_container #thong_tin #cart_form #don_hang th {
     white-space: pre-wrap;
-    border: 0.5px solid #333;
+    /* border: 0.5px solid #333; */
+    border: none;
     text-align: center;
     font-size: 14px;
     padding: 5px 10px;
+    background-color: #e0e0e0;
 }
 
 #gio_hang_container #thong_tin #cart_form #don_hang td {
-    border: 0.5px solid #333;
+    /* border: 0.5px solid #333; */
+    border: none;
     text-align: center;
     font-size: 14px;
     padding: 22px 25px;
+    border-top: 1px solid #e0e0e0; 
+    background-color: #f0f0f0;
 }
 
 #gio_hang_container #thong_tin #cart_form #don_hang td a {
@@ -72,18 +79,79 @@ body {
 }
 
 #gio_hang_container #thong_tin #cart_form #don_hang td .sl {
-    font-size: 17px;
+    /* font-size: 17px;
     width: 89%;
     height: 25%;
     text-align: center;
     border: 1px solid grey;
-    border-radius: 10px;
+    border-radius: 10px; */
+    font-size: 16px;
+    width: 60px;
+    height: 35px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+}
+
+/* Container chứa input số lượng */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Nút tăng giảm */
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    transition: all 0.2s;
+}
+
+.quantity-btn:hover {
+    background: #fd5252;
+}
+
+.quantity-btn:active {
+    background: #e32124;
+}
+
+/* Ô input */
+.quantity-input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-left: none;
+    border-right: none;
+    font-size: 16px;
+    background-color: #f0f0f0;
+}
+
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 #gio_hang_container #thong_tin #cart_form #don_hang td .delete {
-    border: 0px;
-    background-color: white;
+    border: none;
+    background-color: transparent;
     cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#gio_hang_container #thong_tin #cart_form #don_hang td .delete:hover {
+    color: #e32124; 
 }
 
 #gio_hang_container #thong_tin #cart_form #don_hang td .trash {
@@ -99,13 +167,23 @@ body {
     margin-right: 25px;
     padding: 8px 25px;
     font-size: 18px;
-    border: 1px solid #333;
+    /* border: 1px solid #333; */
     background-color: #333;
     color: white;
     text-decoration: none;
+    border: #555;
     text-transform: uppercase;
     cursor: pointer;
+    border-radius: 15px;
+    transition: all 0.3s ease; 
 }
+
+#gio_hang_container #thong_tin .clearfix a:hover,
+#gio_hang_container #thong_tin .clearfix #update-click:hover {
+    background-color: #555; 
+    color: #fff;
+}
+
 
 #gio_hang_container #thanh_toan {
     width: 70%;
@@ -120,8 +198,11 @@ body {
 }
 
 #gio_hang_container #thanh_toan #thanh_toan_container {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 27px 22px;
+    border-radius: 10px ;
+    /* background-color: #f8f8f8; */
+    box-shadow: 0px 1px 4px 2px gray;
 }
 
 #gio_hang_container #thanh_toan #thanh_toan_container h2 {
@@ -144,9 +225,26 @@ body {
     text-decoration: none;
     color: white;
     display: block;
+    border-radius: 20px; 
+    transition: all 0.3s ease;
 }
 
-#donhang_container {
+#gio_hang_container #thanh_toan #thanh_toan_container a:hover {
+    background-color: #fd5252; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+#gio_hang_container #thanh_toan #thanh_toan_container a[href="index.php"] {
+    background-color: #e32124;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+#gio_hang_container #thanh_toan #thanh_toan_container a[href="index.php"]:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fd5252;
+}
+
+#donhang_container {    
     margin-left: auto;
     margin-right: auto;
     padding: 15px;
