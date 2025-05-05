@@ -41,7 +41,7 @@ if (isset($_POST['admin_login'])) {
     $_SESSION['admin_message'] = "Chào mừng " . $row['TenDN'] . " đã đăng nhập thành công!";
     $_SESSION['admin_message_type'] = "success";
     
-    header("Location: http://localhost:86/index.php");
+    header("Location: index.php");
     exit;
 }
 

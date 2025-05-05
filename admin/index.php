@@ -1,14 +1,7 @@
 <?php
-session_start();
-// Kiểm tra đăng nhập với quyền admin
-if (!isset($_SESSION['MaQuyen']) || ($_SESSION['MaQuyen'] != 'Admin' && $_SESSION['MaQuyen'] != 'QLKho' && $_SESSION['MaQuyen'] != 'NVBanHang')) {
-    $_SESSION['admin_message'] = "Vui lòng đăng nhập với tư cách quản trị viên!";
-    $_SESSION['admin_message_type'] = "error";
-    header("Location: login.php");
-    exit;
-}
-include('template/menu_ad.php');
+include("./checkperm.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -45,17 +38,17 @@ include('template/menu_ad.php');
 </head>
 
 <body>
-    <?php if(isset($_SESSION['admin_message'])): ?>
-    <div id="message" style="display: block;">
-        <div id="content_mess">
-            <?php 
-            echo $_SESSION['admin_message']; 
-            unset($_SESSION['admin_message']);
-            ?>
+    <?php if (isset($_SESSION['admin_message'])): ?>
+        <div id="message" style="display: block;">
+            <div id="content_mess">
+                <?php
+                echo $_SESSION['admin_message'];
+                unset($_SESSION['admin_message']);
+                ?>
+            </div>
         </div>
-    </div>
     <?php endif; ?>
-    
+    <?php include('template/menu_ad.php'); ?>
     <div class="wrapper">
         <?php include('template/topbar_ad.php'); ?>
         <div class="container-fluid">
@@ -68,7 +61,8 @@ include('template/menu_ad.php');
     <?php
     if (isset($_SESSION['message'])) {
         $cache = '';
-        if ($cache != $_SESSION['message']);
+        if ($cache != $_SESSION['message'])
+            ;
         $cache = $_SESSION['message'];
         echo '<script language="javascript"> addmessText("' . $_SESSION['message'] . '");</script>';
         unset($_SESSION['message']); // Xóa thông báo sau khi hiển thị

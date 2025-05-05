@@ -1,14 +1,8 @@
-<?php
-session_start();
-// Nếu đã đăng nhập với quyền admin thì chuyển hướng đến trang quản trị
-if (isset($_SESSION['MaQuyen']) && ($_SESSION['MaQuyen'] == 'Admin' || $_SESSION['MaQuyen'] == 'QLKho' || $_SESSION['MaQuyen'] == 'NVBanHang')) {
-    header("Location: index.php");
-    exit;
-}
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +18,7 @@ if (isset($_SESSION['MaQuyen']) && ($_SESSION['MaQuyen'] == 'Admin' || $_SESSION
             align-items: center;
             justify-content: center;
         }
+
         .login-container {
             background-color: #fff;
             border-radius: 10px;
@@ -32,57 +27,65 @@ if (isset($_SESSION['MaQuyen']) && ($_SESSION['MaQuyen'] == 'Admin' || $_SESSION
             width: 400px;
             max-width: 90%;
         }
+
         .logo {
             text-align: center;
             margin-bottom: 20px;
         }
+
         .logo img {
             max-width: 150px;
             margin-bottom: 10px;
         }
+
         .btn-primary {
             background-color: #212529;
             border-color: #212529;
             width: 100%;
             padding: 10px;
         }
+
         .btn-primary:hover {
             background-color: #000;
             border-color: #000;
         }
+
         .message {
             padding: 10px;
             margin-bottom: 15px;
             border-radius: 5px;
             text-align: center;
         }
+
         .message.error {
             background-color: #f8d7da;
             color: #721c24;
         }
+
         .message.success {
             background-color: #d4edda;
             color: #155724;
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <div class="logo">
             <img src="../img/img-logo/sneaker.jpg" alt="Logo">
             <h4>Đăng nhập Quản trị</h4>
         </div>
-        
-        <?php if(isset($_SESSION['admin_message'])): ?>
+
+        <?php if (isset($_SESSION['admin_message'])): ?>
             <div class="message <?php echo $_SESSION['admin_message_type']; ?>">
-                <?php 
-                echo $_SESSION['admin_message']; 
+                <?php
+                echo $_SESSION['admin_message'];
                 unset($_SESSION['admin_message']);
                 unset($_SESSION['admin_message_type']);
                 ?>
             </div>
         <?php endif; ?>
-        
+
         <form method="post" action="login_submit.php">
             <div class="mb-3">
                 <label for="username" class="form-label">Tên đăng nhập</label>
@@ -98,7 +101,8 @@ if (isset($_SESSION['MaQuyen']) && ($_SESSION['MaQuyen'] == 'Admin' || $_SESSION
             <a href="../index.php">Quay lại trang chính</a>
         </div>
     </div>
-    
+
     <script src="../js/jquery-3.7.0.min.js"></script>
 </body>
+
 </html>

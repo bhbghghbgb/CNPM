@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (isset($_SESSION['MaQuyen']) && isset($_SESSION['MaTaiKhoan'])) {
 
     $MaQuyen = $_SESSION['MaQuyen'];
