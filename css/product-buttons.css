@@ -1,0 +1,173 @@
+/* Modern product buttons */
+.modern-product-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px 15px;
+}
+
+.modern-product-button {
+    padding: 10px 15px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.modern-product-button.btn-details {
+    background-color: transparent;
+    border: 2px solid #3a86ff;
+    color: #3a86ff;
+    flex: 1;
+    margin-right: 8px;
+    transition: all 0.3s ease, background-position 0.5s ease;
+    background-size: 200% 100%;
+    background-position: 0 0;
+    background-image: linear-gradient(to right, transparent 50%, #3a86ff 50%);
+}
+
+.modern-product-button.btn-details:hover {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(58, 134, 255, 0.2);
+    background-position: -100% 0;
+}
+
+.modern-product-button.btn-add-to-cart {
+    background: linear-gradient(45deg, #3a86ff, #00c6ff);
+    color: white;
+    flex: 1.5;
+    box-shadow: 0 4px 10px rgba(58, 134, 255, 0.3);
+}
+
+.modern-product-button.btn-add-to-cart i {
+    margin-right: 5px;
+    transition: transform 0.3s ease;
+}
+
+.modern-product-button.btn-add-to-cart:hover i {
+    animation: cart-bounce 0.7s ease-in-out;
+}
+
+@keyframes cart-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.modern-product-button.btn-add-to-cart:hover {
+    background: linear-gradient(45deg, #1a66ff, #00a6ff);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(58, 134, 255, 0.4);
+}
+
+/* Animation effect when clicking */
+.modern-product-button:active {
+    transform: scale(0.95);
+}
+
+/* Shine effect animation */
+.modern-product-button.btn-add-to-cart {
+    position: relative;
+    overflow: hidden;
+}
+
+.modern-product-button.btn-add-to-cart::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: rotate(30deg);
+    opacity: 0;
+    transition: opacity 0.6s;
+}
+
+.modern-product-button.btn-add-to-cart:hover::after {
+    opacity: 1;
+    animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: rotate(30deg) translateX(-300%);
+    }
+    100% {
+        transform: rotate(30deg) translateX(300%);
+    }
+}
+
+/* Fix duplicate buttons in Futsal section */
+#futsal_turf .modern-product-card .modern-product-actions:nth-of-type(2) {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .modern-product-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .modern-product-button.btn-details {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+}
+
+/* ========== CART NOTIFICATION (Merged from cart-notification.css) ========== */
+
+.cart-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #3a86ff;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.cart-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cart-notification i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+/* Nút thêm vào giỏ thành công */
+.btn-add-success {
+    background: linear-gradient(45deg, #28a745, #20c997) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Animation cho badge giỏ hàng */
+@keyframes badgePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.cart-item-added {
+    animation: badgePulse 0.5s ease-in-out;
+}

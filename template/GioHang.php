@@ -49,15 +49,15 @@ if (isset($_POST['update-click'])) {
     echo "<script>document.getElementById('quantity').textContent=" . $total . "</script>";
 }
 
-
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
     if ($action == 'remove') {
         foreach ($list as $key => $value) {
-            if ($value['MaSP'] == $_GET['MaSP']) {
-                $dgh->deleteSP($MaTaiKhoan, $value['MaSP']);
+            if ($value['MaSP'] == $_GET['MaSP'] && $value['Size'] == $_GET['Size']) {
+                $dgh->deleteSP($MaTaiKhoan, $value['MaSP'], $value['Size']);
                 unset($list[$key]);
-                echo ' <script>window.location="giohang.php";</script>';
+                echo '<script>window.location="giohang.php";</script>';
+                exit; 
             }
         }
     }
@@ -66,19 +66,38 @@ if (isset($_GET['action'])) {
 if (isset($_POST['add_to_cart'])) {
     $MaSP = $_POST['MaSP'];
     $Size = $_POST['Size'];
-    if ($dgh->addSP($MaTaiKhoan, $MaSP, 1, $Size)) {
-        $data  = $db->getThongTinSanPham($MaSP, $Size);
+    
+    // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+    $productExists = false;
+    if ($list != null) {
+        foreach ($list as $key => $value) {
+            if ($value['MaSP'] == $MaSP && $value['Size'] == $Size) {
+                // Nếu đã có thì tăng số lượng lên 1
+                $list[$key]["SoLuong"] += 1;
+                $productExists = true;
+                break;
+            }
+        }
+    }
+    
+    if (!$productExists) {
+        // Nếu chưa có thì thêm mới
+        $data = $db->getThongTinSanPham($MaSP, $Size);
         $data["SoLuong"] = 1;
         $TiLegiam = $db->getTiLeGiam($MaSP);
         $data["GiaBan"] = TinhTienGiam($TiLegiam, $data["GiaBan"]);
+        
         if ($list != null) {
             array_push($list, $data);
         } else {
             $list = array($data);
         }
-        $quantity = $dgh->getSL($MaTaiKhoan);
-        echo "<script>document.getElementById('quantity').textContent=" . $quantity . "</script>";
     }
+    
+    // Cập nhật vào database
+    $dgh->addSP($MaTaiKhoan, $MaSP, 1, $Size);
+    $quantity = $dgh->getSL($MaTaiKhoan);
+    echo "<script>document.getElementById('quantity').textContent=" . $quantity . "</script>";
 }
 ?>
 
@@ -115,15 +134,35 @@ if (isset($_POST['add_to_cart'])) {
                                         <td>
                                             <?php echo number_format($value['GiaBan'], 0, ",", ".") . "đ" ?>
                                         </td>
+                                        <?php
+                                        /*
                                         <td style="padding: 20px 5px;">
                                             <input type="number" value="<?php echo $value['SoLuong'] ?>" min="1" max="<?php echo $value['SLTonKho'] ?>" class="sl" name="quantity[<?= $value['MaSP'] ?>]">
+                                        </td>
+                                            */
+                                        ?>
+                                        <td>
+                                            <div class="quantity-control">
+                                                <button type="button" class="quantity-btn minus">-</button>
+                                                <input type="number" 
+                                                    value="<?php echo $value['SoLuong'] ?>" 
+                                                    min="1" max="<?php echo $value['SLTonKho'] ?>" 
+                                                    class="quantity-input" 
+                                                    name="quantity[<?= $value['MaSP'] ?>]"
+                                                    required
+                                                    onkeydown="return preventDelete(event, this)"
+                                                    oninput="validateQuantity(this)">
+                                                <button type="button" class="quantity-btn plus">+</button>
+                                            </div>
                                         </td>
                                         <td>
                                             <?php echo number_format($value['GiaBan'] * $value['SoLuong'], 0, ",", ".") . "đ" ?>
                                         </td>
                                         <td>
-                                            <a onclick="return confirm('Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?');" href="giohang.php?action=remove&MaSP=<?php echo $value['MaSP'] ?>">
+                                            <a onclick="return confirm('Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?');" 
+                                                href="giohang.php?action=remove&MaSP=<?php echo $value['MaSP'] ?>&Size=<?php echo $value['Size'] ?>">
                                                 <button type="button" class="delete"><i class="ti-trash trash"></i></button>
+                                            </a>
                                         </td>
                                     </tr>
 
@@ -144,6 +183,7 @@ if (isset($_POST['add_to_cart'])) {
     </form>
     <div id="thanh_toan">
         <h2>Đơn hàng</h2>
+         <h2></h2>
         <div id="thanh_toan_container">
             <h2>
                 <label>Tổng tiền</label>

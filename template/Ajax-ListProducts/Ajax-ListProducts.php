@@ -97,37 +97,35 @@ if (isset($_GET['MaDM']) || isset($_GET['Sale']) || isset($_GET['MaHang']) || is
         if (!$data)
             return;
 ?>
-        <div class="product">
-            <div class="product-image">
-                <div class="quickview-background">
+        <div class="modern-product-card">
+            <div class="modern-product-image">
+                <?php if($TiLeGiam > 0): ?>
+                <div class="modern-product-discount">-<?php echo $TiLeGiam; ?>%</div>
+                <?php endif; ?>
+                <div class="modern-product-favorite">
+                    <i class="ti-heart"></i>
                 </div>
-                <img src="./img/products/<?php echo $data[$i]['AnhChinh'] ?>" alt="" id="product-image">
+                <img src="./img/products/<?php echo $data[$i]['AnhChinh'] ?>" alt="<?php echo $data[$i][1] ?>">
             </div>
-            <div class="product-info">
-
-                <div class="product-name">
-
-                    <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>">
-                        <?php echo $data[$i][1] ?>
-                    </a>
+            <div class="modern-product-info">
+                <div class="modern-product-vendor"><?php echo $data[$i]['TenHang'] ?></div>
+                <div class="modern-product-name">
+                    <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>"><?php echo $data[$i][1] ?></a>
                 </div>
-                <div class="product-vendor">
-                    <?php echo $data[$i]['TenHang'] ?>
-                </div>
-                <div class="product-price">
+                <div class="modern-product-price">
                     <?php if ($data[$i]['GiaMin'] === null) { ?>
-                        <span class="price-new price">Sắp ra mắt</span>
+                        <span class="price-new coming-soon">Sắp ra mắt</span>
                     <?php } else { ?>
-                        <span class="price-new price">
-                            <?php echo number_format(TinhTienGiam($TiLeGiam, $data[$i]['GiaMin']), 0, ',', '.') . "đ" ?>
-                        </span>
-                        <?php if (TinhTienGiam($TiLeGiam, $data[$i]['GiaMin']) != $data[$i]['GiaMin']) { ?>
-                            <span class="price-old price">
-                                <?php echo number_format($data[$i]['GiaMin'], 0, ',', '.') . "đ" ?>
-                            </span>
+                        <span class="price-new"><?php echo number_format(TinhTienGiam($TiLeGiam, $data[$i]['GiaMin']), 0, ',', '.') . "đ" ?></span>
+                        <?php if ($TiLeGiam > 0) { ?>
+                            <span class="price-old"><?php echo number_format($data[$i]['GiaMin'], 0, ',', '.') . "đ" ?></span>
                         <?php } ?>
                     <?php } ?>
                 </div>
+            </div>
+            <div class="modern-product-actions">
+                <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>" class="modern-product-button btn-details">Xem chi tiết</a>
+                <button class="modern-product-button btn-add-to-cart" onclick="addToCart('<?php echo $data[$i][0] ?>')"><i class="ti-shopping-cart"></i> Thêm vào giỏ</button>
             </div>
         </div>
 <?php

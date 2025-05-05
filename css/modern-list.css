@@ -1,0 +1,71 @@
+/* Modern styling for danhsach page */
+#block-xemthem {
+    text-align: center;
+    margin: 30px 0;
+}
+
+#xemthem {
+    background-color: #3a86ff;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#xemthem:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+#xemthem:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Adjusting layout for the product listing page */
+.block-main {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .block-main {
+        flex-direction: column;
+    }
+    
+    .Loc {
+        order: 0;
+    }
+    
+    .block-product {
+        order: 1;
+    }
+}
+
+/* Make sure the NoiDungTim section is properly styled */
+#NoiDungTim {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border-left: 4px solid #3a86ff;
+}
+
+#NoiDungTim p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Style for upcoming products */
+.coming-soon {
+    color: #3a86ff !important;
+    font-style: italic;
+}

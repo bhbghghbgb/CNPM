@@ -28,18 +28,18 @@ if (isset($_POST['dangky'])) {
 
     if (!$username || !$password || !$email) {
         $_SESSION["message"] = "Vui lòng nhập đầy đủ thông tin!";
-        header("Location: index.php");
+        header("Location: /index.php");
         exit;
     }
 
     if (!preg_match('/^[a-zA-Z0-9]{5,}$/', $username)) {
         $_SESSION["message"] = "Tên đăng nhập phải có ít nhất 5 kí tự và chỉ chứa chữ cái và số !";
-        header("Location: index.php");
+        header("Location: /index.php");
         exit;
     }
     if (!preg_match('/^\S{5,}$/', trim($password))) {
         $_SESSION["message"] = "Mật khẩu phải lớn hơn hoặc bằng 5 ký tự, và không chứa khoảng trắng !";
-        header("Location: index.php");
+        header("Location: /index.php");
         exit;
     }
 
@@ -47,7 +47,7 @@ if (isset($_POST['dangky'])) {
     $pattern = '/^0[0-9]{9}$/';
     if (preg_match($pattern, $SDT) == false) {
         $_SESSION["message"] = "Sai định dạng số điện thoại";
-        header("Location: index.php");
+        header("Location: /index.php");
         exit;
     }
 

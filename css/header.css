@@ -1,153 +1,357 @@
 #header {
-    border-bottom: 1px solid rgb(194, 194, 194);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.09);
-    padding: 10px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e0e6ed 100%);
+    border-bottom: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 15px 0;
+    position: relative; /* Thay đổi từ sticky thành relative */
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+#header.scrolled {
+    padding: 8px 0;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 }
 
 .container2 {
     margin: 0 auto;
     display: flex;
-    /*thu div lai bang kich thuoc dung cua div*/
-    width: 1200px;
-    justify-content: space-around;
-    /*chinh cho 3 cai div cach nhau ra*/
-    height: 65px;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    padding: 0 20px;
 }
 
 .content1 {
     display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .content1 .ti-headphone {
-    margin-top: 20px;
-    font-size: 30px;
+    font-size: 20px;
+    color: #3a86ff;
+    margin-right: 10px;
+    animation: pulse 2s infinite;
 }
 
 .content1 #phone_header {
-    margin-top: 25px;
-    margin-left: 8px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
 }
 
 .content1:hover {
-    color: rgb(2, 4, 66);
+    color: #3a86ff;
     cursor: pointer;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 .content2 {
     margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.content2 img {
+    height: 60px !important;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.content2 img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .content3 {
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .content3 ul {
     display: flex;
     list-style-type: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
 }
 
 .content3 ul li {
-    margin: 0px 15px;
-    font-size: 25px;
+    margin: 0px 12px;
+    font-size: 22px;
     position: relative;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
 }
 
 .content3 ul li a {
-    color: black;
+    color: #444;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
 }
 
 .content3 ul .gh:hover,
 .content3 ul .user:hover,
 .content3 ul .kl:hover,
 .content3 ul .ti-share-alt:hover,
-.content3 ul li a:hover {
-    color: #1321c6;
+.content3 ul li a:hover,
+.content3 ul li:hover {
+    color: #3a86ff;
     cursor: pointer;
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .content3 ul li span {
-    background-color: orangered;
+    background: linear-gradient(45deg, #ff4e50, #f9d423);
     color: white;
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: bold;
     position: absolute;
-    right: -15px;
-    top: -13px;
-    border-radius: 90%;
-    padding: 8px;
+    right: -5px;
+    top: -8px;
+    border-radius: 50%;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
 }
 
 #search-box {
     display: flex;
-    margin-right: -12px;
     border-radius: 30px;
+    background-color: white;
+    position: relative;
+    overflow: visible; /* Thay đổi từ hidden thành visible */
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 40px; /* Đảm bảo có kích thước tối thiểu */
 }
 
 #search-box #find {
     border: none;
     outline: none;
-    background: none;
-    font-size: 15px;
-    margin-right: 10px;
+    background: white;
+    font-size: 14px;
     border-radius: 30px;
-    color: brown;
-    width: 0px;
+    color: #444;
+    width: 0;
     position: absolute;
-    left: -300px;
+    left: 0;
+    transform: translateX(-100%);
+    padding: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    z-index: 100; /* Đảm bảo hiển thị trên các phần tử khác */
 }
 
 /*  #search-box #find:valid  kiểm tra xem trên text có dữ liệu không nếu có thì áp dụng thuộc tính phía dưới */
-li:hover > #search-box #find,
 #search-box #find:valid {
-    padding: 6px 10px;
-    width: 300px;
-    border: 2px solid bisque;
+    padding: 10px 15px;
+    width: 250px;
+    transform: translateX(-100%);
+    border: none;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
 #search-box #btn-search {
     background: none;
     border: none;
     cursor: pointer;
+    z-index: 101; /* Đảm bảo nút luôn nằm trên input */
+    position: relative;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #search-box #btn-search:hover {
-    color: rgb(0, 66, 109);
+    color: white;
+    background-color: #3a86ff;
+    transform: scale(1.1);
 }
 
 #search-box .ti-search {
-    padding: 6px 10px;
-    font-size: 25px;
+    padding: 6px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    color: #555;
+}
+
+#search-box.active .ti-search,
+#search-box:hover .ti-search {
+    color: #3a86ff;
+}
+
+/* Thêm CSS để hiển thị input khi hover vào search-box hoặc li chứa search-box */
+#search-box:hover #find,
+li:hover > #search-box #find,
+.content3 ul li:hover #search-box #find {
+    padding: 10px 15px;
+    width: 250px;
+    transform: translateX(-100%);
+    border: none;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* Hiển thị input khi hover vào nút tìm kiếm */
+#btn-search:hover ~ #find,
+#search-box #btn-search:hover + #find {
+    padding: 10px 15px;
+    width: 250px;
+    transform: translateX(-100%);
+    border: none;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+/* Đảm bảo input vẫn hiển thị khi hover giữa nút và input */
+#search-box:hover,
+#search-box.hover {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
 }
 
 @media screen and (max-width: 1600px) {
     .container2 {
-        width: 1200px;
+        max-width: 1200px;
+        padding: 0 15px;
     }
 }
 
 @media screen and (max-width: 1200px) {
     .container2 {
-        width: auto;
-        display: flex;
+        padding: 0 20px;
+        margin: 0 auto;
     }
-
-    .conent2 {
+    
+    .content2 {
         flex: 1;
+        display: flex;
+        justify-content: center;
     }
 }
 
 @media screen and (max-width: 876px) {
+    #header {
+        padding: 10px 0;
+    }
+    
+    .container2 {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .content1 {
+        order: 2;
+        margin: 0 auto;
+    }
+    
+    .content2 {
+        order: 1;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .content3 {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    #search-box #find:valid,
+    li:hover > #search-box #find {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .content3 ul li {
+        margin: 0 8px;
+        font-size: 20px;
+    }
+    
+    #search-box #find:valid,
+    li:hover > #search-box #find {
+        width: 150px;
+    }
 }
 
 @media screen and (max-width: 375px) {
+    .content1 {
+        display: none;
+    }
+    
+    .content3 ul li {
+        margin: 0 5px;
+    }
 }
 
 #message {
-    top: 50px;
-    padding: 20px 50px;
-    right: 10px;
+    top: 90px;
+    padding: 15px 25px;
+    right: 20px;
     position: fixed;
-    border-bottom: 2px solid red;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
     opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    max-width: 350px;
+}
+
+#message.success {
+    border-left: 4px solid #2ecc71;
+}
+
+#message.error {
+    border-left: 4px solid #e74c3c;
+}
+
+#message.warning {
+    border-left: 4px solid #f39c12;
+}
+
+#message.info {
+    border-left: 4px solid #3498db;
 }

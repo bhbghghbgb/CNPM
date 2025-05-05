@@ -8,43 +8,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- JS dùng để làm AJAX -->
-    <script src="./js/jquery-3.7.0.min.js">
+    <script src="./js/jquery-3.7.0.min.js"></script>
 
-    </script>
-
+    <!-- Base CSS -->
     <link rel="stylesheet" href="./css/main.css">
-
-    <!-- products -->
-    <link rel="stylesheet" href="./css/products.css">
-    <script src="./js/index.js">
-
-    </script>
-    <script src="./js/login.js">
-
-    </script>
-
-    <!-- slider -->
-    <link rel="stylesheet" href="./css/slider.css">
-    <script src="./js/slider.js"></script>
-    <script src="./js/QuenMatKhau.js"></script>
-
-    </script>
-
-    <!-- header -->
-    <link rel="stylesheet" href="./css/top_menu.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
+    
+    <!-- Core Components CSS -->
     <link rel="stylesheet" href="./css/header.css">
-
-    <!-- footer -->
+    <link rel="stylesheet" href="./css/top_menu.css">
+    <link rel="stylesheet" href="./css/slider.css">
     <link rel="stylesheet" href="./css/footer.css">
-
-    <!-- post -->
+    <link rel="stylesheet" href="./css/products.css">
     <link rel="stylesheet" href="./css/post.css">
-
-    <!-- login -->
     <link rel="stylesheet" href="./css/formDN.css">
-
-
+    
+    <!-- Modern Design - Hợp nhất từ nhiều file CSS -->
+    <link rel="stylesheet" href="./css/modern.css">
+    
+    <!-- Effects & Animations - Hợp nhất từ nhiều file CSS -->
+    <link rel="stylesheet" href="./css/effects.css">
+    
+    <!-- JS Core -->
+    <script src="./js/login.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/QuenMatKhau.js"></script>
+    
+    <!-- Consolidated JS Effects File -->
+    <script src="./js/effects.js?v=1"></script> <!-- Thêm version để tránh cache -->
+    <script src="./js/modern-products.js"></script>
 </head>
 
 <body>
@@ -57,26 +49,19 @@
             </div>
         </div>
 
-        <span>Location: account/login.php</span>
         <?php include('account/login.php'); ?>
 
-        <span>Location: account/quenmatkhau.php</span>
         <?php include('account/quenmatkhau.php'); ?>
 
-        <span>Location: account/register.php</span>
         <?php include('account/register.php'); ?>
 
-        <span>Location: template/header.php</span>
         <?php include('template/header.php'); ?>
 
-        <span>Location: template/top_menu.php</span>
         <?php include('template/top_menu.php'); ?>
 
         <div id="main">
-            <span>Location: template/slider.php</span>
             <?php include('template/slider.php'); ?>
 
-            <span>Location: template/products.php</span>
             <?php include('template/products.php'); ?>
 
             <?php
@@ -85,7 +70,6 @@
         </div>
 
         <div id="footer">
-            <span>Location: template/footer.php</span>
             <?php include('template/footer.php'); ?>
         </div>
     </div>

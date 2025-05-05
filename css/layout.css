@@ -1,0 +1,221 @@
+/* 
+ * Layout CSS - Chứa các style cho bố cục chung của trang web
+ * File này được tạo từ việc gộp và tối ưu các phần style layout từ các file:
+ * - header.css
+ * - footer.css
+ * - top_menu.css
+ */
+
+/* === Header === */
+#header {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e0e6ed 100%);
+    border-bottom: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 15px 0;
+    position: relative;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+#header.scrolled {
+    padding: 8px 0;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.content1 {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.content1 .ti-headphone {
+    font-size: 20px;
+    color: #3a86ff;
+    margin-right: 10px;
+    animation: pulse 2s infinite;
+}
+
+.content1 #phone_header {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+
+.content2 {
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.content2 img {
+    height: 60px !important;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.content3 {
+    display: flex;
+    align-items: center;
+}
+
+.content3 ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+.content3 ul li {
+    margin: 0px 12px;
+    font-size: 22px;
+    position: relative;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+/* === Top Menu === */
+.top_menu {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eaeaea;
+    padding: 8px 0;
+}
+
+.top_menu_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top_menu_nav {
+    display: flex;
+    gap: 20px;
+}
+
+.top_menu_item {
+    position: relative;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+/* === Footer === */
+.footer-col {
+    min-height: 300px;
+    max-width: 100%;
+    background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
+    margin-top: 50px;
+    padding: 40px 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-col::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3a86ff, #8338ec, #ff006e, #fb5607);
+}
+
+.boxcenter {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.boxcenter h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #fff;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.boxcenter h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #3a86ff;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+/* === Responsive Layout === */
+@media screen and (max-width: 992px) {
+    .boxcenter {
+        flex-direction: column;
+    }
+    
+    .contact, .pocicy, .links, .fangape {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container2 {
+        flex-wrap: wrap;
+    }
+    
+    .content1 {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .content2 {
+        order: 1;
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .content3 {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .content3 ul li {
+        margin: 0 8px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .content1 {
+        display: none;
+    }
+    
+    .content3 ul li {
+        margin: 0 5px;
+    }
+}
