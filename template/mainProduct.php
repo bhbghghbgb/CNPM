@@ -82,16 +82,6 @@ else
                         <img src="./img/products/<?php echo $data['AnhChinh'] ?>">
                     </label>
                 </div>
-                <?php
-                for ($i = 1; $i < 4; $i++) {
-                ?>
-                    <div class="item_selection">
-                        <label>
-                            <input type="radio" name="img_selected" onclick="ChuyenAnh('./img/products/giay404.jpg')" />
-                            <img src="./img/products/giay404.jpg">
-                        </label>
-                    </div>
-                <?php } ?>
             </div>
             <div id="image">
                 <img src="./img/products/<?php echo $data["AnhChinh"] ?>" id="AnhChinh">
