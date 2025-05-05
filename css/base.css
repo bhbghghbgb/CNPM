@@ -1,0 +1,94 @@
+/* 
+ * Base CSS - Chứa các style cơ bản cho toàn bộ trang web
+ * File này được tạo từ việc gộp và tối ưu các phần style cơ bản từ các file:
+ * - main.css
+ * - parts của header.css và footer.css
+ */
+
+/* === Reset và thiết lập cơ bản === */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    color: #333;
+    font-weight: 300;
+    margin: 0;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* === Container và layout === */
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.container2 {
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    padding: 0 20px;
+}
+
+.container3 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* === Media Queries cơ bản === */
+@media (max-width: 1200px) {
+    .container, 
+    .container2, 
+    .container3 {
+        width: 100%;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    /* Điều chỉnh cho màn hình tablet */
+}
+
+@media (max-width: 768px) {
+    /* Điều chỉnh cho màn hình mobile lớn */
+}
+
+@media (max-width: 576px) {
+    /* Điều chỉnh cho màn hình mobile nhỏ */
+}
+
+@media (max-width: 375px) {
+    /* Điều chỉnh cho màn hình rất nhỏ */
+}
+
+/* === Text Utilities === */
+.textcenter {
+    text-align: center;
+}
+
+.text-bold {
+    font-weight: 700;
+}
