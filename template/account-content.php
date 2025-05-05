@@ -9,7 +9,6 @@ if (isset($_SESSION['MaTaiKhoan']))
     $MaTK = $_SESSION['MaTaiKhoan'];
 
 
-/////////////////////////////////////
 // xử lý chỉnh thông tin người dùng 
 if (isset($_POST['ten'])) {
     $pattern = '/^0[0-9]{9}$/';
@@ -90,16 +89,14 @@ if (isset($_SESSION['MaTaiKhoan'])) {
 }
 
 
-
-
 ?>
-
 <link rel="stylesheet" href="./admin/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="./admin/css/account-content.css">
+<!-- v=<?php echo time(); ?> -->
 <div class="row">
     <div class="col col-12 col-sm-7">
         <form action="" method="post">
-            <div class="row m-2 ">
+            <div class="row m-2">
                 <div class="col col-12 bg-secondary text-light p-3 rounded">
                     <h3>Thông tin người dùng</h3>
                     <div class="box ">
