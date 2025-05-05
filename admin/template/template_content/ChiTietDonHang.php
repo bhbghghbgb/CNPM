@@ -1,6 +1,10 @@
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
-<link rel="stylesheet" href="../../css/ChiTietDonHang.css">
-
+<link rel="stylesheet" href="../../css/ChiTietDonHang.css?v=<?php echo time(); ?>">
+<!-- <link rel="stylesheet" href="../../css/ChiTietDonHang.css"> -->
+<?php
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+ini_set('display_errors', 0);
+?>
 
 <?php
 $Madon = $_GET['CT'];
