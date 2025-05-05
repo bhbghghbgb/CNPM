@@ -16,4 +16,10 @@ li {
 }
 #main {
     min-height: 480px;
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    clear: both;
+    padding-top: 20px; /* Thêm padding-top để tạo khoảng cách với menu */
 }

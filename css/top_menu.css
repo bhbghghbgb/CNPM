@@ -1,11 +1,11 @@
 .top_menu {
-    top: 0px;
     width: 100%;
     padding: 0 110px;
-    position: sticky;
-    z-index: 8;
+    position: relative;
+    z-index: 9;
     background-color: white;
-    box-shadow: 0 14px 20px -17px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 4px 6px -6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px; /* Thêm margin-bottom để tạo khoảng cách với nội dung */
 }
 
 .top_menu ul {

@@ -1,8 +1,10 @@
 <script src="./js/login.js"></script>
+<script src="./js/header-effects.js"></script>
 
 <script>
     $(document).ready(function() {
-        $('#find').keydown(function() {
+        // Xử lý khi nhấn Enter trong input
+        $('#find').keydown(function(event) {
             let keycode = event.which;
             if (keycode == 13) {
                 let text = $(this).val();
@@ -10,6 +12,30 @@
             }
         });
 
+        // Xử lý khi click vào nút search
+        $('#btn-search').click(function(event) {
+            event.preventDefault();
+            
+            // Nếu có text trong input thì submit search
+            if($('#find').val().trim() !== '') {
+                let text = $('#find').val();
+                window.location = "./danhsach.php?Find=" + text;
+            } 
+            // Nếu không có text, toggle trạng thái active của search box
+            else {
+                $('#search-box').toggleClass('active');
+                if($('#search-box').hasClass('active')) {
+                    $('#find').focus();
+                }
+            }
+        });
+
+        // Đóng search box khi click ra ngoài
+        $(document).click(function(event) {
+            if (!$(event.target).closest('#search-box').length) {
+                $('#search-box').removeClass('active');
+            }
+        });
     });
 </script>
 <header>

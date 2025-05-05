@@ -8,47 +8,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- JS dùng để làm AJAX -->
-    <script src="./js/jquery-3.7.0.min.js">
+    <script src="./js/jquery-3.7.0.min.js"></script>
 
-    </script>
-http://localhost:86/
+    <!-- Base CSS -->
     <link rel="stylesheet" href="./css/main.css">
-
-    <!-- products -->
-    <link rel="stylesheet" href="./css/products.css">
-    <script src="./js/index.js"></script>
-    <script src="./js/login.js"></script>
-    <script src="./js/scroll-effects.js"></script>
-
-    <!-- slider -->
-    <link rel="stylesheet" href="./css/slider.css">
-    <link rel="stylesheet" href="./css/modern-slider.css">
-    <!-- <script src="./js/slider.js"></script> -->
-    <!-- <script src="./js/modern-slider.js"></script> -->
-    <script src="./js/slider-fix.js?v=1"></script> <!-- New fixed slider script -->
-    <script src="./js/QuenMatKhau.js"></script>
-
-    <!-- header -->
-    <link rel="stylesheet" href="./css/top_menu.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="./css/header.css">
-
-    <!-- footer -->
-    <link rel="stylesheet" href="./css/footer.css">
-
-    <!-- post -->
-    <link rel="stylesheet" href="./css/post.css">
     
-    <!-- Modern design -->
-    <link rel="stylesheet" href="./css/modern-categories.css">
-    <link rel="stylesheet" href="./css/modern-products.css">
-    <link rel="stylesheet" href="./css/modern-utilities.css">
-    <script src="./js/modern-products.js"></script>
-
-    <!-- login -->
+    <!-- Core Components CSS -->
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/top_menu.css">
+    <link rel="stylesheet" href="./css/slider.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/products.css">
+    <link rel="stylesheet" href="./css/post.css">
     <link rel="stylesheet" href="./css/formDN.css">
-
-
+    
+    <!-- Modern Design - Hợp nhất từ nhiều file CSS -->
+    <link rel="stylesheet" href="./css/modern.css">
+    
+    <!-- Effects & Animations - Hợp nhất từ nhiều file CSS -->
+    <link rel="stylesheet" href="./css/effects.css">
+    
+    <!-- JS Core -->
+    <script src="./js/login.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/QuenMatKhau.js"></script>
+    
+    <!-- Consolidated JS Effects File -->
+    <script src="./js/effects.js?v=1"></script> <!-- Thêm version để tránh cache -->
+    <script src="./js/modern-products.js"></script>
 </head>
 
 <body>

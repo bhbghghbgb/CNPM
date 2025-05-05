@@ -1,0 +1,342 @@
+/* 
+ * File CSS tổng hợp các hiệu ứng
+ * Được tạo bằng cách hợp nhất các file:
+ * - animations.css
+ * - scroll-effects.css
+ * - fix-display.css
+ */
+
+/* ========== ANIMATIONS ========== */
+
+/* Animations và hiệu ứng trang web */
+
+/* Hiệu ứng cho các nút */
+.btn-hover {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.btn-hover:hover::before {
+    width: 100%;
+}
+
+/* Hiệu ứng cho sản phẩm */
+.product-card {
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Hiệu ứng loading */
+.loading {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.loading div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #3a86ff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.loading div:nth-child(1) {
+    left: 8px;
+    animation: loading1 0.6s infinite;
+}
+
+.loading div:nth-child(2) {
+    left: 8px;
+    animation: loading2 0.6s infinite;
+}
+
+.loading div:nth-child(3) {
+    left: 32px;
+    animation: loading2 0.6s infinite;
+}
+
+.loading div:nth-child(4) {
+    left: 56px;
+    animation: loading3 0.6s infinite;
+}
+
+@keyframes loading1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes loading2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}
+
+@keyframes loading3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+/* Hiệu ứng hover cho danh mục sản phẩm */
+.category-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.category-item img {
+    transition: all 0.5s ease;
+}
+
+.category-item:hover img {
+    transform: scale(1.05);
+}
+
+.category-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    padding: 20px;
+    color: white;
+    transform: translateY(10px);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.category-item:hover .overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Animation cho thông báo */
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    10% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    90% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Hiệu ứng cho form đăng nhập */
+.form-effect {
+    transition: all 0.3s ease;
+}
+
+.form-effect:focus {
+    border-color: #3a86ff;
+    box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
+}
+
+/* Hiệu ứng cho mục hover */
+.hover-effect {
+    position: relative;
+}
+
+.hover-effect::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #3a86ff;
+    transition: all 0.3s ease;
+}
+
+.hover-effect:hover::after {
+    width: 100%;
+}
+
+/* Hiệu ứng pulse cho icon */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* ========== SCROLL EFFECTS ========== */
+
+/* Hiệu ứng fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hiệu ứng slide-in từ trái */
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Hiệu ứng slide-in từ phải */
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Hiệu ứng zoom-in */
+.zoom-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.zoom-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Hiệu ứng cho các block sản phẩm - Đảm bảo luôn hiển thị trước */
+.block-product {
+    opacity: 1 !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Sau khi trang được tải xong, hiệu ứng sẽ được áp dụng */
+.block-product.fade-ready {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.block-product.fade-in-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Nút quay lại đầu trang */
+.back-to-top {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 45px;
+    height: 45px;
+    background-color: #3a86ff;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 999;
+    border: none;
+    box-shadow: 0 4px 12px rgba(58, 134, 255, 0.3);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background-color: #2868c7;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(58, 134, 255, 0.4);
+}
+
+.back-to-top i {
+    font-size: 20px;
+}
+
+/* ========== FIX DISPLAY ========== */
+
+/* CSS để khắc phục vấn đề hiển thị */
+
+/* Đảm bảo hiển thị các phần nội dung */
+#main, .block-product, .block-main, .modern-slider-container {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Khắc phục hiển thị cho header và menu */
+#header {
+    position: relative !important;
+}
+
+.top_menu {
+    position: relative !important;
+    display: block !important;
+}
+
+/* Khắc phục cho footer */
+#footer, .footer-col {
+    display: block !important;
+    position: relative !important;
+}
+
+/* Khắc phục cho sản phẩm */
+.modern-products-grid, .categories-grid {
+    display: grid !important;
+    visibility: visible !important;
+}
