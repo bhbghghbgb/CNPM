@@ -97,7 +97,7 @@ if (isset($_GET['MaDM']) || isset($_GET['Sale']) || isset($_GET['MaHang']) || is
         if (!$data)
             return;
 ?>
-        <div class="product">
+        <div class="product-item">
             <div class="product-image">
                 <div class="quickview-background">
                 </div>

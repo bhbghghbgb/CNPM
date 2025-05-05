@@ -10,7 +10,8 @@
 
 
     <!-- products -->
-    <link rel="stylesheet" href="./css/products.css">
+    <link rel="stylesheet" href="./css/product-buttons.css">
+    <link rel="stylesheet" href="./css/modern.css">
     <script src="./js/jquery-3.7.0.min.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/login.js"></script>
