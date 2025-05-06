@@ -52,7 +52,7 @@ if (isset($_GET['MaDM']) || isset($_GET['Sale']) || isset($_GET['MaHang']) || is
     if (isset($_GET['Gia'])) {
         // Dua dieu kien loc theo gia vao cau truy van
         $Gia = $_GET['Gia'];
-        if ($Gia != "") {
+        if ($Gia != "" && $Gia != "All") {
             $sql = $sql . ' HAVING GiaThapNhat ';
             switch ($Gia) {
                 case '0-1000000': {

@@ -211,6 +211,11 @@
                     <div class="content">Lớn hơn 3,000,000₫</div>
                     <i class="ti-check"></i>
                 </label>
+                <label>
+                    <input type="radio" name="Gia" value="All" class="ChonGia">
+                    <div class="content">Tất cả</div>
+                    <i class="ti-check"></i>
+                </label>
             </div>
         </div>
     </div>
