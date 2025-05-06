@@ -104,7 +104,7 @@
                             </div>
                             <div class="modern-product-actions">
                                 <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>" class="modern-product-button btn-details">Xem chi tiết</a>
-                                <button class="modern-product-button btn-add-to-cart" onclick="addToCart('<?php echo $data[$i][0] ?>')"><i class="ti-shopping-cart"></i> Thêm vào giỏ</button>
+                                <!-- <button class="modern-product-button btn-add-to-cart" onclick="addToCart('<?php echo $data[$i][0] ?>')"><i class="ti-shopping-cart"></i> Thêm vào giỏ</button> -->
                             </div>
                         </div>
                     <?php
@@ -162,7 +162,7 @@
                             </div>
                             <div class="modern-product-actions">
                                 <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>" class="modern-product-button btn-details">Xem chi tiết</a>
-                                <button class="modern-product-button btn-add-to-cart" onclick="addToCart('<?php echo $data[$i][0] ?>')"><i class="ti-shopping-cart"></i> Thêm vào giỏ</button>
+                                <!-- <button class="modern-product-button btn-add-to-cart" onclick="addToCart('<?php echo $data[$i][0] ?>')"><i class="ti-shopping-cart"></i> Thêm vào giỏ</button> -->
                             </div>
                         </div>
                     <?php
@@ -218,7 +218,7 @@
                             </div>
                             <div class="modern-product-actions">
                                 <a href="./chitietsp.php?MaSP=<?php echo $data[$i][0] ?>" class="modern-product-button btn-details">Xem chi tiết</a>
-                                <button class="modern-product-button btn-add-to-cart" onclick="addToCart('<?php echo $data[$i][0] ?>')"><i class="ti-shopping-cart"></i> Thêm vào giỏ</button>
+                                <!-- <button class="modern-product-button btn-add-to-cart" onclick="addToCart('<?php echo $data[$i][0] ?>')"><i class="ti-shopping-cart"></i> Thêm vào giỏ</button> -->
                             </div>
                         </div>
                     <?php

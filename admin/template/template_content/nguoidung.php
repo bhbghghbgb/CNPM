@@ -10,13 +10,13 @@
             $listQuyen[$row['MaQuyen']] = $row['TenQuyen'];
         }
     }
-    // Truy vấn danh sách sản phẩm
+    // Truy vấn danh sách khach hang
     $sql = "SELECT * FROM khachhang Where TrangThai=1";
     $result = $conn->query($sql);
 
     // Kiểm tra kết quả trả về
     if ($result->num_rows > 0) {
-        // Hiển thị danh sách sản phẩm
+        // Hiển thị danh sách khach hang
         echo "
     <div id='khachhang' class='d-block'>
     <div class='row mark m-0'>
@@ -33,7 +33,6 @@
                 <th>ID</th>
                 <th>Tên Khách Hàng</th>
                 <th>Tên đăng nhập</th>
-                <th>Mat Khau</th>
                 <th>Tình trạng</th>
                 <th>Quyền</th>
             </tr>";
@@ -70,8 +69,7 @@
 
             echo "        </div>
             </td>
-            <td>" . $rowTaiKhoan["TenDN"] . "</td>
-            <td>" . $rowTaiKhoan["MatKhau"] . "</td>";
+            <td>" . $rowTaiKhoan["TenDN"] . "</td>";
             if ($rowTaiKhoan["TinhTrang"] == "0")
                 echo " <td>Khóa</td>";
             else
@@ -110,7 +108,6 @@
             <th>ID</th>
             <th>Tên Nhân viên</th>
             <th>Tên đăng nhập</th>
-            <th>Mat Khau</th>
             <th>Tình trạng</th>
             <th>Quyền</th>
         </tr>";
@@ -145,8 +142,7 @@
 
             echo "        </div>
             </td>
-            <td>" . $rowTaiKhoan["TenDN"] . "</td>
-            <td>" . $rowTaiKhoan["MatKhau"] . "</td>";
+            <td>" . $rowTaiKhoan["TenDN"] . "</td>";
             if ($rowTaiKhoan["TinhTrang"] == 0)
                 echo " <td>Khóa</td>";
             else
