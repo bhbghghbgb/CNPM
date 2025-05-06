@@ -26,10 +26,7 @@ if (isset($_GET['MaSP'])) {
     }
 }
 $urlAnh = './img/products/';
-if ($data['AnhChinh'])
     $urlAnh = $urlAnh . $data['AnhChinh'];
-else
-    $urlAnh = $urlAnh . 'giay404.jpg';
 ?>
 <script>
     var tilegiam = <?php echo json_decode($Tilegiam) ?>;
