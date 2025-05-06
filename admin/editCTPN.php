@@ -1,3 +1,7 @@
+<?php
+include("./checkperm.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

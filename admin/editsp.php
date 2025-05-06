@@ -1,4 +1,8 @@
 <?php
+include("./checkperm.php");
+?>
+
+<?php
 include('../db/DAOSP.php');
 include('../db/DAOHang.php');
 include('../db/DAODanhMuc.php');
