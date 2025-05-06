@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
     php:
+        image: php:8.3.19-apache-bookworm-rewrite
         build: .
         ports:
             - "86:80"

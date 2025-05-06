@@ -33,7 +33,7 @@ if (isset($_GET['search'])) {
                         <div id="search-suggestions" class=" position-absolute col-md-6 w-75 bg-white p-2" style="display:none"></div>
                     </div>
                     <div class="input-group-append">
-                        <button type="submit " class="mx-3 btn btn-success">Tìm</button>
+                        <button type="submit" class="mx-3 btn btn-success">Tìm</button>
                     </div>
                 </div>
             </form>
