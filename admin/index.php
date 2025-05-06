@@ -1,6 +1,9 @@
-<?php include('template/menu_ad.php'); ?>
+<?php
+include("./checkperm.php");
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -35,10 +38,17 @@
 </head>
 
 <body>
-    <div id="message">
-        <div id="content_mess">
+    <?php if (isset($_SESSION['admin_message'])): ?>
+        <div id="message" style="display: block;">
+            <div id="content_mess">
+                <?php
+                echo $_SESSION['admin_message'];
+                unset($_SESSION['admin_message']);
+                ?>
+            </div>
         </div>
-    </div>
+    <?php endif; ?>
+    <?php include('template/menu_ad.php'); ?>
     <div class="wrapper">
         <?php include('template/topbar_ad.php'); ?>
         <div class="container-fluid">
@@ -51,7 +61,8 @@
     <?php
     if (isset($_SESSION['message'])) {
         $cache = '';
-        if ($cache != $_SESSION['message']);
+        if ($cache != $_SESSION['message'])
+            ;
         $cache = $_SESSION['message'];
         echo '<script language="javascript"> addmessText("' . $_SESSION['message'] . '");</script>';
         unset($_SESSION['message']); // Xóa thông báo sau khi hiển thị

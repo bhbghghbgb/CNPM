@@ -22,10 +22,10 @@ if (isset($_POST['dangnhap'])) {
         header("Location: index.php");
         exit;
     }
+    // la nhan vien dang nhap, nhan vien ko dc dang nhap o day
+    // Kiểm tra có quyền admin hoặc các quyền khác ngoài User không
     if ($row['Quyen'] != "User") {
-        $_SESSION['MaTaiKhoan'] = $row['MaTaiKhoan'];
-        $_SESSION['MaQuyen'] = $row['Quyen'];
-        $_SESSION["message"] = "Chào " . $row['Quyen'];
+        $_SESSION['message'] = "Username không tồn tại!";
         header("Location: index.php");
         exit;
     } else {
