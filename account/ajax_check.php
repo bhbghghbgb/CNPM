@@ -27,14 +27,14 @@ function sendResetEmail($email, $token)
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'quanglinh1023m@gmail.com';
+        $mail->Username = 'taikhoanao1023m@gmail.com';
         $mail->Password = 'viwu jhun fzdr iapy';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
         $mail->CharSet = 'UTF-8';
 
         // Thiết lập thông tin người gửi và người nhận
-        $mail->setFrom('quanglinh1023m@gmail.com', 'Đặt lại mật khẩu website bán giày'); // Điền thông tin người gửi
+        $mail->setFrom('taikhoanao1023m@gmail.com', 'Đặt lại mật khẩu website bán giày'); // Điền thông tin người gửi
         $mail->addAddress($email); // Điền địa chỉ email người nhận
 
         // Thiết lập tiêu đề và nội dung email

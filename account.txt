@@ -1,2 +1,13 @@
-user admin: TK1
-pass admin:1
+admin	taikhoantest003@gmail.com	12345
+nvkho	nvkho@gmail.com	12345
+nvbanhang	nvbanhang@gmail.com	12345
+khachhang1	taikhoantest003@gmail.com	12345
+khachhangmoinhat	taikhoantest3@gmail.com	12345
+nvkho		12345
+khachhanghi	taikhoantest00@gmail.com	12345
+khachhangm	taikhoantest0@gmail.com	12345
+adminnehihi	quanlynehihi@gmail.com	12345
+nhanvienmoi	nhanvienmoi@gmail.com	12345
+khachhangmneeee	taikhoantest005@gmail.com	12345
+khachhang	taikhoantest4231@gmail.com	12345
+khachhang123	taikhoantest00354@gmail.com	12345
